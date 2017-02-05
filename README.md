@@ -1,9 +1,9 @@
 Design Patterns Explained with Fabbles
 =====================================
 
-> Design patterns - A topic that can easily make **anyone's** mind wobble.
+> Ultra-simplified explanation to design patterns with with fabbles
 
-Here, I try to make them stick into your mind by explaining them using easy to understand fabbles.
+Design patterns - A topic that can make anyone's mind wobble. Here I try to make them stick into your mind by explaining them using easy to understand fabbles.
 
 Lets begin with the simple definition
 
