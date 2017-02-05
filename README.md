@@ -10,8 +10,10 @@ Design patterns - A topic that can make anyone's mind wobble. Here I try to make
 ## Words of Caution
 
 🔫 They are not a silver bullet to all your problems.
-🔨 Keep in mind that design patterns are solutions **to** problems, not solutions **finding** problem. You should never try to force them/
-💀If used in a correct place in a correct manner, they can prove to be a savior; or else it can result in a horrible mess of a code.
+
+🔨 Keep in mind that design patterns are solutions **to** problems, not solutions **finding** problem. You should never try to force them.
+
+💀 If used in a correct place in a correct manner, they can prove to be a savior; or else it can result in a horrible mess of a code.
 
 ## Table of Contents
 
