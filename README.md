@@ -34,9 +34,9 @@ Wikipedia says
 > In software engineering, creational design patterns are design patterns that deal with object creation mechanisms, trying to create objects in a manner suitable to the situation. The basic form of object creation could result in design problems or added complexity to the design. Creational design patterns solve this problem by somehow controlling this object creation.
  
  * [Simple Factory](#simple-factory)
+ * [Factory Method](#factory-method)
  * [Abstract Factory](#abstract-factory)
  * [Builder](#builder)
- * [Factory Method](#factory-method)
  * [Prototype](#prototype)
  * [Singleton](#singleton)
  
@@ -68,8 +68,50 @@ class HumanFactory {
 **When to Use**
 When creating an object is not just a few assignments and involves some logic, it makes sense to put it in a dedicated factory instead of repeating the same code everywhere. 
 
-Abstract Factory
--------------------------
+Factory Method
+--------------
+**Real World**
+Consider the case of a hiring manager. It is impossible for her to know everything about the position that she has to hire for. Based on the job opening, she has to decide and delegate the interview steps to different people. 
+
+**In Plain Words**
+It provides a way to delegate the instantiation logic to child classes. 
+
+**Wikipedia says**
+> In class-based programming, the factory method pattern is a creational pattern that uses factory methods to deal with the problem of creating objects without having to specify the exact class of the object that will be created. This is done by creating objects by calling a factory method—either specified in an interface and implemented by child classes, or implemented in a base class and optionally overridden by derived classes—rather than by calling a constructor.
+ 
+ **Programmatic Example**
+ Taking my hiring manager example above:
+ ```php
+ class HiringManager {
+
+    abstract public function makeInterviewer() : Interviewer;
+    
+    public function takeInterview() {
+        $interivewer = $thi->makeInterviewer();
+        // do the interview
+    }
+ }
+ ```
+Now any child can extend it and provide the required interviewer
+```php
+class DevelopmentManager extends HiringManager {
+    public function makeInterviewer() : Interviewer {
+        return new Developer();
+    }
+}
+
+class MarketingManager extends HiringManager {
+    public function makeInterviewer() : Interviewer {
+        return new CommunityExecutive();
+    }
+}
+```
+and then it can be used as
+
+```php
+$devManager = new DevelopmentManager();
+$devManager->takeInterview();
+```
 
 Structural
 ===================
