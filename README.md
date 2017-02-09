@@ -26,18 +26,51 @@ They are not classes, packages or libraries that you can plug into your applicat
 
 Creational Design Patterns
 ==========================
+
 In plain words
 > Creational patterns are focused towards how to instantiate an object or group of related objects.
 
 Wikipedia says
 > In software engineering, creational design patterns are design patterns that deal with object creation mechanisms, trying to create objects in a manner suitable to the situation. The basic form of object creation could result in design problems or added complexity to the design. Creational design patterns solve this problem by somehow controlling this object creation.
  
+ * [Simple Factory](#simple-factory)
  * [Abstract Factory](#abstract-factory)
  * [Builder](#builder)
  * [Factory Method](#factory-method)
  * [Prototype](#prototype)
  * [Singleton](#singleton)
  
+Simple Factory
+--------------
+**Real Word**
+> Consider, you are building a house and you need doors. It would be a mess if every time you need a door, you put on your carpenter clothes and start making a door in your house. Instead you get it made from a factory.
+
+**In plain words**
+> Simple factory simply generates an instance for client without exposing any instantiation logic to the client
+
+**Wikipedia says**
+> In object-oriented programming (OOP), a factory is an object for creating other objects – formally a factory is a function or method that returns objects of a varying prototype or class from some method call, which is assumed to be "new".
+
+**Programmatic Example**
+```php
+class HumanFactory {
+
+   public function makeBoy() : Human {
+       // Creation logic
+   }
+
+   public function makeGirl() : Human {
+        // Creation logic
+   }
+}
+```
+
+**When to Use**
+When creating an object is not just a few assignments and involves some logic, it makes sense to put it in a dedicated factory instead of repeating the same code everywhere. 
+
+Abstract Factory
+-------------------------
+
 Structural
 ===================
 Behavioral
