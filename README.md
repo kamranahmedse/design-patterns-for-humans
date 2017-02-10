@@ -15,7 +15,7 @@ Design Patterns
 In plain words
 > Solutions to recurring problems. Guidelines on how to tackle certain problems.
  
-Wikipedia Says
+**Wikipedia Says**
 > In software engineering, a software design pattern is a general reusable solution to a commonly occurring problem within a given context in software design. It is not a finished design that can be transformed directly into source or machine code. It is a description or template for how to solve a problem that can be used in many different situations.  
 
 They are not classes, packages or libraries that you can plug into your application and wait for the magic to happen. These are, rather, guidelines on how to tackle certain problems in certain situations. 
@@ -42,13 +42,13 @@ Wikipedia says
  
 Simple Factory
 --------------
-**Real Word**
+Real World Example
 > Consider, you are building a house and you need doors. It would be a mess if every time you need a door, you put on your carpenter clothes and start making a door in your house. Instead you get it made from a factory.
 
-**In plain words**
+In plain words
 > Simple factory simply generates an instance for client without exposing any instantiation logic to the client
 
-**Wikipedia says**
+Wikipedia says
 > In object-oriented programming (OOP), a factory is an object for creating other objects – formally a factory is a function or method that returns objects of a varying prototype or class from some method call, which is assumed to be "new".
 
 **Programmatic Example**
@@ -66,13 +66,13 @@ When creating an object is not just a few assignments and involves some logic, i
 
 Factory Method
 --------------
-**Real World**
+Real World Example
 > Consider the case of a hiring manager. It is impossible for one person to interview for each of the positions. Based on the job opening, she has to decide and delegate the interview steps to different people. 
 
 **In Plain Words**
 > It provides a way to delegate the instantiation logic to child classes. 
 
-**Wikipedia says**
+Wikipedia says
 > In class-based programming, the factory method pattern is a creational pattern that uses factory methods to deal with the problem of creating objects without having to specify the exact class of the object that will be created. This is done by creating objects by calling a factory method—either specified in an interface and implemented by child classes, or implemented in a base class and optionally overridden by derived classes—rather than by calling a constructor.
  
  **Programmatic Example**
@@ -114,13 +114,13 @@ Useful when there is some generic processing in a class but the required sub-cla
 
 Abstract Factory
 ----------------
-**Real World**
+Real World Example
 > Extending our door example from (Simple Factory)[#simple-factory]. Based on your needs you might get a wooden door from a wooden door shop, iron door from an iron shop or a PVC door from the relevant shop. Plus you might need a guy with different kind of specialities to fit the door, for example a carpenter for wooden door, welder for iron door etc. As you can see there is a dependency between the doors now, wooden door needs carpenter, iron door needs a welder etc.
 
-**In plain words**
+In plain words
 > A factory of factories; a factory that groups the individual but related/dependent factories together without specifying their concrete classes. 
   
-**Wikipedia says**
+Wikipedia says
 > The abstract factory pattern provides a way to encapsulate a group of individual factories that have a common theme without specifying their concrete classes
 
 **Programmatic Example**
@@ -168,13 +168,13 @@ When there are interrelated dependencies with not-that-simple creation logic inv
 
 Builder Pattern
 --------------------------------------------
-**Real World**
+Real World Example
 > Imagine you are at Hardee's and you order a specific deal, lets say, "Big Hardee" and they hand it over to you without *any questions*; this is the example of simple factory. But there are cases when the creation logic might involve more steps. For example you want a customized Subway deal, you have several options in how your burger is made e.g what bread do you want? what types of sauces would you like? What cheese would you want? etc. In such cases builder pattern comes to the rescue.
 
-**In plain words**
+In plain words
 > > Allows you to create different flavors of an object while avoiding constructor pollution. Useful when there could be several flavors of an object. Or when there are a lot of steps involved in creation of an object.
  
-**Wikipedia says**
+Wikipedia says
 > The builder pattern is an object creation software design pattern with the intentions of finding a solution to the telescoping constructor anti-pattern.
 
 Having said that let me add a bit about what telescoping constructor anti-pattern is. At one point or the other we have all seen a constructor like below:
@@ -238,13 +238,13 @@ When there could be several flavors of an object and to avoid the constructor te
 
 Prototype Pattern
 -----------------
-**Real world**
+Real World Example
 > Remember dolly? The sheep that was cloned! Lets not get into the details but the key point here is that it is all about cloning
 
-**In plain words**
+In plain words
 > Create object based on an existing object through cloning.
 
-**Wikipedia says**
+Wikipedia says
 > The prototype pattern is a creational design pattern in software development. It is used when the type of objects to create is determined by a prototypical instance, which is cloned to produce new objects.
 
 In short, it allows you to create a copy of an existing object and modify it to your needs, instead of going through the trouble of creating an object from scratch and setting it up.
@@ -299,13 +299,13 @@ When an object is required that is similar to existing object or when the creati
 
 Singleton pattern
 -----------------
-**Real world**
+Real World Example
 > There can only be one president of a country at a time. The same president has to be brought to action, whenever duty calls.
 
-**In plain words**
+In plain words
 > Ensures that only one object of a particular class is every created.
 
-**Wikipedia says**
+Wikipedia says
 > In software engineering, the singleton pattern is a software design pattern that restricts the instantiation of a class to one object. This is useful when exactly one object is needed to coordinate actions across the system.
 
 Singleton pattern is actually considered an anti-pattern and overuse of it should be avoided. It is not necessarily bad and could have some valid use-cases but should be used with caution because it introduces a global state in your application and change to it in one place could affect in the other areas and it could become pretty difficult to debug. The other bad thing about them is it makes your code tightly coupled plus it mocking the singleton could be difficult.
@@ -344,10 +344,10 @@ var_dump($president1 === $president2); // true
 
 Structural Design Patterns
 ==========================
-**In plain words**
+In plain words
 > Structural patterns are mostly concerned with object composition or in other words how the entities can use each other
 
-**Wikipedia says**
+Wikipedia says
 > In software engineering, structural design patterns are design patterns that ease the design by identifying a simple way to realize relationships between entities.
   
  * [Adapter](#adapter)
@@ -361,16 +361,16 @@ Structural Design Patterns
 
 Adapter
 -------
-**Real world**
+Real World Example
 > Consider that you have some pictures in your memory card and you need to transfer them to your computer. In order to transfer them you need some kind of adapter that is compatible with your computer ports so that you can attach memory card to your computer. In this case card reader is an adapter.
 > Another example would be the famous power adapter; a three legged plug can't be connected to a two pronged outlet, it needs to use a power adapter that makes it compatible with the two pronged outlet.
 > Yet another example would be a translator translating words spoken by one person to another
 
-**In plain words**
-Adapter pattern lets you wrap an otherwise incompatible object in an adapter to make it compatible with another class.
+In plain words
+> Adapter pattern lets you wrap an otherwise incompatible object in an adapter to make it compatible with another class.
 
-**Wikipedia says**
-In software engineering, the adapter pattern is a software design pattern that allows the interface of an existing class to be used as another interface. It is often used to make existing classes work with others without modifying their source code.
+Wikipedia says
+> In software engineering, the adapter pattern is a software design pattern that allows the interface of an existing class to be used as another interface. It is often used to make existing classes work with others without modifying their source code.
 
 **Programmatic Example**
 Consider a game where there is a hunter and he hunts lions.
@@ -421,4 +421,8 @@ class WildDogAdapter implements Lion {
 ```
 And now the `WildDog` can be used in our game using `WildDogAdapter`.
 
-
+Bridge
+------
+Real World Example
+**In Plain Words**
+Wikipedia says
