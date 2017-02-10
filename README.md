@@ -53,41 +53,37 @@ Simple Factory
 
 **Programmatic Example**
 ```php
-class HumanFactory {
+class DoorFactory {
 
-   public function makeBoy() : Human {
+   public function makeDoor() : Door {
        // Creation logic
-   }
-
-   public function makeGirl() : Human {
-        // Creation logic
    }
 }
 ```
 
-**When to Use**
+**When to Use?**
 When creating an object is not just a few assignments and involves some logic, it makes sense to put it in a dedicated factory instead of repeating the same code everywhere. 
 
 Factory Method
 --------------
 **Real World**
-Consider the case of a hiring manager. It is impossible for her to know everything about the position that she has to hire for. Based on the job opening, she has to decide and delegate the interview steps to different people. 
+> Consider the case of a hiring manager. It is impossible for one person to interview for each of the positions. Based on the job opening, she has to decide and delegate the interview steps to different people. 
 
 **In Plain Words**
-It provides a way to delegate the instantiation logic to child classes. 
+> It provides a way to delegate the instantiation logic to child classes. 
 
 **Wikipedia says**
 > In class-based programming, the factory method pattern is a creational pattern that uses factory methods to deal with the problem of creating objects without having to specify the exact class of the object that will be created. This is done by creating objects by calling a factory method—either specified in an interface and implemented by child classes, or implemented in a base class and optionally overridden by derived classes—rather than by calling a constructor.
  
  **Programmatic Example**
  Taking my hiring manager example above:
- ```php
+```php
  class HiringManager {
 
     abstract public function makeInterviewer() : Interviewer;
     
     public function takeInterview() {
-        $interivewer = $thi->makeInterviewer();
+        $interivewer = $this->makeInterviewer();
         // do the interview
     }
  }
@@ -113,7 +109,59 @@ $devManager = new DevelopmentManager();
 $devManager->takeInterview();
 ```
 
-Structural
-===================
-Behavioral
-===================
+**When to use?**
+Useful when there is some generic processing in a class but the required sub-class is dynamically decided at runtime. Or putting it in other words, when the client doesn't know what exact sub-class it might need.
+
+Abstract Factory
+----------------
+**Real World**
+> Extending our door example from (Simple Factory)[#simple-factory]. Based on your needs you might get a wooden door from a wooden door shop, iron door from an iron shop or a PVC door from the relevant shop. Plus you might need a guy with different kind of specialities to fit the door, for example a carpenter for wooden door, welder for iron door etc. As you can see there is a dependency between the doors now, wooden door needs carpenter, iron door needs a welder etc.
+
+**In plain words**
+> A factory of factories; a factory that groups the individual but related/dependent factories together without specifying their concrete classes. 
+  
+**Wikipedia says**
+> The abstract factory pattern provides a way to encapsulate a group of individual factories that have a common theme without specifying their concrete classes
+
+**Programmatic Example**
+Translating the door example above
+
+```php
+interface DoorFactory {
+    public function makeDoor() : Door;
+    public function makeFittingExpert() : DoorFittingExpert;
+}
+```
+Wooden door factory to get a wooden door and the relevant wooden door fitting expert
+```php
+class WoodenDoorFactory implements DoorFactory {
+    public function makeDoor() : Door {
+        // Create wooden door
+        return $woodenDoor;
+    }
+
+    public function makeFittingExpert() : DoorFittingExpert{
+        // Create wooden door fitting expert
+        return $carpenter;
+    }
+}
+```
+Iron door factory to get iron door and the relevant fitting expert
+```php
+class IronDoorFactory implements DoorFactory {
+    public function makeDoor() : Door {
+        // Create iron door
+        return $ironDoor;
+    }
+
+    public function makeFittingExpert() : DoorFittingExpert{
+        // Create iron door fitting expert
+        return $welder;
+    }
+}
+```
+
+As you can see the wooden door factory has encapsulated the `carpenter` and the `wooden door` also iron door factory has encapsulated the `iron door` and `welder`. And thus it had helped us make sure that for each of the created door, we do not get a wrong fitting expert.   
+
+Builder Pattern
+--------------------------------------------
