@@ -6,9 +6,9 @@ Design patterns is something that can easily make anyone's mind wobble. Here I t
 
 ## Table of Contents
 * [Design patterns](#design-patterns) 
-* [Creational](#creational)
-* [Structural](#structural)
-* [Behavioral](#behavioral)
+* [Creational](#creational-design-patterns)
+* [Structural](#structural-design-patterns)
+* [Behavioral](#behavioral-design-patterns)
 
 Design Patterns
 ===============
@@ -21,8 +21,8 @@ Wikipedia Says
 They are not classes, packages or libraries that you can plug into your application and wait for the magic to happen. These are, rather, guidelines on how to tackle certain problems in certain situations. 
 
 > - They are not a silver bullet to all your problems. You should not try to force them.
-> - Keep in mind that design patterns are solutions **to** problems, not solution **finding** problem
-> - If used in a correct place in a correct manner, they can prove to be a savior; or else it can result in a horrible mess of a code.
+> - Keep in mind that design patterns are solutions **to** problems, not solution **finding** problem. So do not try to pick a design pattern and try to force it. 
+> - If used in a correct place in a correct manner, they can prove to be a savior; or else they can result in a horrible mess of a code.
 
 Creational Design Patterns
 ==========================
@@ -342,3 +342,19 @@ $president2 = President::getInstance();
 var_dump($president1 === $president2); // true
 ```
 
+Structural Design Patterns
+==========================
+**In plain words**
+> Structural patterns are mostly concerned with object composition or in other words how the entities can use each other
+
+**Wikipedia says**
+> In software engineering, structural design patterns are design patterns that ease the design by identifying a simple way to realize relationships between entities.
+  
+ * [Adapter](#adapter)
+ * [Bridge](#bridge)
+ * [Composite](#composite)
+ * [Decorator](#decorator)
+ * [Facade](#facade)
+ * [Flyweight](#flyweight)
+ * [Proxy](#proxy)
+ * [Registry](#registry)
