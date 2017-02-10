@@ -172,7 +172,7 @@ Builder Pattern
 > Imagine you are at Hardee's and you order a specific deal, lets say, "Big Hardee" and they hand it over to you without *any questions*; this is the example of simple factory. But there are cases when the creation logic might involve more steps. For example you want a customized Subway deal, you have several options in how your burger is made e.g what bread do you want? what types of sauces would you like? What cheese would you want? etc. In such cases builder pattern comes to the rescue.
 
 **In plain words**
-> Useful when there could be several flavors of an object. Or when there are a lot of steps involved in creation of an object.
+> > Allows you to create different flavors of an object while avoiding constructor pollution. Useful when there could be several flavors of an object. Or when there are a lot of steps involved in creation of an object.
  
 **Wikipedia says**
 > The builder pattern is an object creation software design pattern with the intentions of finding a solution to the telescoping constructor anti-pattern.
@@ -235,3 +235,110 @@ $burger = (new BurgerBuilder(14))
 
 **When to use?**
 When there could be several flavors of an object and to avoid the constructor telescoping.
+
+Prototype Pattern
+-----------------
+**Real world**
+> Remember dolly? The sheep that was cloned! Lets not get into the details but the key point here is that it is all about cloning
+
+**In plain words**
+> Create object based on an existing object through cloning.
+
+**Wikipedia says**
+> The prototype pattern is a creational design pattern in software development. It is used when the type of objects to create is determined by a prototypical instance, which is cloned to produce new objects.
+
+In short, it allows you to create a copy of an existing object and modify it to your needs, instead of going through the trouble of creating an object from scratch and setting it up.
+
+**Programmatic Example**
+In PHP, it can be easily done using `clone`
+  
+```php
+class Sheep {
+    protected $name;
+    protected $category;
+
+    public function __construct(string $name, string $category = 'Mountain Sheep') {
+        $this->name = $name;
+        $this->category = $category;
+    }
+    
+    public function setName(string $name) {
+        $this->name = $name;
+    }
+
+    public function getName() {
+        return $this->name;
+    }
+
+    public function setCategory(string $category) {
+        $this->category = $category;
+    }
+
+    public function getCategory() {
+        return $this->category;
+    }
+}
+```
+Then it can be cloned like below
+```php
+$original = new Sheep('Jolly');
+echo $original->getName(); // Jolly
+echo $original->getCategory(); // Mountain Sheep
+
+// Clone and modify what is required
+$cloned = clone $original;
+$cloned->setName('Dolly');
+echo $cloned->getName(); // Dolly
+echo $cloned->getCategory(); // Mountain sheep
+```
+
+Also you could use the magic method `__clone` to modify the cloning behavior.
+
+**When to use?**
+When an object is required that is similar to existing object or when the creation would be expensive as compared to cloning.
+
+Singleton pattern
+-----------------
+**Real world**
+> There can only be one president of a country at a time. The same president has to be brought to action, whenever duty calls.
+
+**In plain words**
+> Ensures that only one object of a particular class is every created.
+
+**Wikipedia says**
+> In software engineering, the singleton pattern is a software design pattern that restricts the instantiation of a class to one object. This is useful when exactly one object is needed to coordinate actions across the system.
+
+Singleton pattern is actually considered an anti-pattern and overuse of it should be avoided. It is not necessarily bad and could have some valid use-cases but should be used with caution because it introduces a global state in your application and change to it in one place could affect in the other areas and it could become pretty difficult to debug. The other bad thing about them is it makes your code tightly coupled plus it mocking the singleton could be difficult.
+
+**Programmatic Example**
+To create a singleton, make the constructor private, disable cloning, disable extension and create a static variable to house the instance
+```php
+final class President {
+    private static $instance;
+
+    private function __construct() {
+        // Hide the constructor
+    }
+    
+    public static function getInstance() : President {
+        if ($this->instance) {
+            return $this->instance;
+        }
+        
+        $this->instance = new President();
+        return $this->instance;
+    }
+    
+    private function __clone() {
+        // Disable cloning
+    }
+}
+```
+Then in order to use
+```php
+$president1 = President::getInstance();
+$president2 = President::getInstance();
+
+var_dump($president1 === $president2); // true
+```
+
