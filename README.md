@@ -424,5 +424,11 @@ And now the `WildDog` can be used in our game using `WildDogAdapter`.
 Bridge
 ------
 Real World Example
-**In Plain Words**
+>
+
+In Plain Words
+>
+
 Wikipedia says
+>
+
