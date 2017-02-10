@@ -1,5 +1,5 @@
-Design Patterns Explained with Fables
-=====================================
+Design Patterns for Humans
+==========================
 > Ultra-simplified explanation to design patterns!
 
 Design patterns is something that can easily make anyone's mind wobble. Here I try to make them stick in to your (and maybe mine?!) mind by explaining them in the *simplest* way possible. 
@@ -76,7 +76,7 @@ Factory Method
 > In class-based programming, the factory method pattern is a creational pattern that uses factory methods to deal with the problem of creating objects without having to specify the exact class of the object that will be created. This is done by creating objects by calling a factory method—either specified in an interface and implemented by child classes, or implemented in a base class and optionally overridden by derived classes—rather than by calling a constructor.
  
  **Programmatic Example**
- Taking my hiring manager example above:
+ Taking our hiring manager example above:
 ```php
  class HiringManager {
 
@@ -163,5 +163,75 @@ class IronDoorFactory implements DoorFactory {
 
 As you can see the wooden door factory has encapsulated the `carpenter` and the `wooden door` also iron door factory has encapsulated the `iron door` and `welder`. And thus it had helped us make sure that for each of the created door, we do not get a wrong fitting expert.   
 
+**When to use?**
+When there are interrelated dependencies with not-that-simple creation logic involved
+
 Builder Pattern
 --------------------------------------------
+**Real World**
+> Imagine you are at Hardee's and you order a specific deal, lets say, "Big Hardee" and they hand it over to you without *any questions*; this is the example of simple factory. But there are cases when the creation logic might involve more steps. For example you want a customized Subway deal, you have several options in how your burger is made e.g what bread do you want? what types of sauces would you like? What cheese would you want? etc. In such cases builder pattern comes to the rescue.
+
+**In plain words**
+> Useful when there could be several flavors of an object. Or when there are a lot of steps involved in creation of an object.
+ 
+**Wikipedia says**
+> The builder pattern is an object creation software design pattern with the intentions of finding a solution to the telescoping constructor anti-pattern.
+
+Having said that let me add a bit about what telescoping constructor anti-pattern is. At one point or the other we have all seen a constructor like below:
+ 
+```php
+public function __construct($size, $cheese = true, $pepperoni = true, $tomato = false, $lettuce = true) {
+}
+```
+
+As you can see; the number of constructor parameters can quickly get out of hand and it might become difficult to understand the arrangement of parameters. Plus this parameter list could keep on growing if you would want to add more options in future. This is called telescoping constructor anti-pattern.
+
+**Programmatic Example**
+The sane alternative is to use the builder pattern.
+
+```php
+class BurgerBuilder {
+    protected $size;
+
+    protected $pepperoni = true;
+    protected $cheeze = true;
+    protected $lettuce = true;
+    protected $tomato = false;
+
+    public function __construct(int $size) {
+        $this->size = $size;
+    }
+    
+    public function addPepperoni() {
+        $this->pepperoni = true;
+        return $this;
+    }
+    
+    public function addLettuce() {
+        $this->lettuce = true;
+        return $this;
+    }
+    
+    public function addTomato() {
+        $this->tomato = true;
+        return $this;
+    }
+    
+    public function build() : Burger {
+        // creational logic
+        return $burger;
+    }
+}
+```
+And then it can be used as:
+
+```php
+$burger = (new BurgerBuilder(14))
+                    ->addPepperoni();
+                    ->addLettuce();
+                    ->addTomato();
+                    ->build();
+```
+
+**When to use?**
+When there could be several flavors of an object and to avoid the constructor telescoping.
