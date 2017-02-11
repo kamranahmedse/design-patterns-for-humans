@@ -21,7 +21,7 @@ In plain words
 They are not classes, packages or libraries that you can plug into your application and wait for the magic to happen. These are, rather, guidelines on how to tackle certain problems in certain situations. 
 
 > - They are not a silver bullet to all your problems. You should not try to force them.
-> - Keep in mind that design patterns are solutions **to** problems, not solution **finding** problem. So do not try to pick a design pattern and try to force it. 
+> - Keep in mind that design patterns are solutions **to** problems, not solutions **finding** problems. So do not pick a design pattern and try to force it. 
 > - If used in a correct place in a correct manner, they can prove to be a savior; or else they can result in a horrible mess of a code.
 
 Creational Design Patterns
@@ -738,10 +738,83 @@ echo $someCoffee->getCost(); // 20
 echo $someCoffee->getDescription(); // Simple Coffee, milk, whip, vanilla
 ```
 
+Facade Pattern
+----------------
 
+Real World Example
+> How do you turn on the computer? "Hit the power button" you say! That is what you believe because you are using a simple interface that computer provides on the outside, internally it has to do a lot of stuff to make it happen. This simple interface to the complex subsystem is a facade.
 
+In plain words
+> Facade pattern provides a simplified interface to a complex subsystem.
 
+Wikipedia says
+> 
 
+**Programmatic Example**
+Taking our computer example from above. Here we have the computer class
+
+```php
+class Computer {
+
+    public function getElectricShock() {
+        echo "Ouch!";
+    }
+
+    public function makeSound() {
+        echo "Beep beep!";
+    }
+
+    public function showLoadingScreen() {
+        echo "Loading..";
+    }
+
+    public function bam() {
+        echo "Ready to be used!";
+    }
+
+    public function closeEverything() {
+        echo "Bup bup bup buzzzz!";
+    }
+
+    public function sooth() {
+        echo "Zzzzz";
+    }
+
+    public function pullCurrent() {
+        echo "Haaah!";
+    }
+}
+```
+Here we have the facade
+```php
+public function ComputerFacade
+{
+    protected $computer;
+
+    public function __construct(Computer $computer) {
+        $this->computer = $computer;
+    }
+
+    public function turnOn() {
+        $this->computer->getElectricShock();
+        $this->computer->makeSound();
+        $this->computer->showLoadingScreen();
+        $this->computer->bam();
+    }
+
+    public function turnOff() {
+        $this->computer->closeEverything();
+        $this->computer->pullCurrent();
+        $this->computer->sooth();
+    }
+}
+```
+Now to use the facade
+```php
+$computer = new ComputerFacade(new Computer());
+$computer->turnOn(); // Ouch! Beep beep! Loading.. Ready to be used!
+$compuer->turnOff(); // Bup bup buzzz! Haah! Zzzzz
+```
 
 
 
