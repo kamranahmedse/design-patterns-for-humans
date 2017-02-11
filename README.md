@@ -234,7 +234,7 @@ $burger = (new BurgerBuilder(14))
 ```
 
 **When to use?**
-When there could be several flavors of an object and to avoid the constructor telescoping.
+When there could be several flavors of an object and to avoid the constructor telescoping. The key difference from the factory pattern is that; factory pattern is to be used when the creation is a one step process while builder pattern is to be used when the creation is a multi step process.
 
 Prototype Pattern
 -----------------
@@ -300,7 +300,7 @@ When an object is required that is similar to existing object or when the creati
 Singleton pattern
 -----------------
 Real World Example
-> There can only be one president of a country at a time. The same president has to be brought to action, whenever duty calls.
+> There can only be one president of a country at a time. The same president has to be brought to action, whenever duty calls. President here is singleton.
 
 In plain words
 > Ensures that only one object of a particular class is every created.
@@ -629,18 +629,114 @@ $organization->addEmployee($jane);
 echo "Net salaries: " . $organization->getNetSalaries(); // Net Salaries: 22000
 ```
 
+Decorator
+-------------
 
+Real World Example
 
+> Imagine you run a car service shop offering multiple services. Now how do you calculate the bill to be charged? You pick one service and dynamically keep adding to it the prices for the provided services till you get the final cost. Here each type of service is a decorator.
 
+In plain words
+> Decorator pattern lets you dynamically change the behavior of an object at run time by wrapping them in an object of a decorator class.
 
+Wikipedia says
+>
 
+**Programmatic Example**
 
+Lets take cofee for example. First of all we have a simple coffee implementing the coffee interface
 
+```php
+interface Coffee {
+    public function getCost();
+    public function getDescription();
+}
 
+class SimpleCoffee implements Coffee {
 
+    public function getCost() {
+        return 10;
+    }
 
+    public function getDescription() {
+        return 'Simple coffee';
+    }
+}
+```
+We want to make the cofee extendible to allow options to modify it if required. Lets make some add-ons (decorators)
+```php
+class MilkCoffee implements Coffee {
+    
+    protected $coffee;
 
+    public function __construct(Coffee $coffee) {
+        $this->coffee = $coffee;
+    }
 
+    public function getCost() {
+        return $this->coffee->getCost() + 2;
+    }
+
+    public function getDescriptoin() {
+        return $this->coffee->getDescription() + ', milk';
+    }
+}
+
+class WhipCoffee implements Coffee {
+
+    protected $coffee;
+
+    public function __construct(Coffee $coffee) {
+        $this->coffee = $coffee;
+    }
+
+    public function getCost() {
+        return $this->coffee->getCost() + 5;
+    }
+
+    public function getDescriptoin() {
+        return $this->coffee->getDescription() + ', whip';
+    }
+}
+
+class VanillaCoffee implements Coffee {
+
+    protected $coffee;
+
+    public function __construct(Coffee $coffee) {
+        $this->coffee = $coffee;
+    }
+
+    public function getCost() {
+        return $this->coffee->getCost() + 3;
+    }
+
+    public function getDescriptoin() {
+        return $this->coffee->getDescription() + ', vanilla';
+    }
+}
+
+```
+
+Lets make a coffee now
+
+```php
+$someCoffee = new SimpleCoffee();
+echo $someCoffee->getCost(); // 10
+echo $someCoffee->getDescription(); // Simple Coffee
+
+$someCoffee = new MilkCoffee($someCoffee);
+echo $someCoffee->getCost(); // 12
+echo $someCoffee->getDescription(); // Simple Coffee, milk
+
+$someCoffee = new WhipCoffee($someCoffee);
+echo $someCoffee->getCost(); // 17
+echo $someCoffee->getDescription(); // Simple Coffee, milk, whip
+
+$someCoffee = new VanillaCoffee($someCoffee);
+echo $someCoffee->getCost(); // 20
+echo $someCoffee->getDescription(); // Simple Coffee, milk, whip, vanilla
+```
 
 
 
