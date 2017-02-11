@@ -172,7 +172,7 @@ Real World Example
 > Imagine you are at Hardee's and you order a specific deal, lets say, "Big Hardee" and they hand it over to you without *any questions*; this is the example of simple factory. But there are cases when the creation logic might involve more steps. For example you want a customized Subway deal, you have several options in how your burger is made e.g what bread do you want? what types of sauces would you like? What cheese would you want? etc. In such cases builder pattern comes to the rescue.
 
 In plain words
-> > Allows you to create different flavors of an object while avoiding constructor pollution. Useful when there could be several flavors of an object. Or when there are a lot of steps involved in creation of an object.
+> Allows you to create different flavors of an object while avoiding constructor pollution. Useful when there could be several flavors of an object. Or when there are a lot of steps involved in creation of an object.
  
 Wikipedia says
 > The builder pattern is an object creation software design pattern with the intentions of finding a solution to the telescoping constructor anti-pattern.
@@ -406,7 +406,7 @@ class WildDog {
     public function bark() {}
 }
 
-// Adapter to make it compatible with our game
+// Adapter around wild dog to make it compatible with our game
 class WildDogAdapter implements Lion {
     protected $dog;
 
@@ -421,14 +421,95 @@ class WildDogAdapter implements Lion {
 ```
 And now the `WildDog` can be used in our game using `WildDogAdapter`.
 
+```php
+$wildDog = new WildDog();
+$wildDogAdapter = new WildDogAdapter($wildDog);
+
+$hunter = new Hunter();
+$hunter->hunt($wildDogAdapter);
+```
+
 Bridge
 ------
 Real World Example
->
+> Consider you have a website with different pages and you are supposed to allow the user to change the theme. What would you do? Create multiple copies of each of the pages for each of the themes or would you just create separate theme and load them based on the user's preferences? Bridge pattern allows you to do the second i.e.
+
+Instead of the below
+![](http://i.imgur.com/tvASmY4.png)
+
+With bridge pattern you get
+![](http://i.imgur.com/iYqhxjD.png)
+ 
 
 In Plain Words
->
+> Bridge pattern is about preferring composition over inheritance. Implementation details are pushed from a hierarchy to another object with a separate hierarchy.
 
 Wikipedia says
->
+> The bridge pattern is a design pattern used in software engineering that is meant to "decouple an abstraction from its implementation so that the two can vary independently"
 
+**Programmatic Example**
+
+Translating our WebPage example from above. Here we have the `WebPage` hierarchy
+
+```php
+interface WebPage {
+    public function __construct(Theme $theme);
+    public function getContent();
+}
+
+class About implements WebPage {
+    protected $theme;
+    
+    public function __construct(Theme $theme) {
+        $this->theme = $theme;
+    }
+    
+    public function getContent() {
+        return "About page in " . $this->theme->getColor();
+    }
+}
+
+class Careers implements WebPage {
+   protected $theme;
+   
+   public function __construct(Theme $theme) {
+       $this->theme = $theme;
+   }
+   
+   public function getContent() {
+       return "Careers page in " . $this->theme->getColor();
+   } 
+}
+```
+And the separate theme hierarchy
+```php
+interface Theme {
+    public function getColor();
+}
+
+class DarkTheme {
+    public function getColor() {
+        return 'Dark Black';
+    }
+}
+class LightTheme {
+    public function getColor() {
+        return 'Off white';
+    }
+}
+class AquaTheme {
+    public function getColor() {
+        return 'Light blue';
+    }
+}
+```
+And both the hierarchies
+```php
+$darkTheme = new DarkTheme();
+
+$about = new About($darkTheme);
+$careers = new Careers($darkTheme);
+
+echo $about->getContent(); // "About page in Dark Black";
+echo $careers->getContent(); // "Careers page in Dark Black";
+```
