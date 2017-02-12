@@ -345,7 +345,7 @@ var_dump($president1 === $president2); // true
 Structural Design Patterns
 ==========================
 In plain words
-> Structural patterns are mostly concerned with object composition or in other words how the entities can use each other
+> Structural patterns are mostly concerned with object composition or in other words how the entities can use each other.
 
 Wikipedia says
 > In software engineering, structural design patterns are design patterns that ease the design by identifying a simple way to realize relationships between entities.
@@ -357,7 +357,6 @@ Wikipedia says
  * [Facade](#facade)
  * [Flyweight](#flyweight)
  * [Proxy](#proxy)
- * [Registry](#registry)
 
 Adapter
 -------
@@ -513,8 +512,7 @@ Composite Pattern
 -----------------
 
 Real World Example
-
-> Every organization is composed of employees. Each of the employees has same feautres i.e. has a salary, has some responsibilities, may or may not report to someone, may or may not have some subordinates etc.
+> Every organization is composed of employees. Each of the employees has same features i.e. has a salary, has some responsibilities, may or may not report to someone, may or may not have some subordinates etc.
 
 In plain words
 > Composite pattern lets clients to treat the individual objects in a uniform manner.
@@ -640,11 +638,11 @@ In plain words
 > Decorator pattern lets you dynamically change the behavior of an object at run time by wrapping them in an object of a decorator class.
 
 Wikipedia says
->
+> In object-oriented programming, the decorator pattern is a design pattern that allows behavior to be added to an individual object, either statically or dynamically, without affecting the behavior of other objects from the same class. The decorator pattern is often useful for adhering to the Single Responsibility Principle, as it allows functionality to be divided between classes with unique areas of concern.
 
 **Programmatic Example**
 
-Lets take cofee for example. First of all we have a simple coffee implementing the coffee interface
+Lets take coffee for example. First of all we have a simple coffee implementing the coffee interface
 
 ```php
 interface Coffee {
@@ -663,7 +661,7 @@ class SimpleCoffee implements Coffee {
     }
 }
 ```
-We want to make the cofee extendible to allow options to modify it if required. Lets make some add-ons (decorators)
+We want to make the codee extensible to allow options to modify it if required. Lets make some add-ons (decorators)
 ```php
 class MilkCoffee implements Coffee {
     
@@ -748,7 +746,7 @@ In plain words
 > Facade pattern provides a simplified interface to a complex subsystem.
 
 Wikipedia says
-> 
+> A facade is an object that provides a simplified interface to a larger body of code, such as a class library.
 
 **Programmatic Example**
 Taking our computer example from above. Here we have the computer class
@@ -826,7 +824,7 @@ In plain words
 > It is used to minimize memory usage or computational expenses by sharing as much as possible with similar objects.
 
 Wikipedia says
-> 
+> In computer programming, flyweight is a software design pattern. A flyweight is an object that minimizes memory use by sharing as much data as possible with other similar objects; it is a way to use objects in large numbers when a simple repeated representation would use an unacceptable amount of memory.
 
 **Programmatic example**
 Translating our tea example from above. First of all we have tea types and tea maker
@@ -898,7 +896,7 @@ In plain words
 > In proxy pattern a class represents the functionality of another class.
 
 Wikipedia says
->
+> A proxy, in its most general form, is a class functioning as an interface to something else. A proxy is a wrapper or agent object that is being called by the client to access the real serving object behind the scenes. Use of the proxy can simply be forwarding to the real object, or can provide additional logic. In the proxy extra functionality can be provided, for example caching when operations on the real object are resource intensive, or checking preconditions before operations on the real object are invoked.
 
 **Programmatic Example**
 Taking our security door example from above. Firstly we have the door interface and an implementation of door
@@ -953,4 +951,119 @@ $door->open('invalid'); // Big no! It ain't possible.
 $door->open('$ecr@t'); // Opening lab door
 $door->close('Closing lab door');
 ```
-Yet another example would be some sort of datamapper implementation. For example, I recently made an ODM (Object Data Mapper) for mongodb using this pattern where I wrote a proxy around mongo classes while utilizing the magic method `__call`. All the method calls were proxied to the original mongo class and result retrieved was returned as it is but in case of `find` or `findOne` data was mapped to the required class objects and the object was returned instead of `Cursor`.
+Yet another example would be some sort of data-mapper implementation. For example, I recently made an ODM (Object Data Mapper) for mongodb using this pattern where I wrote a proxy around mongo classes while utilizing the magic method `__call`. All the method calls were proxied to the original mongo class and result retrieved was returned as it is but in case of `find` or `findOne` data was mapped to the required class objects and the object was returned instead of `Cursor`.
+
+Behavioral Design Patterns
+==========================
+
+In plain words
+> It is concerned with assignment of responsibilities between the objects. What makes them different from structural patterns is they don't just specify the structure but also outline the patterns for message passing/communication between them.
+
+Wikipedia says
+> In software engineering, behavioral design patterns are design patterns that identify common communication patterns between objects and realize these patterns. By doing so, these patterns increase flexibility in carrying out this communication.
+
+* [Chain of Responsibility](#chain-of-responsibility)
+* [Command](#command)
+* [Iterator](#iterator)
+* [Meditator](#meditator)
+* [Memento](#memento)
+* [Null Object](#null-object)
+* [Observer](#observer)
+* [Specification](#specification)
+* [State](#state)
+* [Strategy](#strategy)
+* [Template Method](#template-method)
+* [Visitor](#visitor)
+
+Chain of Responsibility
+-----------------------
+
+Real World Example
+> For example, you have three payment methods (`A`, `B` and `C`) setup in your account; each having a different amount in it. `A` has 100 USD, `B` has 300 USD and C having 1000 USD and the preference for payments is chosen as `A` then `B` then `C`. You try to purchase something that is worth 210 USD. Using Chain of Responsibility, first of all account `A` will be checked if it can make the purchase, if yes purchase will be made and the chain will be broken. If not, request will move forward to account `B` checking for amount if yes chain will be broken otherwise the request will keep forwarding till it finds the suitable handler. Here `A`, `B` and `C` are links of the chain and the whole phenomenon is Chain of Responsibility.
+
+In plain words
+> It helps building a chain of objects. Request enters from one end and keeps going from object to object till it finds the suitable handler.
+
+Wikipedia says
+> In object-oriented design, the chain-of-responsibility pattern is a design pattern consisting of a source of command objects and a series of processing objects. Each processing object contains logic that defines the types of command objects that it can handle; the rest are passed to the next processing object in the chain.
+
+**Programmatic Example**
+
+Translating our account example above. First of all we have a base account having the logic for chaining the accounts together and some accounts
+
+```php
+abstract class Account {
+    protected $successor;
+    protected $balance;
+
+    public function setNext(Account $account) {
+        $this->successor = $account;
+    }
+    
+    public function pay(float $amountToPay) {
+        if ($this->canPay($amount)) {
+            echo sprintf('Paid %s usig %s' . PHP_EOL, $amount, get_called_class());
+        } else if ($this->successor) {
+            echo sprintf('Cannot pay using %s. Proceeding ..' . PHP_EOL, get_called_class());
+            $this->successor->pay($amountToPay);
+        } else {
+            throw Exception('None of the accounts have enought balance');
+        }
+    }
+    
+    public function canPay($amount) : bool {
+        return $this->balance <= $amountToPay;
+    }
+}
+
+class Bank extends Account {
+    protected $balance;
+
+    public function __construct(float $balance) {
+        $this->$balance = $balance;
+    }
+}
+
+class Paypal extends Account {
+    protected $balance;
+
+    public function __construct(float $balance) {
+        $this->$balance = $balance;
+    }
+}
+
+class Bitcoin extends Account {
+    protected $balance;
+
+    public function __construct(float $balance) {
+        $this->$balance = $balance;
+    }
+}
+```
+
+Now let's prepare the chain using the links defined above (i.e. Bank, Paypal, Bitcoin)
+
+```php
+// Let's prepare a chain like below
+//      $bank->$paypal->$bitcoin
+//
+// First priority bank
+//      If bank can't pay then paypal
+//      If paypal can't pay then bit coin
+
+$bank = new Bank(100);          // Bank with balance 100
+$paypal = new Paypal(200);      // Paypal with balance 200
+$bitcoin = new Bitcoin(300);    // Bitcoin with balance 300
+
+$bank->setNext($paypal);
+$paypal->setNext($bitcoin);
+
+// Let's try to pay using the first priority i.e. bank
+$bank->pay(259);
+
+// Output will be
+// ==============
+// Cannot pay using bank. Proceeding ..
+// Cannot pay using paypal. Proceeding ..: 
+// Paid 259 using Bitcoin!
+```
