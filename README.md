@@ -889,3 +889,68 @@ $shop->serve();
 // Serving tea to table# 5
 ```
 
+Proxy
+-------------------
+Real World Example
+> Have you ever used access card to enter a door? There are multiple options to open that door i.e. it can be opened either using access card or by pressing a button that bypasses the security. Here door's main functionality is to open but there is a proxy added on top of it to add some additional functionality to the door. Let me better explain it using the code example below.
+
+In plain words
+> In proxy pattern a class represents the functionality of another class.
+
+Wikipedia says
+>
+
+**Programmatic Example**
+Taking our security door example from above. Firstly we have the door interface and an implementation of door
+
+```php
+interface Door {
+    public function open();
+    public function close();
+}
+
+class LabDoor implements Door {
+    public function open() {
+        echo "Opening lab door";
+    }
+
+    public function close() {
+        echo "Closing the lab door";
+    }
+}
+```
+Then we have a proxy to secure any doors that we want
+```php
+class Security {
+    protected $door;
+
+    public function __construct(Door $door) {
+        $this->door = $door;
+    }
+
+    public function open($password) {
+        if ($this->authenticate($password)) {
+            $this->door->open();
+        }
+
+        echo "Big no! It ain't possible.";
+    }
+
+    public function authenticate($password) {
+        return $password === '$ecr@t'
+    }
+
+    public function close() {
+        $this->door->close();
+    }
+}
+```
+And here is how it can be used
+```php
+$door = new Security(new LabDoor());
+$door->open('invalid'); // Big no! It ain't possible.
+
+$door->open('$ecr@t'); // Opening lab door
+$door->close('Closing lab door');
+```
+Yet another example would be some sort of datamapper implementation. For example, I recently made an ODM (Object Data Mapper) for mongodb using this pattern where I wrote a proxy around mongo classes while utilizing the magic method `__call`. All the method calls were proxied to the original mongo class and result retrieved was returned as it is but in case of `find` or `findOne` data was mapped to the required class objects and the object was returned instead of `Cursor`.
