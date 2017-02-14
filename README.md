@@ -42,7 +42,7 @@ Wikipedia says
  
 Simple Factory
 --------------
-Real World Example
+Real world example
 > Consider, you are building a house and you need doors. It would be a mess if every time you need a door, you put on your carpenter clothes and start making a door in your house. Instead you get it made from a factory.
 
 In plain words
@@ -66,7 +66,7 @@ When creating an object is not just a few assignments and involves some logic, i
 
 Factory Method
 --------------
-Real World Example
+Real world example
 > Consider the case of a hiring manager. It is impossible for one person to interview for each of the positions. Based on the job opening, she has to decide and delegate the interview steps to different people. 
 
 **In Plain Words**
@@ -114,7 +114,7 @@ Useful when there is some generic processing in a class but the required sub-cla
 
 Abstract Factory
 ----------------
-Real World Example
+Real world example
 > Extending our door example from (Simple Factory)[#simple-factory]. Based on your needs you might get a wooden door from a wooden door shop, iron door from an iron shop or a PVC door from the relevant shop. Plus you might need a guy with different kind of specialities to fit the door, for example a carpenter for wooden door, welder for iron door etc. As you can see there is a dependency between the doors now, wooden door needs carpenter, iron door needs a welder etc.
 
 In plain words
@@ -168,7 +168,7 @@ When there are interrelated dependencies with not-that-simple creation logic inv
 
 Builder Pattern
 --------------------------------------------
-Real World Example
+Real world example
 > Imagine you are at Hardee's and you order a specific deal, lets say, "Big Hardee" and they hand it over to you without *any questions*; this is the example of simple factory. But there are cases when the creation logic might involve more steps. For example you want a customized Subway deal, you have several options in how your burger is made e.g what bread do you want? what types of sauces would you like? What cheese would you want? etc. In such cases builder pattern comes to the rescue.
 
 In plain words
@@ -238,7 +238,7 @@ When there could be several flavors of an object and to avoid the constructor te
 
 Prototype Pattern
 -----------------
-Real World Example
+Real world example
 > Remember dolly? The sheep that was cloned! Lets not get into the details but the key point here is that it is all about cloning
 
 In plain words
@@ -299,7 +299,7 @@ When an object is required that is similar to existing object or when the creati
 
 Singleton pattern
 -----------------
-Real World Example
+Real world example
 > There can only be one president of a country at a time. The same president has to be brought to action, whenever duty calls. President here is singleton.
 
 In plain words
@@ -360,7 +360,7 @@ Wikipedia says
 
 Adapter
 -------
-Real World Example
+Real world example
 > Consider that you have some pictures in your memory card and you need to transfer them to your computer. In order to transfer them you need some kind of adapter that is compatible with your computer ports so that you can attach memory card to your computer. In this case card reader is an adapter.
 > Another example would be the famous power adapter; a three legged plug can't be connected to a two pronged outlet, it needs to use a power adapter that makes it compatible with the two pronged outlet.
 > Yet another example would be a translator translating words spoken by one person to another
@@ -430,7 +430,7 @@ $hunter->hunt($wildDogAdapter);
 
 Bridge
 ------
-Real World Example
+Real world example
 > Consider you have a website with different pages and you are supposed to allow the user to change the theme. What would you do? Create multiple copies of each of the pages for each of the themes or would you just create separate theme and load them based on the user's preferences? Bridge pattern allows you to do the second i.e.
 
 ![](http://i.imgur.com/3vgNH3p.png?2)
@@ -511,7 +511,7 @@ echo $careers->getContent(); // "Careers page in Dark Black";
 Composite Pattern
 -----------------
 
-Real World Example
+Real world example
 > Every organization is composed of employees. Each of the employees has same features i.e. has a salary, has some responsibilities, may or may not report to someone, may or may not have some subordinates etc.
 
 In plain words
@@ -630,7 +630,7 @@ echo "Net salaries: " . $organization->getNetSalaries(); // Net Salaries: 22000
 Decorator
 -------------
 
-Real World Example
+Real world example
 
 > Imagine you run a car service shop offering multiple services. Now how do you calculate the bill to be charged? You pick one service and dynamically keep adding to it the prices for the provided services till you get the final cost. Here each type of service is a decorator.
 
@@ -739,7 +739,7 @@ echo $someCoffee->getDescription(); // Simple Coffee, milk, whip, vanilla
 Facade Pattern
 ----------------
 
-Real World Example
+Real world example
 > How do you turn on the computer? "Hit the power button" you say! That is what you believe because you are using a simple interface that computer provides on the outside, internally it has to do a lot of stuff to make it happen. This simple interface to the complex subsystem is a facade.
 
 In plain words
@@ -817,7 +817,7 @@ $compuer->turnOff(); // Bup bup buzzz! Haah! Zzzzz
 Flyweight
 ---------
 
-Real World Example
+Real world example
 > Did you ever have fresh tea from some stall? They often make more than one cup that you demanded and save the rest for any other customer so to save the resources e.g. gas etc. Flyweight pattern is all about that i.e. sharing.
 
 In plain words
@@ -889,7 +889,7 @@ $shop->serve();
 
 Proxy
 -------------------
-Real World Example
+Real world example
 > Have you ever used access card to enter a door? There are multiple options to open that door i.e. it can be opened either using access card or by pressing a button that bypasses the security. Here door's main functionality is to open but there is a proxy added on top of it to add some additional functionality to the door. Let me better explain it using the code example below.
 
 In plain words
@@ -978,7 +978,7 @@ Wikipedia says
 Chain of Responsibility
 -----------------------
 
-Real World Example
+Real world example
 > For example, you have three payment methods (`A`, `B` and `C`) setup in your account; each having a different amount in it. `A` has 100 USD, `B` has 300 USD and C having 1000 USD and the preference for payments is chosen as `A` then `B` then `C`. You try to purchase something that is worth 210 USD. Using Chain of Responsibility, first of all account `A` will be checked if it can make the purchase, if yes purchase will be made and the chain will be broken. If not, request will move forward to account `B` checking for amount if yes chain will be broken otherwise the request will keep forwarding till it finds the suitable handler. Here `A`, `B` and `C` are links of the chain and the whole phenomenon is Chain of Responsibility.
 
 In plain words
@@ -1071,7 +1071,7 @@ $bank->pay(259);
 Command
 -------
 
-Real World Example
+Real world example
 > A generic example would be you ordering a food at restaurant. You (i.e. `Client`) ask the waiter (i.e. `Invoker`) to bring some food (i.e. `Command`) and waiter simply forwards the request to Chef (i.e. `Receiver`) who has the knowledge of what and how to cook. 
 > Another example would be you (i.e. `Client`) switching on (i.e. `Command`) the television (i.e. `Receiver`) using a remote control (`Invoker`).
 
@@ -1168,3 +1168,97 @@ $remoteControl->submit($turnOff); // Darkness!
 ```
 
 Command pattern can also be used to implement a transaction based system. Where you keep maintaining the history of commands as soon as you execute them. If the final command is successfully executed, all good otherwise just iterate through the history and keep executing the `undo` on all the executed commands. 
+
+Iterator
+--------
+
+Real world example
+> An old radio set will be a good example of iterator, where user could start at some channel and then use next or previous buttons to go through the respective channels. Or take an example of MP3 player or a TV set where you could press the next and previous buttons to go through the consecutive channels or in other words they all provide an interface to iterate through the respective channels, songs or radio stations.  
+
+In plain words
+> It presents a way to access the elements of an object without exposing the underlying presentation.
+
+Wikipedia says
+> In object-oriented programming, the iterator pattern is a design pattern in which an iterator is used to traverse a container and access the container's elements. The iterator pattern decouples algorithms from containers; in some cases, algorithms are necessarily container-specific and thus cannot be decoupled.
+
+**Programmatic example**
+In PHP it is quite easy to implement using SPL (Standard PHP Library). Translating our radio stations example from above. First of all we have `RadioStation`
+
+```php
+class RadioStation {
+    protected $frequency;
+
+    public function __construct(float $frequency) {
+        $this->frequency = $frequency;    
+    }
+    
+    public function getFrequency() : float {
+        return $this->frequency;
+    }
+}
+```
+Then we have our iterator
+
+```php
+use Countable;
+use Iterator;
+
+class StationList implements Countable, Iterator {
+    /** @var RadioStation[] $stations */
+    protected $stations = [];
+    
+    /** @var int $counter */
+    protected $counter;
+    
+    public function addStation(RadioStation $station) {
+        $this->stations[] = $station;
+    }
+    
+    public funtion removeStation(RadioStation $toRemove) {
+        $toRemoveFrequency = $toRemove->getFrequency();
+        $this->stations = array_filter($this->stations, function (RadioStation $station) use ($toRemoveFrequency) {
+            return $station->getFrequency() !== $toRemoveFrequency;
+        });
+    }
+    
+    public function count() : int {
+        return count($this->stations);
+    }
+    
+    public function current() : RadioStation {
+        return $this->stations[$this->counter];
+    }
+    
+    public function key() {
+        return $this->counter;
+    }
+    
+    public function next() {
+        $this->counter++;
+    }
+    
+    public function rewind() {
+        $this->counter = 0;
+    }
+    
+    public function valid(): bool
+    {
+        return isset($this->stations[$this->counter]);
+    }
+}
+```
+And then it can be used as
+```php
+$stationList = new StationList();
+
+$stationList->addStation(new Station(89));
+$stationList->addStation(new Station(101));
+$stationList->addStation(new Station(102));
+$stationList->addStation(new Station(103.2));
+
+foreach($stationList as $station) {
+    echo $station->getFrequency() . PHP_EOL;
+}
+
+$stationList->removeStation(new Station(89)); // Will remove station 89
+```
