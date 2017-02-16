@@ -258,8 +258,8 @@ $burger = (new BurgerBuilder(14))
 
 When there could be several flavors of an object and to avoid the constructor telescoping. The key difference from the factory pattern is that; factory pattern is to be used when the creation is a one step process while builder pattern is to be used when the creation is a multi step process.
 
-🐑 Prototype Pattern
------------------
+🐑 Prototype
+------------
 Real world example
 > Remember dolly? The sheep that was cloned! Lets not get into the details but the key point here is that it is all about cloning
 
@@ -988,16 +988,16 @@ In plain words
 Wikipedia says
 > In software engineering, behavioral design patterns are design patterns that identify common communication patterns between objects and realize these patterns. By doing so, these patterns increase flexibility in carrying out this communication.
 
-* [Chain of Responsibility](#chain-of-responsibility)
-* [Command](#command)
-* [Iterator](#iterator)
-* [Mediator](#mediator)
-* [Memento](#memento)
-* [Observer](#observer)
-* [Visitor](#visitor)
-* [Strategy](#strategy)
-* [State](#state)
-* [Template Method](#template-method)
+* [Chain of Responsibility](#-chain-of-responsibility)
+* [Command](#-command)
+* [Iterator](#-iterator)
+* [Mediator](#-mediator)
+* [Memento](#-memento)
+* [Observer](#-observer)
+* [Visitor](#-visitor)
+* [Strategy](#-strategy)
+* [State](#-state)
+* [Template Method](#-template-method)
 
 🔗 Chain of Responsibility
 -----------------------
