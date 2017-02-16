@@ -72,7 +72,7 @@ interface Door {
     public function getHeight() : float;
 }
 
-class WoodenDoor {
+class WoodenDoor implements Door {
     protected $width;
     protected $height;
 
