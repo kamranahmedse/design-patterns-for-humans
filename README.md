@@ -1,28 +1,40 @@
-Design Patterns for Humans
-==========================
-> Ultra-simplified explanation to design patterns!
+<p align="center">
+ <img src="http://i.imgur.com/riLzVTY.png" />
+</p>
 
-Design patterns is something that can easily make anyone's mind wobble. Here I try to make them stick in to your (and maybe mine?!) mind by explaining them in the *simplest* way possible. 
+***
+<p align="center">
+🎉 Ultra-simplified explanation to design patterns! 🎉
+</p>
+<p align="center">
+A topic that can easily make anyone's mind wobble. Here I try to make them stick in to your (and maybe mine) mind by explaining them in the <i>simplest</i> way possible. 
+</p>
+***
 
-## Table of Contents
-* [Design patterns](#design-patterns) 
+🚀 Introduction
+=================
+
+Design patterns are solutions to recurring problems; **guidelines on how to tackle certain problems**. They are not classes, packages or libraries that you can plug into your application and wait for the magic to happen. These are, rather, guidelines on how to tackle certain problems in certain situations. 
+
+> Design paterns solutions to recurring problems; guidelines on how to tackle certain problems
+
+Wikipedia describes them as
+
+> In software engineering, a software design pattern is a general reusable solution to a commonly occurring problem within a given context in software design. It is not a finished design that can be transformed directly into source or machine code. It is a description or template for how to solve a problem that can be used in many different situations.
+
+⚠️ Be Careful
+-----------------
+- Design patterns are not a silver bullet to all your problems.
+- Do not try to force them; bad things are supposed to happen, if done so. Keep in mind that design patterns are solutions **to** problems, not solutions **finding** problems; so don't overthink.
+- If used in a correct place in a correct manner, they can prove to be a savior; or else they can result in a horrible mess of a code.
+
+Types of Design Patterns
+-----------------
+
 * [Creational](#creational-design-patterns)
 * [Structural](#structural-design-patterns)
 * [Behavioral](#behavioral-design-patterns)
 
-Design Patterns
-===============
-In plain words
-> Solutions to recurring problems. Guidelines on how to tackle certain problems.
- 
-**Wikipedia Says**
-> In software engineering, a software design pattern is a general reusable solution to a commonly occurring problem within a given context in software design. It is not a finished design that can be transformed directly into source or machine code. It is a description or template for how to solve a problem that can be used in many different situations.  
-
-They are not classes, packages or libraries that you can plug into your application and wait for the magic to happen. These are, rather, guidelines on how to tackle certain problems in certain situations. 
-
-> - They are not a silver bullet to all your problems. You should not try to force them.
-> - Keep in mind that design patterns are solutions **to** problems, not solutions **finding** problems. So do not pick a design pattern and try to force it. 
-> - If used in a correct place in a correct manner, they can prove to be a savior; or else they can result in a horrible mess of a code.
 
 Creational Design Patterns
 ==========================
@@ -40,7 +52,7 @@ Wikipedia says
  * [Prototype](#prototype)
  * [Singleton](#singleton)
  
-Simple Factory
+🏠 Simple Factory
 --------------
 Real world example
 > Consider, you are building a house and you need doors. It would be a mess if every time you need a door, you put on your carpenter clothes and start making a door in your house. Instead you get it made from a factory.
@@ -52,6 +64,7 @@ Wikipedia says
 > In object-oriented programming (OOP), a factory is an object for creating other objects – formally a factory is a function or method that returns objects of a varying prototype or class from some method call, which is assumed to be "new".
 
 **Programmatic Example**
+
 ```php
 class DoorFactory {
 
@@ -62,20 +75,23 @@ class DoorFactory {
 ```
 
 **When to Use?**
+
 When creating an object is not just a few assignments and involves some logic, it makes sense to put it in a dedicated factory instead of repeating the same code everywhere. 
 
-Factory Method
+🏭 Factory Method
 --------------
+
 Real world example
 > Consider the case of a hiring manager. It is impossible for one person to interview for each of the positions. Based on the job opening, she has to decide and delegate the interview steps to different people. 
 
-**In Plain Words**
+In plain words
 > It provides a way to delegate the instantiation logic to child classes. 
 
 Wikipedia says
 > In class-based programming, the factory method pattern is a creational pattern that uses factory methods to deal with the problem of creating objects without having to specify the exact class of the object that will be created. This is done by creating objects by calling a factory method—either specified in an interface and implemented by child classes, or implemented in a base class and optionally overridden by derived classes—rather than by calling a constructor.
  
  **Programmatic Example**
+ 
  Taking our hiring manager example above:
 ```php
  class HiringManager {
@@ -110,12 +126,14 @@ $devManager->takeInterview();
 ```
 
 **When to use?**
+
 Useful when there is some generic processing in a class but the required sub-class is dynamically decided at runtime. Or putting it in other words, when the client doesn't know what exact sub-class it might need.
 
-Abstract Factory
+🔨 Abstract Factory
 ----------------
+
 Real world example
-> Extending our door example from (Simple Factory)[#simple-factory]. Based on your needs you might get a wooden door from a wooden door shop, iron door from an iron shop or a PVC door from the relevant shop. Plus you might need a guy with different kind of specialities to fit the door, for example a carpenter for wooden door, welder for iron door etc. As you can see there is a dependency between the doors now, wooden door needs carpenter, iron door needs a welder etc.
+> Extending our door example from Simple Factory. Based on your needs you might get a wooden door from a wooden door shop, iron door from an iron shop or a PVC door from the relevant shop. Plus you might need a guy with different kind of specialities to fit the door, for example a carpenter for wooden door, welder for iron door etc. As you can see there is a dependency between the doors now, wooden door needs carpenter, iron door needs a welder etc.
 
 In plain words
 > A factory of factories; a factory that groups the individual but related/dependent factories together without specifying their concrete classes. 
@@ -124,6 +142,7 @@ Wikipedia says
 > The abstract factory pattern provides a way to encapsulate a group of individual factories that have a common theme without specifying their concrete classes
 
 **Programmatic Example**
+
 Translating the door example above
 
 ```php
@@ -164,9 +183,10 @@ class IronDoorFactory implements DoorFactory {
 As you can see the wooden door factory has encapsulated the `carpenter` and the `wooden door` also iron door factory has encapsulated the `iron door` and `welder`. And thus it had helped us make sure that for each of the created door, we do not get a wrong fitting expert.   
 
 **When to use?**
+
 When there are interrelated dependencies with not-that-simple creation logic involved
 
-Builder Pattern
+👷 Builder Pattern
 --------------------------------------------
 Real world example
 > Imagine you are at Hardee's and you order a specific deal, lets say, "Big Hardee" and they hand it over to you without *any questions*; this is the example of simple factory. But there are cases when the creation logic might involve more steps. For example you want a customized Subway deal, you have several options in how your burger is made e.g what bread do you want? what types of sauces would you like? What cheese would you want? etc. In such cases builder pattern comes to the rescue.
@@ -187,6 +207,7 @@ public function __construct($size, $cheese = true, $pepperoni = true, $tomato = 
 As you can see; the number of constructor parameters can quickly get out of hand and it might become difficult to understand the arrangement of parameters. Plus this parameter list could keep on growing if you would want to add more options in future. This is called telescoping constructor anti-pattern.
 
 **Programmatic Example**
+
 The sane alternative is to use the builder pattern.
 
 ```php
@@ -234,9 +255,10 @@ $burger = (new BurgerBuilder(14))
 ```
 
 **When to use?**
+
 When there could be several flavors of an object and to avoid the constructor telescoping. The key difference from the factory pattern is that; factory pattern is to be used when the creation is a one step process while builder pattern is to be used when the creation is a multi step process.
 
-Prototype Pattern
+🐑 Prototype Pattern
 -----------------
 Real world example
 > Remember dolly? The sheep that was cloned! Lets not get into the details but the key point here is that it is all about cloning
@@ -250,6 +272,7 @@ Wikipedia says
 In short, it allows you to create a copy of an existing object and modify it to your needs, instead of going through the trouble of creating an object from scratch and setting it up.
 
 **Programmatic Example**
+
 In PHP, it can be easily done using `clone`
   
 ```php
@@ -295,9 +318,10 @@ echo $cloned->getCategory(); // Mountain sheep
 Also you could use the magic method `__clone` to modify the cloning behavior.
 
 **When to use?**
+
 When an object is required that is similar to existing object or when the creation would be expensive as compared to cloning.
 
-Singleton pattern
+💍 Singleton pattern
 -----------------
 Real world example
 > There can only be one president of a country at a time. The same president has to be brought to action, whenever duty calls. President here is singleton.
@@ -311,6 +335,7 @@ Wikipedia says
 Singleton pattern is actually considered an anti-pattern and overuse of it should be avoided. It is not necessarily bad and could have some valid use-cases but should be used with caution because it introduces a global state in your application and change to it in one place could affect in the other areas and it could become pretty difficult to debug. The other bad thing about them is it makes your code tightly coupled plus it mocking the singleton could be difficult.
 
 **Programmatic Example**
+
 To create a singleton, make the constructor private, disable cloning, disable extension and create a static variable to house the instance
 ```php
 final class President {
@@ -358,7 +383,7 @@ Wikipedia says
  * [Flyweight](#flyweight)
  * [Proxy](#proxy)
 
-Adapter
+🔌 Adapter
 -------
 Real world example
 > Consider that you have some pictures in your memory card and you need to transfer them to your computer. In order to transfer them you need some kind of adapter that is compatible with your computer ports so that you can attach memory card to your computer. In this case card reader is an adapter.
@@ -372,6 +397,7 @@ Wikipedia says
 > In software engineering, the adapter pattern is a software design pattern that allows the interface of an existing class to be used as another interface. It is often used to make existing classes work with others without modifying their source code.
 
 **Programmatic Example**
+
 Consider a game where there is a hunter and he hunts lions.
 
 First we have an interface `Lion` that all types of lions have to implement
@@ -428,7 +454,7 @@ $hunter = new Hunter();
 $hunter->hunt($wildDogAdapter);
 ```
 
-Bridge
+🚡 Bridge
 ------
 Real world example
 > Consider you have a website with different pages and you are supposed to allow the user to change the theme. What would you do? Create multiple copies of each of the pages for each of the themes or would you just create separate theme and load them based on the user's preferences? Bridge pattern allows you to do the second i.e.
@@ -508,7 +534,7 @@ echo $about->getContent(); // "About page in Dark Black";
 echo $careers->getContent(); // "Careers page in Dark Black";
 ```
 
-Composite Pattern
+🌿 Composite Pattern
 -----------------
 
 Real world example
@@ -627,7 +653,7 @@ $organization->addEmployee($jane);
 echo "Net salaries: " . $organization->getNetSalaries(); // Net Salaries: 22000
 ```
 
-Decorator
+☕ Decorator
 -------------
 
 Real world example
@@ -736,7 +762,7 @@ echo $someCoffee->getCost(); // 20
 echo $someCoffee->getDescription(); // Simple Coffee, milk, whip, vanilla
 ```
 
-Facade Pattern
+📦 Facade Pattern
 ----------------
 
 Real world example
@@ -814,7 +840,7 @@ $computer->turnOn(); // Ouch! Beep beep! Loading.. Ready to be used!
 $compuer->turnOff(); // Bup bup buzzz! Haah! Zzzzz
 ```
 
-Flyweight
+🍃 Flyweight
 ---------
 
 Real world example
@@ -887,7 +913,7 @@ $shop->serve();
 // Serving tea to table# 5
 ```
 
-Proxy
+🎱 Proxy
 -------------------
 Real world example
 > Have you ever used access card to enter a door? There are multiple options to open that door i.e. it can be opened either using access card or by pressing a button that bypasses the security. Here door's main functionality is to open but there is a proxy added on top of it to add some additional functionality to the door. Let me better explain it using the code example below.
@@ -973,7 +999,7 @@ Wikipedia says
 * [State](#state)
 * [Template Method](#template-method)
 
-Chain of Responsibility
+🔗 Chain of Responsibility
 -----------------------
 
 Real world example
@@ -1066,7 +1092,7 @@ $bank->pay(259);
 // Paid 259 using Bitcoin!
 ```
 
-Command
+👮 Command
 -------
 
 Real world example
@@ -1167,7 +1193,7 @@ $remoteControl->submit($turnOff); // Darkness!
 
 Command pattern can also be used to implement a transaction based system. Where you keep maintaining the history of commands as soon as you execute them. If the final command is successfully executed, all good otherwise just iterate through the history and keep executing the `undo` on all the executed commands. 
 
-Iterator
+➿ Iterator
 --------
 
 Real world example
@@ -1261,7 +1287,7 @@ foreach($stationList as $station) {
 $stationList->removeStation(new Station(89)); // Will remove station 89
 ```
 
-Mediator
+👽 Mediator
 ========
 
 Real world example
@@ -1326,7 +1352,7 @@ $jane->send('Hey!');
 // Feb 14, 10:58 [John]: Het!
 ```
 
-Memento
+💾 Memento
 -------
 Real world example
 > Take the example of calculator (i.e. originator), where whenever you perform some calculation the last calculation is saved in memory (i.e. memento) so that you can get back to it and maybe get it restored using some action buttons (i.e. caretaker). 
@@ -1407,7 +1433,7 @@ $editor->restore($saved);
 $editor->getContent(); // This is the first sentence and this is second
 ```
 
-Observer
+😎 Observer
 --------
 Real world example
 > A good example would be the job seekers where they subscribe to some job posting site and they are notified whenever there is a no matching job opportunity.   
@@ -1487,7 +1513,7 @@ $jobPostings->addJob(new JobPost('Software Engineer'));
 // Hi Jane Doe! New job posted: Software Engineer
 ```
 
-Visitor
+🏃 Visitor
 -------
 Real world example
 > Consider someone visiting Dubai. They just need a way (i.e. visa) to enter Dubai. After arrival, they can come and visit any place in Dubai on their own without having to ask for permission or to do some leg work in order to visit any place here; just let them know of a place and they can visit it. Visitor pattern let's you do just that, it helps you add places to visit so that they can visit as much as they can without having to do any legwork.
@@ -1608,7 +1634,7 @@ $dolphin->accept($speak);  // Tuut tutt tuutt!
 $dolphin->accept($jump);   // Walked on water a little and disappeared
 ```
 
-Strategy
+💡 Strategy
 --------
 
 Real world example
@@ -1673,7 +1699,7 @@ $sorter = new Sorter(new QuickSortStrategy());
 $sorter->sort($dataset); // Output : Sorting using quick sort
 ```
 
-State
+💢 State
 -----
 Real world example
 > Imagine you are using some drawing application, you choose the paint brush to draw. Now the brush changes it's behavior based on the selected color i.e. if you have chosen red color it will draw in red, if blue then it will be in blue etc.  
@@ -1756,7 +1782,7 @@ $editor->type('Fifth line');
 // fifth line
 ```
 
-Template Method
+📒 Template Method
 ---------------
 
 Real world example
@@ -1856,3 +1882,17 @@ $iosBuilder->build();
 // Assembling the ios build
 // Deploying ios build to server
 ```
+
+## 🚦 Wrap Up Folks
+
+And that about wraps it up. I will continue to improve this, so you might want to watch/star this repository to revisit. Also, I have plans on writing the same about the architectural patterns, stay tuned for it.
+
+## 👬 Contribution
+
+- Report issues
+- Open pull request with improvements
+- Spread the word
+- Reach out to me directly at kamranahmed.se@gmail.com or [@kamranahmedse](http://twitter.com/kamranahmedse)
+
+## License
+MIT © [Kamran Ahmed](https://kamranahmed.info)
