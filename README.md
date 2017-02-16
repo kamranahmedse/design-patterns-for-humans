@@ -90,7 +90,7 @@ class WoodenDoor {
     }
 }
 ````
-Then we have our door factor that makes the door and returns it
+Then we have our door factory that makes the door and returns it
 ```php
 class DoorFactory {
    public static function makeDoor($width, $height) : Door {
