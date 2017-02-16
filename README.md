@@ -794,7 +794,7 @@ class SimpleCoffee implements Coffee {
     }
 }
 ```
-We want to make the codee extensible to allow options to modify it if required. Lets make some add-ons (decorators)
+We want to make the code extensible to allow options to modify it if required. Lets make some add-ons (decorators)
 ```php
 class MilkCoffee implements Coffee {
     
