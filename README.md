@@ -16,7 +16,7 @@ A topic that can easily make anyone's mind wobble. Here I try to make them stick
 
 Design patterns are solutions to recurring problems; **guidelines on how to tackle certain problems**. They are not classes, packages or libraries that you can plug into your application and wait for the magic to happen. These are, rather, guidelines on how to tackle certain problems in certain situations. 
 
-> Design paterns solutions to recurring problems; guidelines on how to tackle certain problems
+> Design patterns solutions to recurring problems; guidelines on how to tackle certain problems
 
 Wikipedia describes them as
 
@@ -45,12 +45,12 @@ In plain words
 Wikipedia says
 > In software engineering, creational design patterns are design patterns that deal with object creation mechanisms, trying to create objects in a manner suitable to the situation. The basic form of object creation could result in design problems or added complexity to the design. Creational design patterns solve this problem by somehow controlling this object creation.
  
- * [Simple Factory](#simple-factory)
- * [Factory Method](#factory-method)
- * [Abstract Factory](#abstract-factory)
- * [Builder](#builder)
- * [Prototype](#prototype)
- * [Singleton](#singleton)
+ * [Simple Factory](#-simple-factory)
+ * [Factory Method](#-factory-method)
+ * [Abstract Factory](#-abstract-factory)
+ * [Builder](#-builder)
+ * [Prototype](#-prototype)
+ * [Singleton](#-singleton)
  
 🏠 Simple Factory
 --------------
@@ -321,8 +321,8 @@ Also you could use the magic method `__clone` to modify the cloning behavior.
 
 When an object is required that is similar to existing object or when the creation would be expensive as compared to cloning.
 
-💍 Singleton pattern
------------------
+💍 Singleton
+------------
 Real world example
 > There can only be one president of a country at a time. The same president has to be brought to action, whenever duty calls. President here is singleton.
 
@@ -375,13 +375,13 @@ In plain words
 Wikipedia says
 > In software engineering, structural design patterns are design patterns that ease the design by identifying a simple way to realize relationships between entities.
   
- * [Adapter](#adapter)
- * [Bridge](#bridge)
- * [Composite](#composite)
- * [Decorator](#decorator)
- * [Facade](#facade)
- * [Flyweight](#flyweight)
- * [Proxy](#proxy)
+ * [Adapter](#-adapter)
+ * [Bridge](#-bridge)
+ * [Composite](#-composite)
+ * [Decorator](#-decorator)
+ * [Facade](#-facade)
+ * [Flyweight](#-flyweight)
+ * [Proxy](#-proxy)
 
 🔌 Adapter
 -------
