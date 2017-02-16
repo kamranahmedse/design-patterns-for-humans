@@ -1490,8 +1490,7 @@ $jobPostings->addJob(new JobPost('Software Engineer'));
 Visitor
 -------
 Real world example
-> Consider someone visiting Dubai. They just need a way (i.e. visa) to enter Dubai. After arrival, they can come and visit any place in Dubai on their own without having to ask for permission or to do some leg work in order to visit any place here; just let them know of a place and they can visit it. Visitor pattern let's you do just that, it helps you add places to visit so that they can visit as much as they can.
-
+> Consider someone visiting Dubai. They just need a way (i.e. visa) to enter Dubai. After arrival, they can come and visit any place in Dubai on their own without having to ask for permission or to do some leg work in order to visit any place here; just let them know of a place and they can visit it. Visitor pattern let's you do just that, it helps you add places to visit so that they can visit as much as they can without having to do any legwork.
 
 In plain words
 > Visitor pattern let's you add further operations to objects without having to modify them.
@@ -1506,11 +1505,11 @@ Let's take an example of a zoo simulation where we have several different kinds 
 ```php
 // Visitee
 interface Animal {
-    public function accept(Operation $operation);
+    public function accept(AnimalOperation $operation);
 }
 
 // Visitor
-interface Operation {
+interface AnimalOperation {
     public function visitMonkey(Monkey $monkey);
     public function visitLion(Lion $lion);
     public function visitDolphin(Dolphin $dolphin);
@@ -1524,7 +1523,7 @@ class Monkey {
         echo 'Ooh oo aa aa!';
     }
 
-    public function accept(Operation $operation) {
+    public function accept(AnimalOperation $operation) {
         $operation->visitMonkey($this);
     }
 }
@@ -1534,7 +1533,7 @@ class Lion {
         echo 'Roaaar!';
     }
     
-    public function accept(Operation $operation) {
+    public function accept(AnimalOperation $operation) {
         $operation->visitLion($this);
     }
 }
@@ -1544,14 +1543,14 @@ class Dolphin {
         echo 'Tuut tuttu tuutt!';
     }
     
-    public function accept(Operation $operation) {
+    public function accept(AnimalOperation $operation) {
         $operation->visitDolphin($this);
     }
 }
 ```
 Let's implement our visitor
 ```php
-class Speak implements Operation {
+class Speak implements AnimalOperation {
     public function visitMonkey(Monkey $monkey) {
         $monkey->shout();
     }
@@ -1581,7 +1580,7 @@ $dolphin->accept($speak);   // Tuut tutt tuutt!
 We could have done this simply by having a inheritance hierarchy for the animals but then we would have to modify the animals whenever we would have to add new actions to animals. But now we will not have to change them. For example, let's say we are asked to add the jump behavior to the animals, we can simply add that by creating a new visitor i.e.
 
 ```php
-class Jump implements Operation {
+class Jump implements AnimalOperation {
     public function visitMonkey(Monkey $monkey) {
         echo 'Jumped 20 feet high! on to the tree!';
     }
@@ -1607,4 +1606,69 @@ $lion->accept($jump);      // Jumped 7 feet! Back on the ground!
 
 $dolphin->accept($speak);  // Tuut tutt tuutt! 
 $dolphin->accept($jump);   // Walked on water a little and disappeared
+```
+
+Strategy
+--------
+
+Real world example
+> Consider the example of sorting, we implemented bubble sort but the data started to grow and bubble sort started getting very slow. In order to tackle this we implemented Quick sort. But now although the quick sort algorithm was doing better for large datasets, it was very slow for smaller datasets. In order to handle this we implemented a strategy where for small datasets, bubble sort will be used and for larger, quick sort.
+
+In plain words
+> Strategy pattern allows you to switch the algorithm or strategy based upon the situation.
+
+Wikipedia says
+> In computer programming, the strategy pattern (also known as the policy pattern) is a behavioural software design pattern that enables an algorithm's behavior to be selected at runtime.
+ 
+**Programmatic example**
+
+Translating our example from above. First of all we have our strategy interface and different strategy implementations
+
+```php
+interface SortStrategy {
+    public function sort(array $dataset) : array; 
+}
+
+class BubbleSortStrategy {
+    public function sort(array $dataset) : array {
+        echo "Sorting using bubble sort";
+         
+        // Do sorting
+        return $dataset;
+    }
+} 
+
+class QuickSortStrategy {
+    public function sort(array $dataset) : array {
+        echo "Sorting using quick sort";
+        
+        // Do sorting
+        return $dataset;
+    }
+}
+```
+ 
+And then we have our client that is going to use any strategy
+```php
+class Sorter {
+    protected $sorter;
+    
+    public function __construct(SortStrategy $sorter) {
+        $this->sorter = $sorter;
+    }
+    
+    public function sort(array $dataset) : array {
+        return $this->sorter->sort($dataset);
+    }
+}
+```
+And it can be used as
+```php
+$dataset = [1, 5, 4, 3, 2, 8];
+
+$sorter = new Sorter(new BubbleSortStrategy());
+$sorter->sort($dataset); // Output : Sorting using bubble sort
+
+$sorter = new Sorter(new QuickSortStrategy());
+$sorter->sort($dataset); // Output : Sorting using quick sort
 ```
