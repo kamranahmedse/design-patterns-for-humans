@@ -688,7 +688,7 @@ class Developer implements Employee {
     }
 
     public function getRoles() : array {
-        reutrn $this->roles
+        return $this->roles;
     }
 }
 
@@ -715,7 +715,7 @@ class Designer implements Employee {
     }
 
     public function getRoles() : array {
-        reutrn $this->roles
+        return $this->roles;
     }
 }
 ```
