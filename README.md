@@ -1648,7 +1648,7 @@ interface AnimalOperation {
 ```
 Then we have our implementations for the animals
 ```php
-class Monkey {
+class Monkey implements Animal {
     
     public function shout() {
         echo 'Ooh oo aa aa!';
@@ -1659,7 +1659,7 @@ class Monkey {
     }
 }
 
-class Lion {
+class Lion implements Animal {
     public function roar() {
         echo 'Roaaar!';
     }
@@ -1669,7 +1669,7 @@ class Lion {
     }
 }
 
-class Dolphin {
+class Dolphin implements Animal {
     public function speak() {
         echo 'Tuut tuttu tuutt!';
     }
