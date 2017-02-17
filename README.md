@@ -918,8 +918,7 @@ class Computer {
 ```
 Here we have the facade
 ```php
-public function ComputerFacade
-{
+class ComputerFacade {
     protected $computer;
 
     public function __construct(Computer $computer) {
