@@ -1132,18 +1132,18 @@ abstract class Account {
     }
     
     public function pay(float $amountToPay) {
-        if ($this->canPay($amount)) {
-            echo sprintf('Paid %s usig %s' . PHP_EOL, $amount, get_called_class());
+        if ($this->canPay($amountToPay)) {
+            echo sprintf('Paid %s using %s' . PHP_EOL, $amount, get_called_class());
         } else if ($this->successor) {
             echo sprintf('Cannot pay using %s. Proceeding ..' . PHP_EOL, get_called_class());
             $this->successor->pay($amountToPay);
         } else {
-            throw Exception('None of the accounts have enought balance');
+            throw Exception('None of the accounts have enough balance');
         }
     }
     
     public function canPay($amount) : bool {
-        return $this->balance <= $amountToPay;
+        return $this->balance <= $amount;
     }
 }
 
@@ -1456,7 +1456,7 @@ $jane->send('Hey!');
 
 // Output will be
 // Feb 14, 10:58 [John]: Hi there!
-// Feb 14, 10:58 [John]: Het!
+// Feb 14, 10:58 [Jane]: Hey!
 ```
 
 💾 Memento
@@ -1522,22 +1522,22 @@ And then it can be used as
 $editor = new Editor();
 
 // Type some stuff
-$editor->type('This is the first sentence');
-$editor->type('and this is second.');
+$editor->type('This is the first sentence.');
+$editor->type('This is second.');
 
-// Save the state to restore to : This is the first sentence and this is second
+// Save the state to restore to : This is the first sentence. This is second.
 $saved = $editor->save();
 
 // Type some more
-$editor->type('and this is third.');
+$editor->type('And this is third.');
 
 // Output: Content before Saving
-echo $editor->getContent(); // This is the first sentence and this is second and this is third
+echo $editor->getContent(); // This is the first sentence. This is second. And this is third.
 
 // Restoring to last saved state
 $editor->restore($saved);
 
-$editor->getContent(); // This is the first sentence and this is second
+$editor->getContent(); // This is the first sentence. This is second.
 ```
 
 😎 Observer
