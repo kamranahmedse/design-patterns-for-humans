@@ -152,7 +152,7 @@ Now let us create our `HiringManager`
     abstract public function makeInterviewer() : Interviewer;
     
     public function takeInterview() {
-        $interivewer = $this->makeInterviewer();
+        $interviewer = $this->makeInterviewer();
         $interviewer->askQuestions();
     }
  }
