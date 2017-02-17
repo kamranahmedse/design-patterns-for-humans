@@ -319,9 +319,9 @@ The sane alternative is to use the builder pattern.
 class BurgerBuilder {
     protected $size;
 
-    protected $pepperoni = true;
     protected $cheeze = true;
-    protected $lettuce = true;
+    protected $pepperoni = false;
+    protected $lettuce = false;
     protected $tomato = false;
 
     public function __construct(int $size) {
