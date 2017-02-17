@@ -1760,7 +1760,7 @@ interface SortStrategy {
     public function sort(array $dataset) : array; 
 }
 
-class BubbleSortStrategy {
+class BubbleSortStrategy implements SortStrategy {
     public function sort(array $dataset) : array {
         echo "Sorting using bubble sort";
          
@@ -1769,7 +1769,7 @@ class BubbleSortStrategy {
     }
 } 
 
-class QuickSortStrategy {
+class QuickSortStrategy implements SortStrategy {
     public function sort(array $dataset) : array {
         echo "Sorting using quick sort";
         
