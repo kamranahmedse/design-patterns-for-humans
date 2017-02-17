@@ -867,7 +867,7 @@ echo $someCoffee->getCost(); // 20
 echo $someCoffee->getDescription(); // Simple Coffee, milk, whip, vanilla
 ```
 
-📦 Facade Pattern
+📦 Facade
 ----------------
 
 Real world example
