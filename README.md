@@ -614,17 +614,17 @@ interface Theme {
     public function getColor();
 }
 
-class DarkTheme {
+class DarkTheme implements Theme {
     public function getColor() {
         return 'Dark Black';
     }
 }
-class LightTheme {
+class LightTheme implements Theme {
     public function getColor() {
         return 'Off white';
     }
 }
-class AquaTheme {
+class AquaTheme implements Theme {
     public function getColor() {
         return 'Light blue';
     }
