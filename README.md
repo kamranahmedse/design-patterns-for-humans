@@ -1062,9 +1062,9 @@ class Security {
     public function open($password) {
         if ($this->authenticate($password)) {
             $this->door->open();
+        } else {
+        	echo "Big no! It ain't possible.";
         }
-
-        echo "Big no! It ain't possible.";
     }
 
     public function authenticate($password) {
