@@ -1,6 +1,4 @@
-<p align="center">
- <img src="http://i.imgur.com/riLzVTY.png" />
-</p>
+![](http://i.imgur.com/riLzVTY.png)
 
 ***
 <p align="center">
