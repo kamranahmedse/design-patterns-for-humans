@@ -807,7 +807,7 @@ class MilkCoffee implements Coffee {
     }
 
     public function getDescription() {
-        return $this->coffee->getDescription() + ', milk';
+        return $this->coffee->getDescription() . ', milk';
     }
 }
 
@@ -824,7 +824,7 @@ class WhipCoffee implements Coffee {
     }
 
     public function getDescription() {
-        return $this->coffee->getDescription() + ', whip';
+        return $this->coffee->getDescription() . ', whip';
     }
 }
 
@@ -841,7 +841,7 @@ class VanillaCoffee implements Coffee {
     }
 
     public function getDescription() {
-        return $this->coffee->getDescription() + ', vanilla';
+        return $this->coffee->getDescription() . ', vanilla';
     }
 }
 
