@@ -1597,7 +1597,7 @@ class JobSeeker implements Observer {
         $this->name = $name;
     }
 
-    public function onJobPosted(JobPosting $job) {
+    public function onJobPosted(JobPost $job) {
         // Do something with the job posting
         echo 'Hi ' . $this->name . '! New job posted: '. $job->getTitle();
     }
