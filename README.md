@@ -1030,7 +1030,8 @@ class TeaShop {
 And it can be used as below
 
 ```php
-$shop = new TeaShop();
+$teaMaker = new TeaMaker();
+$shop = new TeaShop($teaMaker);
 
 $shop->takeOrder('less sugar', 1);
 $shop->takeOrder('more milk', 2);
