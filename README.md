@@ -326,7 +326,7 @@ class Burger {
     
     public function __construct(BurgerBuilder $builder) {
         $this->size = $builder->size;
-        $this->cheeze = $builder;
+        $this->cheeze = $builder->cheeze;
         $this->pepperoni = $builder->pepperoni;
         $this->lettuce = $builder->lettuce;
         $this->tomato = $builder->tomato;
