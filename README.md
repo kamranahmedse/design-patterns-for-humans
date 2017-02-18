@@ -1607,8 +1607,8 @@ $kaneDoe = new JobSeeker('Kane Doe');
 
 // Create publisher and attach subscribers
 $jobPostings = new JobPostings();
-$jobPostings->attatch($johnDoe);
-$jobPostings->attatch($janeDoe);
+$jobPostings->attach($johnDoe);
+$jobPostings->attach($janeDoe);
 
 // Add a new job and see if subscribers get notified
 $jobPostings->addJob(new JobPost('Software Engineer'));
