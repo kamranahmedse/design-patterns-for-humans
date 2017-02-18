@@ -942,7 +942,7 @@ Now to use the facade
 ```php
 $computer = new ComputerFacade(new Computer());
 $computer->turnOn(); // Ouch! Beep beep! Loading.. Ready to be used!
-$compuer->turnOff(); // Bup bup buzzz! Haah! Zzzzz
+$computer->turnOff(); // Bup bup buzzz! Haah! Zzzzz
 ```
 
 🍃 Flyweight
