@@ -313,16 +313,37 @@ As you can see; the number of constructor parameters can quickly get out of hand
 
 **Programmatic Example**
 
-The sane alternative is to use the builder pattern.
+The sane alternative is to use the builder pattern. First of all we have our burger that we want to make
 
 ```php
-class BurgerBuilder {
+class Burger {
     protected $size;
 
-    protected $cheeze = true;
+    protected $cheeze = false;
     protected $pepperoni = false;
     protected $lettuce = false;
     protected $tomato = false;
+    
+    public function __construct(BurgerBuilder $builder) {
+        $this->size = $builder->size;
+        $this->cheeze = $builder;
+        $this->pepperoni = $builder->pepperoni;
+        $this->lettuce = $builder->lettuce;
+        $this->tomato = $builder->tomato;
+    }
+}
+```
+
+And then we have the builder
+
+```php
+class BurgerBuilder {
+    public $size;
+
+    public $cheeze = false;
+    public $pepperoni = false;
+    public $lettuce = false;
+    public $tomato = false;
 
     public function __construct(int $size) {
         $this->size = $size;
@@ -338,14 +359,18 @@ class BurgerBuilder {
         return $this;
     }
     
+    public function addCheeze() {
+        $this->cheeze = true;
+        return $this;
+    }
+    
     public function addTomato() {
         $this->tomato = true;
         return $this;
     }
     
     public function build() : Burger {
-        // creational logic
-        return $burger;
+        return new Burger($this);
     }
 }
 ```
