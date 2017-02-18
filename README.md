@@ -476,12 +476,11 @@ final class President {
     }
     
     public static function getInstance() : President {
-        if ($this->instance) {
-            return $this->instance;
+        if (!self::$instance) {
+            self::$instance = new self();
         }
         
-        $this->instance = new President();
-        return $this->instance;
+        return self::$instance;
     }
     
     private function __clone() {
