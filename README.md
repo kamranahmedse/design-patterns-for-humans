@@ -144,7 +144,7 @@ class CommunityExecutive implements Interviewer {
 Now let us create our `HiringManager`
 
 ```php
- class HiringManager {
+abstract class HiringManager {
     
     // Factory method
     abstract public function makeInterviewer() : Interviewer;
@@ -153,8 +153,8 @@ Now let us create our `HiringManager`
         $interviewer = $this->makeInterviewer();
         $interviewer->askQuestions();
     }
- }
- ```
+}
+```
 Now any child can extend it and provide the required interviewer
 ```php
 class DevelopmentManager extends HiringManager {
