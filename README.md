@@ -475,7 +475,7 @@ final class President {
         // Hide the constructor
     }
     
-    public static function getInstance() : self {
+    public static function getInstance() : President {
         if (!self::$instance) {
             self::$instance = new self();
         }
