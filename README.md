@@ -475,13 +475,12 @@ final class President {
         // Hide the constructor
     }
     
-    public static function getInstance() : President {
-        if ($this->instance) {
-            return $this->instance;
+    public static function getInstance() : self {
+        if (!self::$instance) {
+            self::$instance = new self();
         }
         
-        $this->instance = new President();
-        return $this->instance;
+        return self::$instance;
     }
     
     private function __clone() {
