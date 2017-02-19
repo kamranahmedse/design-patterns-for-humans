@@ -2025,4 +2025,4 @@ And that about wraps it up. I will continue to improve this, so you might want t
 - Reach out to me directly at kamranahmed.se@gmail.com or [@kamranahmedse](http://twitter.com/kamranahmedse)
 
 ## License
-MIT © [Kamran Ahmed](https://kamranahmed.info)
+MIT © [Kamran Ahmed](http://kamranahmed.info)
