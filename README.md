@@ -1091,7 +1091,7 @@ class Security {
     }
 
     public function authenticate($password) {
-        return $password === '$ecr@t'
+        return $password === '$ecr@t';
     }
 
     public function close() {
