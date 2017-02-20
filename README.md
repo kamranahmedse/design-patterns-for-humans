@@ -319,14 +319,14 @@ The sane alternative is to use the builder pattern. First of all we have our bur
 class Burger {
     protected $size;
 
-    protected $cheeze = false;
+    protected $cheese = false;
     protected $pepperoni = false;
     protected $lettuce = false;
     protected $tomato = false;
     
     public function __construct(BurgerBuilder $builder) {
         $this->size = $builder->size;
-        $this->cheeze = $builder->cheeze;
+        $this->cheese = $builder->cheese;
         $this->pepperoni = $builder->pepperoni;
         $this->lettuce = $builder->lettuce;
         $this->tomato = $builder->tomato;
@@ -340,7 +340,7 @@ And then we have the builder
 class BurgerBuilder {
     public $size;
 
-    public $cheeze = false;
+    public $cheese = false;
     public $pepperoni = false;
     public $lettuce = false;
     public $tomato = false;
@@ -359,8 +359,8 @@ class BurgerBuilder {
         return $this;
     }
     
-    public function addCheeze() {
-        $this->cheeze = true;
+    public function addCheese() {
+        $this->cheese = true;
         return $this;
     }
     
@@ -378,9 +378,9 @@ And then it can be used as:
 
 ```php
 $burger = (new BurgerBuilder(14))
-                    ->addPepperoni();
-                    ->addLettuce();
-                    ->addTomato();
+                    ->addPepperoni()
+                    ->addLettuce()
+                    ->addTomato()
                     ->build();
 ```
 
