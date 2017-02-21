@@ -2026,7 +2026,7 @@ And that about wraps it up. I will continue to improve this, so you might want t
 - Report issues
 - Open pull request with improvements
 - Spread the word
-- Reach out to me directly at kamranahmed.se@gmail.com or [@kamranahmedse](http://twitter.com/kamranahmedse)
+- Reach out to me directly at kamranahmed.se@gmail.com or on twitter [@kamranahmedse](http://twitter.com/kamranahmedse)
 
 ## License
 MIT © [Kamran Ahmed](http://kamranahmed.info)
