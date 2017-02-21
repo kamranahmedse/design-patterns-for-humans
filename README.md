@@ -1951,7 +1951,7 @@ abstract class Builder {
     
     public abstract function test();
     public abstract function lint();
-    public abstract function build();
+    public abstract function assemble();
     public abstract function deploy();
 }
 ```
