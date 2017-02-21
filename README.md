@@ -1313,8 +1313,8 @@ Finally let's see how we can use it in our client
 ```php
 $bulb = new Bulb();
 
-$turnOn = new TurnOnCommand($bulb);
-$turnOff = new TurnOffCommand($bulb);
+$turnOn = new TurnOn($bulb);
+$turnOff = new TurnOff($bulb);
 
 $remote = new RemoteControl();
 $remoteControl->submit($turnOn); // Bulb has been lit!
