@@ -486,6 +486,10 @@ final class President {
     private function __clone() {
         // Disable cloning
     }
+    
+    private function __wakeup() {
+        // Disable unserialize
+    }
 }
 ```
 Then in order to use
