@@ -1646,10 +1646,10 @@ $jobPostings->addJob(new JobPost('Software Engineer'));
 🏃 Visitor
 -------
 Real world example
-> Consider someone visiting Dubai. They just need a way (i.e. visa) to enter Dubai. After arrival, they can come and visit any place in Dubai on their own without having to ask for permission or to do some leg work in order to visit any place here; just let them know of a place and they can visit it. Visitor pattern let's you do just that, it helps you add places to visit so that they can visit as much as they can without having to do any legwork.
+> Consider someone visiting Dubai. They just need a way (i.e. visa) to enter Dubai. After arrival, they can come and visit any place in Dubai on their own without having to ask for permission or to do some leg work in order to visit any place here; just let them know of a place and they can visit it. Visitor pattern lets you do just that, it helps you add places to visit so that they can visit as much as they can without having to do any legwork.
 
 In plain words
-> Visitor pattern let's you add further operations to objects without having to modify them.
+> Visitor pattern lets you add further operations to objects without having to modify them.
     
 Wikipedia says
 > In object-oriented programming and software engineering, the visitor design pattern is a way of separating an algorithm from an object structure on which it operates. A practical result of this separation is the ability to add new operations to existing object structures without modifying those structures. It is one way to follow the open/closed principle.
@@ -1832,18 +1832,18 @@ $sorter->sort($dataset); // Output : Sorting using quick sort
 💢 State
 -----
 Real world example
-> Imagine you are using some drawing application, you choose the paint brush to draw. Now the brush changes it's behavior based on the selected color i.e. if you have chosen red color it will draw in red, if blue then it will be in blue etc.  
+> Imagine you are using some drawing application, you choose the paint brush to draw. Now the brush changes its behavior based on the selected color i.e. if you have chosen red color it will draw in red, if blue then it will be in blue etc.  
 
 In plain words
 > It lets you change the behavior of a class when the state changes.
 
 Wikipedia says
 > The state pattern is a behavioral software design pattern that implements a state machine in an object-oriented way. With the state pattern, a state machine is implemented by implementing each individual state as a derived class of the state pattern interface, and implementing state transitions by invoking methods defined by the pattern's superclass.
-> The state pattern can be interpreted as a strategy pattern which is able to switch the current strategy through invocations of methods defined in the pattern's interface
+> The state pattern can be interpreted as a strategy pattern which is able to switch the current strategy through invocations of methods defined in the pattern's interface.
 
 **Programmatic example**
 
-Let's take an example of text editor, it let's you change the state of text that is typed i.e. if you have selected bold, it starts writing in bold, if italic then in italics etc.
+Let's take an example of text editor, it lets you change the state of text that is typed i.e. if you have selected bold, it starts writing in bold, if italic then in italics etc.
 
 First of all we have our state interface and some state implementations
 
@@ -1924,7 +1924,7 @@ Real world example
 > The order of these steps could never be changed i.e. you can't build the roof before building the walls etc but each of the steps could be modified for example walls can be made of wood or polyester or stone.
   
 In plain words
-> Template method defines the skeleton of how certain algorithm could be performed but defers the implementation of those steps to the children classes.
+> Template method defines the skeleton of how a certain algorithm could be performed, but defers the implementation of those steps to the children classes.
  
 Wikipedia says
 > In software engineering, the template method pattern is a behavioral design pattern that defines the program skeleton of an algorithm in an operation, deferring some steps to subclasses. It lets one redefine certain steps of an algorithm without changing the algorithm's structure.
