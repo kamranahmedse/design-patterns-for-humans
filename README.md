@@ -87,7 +87,7 @@ class WoodenDoor implements Door {
         return $this->height;
     }
 }
-````
+```
 Then we have our door factory that makes the door and returns it
 ```php
 class DoorFactory {
