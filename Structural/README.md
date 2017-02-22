@@ -7,10 +7,10 @@ In plain words
 Wikipedia says
 > In software engineering, structural design patterns are design patterns that ease the design by identifying a simple way to realize relationships between entities.
   
- * [Adapter](adapter.md)
- * [Bridge](bridge.md)
- * [Composite](composite.md)
- * [Decorator](decorator.md)
- * [Facade](facade.md)
- * [Flyweight](flyweight.md)
- * [Proxy](proxy.md)
+ * [Adapter](Adapter.md)
+ * [Bridge](Bridge.md)
+ * [Composite](Composite.md)
+ * [Decorator](Decorator.md)
+ * [Facade](Facade.md)
+ * [Flyweight](Flyweight.md)
+ * [Proxy](Proxy.md)

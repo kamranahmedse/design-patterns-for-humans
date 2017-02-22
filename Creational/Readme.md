@@ -10,7 +10,7 @@ Wikipedia says
  * [Simple Factory](simple-factory.md)
  * [Factory Method](factory-method.md)
  * [Abstract Factory](abstract-factory.md)
- * [Builder](builder.md)
- * [Prototype](prototype.md)
- * [Singleton](singleton.md)
+ * [Builder](Builder.md)
+ * [Prototype](Prototype.md)
+ * [Singleton](Singleton.md)
  
