@@ -33,6 +33,7 @@ Types of Design Patterns
 * [Structural](#structural-design-patterns)
 * [Behavioral](#behavioral-design-patterns)
 
+> ℹ Note that the code samples below are in PHP-7. However the support for other languages is under way!
 
 Creational Design Patterns
 ==========================
