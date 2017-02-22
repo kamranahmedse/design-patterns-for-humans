@@ -9,11 +9,11 @@ Wikipedia says
 
 * [Chain of Responsibility](chain-of-responsibility.md)
 * [Command](Command.md)
-* [Iterator](Iiterator.md)
+* [Iterator](Iterator.md)
 * [Mediator](Mediator.md)
 * [Memento](Memento.md)
 * [Observer](Observer.md)
 * [Visitor](Visitor.md)
 * [Strategy](Strategy.md)
 * [State](State.md)
-* [Template Method](Template-method.md)
+* [Template Method](Template-Method.md)
