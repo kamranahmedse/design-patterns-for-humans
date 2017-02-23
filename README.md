@@ -909,6 +909,7 @@ Wikipedia says
 > A facade is an object that provides a simplified interface to a larger body of code, such as a class library.
 
 **Programmatic Example**
+
 Taking our computer example from above. Here we have the computer class
 
 ```php
