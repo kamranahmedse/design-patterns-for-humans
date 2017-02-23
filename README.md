@@ -14,7 +14,7 @@ A topic that can easily make anyone's mind wobble. Here I try to make them stick
 
 Design patterns are solutions to recurring problems; **guidelines on how to tackle certain problems**. They are not classes, packages or libraries that you can plug into your application and wait for the magic to happen. These are, rather, guidelines on how to tackle certain problems in certain situations. 
 
-> Design patterns solutions to recurring problems; guidelines on how to tackle certain problems
+> Design patterns are solutions to recurring problems; guidelines on how to tackle certain problems
 
 Wikipedia describes them as
 
@@ -26,13 +26,14 @@ Wikipedia describes them as
 - Do not try to force them; bad things are supposed to happen, if done so. Keep in mind that design patterns are solutions **to** problems, not solutions **finding** problems; so don't overthink.
 - If used in a correct place in a correct manner, they can prove to be a savior; or else they can result in a horrible mess of a code.
 
+> Also note that the code samples below are in PHP-7, however this shouldn't stop you because the concepts are same anyways. Plus the **support for other languages is underway**.
+
 Types of Design Patterns
 -----------------
 
 * [Creational](#creational-design-patterns)
 * [Structural](#structural-design-patterns)
 * [Behavioral](#behavioral-design-patterns)
-
 
 Creational Design Patterns
 ==========================
@@ -87,7 +88,7 @@ class WoodenDoor implements Door {
         return $this->height;
     }
 }
-````
+```
 Then we have our door factory that makes the door and returns it
 ```php
 class DoorFactory {
@@ -485,6 +486,10 @@ final class President {
     
     private function __clone() {
         // Disable cloning
+    }
+    
+    private function __wakeup() {
+        // Disable unserialize
     }
 }
 ```
@@ -1156,7 +1161,7 @@ abstract class Account {
     
     public function pay(float $amountToPay) {
         if ($this->canPay($amountToPay)) {
-            echo sprintf('Paid %s using %s' . PHP_EOL, $amount, get_called_class());
+            echo sprintf('Paid %s using %s' . PHP_EOL, $amountToPay, get_called_class());
         } else if ($this->successor) {
             echo sprintf('Cannot pay using %s. Proceeding ..' . PHP_EOL, get_called_class());
             $this->successor->pay($amountToPay);
@@ -1166,7 +1171,7 @@ abstract class Account {
     }
     
     public function canPay($amount) : bool {
-        return $this->balance <= $amount;
+        return $this->balance >= $amount;
     }
 }
 
@@ -1174,7 +1179,7 @@ class Bank extends Account {
     protected $balance;
 
     public function __construct(float $balance) {
-        $this->$balance = $balance;
+        $this->balance = $balance;
     }
 }
 
@@ -1182,7 +1187,7 @@ class Paypal extends Account {
     protected $balance;
 
     public function __construct(float $balance) {
-        $this->$balance = $balance;
+        $this->balance = $balance;
     }
 }
 
@@ -1190,7 +1195,7 @@ class Bitcoin extends Account {
     protected $balance;
 
     public function __construct(float $balance) {
-        $this->$balance = $balance;
+        $this->balance = $balance;
     }
 }
 ```
@@ -1313,12 +1318,12 @@ Finally let's see how we can use it in our client
 ```php
 $bulb = new Bulb();
 
-$turnOn = new TurnOnCommand($bulb);
-$turnOff = new TurnOffCommand($bulb);
+$turnOn = new TurnOn($bulb);
+$turnOff = new TurnOff($bulb);
 
 $remote = new RemoteControl();
-$remoteControl->submit($turnOn); // Bulb has been lit!
-$remoteControl->submit($turnOff); // Darkness!
+$remote->submit($turnOn); // Bulb has been lit!
+$remote->submit($turnOff); // Darkness!
 ```
 
 Command pattern can also be used to implement a transaction based system. Where you keep maintaining the history of commands as soon as you execute them. If the final command is successfully executed, all good otherwise just iterate through the history and keep executing the `undo` on all the executed commands. 
@@ -1646,10 +1651,10 @@ $jobPostings->addJob(new JobPost('Software Engineer'));
 🏃 Visitor
 -------
 Real world example
-> Consider someone visiting Dubai. They just need a way (i.e. visa) to enter Dubai. After arrival, they can come and visit any place in Dubai on their own without having to ask for permission or to do some leg work in order to visit any place here; just let them know of a place and they can visit it. Visitor pattern let's you do just that, it helps you add places to visit so that they can visit as much as they can without having to do any legwork.
+> Consider someone visiting Dubai. They just need a way (i.e. visa) to enter Dubai. After arrival, they can come and visit any place in Dubai on their own without having to ask for permission or to do some leg work in order to visit any place here; just let them know of a place and they can visit it. Visitor pattern lets you do just that, it helps you add places to visit so that they can visit as much as they can without having to do any legwork.
 
 In plain words
-> Visitor pattern let's you add further operations to objects without having to modify them.
+> Visitor pattern lets you add further operations to objects without having to modify them.
     
 Wikipedia says
 > In object-oriented programming and software engineering, the visitor design pattern is a way of separating an algorithm from an object structure on which it operates. A practical result of this separation is the ability to add new operations to existing object structures without modifying those structures. It is one way to follow the open/closed principle.
@@ -1832,18 +1837,18 @@ $sorter->sort($dataset); // Output : Sorting using quick sort
 💢 State
 -----
 Real world example
-> Imagine you are using some drawing application, you choose the paint brush to draw. Now the brush changes it's behavior based on the selected color i.e. if you have chosen red color it will draw in red, if blue then it will be in blue etc.  
+> Imagine you are using some drawing application, you choose the paint brush to draw. Now the brush changes its behavior based on the selected color i.e. if you have chosen red color it will draw in red, if blue then it will be in blue etc.  
 
 In plain words
 > It lets you change the behavior of a class when the state changes.
 
 Wikipedia says
 > The state pattern is a behavioral software design pattern that implements a state machine in an object-oriented way. With the state pattern, a state machine is implemented by implementing each individual state as a derived class of the state pattern interface, and implementing state transitions by invoking methods defined by the pattern's superclass.
-> The state pattern can be interpreted as a strategy pattern which is able to switch the current strategy through invocations of methods defined in the pattern's interface
+> The state pattern can be interpreted as a strategy pattern which is able to switch the current strategy through invocations of methods defined in the pattern's interface.
 
 **Programmatic example**
 
-Let's take an example of text editor, it let's you change the state of text that is typed i.e. if you have selected bold, it starts writing in bold, if italic then in italics etc.
+Let's take an example of text editor, it lets you change the state of text that is typed i.e. if you have selected bold, it starts writing in bold, if italic then in italics etc.
 
 First of all we have our state interface and some state implementations
 
@@ -1924,7 +1929,7 @@ Real world example
 > The order of these steps could never be changed i.e. you can't build the roof before building the walls etc but each of the steps could be modified for example walls can be made of wood or polyester or stone.
   
 In plain words
-> Template method defines the skeleton of how certain algorithm could be performed but defers the implementation of those steps to the children classes.
+> Template method defines the skeleton of how a certain algorithm could be performed, but defers the implementation of those steps to the children classes.
  
 Wikipedia says
 > In software engineering, the template method pattern is a behavioral design pattern that defines the program skeleton of an algorithm in an operation, deferring some steps to subclasses. It lets one redefine certain steps of an algorithm without changing the algorithm's structure.
@@ -1947,7 +1952,7 @@ abstract class Builder {
     
     public abstract function test();
     public abstract function lint();
-    public abstract function build();
+    public abstract function assemble();
     public abstract function deploy();
 }
 ```
@@ -2022,7 +2027,7 @@ And that about wraps it up. I will continue to improve this, so you might want t
 - Report issues
 - Open pull request with improvements
 - Spread the word
-- Reach out to me directly at kamranahmed.se@gmail.com or [@kamranahmedse](http://twitter.com/kamranahmedse)
+- Reach out to me directly at kamranahmed.se@gmail.com or on twitter [@kamranahmedse](http://twitter.com/kamranahmedse)
 
 ## License
 MIT © [Kamran Ahmed](http://kamranahmed.info)
