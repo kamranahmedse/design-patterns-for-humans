@@ -909,6 +909,7 @@ Wikipedia says
 > A facade is an object that provides a simplified interface to a larger body of code, such as a class library.
 
 **Programmatic Example**
+
 Taking our computer example from above. Here we have the computer class
 
 ```php
@@ -987,6 +988,7 @@ Wikipedia says
 > In computer programming, flyweight is a software design pattern. A flyweight is an object that minimizes memory use by sharing as much data as possible with other similar objects; it is a way to use objects in large numbers when a simple repeated representation would use an unacceptable amount of memory.
 
 **Programmatic example**
+
 Translating our tea example from above. First of all we have tea types and tea maker
 
 ```php
@@ -1060,6 +1062,7 @@ Wikipedia says
 > A proxy, in its most general form, is a class functioning as an interface to something else. A proxy is a wrapper or agent object that is being called by the client to access the real serving object behind the scenes. Use of the proxy can simply be forwarding to the real object, or can provide additional logic. In the proxy extra functionality can be provided, for example caching when operations on the real object are resource intensive, or checking preconditions before operations on the real object are invoked.
 
 **Programmatic Example**
+
 Taking our security door example from above. Firstly we have the door interface and an implementation of door
 
 ```php
@@ -1341,6 +1344,7 @@ Wikipedia says
 > In object-oriented programming, the iterator pattern is a design pattern in which an iterator is used to traverse a container and access the container's elements. The iterator pattern decouples algorithms from containers; in some cases, algorithms are necessarily container-specific and thus cannot be decoupled.
 
 **Programmatic example**
+
 In PHP it is quite easy to implement using SPL (Standard PHP Library). Translating our radio stations example from above. First of all we have `RadioStation`
 
 ```php
