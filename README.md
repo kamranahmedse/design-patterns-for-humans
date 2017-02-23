@@ -5,14 +5,14 @@
 🎉 Ultra-simplified explanation to design patterns! 🎉
 </p>
 <p align="center">
-A topic that can easily make anyone's mind wobble. Here I try to make them stick in to your mind (and maybe mine) by explaining them in the <i>simplest</i> way possible. 
+A topic that can easily make anyone's mind wobble. Here I try to make them stick in to your mind (and maybe mine) by explaining them in the <i>simplest</i> way possible.
 </p>
 ***
 
 🚀 Introduction
 =================
 
-Design patterns are solutions to recurring problems; **guidelines on how to tackle certain problems**. They are not classes, packages or libraries that you can plug into your application and wait for the magic to happen. These are, rather, guidelines on how to tackle certain problems in certain situations. 
+Design patterns are solutions to recurring problems; **guidelines on how to tackle certain problems**. They are not classes, packages or libraries that you can plug into your application and wait for the magic to happen. These are, rather, guidelines on how to tackle certain problems in certain situations.
 
 > Design patterns are solutions to recurring problems; guidelines on how to tackle certain problems
 
@@ -43,14 +43,14 @@ In plain words
 
 Wikipedia says
 > In software engineering, creational design patterns are design patterns that deal with object creation mechanisms, trying to create objects in a manner suitable to the situation. The basic form of object creation could result in design problems or added complexity to the design. Creational design patterns solve this problem by somehow controlling this object creation.
- 
+
  * [Simple Factory](#-simple-factory)
  * [Factory Method](#-factory-method)
  * [Abstract Factory](#-abstract-factory)
  * [Builder](#-builder)
  * [Prototype](#-prototype)
  * [Singleton](#-singleton)
- 
+
 🏠 Simple Factory
 --------------
 Real world example
@@ -67,8 +67,8 @@ Wikipedia says
 First of all we have a door interface and the implementation
 ```php
 interface Door {
-    public function getWidth() : float;
-    public function getHeight() : float;
+    public function getWidth(): float;
+    public function getHeight(): float;
 }
 
 class WoodenDoor implements Door {
@@ -79,12 +79,12 @@ class WoodenDoor implements Door {
         $this->width = $width;
         $this->height = $height;
     }
-    
-    public function getWidth() : float {
+
+    public function getWidth(): float {
         return $this->width;
     }
-    
-    public function getHeight() : float {
+
+    public function getHeight(): float {
         return $this->height;
     }
 }
@@ -92,7 +92,7 @@ class WoodenDoor implements Door {
 Then we have our door factory that makes the door and returns it
 ```php
 class DoorFactory {
-   public static function makeDoor($width, $height) : Door {
+   public static function makeDoor($width, $height): Door {
        return new WoodenDoor($width, $height);
    }
 }
@@ -106,22 +106,22 @@ echo 'Height: ' . $door->getHeight();
 
 **When to Use?**
 
-When creating an object is not just a few assignments and involves some logic, it makes sense to put it in a dedicated factory instead of repeating the same code everywhere. 
+When creating an object is not just a few assignments and involves some logic, it makes sense to put it in a dedicated factory instead of repeating the same code everywhere.
 
 🏭 Factory Method
 --------------
 
 Real world example
-> Consider the case of a hiring manager. It is impossible for one person to interview for each of the positions. Based on the job opening, she has to decide and delegate the interview steps to different people. 
+> Consider the case of a hiring manager. It is impossible for one person to interview for each of the positions. Based on the job opening, she has to decide and delegate the interview steps to different people.
 
 In plain words
-> It provides a way to delegate the instantiation logic to child classes. 
+> It provides a way to delegate the instantiation logic to child classes.
 
 Wikipedia says
 > In class-based programming, the factory method pattern is a creational pattern that uses factory methods to deal with the problem of creating objects without having to specify the exact class of the object that will be created. This is done by creating objects by calling a factory method—either specified in an interface and implemented by child classes, or implemented in a base class and optionally overridden by derived classes—rather than by calling a constructor.
- 
+
  **Programmatic Example**
- 
+
 Taking our hiring manager example above. First of all we have an interviewer interface and some implementations for it
 
 ```php
@@ -146,10 +146,10 @@ Now let us create our `HiringManager`
 
 ```php
 abstract class HiringManager {
-    
+
     // Factory method
-    abstract public function makeInterviewer() : Interviewer;
-    
+    abstract public function makeInterviewer(): Interviewer;
+
     public function takeInterview() {
         $interviewer = $this->makeInterviewer();
         $interviewer->askQuestions();
@@ -159,13 +159,13 @@ abstract class HiringManager {
 Now any child can extend it and provide the required interviewer
 ```php
 class DevelopmentManager extends HiringManager {
-    public function makeInterviewer() : Interviewer {
+    public function makeInterviewer(): Interviewer {
         return new Developer();
     }
 }
 
 class MarketingManager extends HiringManager {
-    public function makeInterviewer() : Interviewer {
+    public function makeInterviewer(): Interviewer {
         return new CommunityExecutive();
     }
 }
@@ -191,8 +191,8 @@ Real world example
 > Extending our door example from Simple Factory. Based on your needs you might get a wooden door from a wooden door shop, iron door from an iron shop or a PVC door from the relevant shop. Plus you might need a guy with different kind of specialities to fit the door, for example a carpenter for wooden door, welder for iron door etc. As you can see there is a dependency between the doors now, wooden door needs carpenter, iron door needs a welder etc.
 
 In plain words
-> A factory of factories; a factory that groups the individual but related/dependent factories together without specifying their concrete classes. 
-  
+> A factory of factories; a factory that groups the individual but related/dependent factories together without specifying their concrete classes.
+
 Wikipedia says
 > The abstract factory pattern provides a way to encapsulate a group of individual factories that have a common theme without specifying their concrete classes
 
@@ -240,28 +240,28 @@ class Carpenter implements DoorFittingExpert {
 Now we have our abstract factory that would let us make family of related objects i.e. wooden door factory would create a wooden door and wooden door fitting expert and iron door factory would create an iron door and iron door fitting expert
 ```php
 interface DoorFactory {
-    public function makeDoor() : Door;
-    public function makeFittingExpert() : DoorFittingExpert;
+    public function makeDoor(): Door;
+    public function makeFittingExpert(): DoorFittingExpert;
 }
 
 // Wooden factory to return carpenter and wooden door
 class WoodenDoorFactory implements DoorFactory {
-    public function makeDoor() : Door {
+    public function makeDoor(): Door {
         return new WoodenDoor();
     }
 
-    public function makeFittingExpert() : DoorFittingExpert{
+    public function makeFittingExpert(): DoorFittingExpert{
         return new Carpenter();
     }
 }
 
 // Iron door factory to get iron door and the relevant fitting expert
 class IronDoorFactory implements DoorFactory {
-    public function makeDoor() : Door {
+    public function makeDoor(): Door {
         return new IronDoor();
     }
 
-    public function makeFittingExpert() : DoorFittingExpert{
+    public function makeFittingExpert(): DoorFittingExpert{
         return new Welder();
     }
 }
@@ -299,12 +299,12 @@ Real world example
 
 In plain words
 > Allows you to create different flavors of an object while avoiding constructor pollution. Useful when there could be several flavors of an object. Or when there are a lot of steps involved in creation of an object.
- 
+
 Wikipedia says
 > The builder pattern is an object creation software design pattern with the intentions of finding a solution to the telescoping constructor anti-pattern.
 
 Having said that let me add a bit about what telescoping constructor anti-pattern is. At one point or the other we have all seen a constructor like below:
- 
+
 ```php
 public function __construct($size, $cheese = true, $pepperoni = true, $tomato = false, $lettuce = true) {
 }
@@ -324,7 +324,7 @@ class Burger {
     protected $pepperoni = false;
     protected $lettuce = false;
     protected $tomato = false;
-    
+
     public function __construct(BurgerBuilder $builder) {
         $this->size = $builder->size;
         $this->cheese = $builder->cheese;
@@ -349,28 +349,28 @@ class BurgerBuilder {
     public function __construct(int $size) {
         $this->size = $size;
     }
-    
+
     public function addPepperoni() {
         $this->pepperoni = true;
         return $this;
     }
-    
+
     public function addLettuce() {
         $this->lettuce = true;
         return $this;
     }
-    
+
     public function addCheese() {
         $this->cheese = true;
         return $this;
     }
-    
+
     public function addTomato() {
         $this->tomato = true;
         return $this;
     }
-    
-    public function build() : Burger {
+
+    public function build(): Burger {
         return new Burger($this);
     }
 }
@@ -405,7 +405,7 @@ In short, it allows you to create a copy of an existing object and modify it to 
 **Programmatic Example**
 
 In PHP, it can be easily done using `clone`
-  
+
 ```php
 class Sheep {
     protected $name;
@@ -415,7 +415,7 @@ class Sheep {
         $this->name = $name;
         $this->category = $category;
     }
-    
+
     public function setName(string $name) {
         $this->name = $name;
     }
@@ -475,19 +475,19 @@ final class President {
     private function __construct() {
         // Hide the constructor
     }
-    
-    public static function getInstance() : President {
+
+    public static function getInstance(): President {
         if (!self::$instance) {
             self::$instance = new self();
         }
-        
+
         return self::$instance;
     }
-    
+
     private function __clone() {
         // Disable cloning
     }
-    
+
     private function __wakeup() {
         // Disable unserialize
     }
@@ -508,7 +508,7 @@ In plain words
 
 Wikipedia says
 > In software engineering, structural design patterns are design patterns that ease the design by identifying a simple way to realize relationships between entities.
-  
+
  * [Adapter](#-adapter)
  * [Bridge](#-bridge)
  * [Composite](#-composite)
@@ -558,7 +558,7 @@ class Hunter {
 ```
 
 Now let's say we have to add a `WildDog` in our game so that hunter can hunt that also. But we can't do that directly because dog has a different interface. To make it compatible for our hunter, we will have to create an adapter that is compatible
- 
+
 ```php
 // This needs to be added to the game
 class WildDog {
@@ -572,7 +572,7 @@ class WildDogAdapter implements Lion {
     public function __construct(WildDog $dog) {
         $this->dog = $dog;
     }
-    
+
     public function roar() {
         $this->dog->bark();
     }
@@ -613,11 +613,11 @@ interface WebPage {
 
 class About implements WebPage {
     protected $theme;
-    
+
     public function __construct(Theme $theme) {
         $this->theme = $theme;
     }
-    
+
     public function getContent() {
         return "About page in " . $this->theme->getColor();
     }
@@ -625,14 +625,14 @@ class About implements WebPage {
 
 class Careers implements WebPage {
    protected $theme;
-   
+
    public function __construct(Theme $theme) {
        $this->theme = $theme;
    }
-   
+
    public function getContent() {
        return "Careers page in " . $this->theme->getColor();
-   } 
+   }
 }
 ```
 And the separate theme hierarchy
@@ -688,10 +688,10 @@ Taking our employees example from above. Here we have different employee types
 
 interface Employee {
     public function __construct(string $name, float $salary);
-    public function getName() : string;
+    public function getName(): string;
     public function setSalary(float $salary);
-    public function getSalary() : float;
-    public function getRoles()  : array;
+    public function getSalary(): float;
+    public function getRoles(): array;
 }
 
 class Developer implements Employee {
@@ -704,7 +704,7 @@ class Developer implements Employee {
         $this->salary = $salary;
     }
 
-    public function getName() : string {
+    public function getName(): string {
         return $this->name;
     }
 
@@ -712,11 +712,11 @@ class Developer implements Employee {
         $this->salary = $salary;
     }
 
-    public function getSalary() : float {
+    public function getSalary(): float {
         return $this->salary;
     }
 
-    public function getRoles() : array {
+    public function getRoles(): array {
         return $this->roles;
     }
 }
@@ -731,7 +731,7 @@ class Designer implements Employee {
         $this->salary = $salary;
     }
 
-    public function getName() : string {
+    public function getName(): string {
         return $this->name;
     }
 
@@ -739,11 +739,11 @@ class Designer implements Employee {
         $this->salary = $salary;
     }
 
-    public function getSalary() : float {
+    public function getSalary(): float {
         return $this->salary;
     }
 
-    public function getRoles() : array {
+    public function getRoles(): array {
         return $this->roles;
     }
 }
@@ -753,14 +753,14 @@ Then we have an organization which consists of several different types of employ
 
 ```php
 class Organization {
-    
+
     protected $employees;
 
     public function addEmployee(Employee $employee) {
         $this->employees[] = $employee;
     }
 
-    public function getNetSalaries() : float {
+    public function getNetSalaries(): float {
         $netSalary = 0;
 
         foreach ($this->employees as $employee) {
@@ -824,7 +824,7 @@ class SimpleCoffee implements Coffee {
 We want to make the code extensible to allow options to modify it if required. Lets make some add-ons (decorators)
 ```php
 class MilkCoffee implements Coffee {
-    
+
     protected $coffee;
 
     public function __construct(Coffee $coffee) {
@@ -992,7 +992,7 @@ Wikipedia says
 Translating our tea example from above. First of all we have tea types and tea maker
 
 ```php
-// Anything that will be cached is flyweight. 
+// Anything that will be cached is flyweight.
 // Types of tea here will be flyweights.
 class KarakTea {
 }
@@ -1015,7 +1015,7 @@ Then we have the `TeaShop` which takes orders and serves them
 
 ```php
 class TeaShop {
-    
+
     protected $orders;
     protected $teaMaker;
 
@@ -1161,7 +1161,7 @@ abstract class Account {
     public function setNext(Account $account) {
         $this->successor = $account;
     }
-    
+
     public function pay(float $amountToPay) {
         if ($this->canPay($amountToPay)) {
             echo sprintf('Paid %s using %s' . PHP_EOL, $amountToPay, get_called_class());
@@ -1172,8 +1172,8 @@ abstract class Account {
             throw Exception('None of the accounts have enough balance');
         }
     }
-    
-    public function canPay($amount) : bool {
+
+    public function canPay($amount): bool {
         return $this->balance >= $amount;
     }
 }
@@ -1226,7 +1226,7 @@ $bank->pay(259);
 // Output will be
 // ==============
 // Cannot pay using bank. Proceeding ..
-// Cannot pay using paypal. Proceeding ..: 
+// Cannot pay using paypal. Proceeding ..:
 // Paid 259 using Bitcoin!
 ```
 
@@ -1234,7 +1234,7 @@ $bank->pay(259);
 -------
 
 Real world example
-> A generic example would be you ordering a food at restaurant. You (i.e. `Client`) ask the waiter (i.e. `Invoker`) to bring some food (i.e. `Command`) and waiter simply forwards the request to Chef (i.e. `Receiver`) who has the knowledge of what and how to cook. 
+> A generic example would be you ordering a food at restaurant. You (i.e. `Client`) ask the waiter (i.e. `Invoker`) to bring some food (i.e. `Command`) and waiter simply forwards the request to Chef (i.e. `Receiver`) who has the knowledge of what and how to cook.
 > Another example would be you (i.e. `Client`) switching on (i.e. `Command`) the television (i.e. `Receiver`) using a remote control (`Invoker`).
 
 In plain words
@@ -1252,7 +1252,7 @@ class Bulb {
     public function turnOn() {
         echo "Bulb has been lit";
     }
-    
+
     public function turnOff() {
         echo "Darkness!";
     }
@@ -1269,19 +1269,19 @@ interface Command {
 // Command
 class TurnOn implements Command {
     protected $bulb;
-    
+
     public function __construct(Bulb $bulb) {
         $this->bulb = $bulb;
     }
-    
+
     public function execute() {
         $this->bulb->turnOn();
     }
-    
+
     public function undo() {
         $this->bulb->turnOff();
     }
-    
+
     public function redo() {
         $this->execute();
     }
@@ -1289,19 +1289,19 @@ class TurnOn implements Command {
 
 class TurnOff implements Command {
     protected $bulb;
-    
+
     public function __construct(Bulb $bulb) {
         $this->bulb = $bulb;
     }
-    
+
     public function execute() {
         $this->bulb->turnOff();
     }
-    
+
     public function undo() {
         $this->bulb->turnOn();
     }
-    
+
     public function redo() {
         $this->execute();
     }
@@ -1311,7 +1311,7 @@ Then we have an `Invoker` with whom the client will interact to process any comm
 ```php
 // Invoker
 class RemoteControl {
-    
+
     public function submit(Command $command) {
         $command->execute();
     }
@@ -1329,7 +1329,7 @@ $remote->submit($turnOn); // Bulb has been lit!
 $remote->submit($turnOff); // Darkness!
 ```
 
-Command pattern can also be used to implement a transaction based system. Where you keep maintaining the history of commands as soon as you execute them. If the final command is successfully executed, all good otherwise just iterate through the history and keep executing the `undo` on all the executed commands. 
+Command pattern can also be used to implement a transaction based system. Where you keep maintaining the history of commands as soon as you execute them. If the final command is successfully executed, all good otherwise just iterate through the history and keep executing the `undo` on all the executed commands.
 
 ➿ Iterator
 --------
@@ -1354,8 +1354,8 @@ class RadioStation {
     public function __construct(float $frequency) {
         $this->frequency = $frequency;    
     }
-    
-    public function getFrequency() : float {
+
+    public function getFrequency(): float {
         return $this->frequency;
     }
 }
@@ -1369,41 +1369,41 @@ use Iterator;
 class StationList implements Countable, Iterator {
     /** @var RadioStation[] $stations */
     protected $stations = [];
-    
+
     /** @var int $counter */
     protected $counter;
-    
+
     public function addStation(RadioStation $station) {
         $this->stations[] = $station;
     }
-    
+
     public function removeStation(RadioStation $toRemove) {
         $toRemoveFrequency = $toRemove->getFrequency();
         $this->stations = array_filter($this->stations, function (RadioStation $station) use ($toRemoveFrequency) {
             return $station->getFrequency() !== $toRemoveFrequency;
         });
     }
-    
-    public function count() : int {
+
+    public function count(): int {
         return count($this->stations);
     }
-    
-    public function current() : RadioStation {
+
+    public function current(): RadioStation {
         return $this->stations[$this->counter];
     }
-    
+
     public function key() {
         return $this->counter;
     }
-    
+
     public function next() {
         $this->counter++;
     }
-    
+
     public function rewind() {
         $this->counter = 0;
     }
-    
+
     public function valid(): bool
     {
         return isset($this->stations[$this->counter]);
@@ -1430,19 +1430,19 @@ $stationList->removeStation(new Station(89)); // Will remove station 89
 ========
 
 Real world example
-> A general example would be when you talk to someone on your mobile phone, there is a network provider sitting between you and them and your conversation goes through it instead of being directly sent. In this case network provider is mediator. 
+> A general example would be when you talk to someone on your mobile phone, there is a network provider sitting between you and them and your conversation goes through it instead of being directly sent. In this case network provider is mediator.
 
 In plain words
-> Mediator pattern adds a third party object (called mediator) to control the interaction between two objects (called colleagues). It helps reduce the coupling between the classes communicating with each other. Because now they don't need to have the knowledge of each other's implementation. 
+> Mediator pattern adds a third party object (called mediator) to control the interaction between two objects (called colleagues). It helps reduce the coupling between the classes communicating with each other. Because now they don't need to have the knowledge of each other's implementation.
 
 Wikipedia says
 > In software engineering, the mediator pattern defines an object that encapsulates how a set of objects interact. This pattern is considered to be a behavioral pattern due to the way it can alter the program's running behavior.
 
 **Programmatic Example**
 
-Here is the simplest example of a chat room (i.e. mediator) with users (i.e. colleagues) sending messages to each other. 
+Here is the simplest example of a chat room (i.e. mediator) with users (i.e. colleagues) sending messages to each other.
 
-First of all, we have the mediator i.e. the chat room 
+First of all, we have the mediator i.e. the chat room
 
 ```php
 // Mediator
@@ -1466,11 +1466,11 @@ class User {
         $this->name = $name;
         $this->chatMediator = $chatMediator;
     }
-    
+
     public function getName() {
         return $this->name;
     }
-    
+
     public function send($message) {
         $this->chatMediator->showMessage($this, $message);
     }
@@ -1494,7 +1494,7 @@ $jane->send('Hey!');
 💾 Memento
 -------
 Real world example
-> Take the example of calculator (i.e. originator), where whenever you perform some calculation the last calculation is saved in memory (i.e. memento) so that you can get back to it and maybe get it restored using some action buttons (i.e. caretaker). 
+> Take the example of calculator (i.e. originator), where whenever you perform some calculation the last calculation is saved in memory (i.e. memento) so that you can get back to it and maybe get it restored using some action buttons (i.e. caretaker).
 
 In plain words
 > Memento pattern is about capturing and storing the current state of an object in a manner that it can be restored later on in a smooth manner.
@@ -1513,11 +1513,11 @@ First of all we have our memento object that will be able to hold the editor sta
 ```php
 class EditorMemento {
     protected $content;
-    
+
     public function __construct(string $content) {
         $this->content = $content;
     }
-    
+
     public function getContent() {
         return $this->content;
     }
@@ -1529,26 +1529,26 @@ Then we have our editor i.e. originator that is going to use memento object
 ```php
 class Editor {
     protected $content = '';
-    
+
     public function type(string $words) {
         $this->content = $this->content . ' ' . $words;
     }
-    
+
     public function getContent() {
         return $this->content;
     }
-    
+
     public function save() {
         return new EditorMemento($this->content);
     }
-    
+
     public function restore(EditorMemento $memento) {
         $this->content = $memento->getContent();
     }
 }
 ```
 
-And then it can be used as 
+And then it can be used as
 
 ```php
 $editor = new Editor();
@@ -1589,11 +1589,11 @@ Translating our example from above. First of all we have job seekers that need t
 ```php
 class JobPost {
     protected $title;
-    
+
     public function __construct(string $title) {
         $this->title = $title;
     }
-    
+
     public function getTitle() {
         return $this->title;
     }
@@ -1616,17 +1616,17 @@ Then we have our job postings to which the job seekers will subscribe
 ```php
 class JobPostings implements Observable {
     protected $observers = [];
-    
+
     protected function notify(JobPost $jobPosting) {
         foreach ($this->observers as $observer) {
             $observer->onJobPosted($jobPosting);
         }
     }
-    
+
     public function attach(Observer $observer) {
         $this->observers[] = $observer;
     }
-    
+
     public function addJob(JobPost $jobPosting) {
         $this->notify($jobPosting);
     }
@@ -1659,13 +1659,13 @@ Real world example
 
 In plain words
 > Visitor pattern lets you add further operations to objects without having to modify them.
-    
+
 Wikipedia says
 > In object-oriented programming and software engineering, the visitor design pattern is a way of separating an algorithm from an object structure on which it operates. A practical result of this separation is the ability to add new operations to existing object structures without modifying those structures. It is one way to follow the open/closed principle.
 
 **Programmatic example**
 
-Let's take an example of a zoo simulation where we have several different kinds of animals and we have to make them Sound. Let's translate this using visitor pattern 
+Let's take an example of a zoo simulation where we have several different kinds of animals and we have to make them Sound. Let's translate this using visitor pattern
 
 ```php
 // Visitee
@@ -1683,7 +1683,7 @@ interface AnimalOperation {
 Then we have our implementations for the animals
 ```php
 class Monkey implements Animal {
-    
+
     public function shout() {
         echo 'Ooh oo aa aa!';
     }
@@ -1697,7 +1697,7 @@ class Lion implements Animal {
     public function roar() {
         echo 'Roaaar!';
     }
-    
+
     public function accept(AnimalOperation $operation) {
         $operation->visitLion($this);
     }
@@ -1707,7 +1707,7 @@ class Dolphin implements Animal {
     public function speak() {
         echo 'Tuut tuttu tuutt!';
     }
-    
+
     public function accept(AnimalOperation $operation) {
         $operation->visitDolphin($this);
     }
@@ -1719,11 +1719,11 @@ class Speak implements AnimalOperation {
     public function visitMonkey(Monkey $monkey) {
         $monkey->shout();
     }
-    
+
     public function visitLion(Lion $lion) {
         $lion->roar();
     }
-    
+
     public function visitDolphin(Dolphin $dolphin) {
         $dolphin->speak();
     }
@@ -1749,11 +1749,11 @@ class Jump implements AnimalOperation {
     public function visitMonkey(Monkey $monkey) {
         echo 'Jumped 20 feet high! on to the tree!';
     }
-    
+
     public function visitLion(Lion $lion) {
         echo 'Jumped 7 feet! Back on the ground!';
     }
-    
+
     public function visitDolphin(Dolphin $dolphin) {
         echo 'Walked on water a little and disappeared';
     }
@@ -1767,9 +1767,9 @@ $monkey->accept($speak);   // Ooh oo aa aa!
 $monkey->accept($jump);    // Jumped 20 feet high! on to the tree!
 
 $lion->accept($speak);     // Roaaar!
-$lion->accept($jump);      // Jumped 7 feet! Back on the ground! 
+$lion->accept($jump);      // Jumped 7 feet! Back on the ground!
 
-$dolphin->accept($speak);  // Tuut tutt tuutt! 
+$dolphin->accept($speak);  // Tuut tutt tuutt!
 $dolphin->accept($jump);   // Walked on water a little and disappeared
 ```
 
@@ -1784,45 +1784,45 @@ In plain words
 
 Wikipedia says
 > In computer programming, the strategy pattern (also known as the policy pattern) is a behavioural software design pattern that enables an algorithm's behavior to be selected at runtime.
- 
+
 **Programmatic example**
 
 Translating our example from above. First of all we have our strategy interface and different strategy implementations
 
 ```php
 interface SortStrategy {
-    public function sort(array $dataset) : array; 
+    public function sort(array $dataset): array;
 }
 
 class BubbleSortStrategy implements SortStrategy {
-    public function sort(array $dataset) : array {
+    public function sort(array $dataset): array {
         echo "Sorting using bubble sort";
-         
+
         // Do sorting
         return $dataset;
     }
-} 
+}
 
 class QuickSortStrategy implements SortStrategy {
-    public function sort(array $dataset) : array {
+    public function sort(array $dataset): array {
         echo "Sorting using quick sort";
-        
+
         // Do sorting
         return $dataset;
     }
 }
 ```
- 
+
 And then we have our client that is going to use any strategy
 ```php
 class Sorter {
     protected $sorter;
-    
+
     public function __construct(SortStrategy $sorter) {
         $this->sorter = $sorter;
     }
-    
-    public function sort(array $dataset) : array {
+
+    public function sort(array $dataset): array {
         return $this->sorter->sort($dataset);
     }
 }
@@ -1863,13 +1863,13 @@ interface WritingState {
 
 class UpperCase implements WritingState {
     public function write(string $words) {
-        echo strtoupper($words); 
+        echo strtoupper($words);
     }
-} 
+}
 
 class LowerCase implements WritingState {
     public function write(string $words) {
-        echo strtolower($words); 
+        echo strtolower($words);
     }
 }
 
@@ -1883,15 +1883,15 @@ Then we have our editor
 ```php
 class TextEditor {
     protected $state;
-    
+
     public function __construct(WritingState $state) {
         $this->state = $state;
     }
-    
+
     public function setState(WritingState $state) {
         $this->state = $state;
     }
-    
+
     public function type(string $words) {
         $this->state->write($words);
     }
@@ -1925,16 +1925,16 @@ $editor->type('Fifth line');
 ---------------
 
 Real world example
-> Suppose we are getting some house built. The steps for building might look like 
+> Suppose we are getting some house built. The steps for building might look like
 > - Prepare the base of house
 > - Build the walls
 > - Add roof
 > - Add other floors
 > The order of these steps could never be changed i.e. you can't build the roof before building the walls etc but each of the steps could be modified for example walls can be made of wood or polyester or stone.
-  
+
 In plain words
 > Template method defines the skeleton of how a certain algorithm could be performed, but defers the implementation of those steps to the children classes.
- 
+
 Wikipedia says
 > In software engineering, the template method pattern is a behavioral design pattern that defines the program skeleton of an algorithm in an operation, deferring some steps to subclasses. It lets one redefine certain steps of an algorithm without changing the algorithm's structure.
 
@@ -1945,15 +1945,15 @@ Imagine we have a build tool that helps us test, lint, build, generate build rep
 First of all we have our base class that specifies the skeleton for the build algorithm
 ```php
 abstract class Builder {
-    
-    // Template method 
+
+    // Template method
     public final function build() {
         $this->test();
         $this->lint();
         $this->assemble();
         $this->deploy();
     }
-    
+
     public abstract function test();
     public abstract function lint();
     public abstract function assemble();
@@ -1968,15 +1968,15 @@ class AndroidBuilder extends Builder {
     public function test() {
         echo 'Running android tests';
     }
-    
+
     public function lint() {
         echo 'Linting the android code';
     }
-    
+
     public function assemble() {
         echo 'Assembling the android build';
     }
-    
+
     public function deploy() {
         echo 'Deploying android build to server';
     }
@@ -1986,15 +1986,15 @@ class IosBuilder extends Builder {
     public function test() {
         echo 'Running ios tests';
     }
-    
+
     public function lint() {
         echo 'Linting the ios code';
     }
-    
+
     public function assemble() {
         echo 'Assembling the ios build';
     }
-    
+
     public function deploy() {
         echo 'Deploying ios build to server';
     }
