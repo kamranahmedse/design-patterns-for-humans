@@ -1637,7 +1637,6 @@ Then it can be used as
 // Create subscribers
 $johnDoe = new JobSeeker('John Doe');
 $janeDoe = new JobSeeker('Jane Doe');
-$kaneDoe = new JobSeeker('Kane Doe');
 
 // Create publisher and attach subscribers
 $jobPostings = new JobPostings();
