@@ -3,36 +3,42 @@
 namespace designPatternsForHumans\creational\Prototype;
 
 
-class Sheep {
+class Sheep
+{
 
-  protected $name;
-  protected $category;
+    protected $name;
+    protected $category;
 
-  public function __construct($name, $category = 'Mountain Sheep') {
-    $this->name = $name;
-    $this->category = $category;
-  }
+    public function __construct($name, $category = 'Mountain Sheep')
+    {
+        $this->name = $name;
+        $this->category = $category;
+    }
 
-  public function getName() {
-    return $this->name;
-  }
+    public function getName()
+    {
+        return $this->name;
+    }
 
-  /**
-   * @param string $name
-   */
-  public function setName($name) {
-    $this->name = $name;
-  }
+    /**
+     * @param string $name
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+    }
 
-  /**
-   * @param string $category
-   */
-  public function setCategory($category) {
-    $this->category = $category;
-  }
+    /**
+     * @param string $category
+     */
+    public function setCategory($category)
+    {
+        $this->category = $category;
+    }
 
-  public function getCategory() {
-    return $this->category;
-  }
+    public function getCategory()
+    {
+        return $this->category;
+    }
 
 }

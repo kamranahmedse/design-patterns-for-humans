@@ -3,9 +3,11 @@
 namespace designPatternsForHumans\structural\Decorator;
 
 
-interface Coffee {
+interface Coffee
+{
 
-  public function getCost();
-  public function getDescription();
+    public function getCost();
+
+    public function getDescription();
 
 }

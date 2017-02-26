@@ -3,9 +3,11 @@
 namespace designPatternsForHumans\creational\FactoryMethod;
 
 
-class MarketingManager extends HiringManager {
+class MarketingManager extends HiringManager
+{
 
-  public function makeInterviewer() {
-    return new CommunityExecutive();
-  }
+    public function makeInterviewer()
+    {
+        return new CommunityExecutive();
+    }
 }

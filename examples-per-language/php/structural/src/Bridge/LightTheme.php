@@ -3,9 +3,11 @@
 namespace designPatternsForHumans\structural\Bridge;
 
 
-class LightTheme implements Theme {
+class LightTheme implements Theme
+{
 
-  public function getColor() {
-    return 'Off white';
-  }
+    public function getColor()
+    {
+        return 'Off white';
+    }
 }

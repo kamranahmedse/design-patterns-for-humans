@@ -3,8 +3,10 @@
 namespace designPatternsForHumans\structural\Adapter;
 
 
-class AfricanLion implements Lion {
+class AfricanLion implements Lion
+{
 
-  public function roar() {
-  }
+    public function roar()
+    {
+    }
 }

@@ -3,9 +3,11 @@
 namespace designPatternsForHumans\creational\FactoryMethod;
 
 
-class DevelopmentManager extends HiringManager {
+class DevelopmentManager extends HiringManager
+{
 
-  public function makeInterviewer() {
-    return new Developer();
-  }
+    public function makeInterviewer()
+    {
+        return new Developer();
+    }
 }

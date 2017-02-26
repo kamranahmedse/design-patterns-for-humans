@@ -3,9 +3,11 @@
 namespace designPatternsForHumans\creational\AbstractFactory;
 
 
-class IronDoor implements Door {
+class IronDoor implements Door
+{
 
-  public function getDescription() {
-    echo 'I am an Iron Door!' . PHP_EOL;
-  }
+    public function getDescription()
+    {
+        echo 'I am an Iron Door!' . PHP_EOL;
+    }
 }

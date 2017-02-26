@@ -3,15 +3,18 @@
 namespace designPatternsForHumans\structural\Adapter;
 
 
-class WildDogAdapter implements Lion {
+class WildDogAdapter implements Lion
+{
 
-  protected $dog;
+    protected $dog;
 
-  public function __construct( WildDog $dog) {
-    $this->dog = $dog;
-  }
+    public function __construct(WildDog $dog)
+    {
+        $this->dog = $dog;
+    }
 
-  public function roar() {
-    $this->dog->bark();
-  }
+    public function roar()
+    {
+        $this->dog->bark();
+    }
 }

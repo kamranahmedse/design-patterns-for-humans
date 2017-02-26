@@ -3,9 +3,11 @@
 namespace designPatternsForHumans\creational\FactoryMethod;
 
 
-class Developer implements Interviewer {
+class Developer implements Interviewer
+{
 
-  public function askQuestions() {
-    echo 'Asking about Design Patterns!' . PHP_EOL;
-  }
+    public function askQuestions()
+    {
+        echo 'Asking about Design Patterns!' . PHP_EOL;
+    }
 }

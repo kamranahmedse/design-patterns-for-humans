@@ -3,7 +3,8 @@
 namespace designPatternsForHumans\creational\AbstractFactory;
 
 
-interface Door {
-  public function getDescription();
+interface Door
+{
+    public function getDescription();
 
 }

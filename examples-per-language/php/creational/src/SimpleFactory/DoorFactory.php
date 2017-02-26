@@ -3,10 +3,12 @@
 namespace designPatternsForHumans\creational\SimpleFactory;
 
 
-class DoorFactory {
+class DoorFactory
+{
 
-  public static function makeDoor($width, $height) {
-    return new WoodenDoor($width, $height);
-  }
+    public static function makeDoor($width, $height)
+    {
+        return new WoodenDoor($width, $height);
+    }
 
 }

@@ -3,9 +3,11 @@
 namespace designPatternsForHumans\structural\Bridge;
 
 
-interface WebPage {
+interface WebPage
+{
 
-  public function __construct(Theme $theme);
-  public function getContent();
+    public function __construct(Theme $theme);
+
+    public function getContent();
 
 }

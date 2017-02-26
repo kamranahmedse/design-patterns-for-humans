@@ -3,8 +3,10 @@
 namespace designPatternsForHumans\creational\AbstractFactory;
 
 
-interface DoorFactory {
-  public function makeDoor();
-  public function makeFittingExpert();
+interface DoorFactory
+{
+    public function makeDoor();
+
+    public function makeFittingExpert();
 
 }

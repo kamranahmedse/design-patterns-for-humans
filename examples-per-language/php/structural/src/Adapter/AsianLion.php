@@ -2,9 +2,11 @@
 namespace designPatternsForHumans\structural\Adapter;
 
 
-class AsianLion implements Lion {
+class AsianLion implements Lion
+{
 
-  public function roar() {
+    public function roar()
+    {
 
-  }
+    }
 }

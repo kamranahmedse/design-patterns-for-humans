@@ -2,15 +2,18 @@
 
 namespace designPatternsForHumans\structural\Bridge;
 
-class About implements WebPage {
+class About implements WebPage
+{
 
-  protected $theme;
+    protected $theme;
 
-  public function __construct(Theme $theme) {
-    $this->theme = $theme;
-  }
+    public function __construct(Theme $theme)
+    {
+        $this->theme = $theme;
+    }
 
-  public function getContent() {
-    return 'About page in ' . $this->theme->getColor();
-  }
+    public function getContent()
+    {
+        return 'About page in ' . $this->theme->getColor();
+    }
 }

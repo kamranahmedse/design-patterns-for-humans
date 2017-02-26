@@ -3,9 +3,11 @@
 namespace designPatternsForHumans\creational\FactoryMethod;
 
 
-class CommunityExecutive implements Interviewer {
+class CommunityExecutive implements Interviewer
+{
 
-  public function askQuestions() {
-    echo 'Asking about community building!' . PHP_EOL;
-  }
+    public function askQuestions()
+    {
+        echo 'Asking about community building!' . PHP_EOL;
+    }
 }

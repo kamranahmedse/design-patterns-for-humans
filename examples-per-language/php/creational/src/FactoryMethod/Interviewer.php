@@ -3,6 +3,7 @@
 namespace designPatternsForHumans\creational\FactoryMethod;
 
 
-interface Interviewer {
-  public function askQuestions();
+interface Interviewer
+{
+    public function askQuestions();
 }

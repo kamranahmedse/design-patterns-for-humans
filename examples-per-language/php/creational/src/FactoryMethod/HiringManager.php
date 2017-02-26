@@ -3,15 +3,17 @@
 namespace designPatternsForHumans\creational\FactoryMethod;
 
 
-abstract class HiringManager {
+abstract class HiringManager
+{
 
-  // This is the factory method.
-  abstract public function makeInterviewer();
+    // This is the factory method.
+    abstract public function makeInterviewer();
 
-  public function takeInterview() {
+    public function takeInterview()
+    {
 
-    /** @var Interviewer $interviewer */
-    $interviewer = $this->makeInterviewer();
-    $interviewer->askQuestions();
-  }
+        /** @var Interviewer $interviewer */
+        $interviewer = $this->makeInterviewer();
+        $interviewer->askQuestions();
+    }
 }

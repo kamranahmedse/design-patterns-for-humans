@@ -3,10 +3,12 @@
 namespace designPatternsForHumans\structural\Adapter;
 
 
-class WildDog {
+class WildDog
+{
 
-  public function bark() {
-    
-  }
+    public function bark()
+    {
+
+    }
 
 }

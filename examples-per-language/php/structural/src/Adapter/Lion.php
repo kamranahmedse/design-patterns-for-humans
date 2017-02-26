@@ -3,6 +3,7 @@
 namespace designPatternsForHumans\structural\Adapter;
 
 
-interface Lion {
-  public function roar();
+interface Lion
+{
+    public function roar();
 }

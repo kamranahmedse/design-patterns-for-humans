@@ -3,13 +3,16 @@
 namespace designPatternsForHumans\creational\AbstractFactory;
 
 
-class IronDoorFactory implements DoorFactory {
+class IronDoorFactory implements DoorFactory
+{
 
-  public function makeDoor() {
-    return new IronDoor();
-  }
+    public function makeDoor()
+    {
+        return new IronDoor();
+    }
 
-  public function makeFittingExpert() {
-    return new Welder();
-  }
+    public function makeFittingExpert()
+    {
+        return new Welder();
+    }
 }

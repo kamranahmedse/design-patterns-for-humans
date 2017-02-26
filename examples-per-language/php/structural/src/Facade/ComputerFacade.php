@@ -3,26 +3,30 @@
 namespace designPatternsForHumans\structural\Facade;
 
 
-class ComputerFacade {
+class ComputerFacade
+{
 
-  protected $computer;
+    protected $computer;
 
-  public function __construct(Computer $computer) {
-    $this->computer = $computer;
-  }
+    public function __construct(Computer $computer)
+    {
+        $this->computer = $computer;
+    }
 
-  public function turnOn() {
-    $this->computer->getElectricShock();
-    $this->computer->makeSound();
-    $this->computer->showLoadingScreen();
-    $this->computer->bam();
-  }
+    public function turnOn()
+    {
+        $this->computer->getElectricShock();
+        $this->computer->makeSound();
+        $this->computer->showLoadingScreen();
+        $this->computer->bam();
+    }
 
-  public function turnOff() {
-    $this->computer->closeEverything();
-    $this->computer->pullCurrent();
-    $this->computer->sooth();
-  }
+    public function turnOff()
+    {
+        $this->computer->closeEverything();
+        $this->computer->pullCurrent();
+        $this->computer->sooth();
+    }
 
 
 }

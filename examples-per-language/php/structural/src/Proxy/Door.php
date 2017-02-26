@@ -3,9 +3,11 @@
 namespace designPatternsForHumans\structural\Proxy;
 
 
-interface Door {
+interface Door
+{
 
-  public function open();
-  public function close();
+    public function open();
+
+    public function close();
 
 }
