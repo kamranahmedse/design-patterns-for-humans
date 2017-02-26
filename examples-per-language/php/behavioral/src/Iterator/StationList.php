@@ -48,7 +48,7 @@ class StationList implements Countable, Iterator
     {
         // When using a numbered array like we do with $counter, we need to reset
         // the array as well, otherwise the removed station will wreak havoc with
-        // our iteration, because the value ox removed station at position X will
+        // our iteration, because the value of removed station at position X will
         // be NULL;
         $this->stations = array_values($this->stations);
         return $this->counter = 0;
