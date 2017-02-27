@@ -16,8 +16,8 @@ class Security
     public function open($password)
     {
         if ($this->authenticate($password)) {
-            $this->door->open();
             echo 'Access granted!' . PHP_EOL;
+            $this->door->open();
         } else {
             echo "Big no! It ain't possible!" . PHP_EOL;
         }
