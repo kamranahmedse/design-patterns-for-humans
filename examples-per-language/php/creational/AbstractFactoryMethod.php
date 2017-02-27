@@ -20,4 +20,3 @@ $expert = $ironFactory->makeFittingExpert();
 
 $door->getDescription();
 $expert->getDescription();
-

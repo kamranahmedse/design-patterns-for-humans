@@ -14,4 +14,3 @@ echo $cloned->getName() . PHP_EOL;
 echo $cloned->getCategory() . PHP_EOL;
 
 echo 'Remember, you can use the magic method __clone to modify the behaviour of cloning the object!';
-

@@ -29,4 +29,3 @@ echo 'These are the known Radio Stations' . PHP_EOL;
 foreach ($stationList as $station) {
     echo $station->getFrequency(). PHP_EOL;
 }
-
