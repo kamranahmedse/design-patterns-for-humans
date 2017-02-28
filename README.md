@@ -1860,13 +1860,13 @@ interface WritingState {
     public function write(string $words);
 }
 
-class UpperCaseState implements WritingState {
+class UpperCase implements WritingState {
     public function write(string $words) {
         echo strtoupper($words); 
     }
 } 
 
-class LowerCaseState implements WritingState {
+class LowerCase implements WritingState {
     public function write(string $words) {
         echo strtolower($words); 
     }
@@ -1902,12 +1902,12 @@ $editor = new TextEditor(new Default());
 
 $editor->type('First line');
 
-$editor->setState(new UpperCaseState());
+$editor->setState(new UpperCase());
 
 $editor->type('Second line');
 $editor->type('Third line');
 
-$editor->setState(new LowerCaseState());
+$editor->setState(new LowerCase());
 
 $editor->type('Fourth line');
 $editor->type('Fifth line');
