@@ -1860,13 +1860,13 @@ interface WritingState {
     public function write(string $words);
 }
 
-class UpperCase implements WritingState {
+class UpperCaseState implements WritingState {
     public function write(string $words) {
         echo strtoupper($words); 
     }
 } 
 
-class LowerCase implements WritingState {
+class LowerCaseState implements WritingState {
     public function write(string $words) {
         echo strtolower($words); 
     }
