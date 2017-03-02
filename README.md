@@ -1367,10 +1367,8 @@ use Countable;
 use Iterator;
 
 class StationList implements Countable, Iterator {
-    /** @var RadioStation[] $stations */
     protected $stations = [];
     
-    /** @var int $counter */
     protected $counter;
     
     public function addStation(RadioStation $station) {
