@@ -114,21 +114,21 @@ echo 'Height: ' . $door->getHeight();
 **Коли використовувати?**  
 Коли для створення об'єкта потрібно не лише кілька присвоєнь, а й деяка логіка, тоді має сенс передати її відповідній фабриці замість постійного повторення того самого коду всюди.
 
-🏭 Factory Method
+🏭 Фабричний метод
 --------------
 
-Real world example
-> Consider the case of a hiring manager. It is impossible for one person to interview for each of the positions. Based on the job opening, she has to decide and delegate the interview steps to different people.
+Наприклад
+> Розглянемо випадок менеджера відділу кадрів. Одна людина не спроможна проінтервьювати робітників на кожну позиціі. Тому відносно вакансіі менеджер повинен делегувати інтервью різним людям.
 
-In plain words
-> It provides a way to delegate the instantiation logic to child classes.
+Простими словами
+> Фабричний метод дозволяє делегувати виконання певної логіки дочірнім класам.
 
-Wikipedia says
-> In class-based programming, the factory method pattern is a creational pattern that uses factory methods to deal with the problem of creating objects without having to specify the exact class of the object that will be created. This is done by creating objects by calling a factory method—either specified in an interface and implemented by child classes, or implemented in a base class and optionally overridden by derived classes—rather than by calling a constructor.
+Вікі
+> В програмуванні, що основане на классах, шаблон фабричного метода - це твірний шаблон, що використовує фабричні методи для створення об'єктів без вказування конкретного класу, що створює цей об'єкт. Це досягається шляхом створення об'єктів через визов фабричних методів - або вказаних в інтерфейсі та описанних в дочірніх класах або описаних в базовому класі та перевизначені при потребі похідними класами, а не шляхом виклику конструктора.
 
- **Programmatic Example**
+ **Програмний приклад**
 
-Taking our hiring manager example above. First of all we have an interviewer interface and some implementations for it
+Візьмемо приклад з менеджером, що описано вище. Перш за все ми маємо інтерфейс інтервьюера
 
 ```php
 interface Interviewer
@@ -153,7 +153,7 @@ class CommunityExecutive implements Interviewer
 }
 ```
 
-Now let us create our `HiringManager`
+Тепер створімо `HiringManager`(менеджер відділу кадрів)
 
 ```php
 abstract class HiringManager
