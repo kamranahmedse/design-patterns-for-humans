@@ -1616,6 +1616,11 @@ Here is the simplest example of a chat room (i.e. mediator) with users (i.e. col
 First of all, we have the mediator i.e. the chat room
 
 ```php
+interface ChatRoomMediator 
+{
+    public function showMessage(User $user, string $message);
+}
+
 // Mediator
 class ChatRoom implements ChatRoomMediator
 {
