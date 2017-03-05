@@ -1307,7 +1307,7 @@ abstract class Account
             echo sprintf('Cannot pay using %s. Proceeding ..' . PHP_EOL, get_called_class());
             $this->successor->pay($amountToPay);
         } else {
-            throw Exception('None of the accounts have enough balance');
+            throw new Exception('None of the accounts have enough balance');
         }
     }
 
