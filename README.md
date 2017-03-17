@@ -1951,7 +1951,7 @@ $monkey->accept($speak);    // Ooh oo aa aa!
 $lion->accept($speak);      // Roaaar!
 $dolphin->accept($speak);   // Tuut tutt tuutt!
 ```
-We could have done this simply by having a inheritance hierarchy for the animals but then we would have to modify the animals whenever we would have to add new actions to animals. But now we will not have to change them. For example, let's say we are asked to add the jump behavior to the animals, we can simply add that by creating a new visitor i.e.
+We could have done this simply by having an inheritance hierarchy for the animals but then we would have to modify the animals whenever we would have to add new actions to animals. But now we will not have to change them. For example, let's say we are asked to add the jump behavior to the animals, we can simply add that by creating a new visitor i.e.
 
 ```php
 class Jump implements AnimalOperation
