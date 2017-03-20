@@ -12,7 +12,7 @@ A topic that can easily make anyone's mind wobble. Here I try to make them stick
 
 ***
 
-<p align="center"><b> Want to learn something?</b><br>Visit the sponsor <a href="http://hugobots.com">Hugobots</a></p>
+<p align="center"><b> Want to learn something new?</b><br>Visit <a href="http://hugobots.com">Hugobots</a> where I teach people</p>
 
 ***
 
