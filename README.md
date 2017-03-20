@@ -9,6 +9,11 @@
 A topic that can easily make anyone's mind wobble. Here I try to make them stick in to your mind (and maybe mine) by explaining them in the <i>simplest</i> way possible.
 </p>
 
+
+***
+
+<p align="center"><b> Want to learn something?</b><br>Visit the sponsor <a href="http://hugobots.com">Hugobots</a></p>
+
 ***
 
 🚀 Introduction
