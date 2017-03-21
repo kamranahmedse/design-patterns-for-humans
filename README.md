@@ -883,7 +883,7 @@ And then it can be used as
 ```php
 // Prepare the employees
 $john = new Developer('John Doe', 12000);
-$jane = new Designer('Jane', 10000);
+$jane = new Designer('Jane Doe', 15000);
 
 // Add them to organization
 $organization = new Organization();
