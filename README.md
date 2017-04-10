@@ -792,7 +792,8 @@ class Developer implements Employee
 {
     protected $salary;
     protected $name;
-
+    protected $roles;
+    
     public function __construct(string $name, float $salary)
     {
         $this->name = $name;
@@ -824,6 +825,7 @@ class Designer implements Employee
 {
     protected $salary;
     protected $name;
+    protected $roles;
 
     public function __construct(string $name, float $salary)
     {
