@@ -1,0 +1,31 @@
+{
+  "name": "design-patterns-for-humans",
+  "version": "1.0.0",
+  "description": "Design patterns for humans",
+  "main": "index.html",
+  "dependencies": {
+    "gitbook-cli": "2.3.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "gitbook:prepare": "gitbook install",
+    "gitbook:watch": "npm run gitbook:prepare && gitbook serve",
+    "gitbook:build": "npm run gitbook:prepare && rm -rf _book && gitbook build",
+    "gitbook:pdf": "gitbook pdf . ./_book/design-patterns-for-humans.pdf",
+    "gitbook:epub": "gitbook epub . ./_book/design-patterns-for-humans.epub",
+    "gitbook:mobi": "gitbook mobi . ./_book/design-patterns-for-humans.mobi"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tumregels/design-patterns-for-humans.git"
+  },
+  "keywords": [
+    "golang"
+  ],
+  "author": "Kamran Ahmed",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tumregels/design-patterns-for-humans/issues"
+  },
+  "homepage": "https://github.com/tumregels/design-patterns-for-humans#readme"
+}

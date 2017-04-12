@@ -1,0 +1,7 @@
+.bookignore
+.gitignore
+Makefile
+Vagrantfile
+package.json
+node_modules/
+tmp*/
