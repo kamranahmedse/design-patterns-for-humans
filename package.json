@@ -1,7 +1,7 @@
 {
   "name": "design-patterns-for-humans",
   "version": "1.0.0",
-  "description": "Design patterns for humans",
+  "description": "Design Patterns for Humans",
   "main": "index.html",
   "dependencies": {
     "gitbook-cli": "2.3.0"

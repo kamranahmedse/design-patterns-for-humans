@@ -1,3 +1,3 @@
 # Summary
 
-* [Design Patterns For Humans](README.md)
+* [Readme](README.md)
