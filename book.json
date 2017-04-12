@@ -1,7 +1,9 @@
 {
-    "gitbook": "3.0.x",
+    "gitbook": "3.2.2",
     "plugins": [
         "-sharing",
+        "-lunr", 
+        "-search", 
         "katex@1.1.3",
         "edit-link@2.0.x",
         "github@2.0.x"
