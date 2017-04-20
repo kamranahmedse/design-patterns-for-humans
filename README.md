@@ -12,7 +12,7 @@ A topic that can easily make anyone's mind wobble. Here I try to make them stick
 
 ***
 
-<p align="center"><b> Do you like startups or aspire to be a founder?</b><br>We are releasing <a href="http://hugobots.com">Hugobots</a> soon. Make sure to subscribe!<br><br> Also <a href="http://twitter.com/kamranahmedse">follow me on twitter @kamranahmedse</a> to keep track of what I am upto.</p>
+<p align="center"><b> Do you like startups or aspire to be a founder?</b><br>We are releasing <a href="http://hugobots.com">Hugobots</a> soon. Make sure to subscribe!</p>
 
 ***
 
