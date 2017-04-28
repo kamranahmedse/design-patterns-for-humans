@@ -792,11 +792,13 @@ class Developer implements Employee
 {
     protected $salary;
     protected $name;
+    protected $roles;
 
     public function __construct(string $name, float $salary)
     {
         $this->name = $name;
         $this->salary = $salary;
+        $this->roles[] = 'Developer';
     }
 
     public function getName(): string
@@ -824,11 +826,13 @@ class Designer implements Employee
 {
     protected $salary;
     protected $name;
+    protected $roles;
 
     public function __construct(string $name, float $salary)
     {
         $this->name = $name;
         $this->salary = $salary;
+        $this->roles[] = 'Designer';
     }
 
     public function getName(): string
@@ -1623,7 +1627,7 @@ Here is the simplest example of a chat room (i.e. mediator) with users (i.e. col
 First of all, we have the mediator i.e. the chat room
 
 ```php
-interface ChatRoomMediator 
+interface ChatRoomMediator
 {
     public function showMessage(User $user, string $message);
 }
