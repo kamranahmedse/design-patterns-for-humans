@@ -12,7 +12,7 @@ A topic that can easily make anyone's mind wobble. Here I try to make them stick
 
 ***
 
-<p align="center"><b> Want to learn something new?</b><br>Visit <a href="http://hugobots.com">Hugobots</a> where I teach people</p>
+<p align="center"><b> Did you like this guide and want more of the similar content? </b><br>We are releasing <a href="http://hugobots.com">Hugobots</a> soon. Make sure to subscribe!</p>
 
 ***
 
@@ -2283,7 +2283,7 @@ And that about wraps it up. I will continue to improve this, so you might want t
 - Report issues
 - Open pull request with improvements
 - Spread the word
-- Reach out to me directly at kamranahmed.se@gmail.com or on twitter [@kamranahmedse](http://twitter.com/kamranahmedse)
+- Reach out to me directly at kamranahmed.se@gmail.com or [![Twitter URL](https://img.shields.io/twitter/url/https/twitter.com/kamranahmedse.svg?style=social&label=Follow%20%40kamranahmedse)](https://twitter.com/kamranahmedse)
 
 ## License
 MIT © [Kamran Ahmed](http://kamranahmed.info)
