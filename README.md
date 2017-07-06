@@ -892,7 +892,7 @@ $organization = new Organization();
 $organization->addEmployee($john);
 $organization->addEmployee($jane);
 
-echo "Net salaries: " . $organization->getNetSalaries(); // Net Salaries: 22000
+echo "Net salaries: " . $organization->getNetSalaries(); // Net Salaries: 27000
 ```
 
 ☕ Decorator
