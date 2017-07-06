@@ -168,7 +168,7 @@ abstract class HiringManager
 {
 
     // Factory method
-    abstract public function makeInterviewer(): Interviewer;
+    abstract protected function makeInterviewer(): Interviewer;
 
     public function takeInterview()
     {
@@ -182,7 +182,7 @@ Now any child can extend it and provide the required interviewer
 ```php
 class DevelopmentManager extends HiringManager
 {
-    public function makeInterviewer(): Interviewer
+    protected function makeInterviewer(): Interviewer
     {
         return new Developer();
     }
@@ -190,7 +190,7 @@ class DevelopmentManager extends HiringManager
 
 class MarketingManager extends HiringManager
 {
-    public function makeInterviewer(): Interviewer
+    protected function makeInterviewer(): Interviewer
     {
         return new CommunityExecutive();
     }
