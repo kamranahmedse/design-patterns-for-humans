@@ -41,6 +41,7 @@ Types of Design Patterns
 * [Creational](#creational-design-patterns)
 * [Structural](#structural-design-patterns)
 * [Behavioral](#behavioral-design-patterns)
+* [Architectural](#architectural-design-patterns)
 
 Creational Design Patterns
 ==========================
@@ -2275,6 +2276,130 @@ $iosBuilder->build();
 // Assembling the ios build
 // Deploying ios build to server
 ```
+
+Architectural Design Patterns
+==========================
+
+In plain words
+> Architectura patterns are focused towards how to design software architecture in terms gettig better results.
+
+Wikipedia says
+> An architectural pattern is a general, reusable solution to a commonly occurring problem in software architecture within a given context.[1] Architectural patterns are similar to software design pattern but have a broader scope. The architectural patterns address various issues in software engineering, such as computer hardware performance limitations, high availability and minimization of a business risk.
+
+ * [Data Transfer Object](#-data-transfer-object)
+
+🚗 Data Transfer Object
+--------------
+Real world example
+> Consider, you are interviewer and asking quetions to interviewee. Suppose you are asking interviewee about his name, last name, his hobby, qualification,  family background etc. It would be not great if you are asking these questions one by one. Rather you prefere to ask something like tell us about you. or introduce yourself. To avoid too much of questions.
+
+In plain words
+> The Transfer Object pattern is used when we want to pass data with multiple attributes in one shot from server to client.
+
+Wikipedia says
+> A data transfer object (DTO) is an object that carries data between processes. The motivation for its use is that communication between processes is usually done resorting to remote interfaces (e.g. web services), where each call is an expensive operation. Because the majority of the cost of each call is related to the round-trip time between the client and the server, one way of reducing the number of calls is to use an object (the DTO) that aggregates the data that would have been transferred by the several calls, but that is served by one call only.
+
+**Programmatic Example**
+
+STEP 1:  Transfer Object - Simple POJO having methods to set/get attributes only. `StudentVO.java`
+
+```java
+public class StudentVO {
+   private String name;
+   private int rollNo;
+
+   StudentVO(String name, int rollNo){
+      this.name = name;
+      this.rollNo = rollNo;
+   }
+
+   public String getName() {
+      return name;
+   }
+
+   public void setName(String name) {
+      this.name = name;
+   }
+
+   public int getRollNo() {
+      return rollNo;
+   }
+
+   public void setRollNo(int rollNo) {
+      this.rollNo = rollNo;
+   }
+}
+```
+STEP 2 : Business Object - Business Service fills the Transfer Object with data. `StudentBO.java`
+```java
+import java.util.ArrayList;
+import java.util.List;
+
+public class StudentBO {
+	
+   //list is working as a database
+   List<StudentVO> students;
+
+   public StudentBO(){
+      students = new ArrayList<StudentVO>();
+      StudentVO student1 = new StudentVO("Robert",0);
+      StudentVO student2 = new StudentVO("John",1);
+      students.add(student1);
+      students.add(student2);		
+   }
+   public void deleteStudent(StudentVO student) {
+      students.remove(student.getRollNo());
+      System.out.println("Student: Roll No " + student.getRollNo() + ", deleted from database");
+   }
+
+   //retrive list of students from the database
+   public List<StudentVO> getAllStudents() {
+      return students;
+   }
+
+   public StudentVO getStudent(int rollNo) {
+      return students.get(rollNo);
+   }
+
+   public void updateStudent(StudentVO student) {
+      students.get(student.getRollNo()).setName(student.getName());
+      System.out.println("Student: Roll No " + student.getRollNo() +", updated in the database");
+   }
+}
+```
+STEP 3 : Client - Client either requests or sends the Transfer Object to Business Object. `TransferObjectPatternDemo.java`
+```java
+public class TransferObjectPatternDemo {
+   public static void main(String[] args) {
+      StudentBO studentBusinessObject = new StudentBO();
+
+      //print all students
+      for (StudentVO student : studentBusinessObject.getAllStudents()) {
+         System.out.println("Student: [RollNo : " + student.getRollNo() + ", Name : " + student.getName() + " ]");
+      }
+
+      //update student
+      StudentVO student = studentBusinessObject.getAllStudents().get(0);
+      student.setName("Michael");
+      studentBusinessObject.updateStudent(student);
+
+      //get the student
+      student = studentBusinessObject.getStudent(0);
+      System.out.println("Student: [RollNo : " + student.getRollNo() + ", Name : " + student.getName() + " ]");
+   }
+}
+```
+And it looks like (Output)
+```text
+Student: [RollNo : 0, Name : Robert ]
+Student: [RollNo : 1, Name : John ]
+Student: Roll No 0, updated in the database
+Student: [RollNo : 0, Name : Michael ]
+```
+**When to Use?**
+
+When communication between processes is usually done resorting to remote interfaces (e.g. web services, Remote Procedure Call), where each call is an expensive operation.
+
 
 ## 🚦 Wrap Up Folks
 
