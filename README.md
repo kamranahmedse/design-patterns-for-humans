@@ -12,7 +12,7 @@ A topic that can easily make anyone's mind wobble. Here I try to make them stick
 
 ***
 
-<p align="center"><b> Did you like this guide and want more of the similar content? </b><br>[Buy me a coffee](http://paypal.me/kamranahmedse) and subscribe to <a href="http://hugobots.com">Hugobots</a>!</p>
+<p align="center"><b> Did you like this guide and want more of the similar content? </b><br><a href="http://paypal.me/kamranahmedse">Buy me a coffee</a> and subscribe to <a href="http://hugobots.com">Hugobots</a>!</p>
 
 ***
 
@@ -2287,6 +2287,6 @@ And that about wraps it up. I will continue to improve this, so you might want t
 - Spread the word
 - Reach out with any feedback [![Twitter URL](https://img.shields.io/twitter/url/https/twitter.com/kamranahmedse.svg?style=social&label=Follow%20%40kamranahmedse)](https://twitter.com/kamranahmedse)
 
----
+## License 
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
