@@ -14,6 +14,7 @@ A topic that can easily make anyone's mind wobble. Here I try to make them stick
 
 <p align="center"><b> Did you like this guide and want more of the similar content? </b><br><a href="http://paypal.me/kamranahmedse">Buy me a coffee</a> and subscribe to <a href="http://hugobots.com">Hugobots</a>!</p>
 
+[![Backers on Open Collective](https://opencollective.com/design-patterns-for-humans/backers/badge.svg)](#backers) [![Sponsors on Open Collective](https://opencollective.com/design-patterns-for-humans/sponsors/badge.svg)](#sponsors)
 ***
 
 🚀 Introduction
@@ -2286,6 +2287,36 @@ And that about wraps it up. I will continue to improve this, so you might want t
 - Open pull request with improvements
 - Spread the word
 - Reach out with any feedback [![Twitter URL](https://img.shields.io/twitter/url/https/twitter.com/kamranahmedse.svg?style=social&label=Follow%20%40kamranahmedse)](https://twitter.com/kamranahmedse)
+
+## Contributors
+
+This project exists thanks to all the people who contribute.
+<a href="graphs/contributors"><img src="https://opencollective.com/design-patterns-for-humans/contributors.svg?width=890" /></a>
+
+
+## Backers
+
+Thank you to all our backers! 🙏 [[Become a backer](https://opencollective.com/design-patterns-for-humans#backer)]
+
+<a href="https://opencollective.com/design-patterns-for-humans#backers" target="_blank"><img src="https://opencollective.com/design-patterns-for-humans/backers.svg?width=890"></a>
+
+
+## Sponsors
+
+Support this project by becoming a sponsor. Your logo will show up here with a link to your website. [[Become a sponsor](https://opencollective.com/design-patterns-for-humans#sponsor)]
+
+<a href="https://opencollective.com/design-patterns-for-humans/sponsor/0/website" target="_blank"><img src="https://opencollective.com/design-patterns-for-humans/sponsor/0/avatar.svg"></a>
+<a href="https://opencollective.com/design-patterns-for-humans/sponsor/1/website" target="_blank"><img src="https://opencollective.com/design-patterns-for-humans/sponsor/1/avatar.svg"></a>
+<a href="https://opencollective.com/design-patterns-for-humans/sponsor/2/website" target="_blank"><img src="https://opencollective.com/design-patterns-for-humans/sponsor/2/avatar.svg"></a>
+<a href="https://opencollective.com/design-patterns-for-humans/sponsor/3/website" target="_blank"><img src="https://opencollective.com/design-patterns-for-humans/sponsor/3/avatar.svg"></a>
+<a href="https://opencollective.com/design-patterns-for-humans/sponsor/4/website" target="_blank"><img src="https://opencollective.com/design-patterns-for-humans/sponsor/4/avatar.svg"></a>
+<a href="https://opencollective.com/design-patterns-for-humans/sponsor/5/website" target="_blank"><img src="https://opencollective.com/design-patterns-for-humans/sponsor/5/avatar.svg"></a>
+<a href="https://opencollective.com/design-patterns-for-humans/sponsor/6/website" target="_blank"><img src="https://opencollective.com/design-patterns-for-humans/sponsor/6/avatar.svg"></a>
+<a href="https://opencollective.com/design-patterns-for-humans/sponsor/7/website" target="_blank"><img src="https://opencollective.com/design-patterns-for-humans/sponsor/7/avatar.svg"></a>
+<a href="https://opencollective.com/design-patterns-for-humans/sponsor/8/website" target="_blank"><img src="https://opencollective.com/design-patterns-for-humans/sponsor/8/avatar.svg"></a>
+<a href="https://opencollective.com/design-patterns-for-humans/sponsor/9/website" target="_blank"><img src="https://opencollective.com/design-patterns-for-humans/sponsor/9/avatar.svg"></a>
+
+
 
 ## License 
 
