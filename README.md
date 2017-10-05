@@ -12,7 +12,7 @@ A topic that can easily make anyone's mind wobble. Here I try to make them stick
 
 ***
 
-<p align="center"><b> Did you like this guide and want more of the similar content? </b><br>Subscribe for the launch of <a href="http://hugobots.com">Hugobots</a>!</p>
+<p align="center"><b> Did you like this guide and want more of the similar content? </b><br>Subscribe for the launch of <a href="http://hugobots.com">Hugobots</a> or <a href="http://twitter.com/kamranahmedse">follow me on twitter</a>!</p>
 
 ***
 
