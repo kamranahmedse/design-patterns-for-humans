@@ -2185,95 +2185,96 @@ Wikipedia says
 Imagine we have a build tool that helps us test, lint, build, generate build reports (i.e. code coverage reports, linting report etc) and deploy our app on the test server.
 
 First of all we have our base class that specifies the skeleton for the build algorithm
-```php
-abstract class Builder
-{
-
-    // Template method
-    final public function build()
-    {
-        $this->test();
-        $this->lint();
-        $this->assemble();
-        $this->deploy();
-    }
-
-    abstract public function test();
-    abstract public function lint();
-    abstract public function assemble();
-    abstract public function deploy();
+```java
+public abstract class Builder {
+	// Template-Method
+	final void build() {
+		test();
+		lint();
+		assemble();
+		deploy();
+		ready();
+	}
+	
+	abstract void test();
+	abstract void lint();
+	abstract void assemble();
+	abstract void deploy();
+	
+	final void ready() {
+		System.out.println("System is deploying and up-to-date.\n");
+	}
 }
 ```
 
 Then we can have our implementations
 
-```php
-class AndroidBuilder extends Builder
-{
-    public function test()
-    {
-        echo 'Running android tests';
-    }
+```java
 
-    public function lint()
-    {
-        echo 'Linting the android code';
-    }
+class AndroidBuilder extends Builder{
+	void test() {
+		System.out.println("Running Android tests.");
+	}
+	
+	void lint() {
+		System.out.println("Linting the Android code.");
+	}
+	
+	void assemble() {
+		System.out.println("Assembling the Android build.");
+	}
+	
+	void deploy() {
+		System.out.println("Deploying Android build to server.");
+	}
 
-    public function assemble()
-    {
-        echo 'Assembling the android build';
-    }
-
-    public function deploy()
-    {
-        echo 'Deploying android build to server';
-    }
-}
-
-class IosBuilder extends Builder
-{
-    public function test()
-    {
-        echo 'Running ios tests';
-    }
-
-    public function lint()
-    {
-        echo 'Linting the ios code';
-    }
-
-    public function assemble()
-    {
-        echo 'Assembling the ios build';
-    }
-
-    public function deploy()
-    {
-        echo 'Deploying ios build to server';
-    }
+class IOSBuilder extends Builder{
+	void test() {
+		System.out.println("Running IOS tests.");
+	}
+	
+	void lint() {
+		System.out.println("Linting the IOS code.");
+	}
+	
+	void assemble() {
+		System.out.println("Assembling the IOS build.");
+	}
+	
+	void deploy() {
+		System.out.println("Deploying IOS build to server.");
+	}
 }
 ```
 And then it can be used as
 
-```php
-$androidBuilder = new AndroidBuilder();
-$androidBuilder->build();
+```java
+public class App {
 
-// Output:
-// Running android tests
-// Linting the android code
-// Assembling the android build
-// Deploying android build to server
-
-$iosBuilder = new IosBuilder();
-$iosBuilder->build();
-
-// Output:
-// Running ios tests
-// Linting the ios code
-// Assembling the ios build
-// Deploying ios build to server
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		AndroidBuilder androidBuilder = new AndroidBuilder();
+		androidBuilder.build();
+        
+        // Output:
+        // Running Android tests.
+        // Linting the Android code.
+        // Assembling the android build.
+        // Deploying android build to server.
+        // System is deploying and up-to-date.
+		
+		IOSBuilder iosBuilder = new IOSBuilder();
+		iosBuilder.build();
+        
+        // Output:
+        // Running IOS tests.
+        // Linting the IOS code.
+        // Assembling the IOS build.
+        // Deploying IOS build to server.
+        // System is deploying and up-to-date.
+	}
+}
 ```
 
 ## 🚦 Wrap Up Folks
