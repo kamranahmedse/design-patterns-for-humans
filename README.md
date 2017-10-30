@@ -527,42 +527,42 @@ Singleton pattern is actually considered an anti-pattern and overuse of it shoul
 **Programmatic Example**
 
 To create a singleton, make the constructor private, disable cloning, disable extension and create a static variable to house the instance
-```php
-final class President
-{
-    private static $instance;
+```java
+public class President {
+	private static President president;
+	static String text;
+	
+	private President(){
 
-    private function __construct()
-    {
-        // Hide the constructor
-    }
+	}
 
-    public static function getInstance(): President
-    {
-        if (!self::$instance) {
-            self::$instance = new self();
-        }
-
-        return self::$instance;
-    }
-
-    private function __clone()
-    {
-        // Disable cloning
-    }
-
-    private function __wakeup()
-    {
-        // Disable unserialize
-    }
+	public static President getInstance(){
+		if(president == null){
+			president = new President();		
+		}
+		return president;
+	}	
+	
+	
+	public void open() {
+		text = "This is open!";
+	}
+	
+	public void close() {
+		text = "This is close!";
+	}
 }
 ```
 Then in order to use
-```php
-$president1 = President::getInstance();
-$president2 = President::getInstance();
-
-var_dump($president1 === $president2); // true
+```java
+public static void main(String[] args) {
+		President a = President.getInstance();
+		President b = President.getInstance();
+		
+		System.out.println(b.hashCode());
+		System.out.println(a.hashCode());
+		System.out.println(b.hashCode() == a.hashCode());
+	}
 ```
 
 Structural Design Patterns
