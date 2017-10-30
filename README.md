@@ -72,42 +72,40 @@ Wikipedia says
 **Programmatic Example**
 
 First of all we have a door interface and the implementation
-```php
-interface Door
-{
-    public function getWidth(): float;
-    public function getHeight(): float;
+```java
+public interface Door{
+	
+	public float getWidth();
+	public float getHeight();
+	
 }
 
-class WoodenDoor implements Door
-{
-    protected $width;
-    protected $height;
+class WoodenDoor implements Door {
 
-    public function __construct(float $width, float $height)
-    {
-        $this->width = $width;
-        $this->height = $height;
+    protected float width;
+    protected float height;
+
+    public WoodenDoor(float width, float height) {
+        this.width = width;
+        this.height = height;
+    }
+    
+    public float getWidth() {
+        return this.width;
     }
 
-    public function getWidth(): float
-    {
-        return $this->width;
+    public float getHeight() {
+        return this.height;
     }
 
-    public function getHeight(): float
-    {
-        return $this->height;
-    }
 }
 ```
 Then we have our door factory that makes the door and returns it
-```php
-class DoorFactory
-{
-    public static function makeDoor($width, $height): Door
-    {
-        return new WoodenDoor($width, $height);
+```java
+public class DoorFactory {
+    
+    public static Door makeDoor(float width, float height){
+        return new WoodenDoor(width, height);
     }
 }
 ```
