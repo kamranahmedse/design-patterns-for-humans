@@ -653,6 +653,7 @@ class WildDogAdapter implements Lion
         this.dog = dog;
     }
 
+    @Override
     public void roar()
     {
         this.dog.bark();
