@@ -600,31 +600,33 @@ Consider a game where there is a hunter and he hunts lions.
 
 First we have an interface `Lion` that all types of lions have to implement
 
-```php
+```java
 interface Lion
 {
-    public function roar();
+    void roar();
 }
 
 class AfricanLion implements Lion
 {
-    public function roar()
+    @Override
+    public void roar()
     {
     }
 }
 
 class AsianLion implements Lion
 {
-    public function roar()
+    @Override
+    public void roar()
     {
     }
 }
 ```
 And hunter expects any implementation of `Lion` interface to hunt.
-```php
+```java
 class Hunter
 {
-    public function hunt(Lion $lion)
+    public void hunt(Object animal)
     {
     }
 }
@@ -632,11 +634,11 @@ class Hunter
 
 Now let's say we have to add a `WildDog` in our game so that hunter can hunt that also. But we can't do that directly because dog has a different interface. To make it compatible for our hunter, we will have to create an adapter that is compatible
 
-```php
+```java
 // This needs to be added to the game
 class WildDog
 {
-    public function bark()
+    public void bark()
     {
     }
 }
@@ -644,27 +646,27 @@ class WildDog
 // Adapter around wild dog to make it compatible with our game
 class WildDogAdapter implements Lion
 {
-    protected $dog;
+    public WildDog dog;
 
-    public function __construct(WildDog $dog)
+    public WildDogAdapter(WildDog dog)
     {
-        $this->dog = $dog;
+        this.dog = dog;
     }
 
-    public function roar()
+    public void roar()
     {
-        $this->dog->bark();
+        this.dog.bark();
     }
 }
 ```
 And now the `WildDog` can be used in our game using `WildDogAdapter`.
 
-```php
-$wildDog = new WildDog();
-$wildDogAdapter = new WildDogAdapter($wildDog);
+```java
+WildDog wildDog = new WildDog();
+WildDogAdapter wildDogAdapter = new WildDogAdapter(wildDog);
 
-$hunter = new Hunter();
-$hunter->hunt($wildDogAdapter);
+Hunter hunter = new Hunter();
+hunter.hunt(wildDogAdapter);
 ```
 
 🚡 Bridge
