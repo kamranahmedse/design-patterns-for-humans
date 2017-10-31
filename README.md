@@ -110,10 +110,16 @@ public class DoorFactory {
 }
 ```
 And then it can be used as
-```php
-$door = DoorFactory::makeDoor(100, 200);
-echo 'Width: ' . $door->getWidth();
-echo 'Height: ' . $door->getHeight();
+```java
+public class Main {
+
+    public static void main(String[] args) {
+        Door door = DoorFactory.makeDoor(100, 200);
+        System.out.println("WIdth: "+door.getWidth());
+        System.out.println("Height: "+door.getHeight());
+    }
+
+}
 ```
 
 **When to Use?**
