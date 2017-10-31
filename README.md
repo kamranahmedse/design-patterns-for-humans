@@ -782,121 +782,128 @@ Wikipedia says
 
 Taking our employees example from above. Here we have different employee types
 
-```php
-interface Employee
+```java
+import java.util.List;
+import java.util.ArrayList;
+public interface iEmployee
 {
-    public function __construct(string $name, float $salary);
-    public function getName(): string;
-    public function setSalary(float $salary);
-    public function getSalary(): float;
-    public function getRoles(): array;
+    //(String name, double salary);
+    public String getName();
+    public void setSalary(double salary);
+    public double getSalary();
+    public List<String> getRoles();
 }
 
-class Developer implements Employee
+public class Developer implements iEmployee
 {
-    protected $salary;
-    protected $name;
-    protected $roles;
+    protected double salary;
+    protected String name;
+    protected List<String> roles = new ArrayList<String>();
     
-    public function __construct(string $name, float $salary)
+    public Developer(String name, double salary)
     {
-        $this->name = $name;
-        $this->salary = $salary;
+        this.name = name;
+        this.salary = salary;
     }
-
-    public function getName(): string
+    @Override
+    public String getName()
     {
-        return $this->name;
+        return this.name;
     }
-
-    public function setSalary(float $salary)
+    @Override
+    public void setSalary(double salary)
     {
-        $this->salary = $salary;
+        this.salary = salary;
     }
-
-    public function getSalary(): float
+    @Override
+    public double getSalary()
     {
-        return $this->salary;
+        return this.salary;
     }
-
-    public function getRoles(): array
+    @Override
+    public List<String> getRoles()
     {
-        return $this->roles;
+        return this.roles;
     }
 }
 
-class Designer implements Employee
+public class Designer implements iEmployee
 {
-    protected $salary;
-    protected $name;
-    protected $roles;
-
-    public function __construct(string $name, float $salary)
+    protected double salary;
+    protected String name;
+    protected List<String> roles = new ArrayList<String>();
+    public Designer(String name, double salary)
     {
-        $this->name = $name;
-        $this->salary = $salary;
+        this.name = name;
+        this.salary = salary;
     }
-
-    public function getName(): string
+    @Override
+    public String getName()
     {
-        return $this->name;
+        return this.name;
     }
-
-    public function setSalary(float $salary)
+    @Override
+    public void setSalary(double salary)
     {
-        $this->salary = $salary;
+        this.salary = salary;
     }
-
-    public function getSalary(): float
+    @Override
+    public double getSalary()
     {
-        return $this->salary;
+        return this.salary;
     }
-
-    public function getRoles(): array
+    @Override
+    public List<String> getRoles()
     {
-        return $this->roles;
+        return this.roles;
     }
 }
 ```
 
 Then we have an organization which consists of several different types of employees
 
-```php
-class Organization
+```java
+import java.util.List;
+import java.util.ArrayList;
+public class Organization
 {
-    protected $employees;
-
-    public function addEmployee(Employee $employee)
+    protected List<iEmployee> employees = new ArrayList<iEmployee>();
+    public void addEmployee(iEmployee employee)
     {
-        $this->employees[] = $employee;
+        this.employees.add(employee);
     }
-
-    public function getNetSalaries(): float
+    public double getNetSalaries()
     {
-        $netSalary = 0;
-
-        foreach ($this->employees as $employee) {
-            $netSalary += $employee->getSalary();
+        double netSalary = 0;
+        for (iEmployee employee : this.employees) {
+            netSalary += employee.getSalary();
         }
-
-        return $netSalary;
+        return netSalary;
     }
 }
 ```
 
 And then it can be used as
 
-```php
-// Prepare the employees
-$john = new Developer('John Doe', 12000);
-$jane = new Designer('Jane Doe', 15000);
-
-// Add them to organization
-$organization = new Organization();
-$organization->addEmployee($john);
-$organization->addEmployee($jane);
-
-echo "Net salaries: " . $organization->getNetSalaries(); // Net Salaries: 27000
+```java
+import java.util.List;
+import java.util.ArrayList;
+public class Composite
+{
+	public static void main(String[] args) 
+	{
+	    // Prepare the employees
+		iEmployee jonh = new Developer("John Doe", 12000);
+		iEmployee jane = new Designer("Jane Doe", 15000);
+		
+		// Add them to organization
+		Organization organization = new Organization();
+		organization.addEmployee(jonh);
+		organization.addEmployee(jane);
+		
+		System.out.println("Net salaries: " + organization.getNetSalaries());// Net Salaries: 27000
+	}
+}
 ```
 
 ☕ Decorator
