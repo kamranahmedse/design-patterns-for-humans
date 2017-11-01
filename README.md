@@ -1491,96 +1491,133 @@ Wikipedia says
 
 **Programmatic example**
 
-In PHP it is quite easy to implement using SPL (Standard PHP Library). Translating our radio stations example from above. First of all we have `RadioStation`
+Translating our radio stations example from above. First of all we have `RadioStation`
 
-```php
-class RadioStation
-{
-    protected $frequency;
+```java
+public class RadioStation {
+    
+    private double frequency;
 
-    public function __construct(float $frequency)
-    {
-        $this->frequency = $frequency;
+    public RadioStation(double freq) {
+        this.frequency = freq;
     }
 
-    public function getFrequency(): float
-    {
-        return $this->frequency;
+    public double getFrequency() {
+        return frequency;
     }
+
+    @Override
+    public String toString() {
+        return "Frequency=" + this.frequency;
+    }
+    
 }
 ```
-Then we have our iterator
 
-```php
-use Countable;
-use Iterator;
+Then we have our iterator interface and the collection interface
 
-class StationList implements Countable, Iterator
-{
-    /** @var RadioStation[] $stations */
-    protected $stations = [];
+```java
+public interface RadioStationIterator {
 
-    /** @var int $counter */
-    protected $counter;
+	public boolean hasNext();
+	
+	public RadioStation next();
 
-    public function addStation(RadioStation $station)
-    {
-        $this->stations[] = $station;
-    }
-
-    public function removeStation(RadioStation $toRemove)
-    {
-        $toRemoveFrequency = $toRemove->getFrequency();
-        $this->stations = array_filter($this->stations, function (RadioStation $station) use ($toRemoveFrequency) {
-            return $station->getFrequency() !== $toRemoveFrequency;
-        });
-    }
-
-    public function count(): int
-    {
-        return count($this->stations);
-    }
-
-    public function current(): RadioStation
-    {
-        return $this->stations[$this->counter];
-    }
-
-    public function key()
-    {
-        return $this->counter;
-    }
-
-    public function next()
-    {
-        $this->counter++;
-    }
-
-    public function rewind()
-    {
-        $this->counter = 0;
-    }
-
-    public function valid(): bool
-    {
-        return isset($this->stations[$this->counter]);
-    }
 }
 ```
-And then it can be used as
-```php
-$stationList = new StationList();
 
-$stationList->addStation(new RadioStation(89));
-$stationList->addStation(new RadioStation(101));
-$stationList->addStation(new RadioStation(102));
-$stationList->addStation(new RadioStation(103.2));
-
-foreach($stationList as $station) {
-    echo $station->getFrequency() . PHP_EOL;
+```java
+public interface RadioStationCollection {
+    
+    public void addRadioStation(RadioStation s);
+	
+    public void removeRadioStation(RadioStation s);
+	
+    public RadioStationIterator iterator();
+    
 }
+```
 
-$stationList->removeStation(new RadioStation(89)); // Will remove station 89
+And here goes the implementation of both interfaces
+
+```java
+public class RadioStationCollectionImpl implements RadioStationCollection {
+
+	private List<RadioStation> stationsList;
+
+	public RadioStationCollectionImpl() {
+		stationsList = new ArrayList<>();
+	}
+
+	public void addRadioStation(RadioStation s) {
+		this.stationsList.add(s);
+	}
+
+	public void removeRadioStation(RadioStation s) {
+		this.stationsList.remove(s);
+	}
+
+	@Override
+	public RadioStationIterator iterator() {
+		return new RadioStationIteratorImpl(this.stationsList);
+	}
+
+	private class RadioStationIteratorImpl implements RadioStationIterator {
+
+            private List<RadioStation> stations;
+            private int position;
+
+            public RadioStationIteratorImpl(List<RadioStation> stations) {
+                    this.stations = stations;
+            }
+
+            @Override
+            public boolean hasNext() {
+                if (position < stations.size())
+                    return true;
+                return false;
+            }
+
+            @Override
+            public RadioStation next() {
+                    RadioStation s = stations.get(position);
+                    position++;
+                    return s;
+            }
+
+	}
+}
+```
+
+That can be used as
+
+```java
+public class IteratorPatternTest {
+
+	public static void main(String[] args) {
+		RadioStationCollection stations = fillList();
+		RadioStationIterator i = stations.iterator();
+		while (i.hasNext()) {
+			RadioStation s = i.next();
+			System.out.println(s.toString());
+		}
+	}
+
+	private static RadioStationCollection fillList() {
+		RadioStationCollection stations = new RadioStationCollectionImpl();
+		stations.addRadioStation(new RadioStation(98.5));
+		stations.addRadioStation(new RadioStation(99.5));
+		stations.addRadioStation(new RadioStation(100.5));
+		stations.addRadioStation(new RadioStation(101.5));
+		stations.addRadioStation(new RadioStation(102.5));
+		stations.addRadioStation(new RadioStation(103.5));
+		stations.addRadioStation(new RadioStation(104.5));
+		stations.addRadioStation(new RadioStation(105.5));
+		stations.addRadioStation(new RadioStation(106.5));
+		return stations;
+	}
+
+}
 ```
 
 👽 Mediator
