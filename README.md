@@ -1133,15 +1133,15 @@ class KarakTea
 // Acts as a factory and saves the tea
 class TeaMaker
 {
-    protected $availableTea = [];
+    protected availableTea = [];
 
-    public function make($preference)
+    public preference[] make(preference)
     {
-        if (empty($this->availableTea[$preference])) {
-            $this->availableTea[$preference] = new KarakTea();
+        if (isempty(this.availableTea[preference])) {
+            this.availableTea[preference] = new KarakTea();
         }
 
-        return $this->availableTea[$preference];
+        return this.availableTea[preference];
     }
 }
 ```
@@ -1151,23 +1151,23 @@ Then we have the `TeaShop` which takes orders and serves them
 ```php
 class TeaShop
 {
-    protected $orders;
-    protected $teaMaker;
+    protected orders;
+    protected teaMaker;
 
-    public function __construct(TeaMaker $teaMaker)
+    public  TeaShop(TeaMaker teaMaker)
     {
-        $this->teaMaker = $teaMaker;
+        this.teaMaker = teaMaker;
     }
 
-    public function takeOrder(string $teaType, int $table)
+    public void takeOrder(string teaType, int table)
     {
-        $this->orders[$table] = $this->teaMaker->make($teaType);
+        this.orders[table] = this.teaMaker.make(teaType);
     }
 
-    public function serve()
+    public void serve()
     {
-        foreach ($this->orders as $table => $tea) {
-            echo "Serving tea to table# " . $table;
+        foreach (this.orders+"as table"+tea) {
+          system.out.println( "Serving tea to table# "+table) ;
         }
     }
 }
@@ -1175,14 +1175,14 @@ class TeaShop
 And it can be used as below
 
 ```php
-$teaMaker = new TeaMaker();
-$shop = new TeaShop($teaMaker);
+teaMaker = new TeaMaker();
+shop = new TeaShop(teaMaker);
 
-$shop->takeOrder('less sugar', 1);
-$shop->takeOrder('more milk', 2);
-$shop->takeOrder('without sugar', 5);
+shop.takeOrder("less sugar", 1);
+shop.takeOrder("more milk", 2);
+shop.takeOrder("without sugar", 5);
 
-$shop->serve();
+shop.serve();
 // Serving tea to table# 1
 // Serving tea to table# 2
 // Serving tea to table# 5
