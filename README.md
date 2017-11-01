@@ -1137,7 +1137,7 @@ class TeaMaker
 
     public preference[] make(preference)
     {
-        if (isempty(this.availableTea[preference])) {
+        if (this.availableTea[preference].isEmpty() {
             this.availableTea[preference] = new KarakTea();
         }
 
