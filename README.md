@@ -72,50 +72,54 @@ Wikipedia says
 **Programmatic Example**
 
 First of all we have a door interface and the implementation
-```php
-interface Door
-{
-    public function getWidth(): float;
-    public function getHeight(): float;
+```java
+public interface Door{
+	
+	public float getWidth();
+	public float getHeight();
+	
 }
 
-class WoodenDoor implements Door
-{
-    protected $width;
-    protected $height;
+class WoodenDoor implements Door {
 
-    public function __construct(float $width, float $height)
-    {
-        $this->width = $width;
-        $this->height = $height;
+    protected float width;
+    protected float height;
+
+    public WoodenDoor(float width, float height) {
+        this.width = width;
+        this.height = height;
+    }
+    
+    public float getWidth() {
+        return this.width;
     }
 
-    public function getWidth(): float
-    {
-        return $this->width;
+    public float getHeight() {
+        return this.height;
     }
 
-    public function getHeight(): float
-    {
-        return $this->height;
-    }
 }
 ```
 Then we have our door factory that makes the door and returns it
-```php
-class DoorFactory
-{
-    public static function makeDoor($width, $height): Door
-    {
-        return new WoodenDoor($width, $height);
+```java
+public class DoorFactory {
+    
+    public static Door makeDoor(float width, float height){
+        return new WoodenDoor(width, height);
     }
 }
 ```
 And then it can be used as
-```php
-$door = DoorFactory::makeDoor(100, 200);
-echo 'Width: ' . $door->getWidth();
-echo 'Height: ' . $door->getHeight();
+```java
+public class Main {
+
+    public static void main(String[] args) {
+        Door door = DoorFactory.makeDoor(100, 200);
+        System.out.println("WIdth: "+door.getWidth());
+        System.out.println("Height: "+door.getHeight());
+    }
+
+}
 ```
 
 **When to Use?**
@@ -226,107 +230,101 @@ Wikipedia says
 
 Translating the door example above. First of all we have our `Door` interface and some implementation for it
 
-```php
-interface Door
-{
-    public function getDescription();
+```Java
+public interface Door {
+    public void getDescription();
 }
 
-class WoodenDoor implements Door
-{
-    public function getDescription()
-    {
-        echo 'I am a wooden door';
+public class WoodenDoor implements Door {
+    @Override
+    public void getDescription(){
+	System.out.println("I am a wooden door");
     }
 }
 
-class IronDoor implements Door
-{
-    public function getDescription()
-    {
-        echo 'I am an iron door';
+public class IronDoor implements Door {
+    @Override
+    public void getDescription(){
+	System.out.println("I am an iron door");
     }
 }
 ```
 Then we have some fitting experts for each door type
 
-```php
-interface DoorFittingExpert
-{
-    public function getDescription();
+```Java
+public interface DoorFittingExpert {
+    public void getDescription();
 }
 
-class Welder implements DoorFittingExpert
-{
-    public function getDescription()
-    {
-        echo 'I can only fit iron doors';
+public class Welder implements DoorFittingExpert{
+    @Override
+    public void getDescription(){
+        System.out.println("I can only fit iron doors");
     }
 }
 
-class Carpenter implements DoorFittingExpert
-{
-    public function getDescription()
-    {
-        echo 'I can only fit wooden doors';
+public class Carpenter implements DoorFittingExpert {
+
+    @Override
+    public void getDescription() {
+        System.out.println("I can only fit wooden doors");
     }
 }
 ```
 
 Now we have our abstract factory that would let us make family of related objects i.e. wooden door factory would create a wooden door and wooden door fitting expert and iron door factory would create an iron door and iron door fitting expert
-```php
-interface DoorFactory
-{
-    public function makeDoor(): Door;
-    public function makeFittingExpert(): DoorFittingExpert;
+```Java
+public interface DoorFactory {
+    public Door makeDoor();
+    public DoorFittingExpert makeFittingExpert();
 }
 
 // Wooden factory to return carpenter and wooden door
-class WoodenDoorFactory implements DoorFactory
-{
-    public function makeDoor(): Door
-    {
+public class WoodenDoorFactory implements DoorFactory {
+    @Override
+    public Door makeDoor(){
         return new WoodenDoor();
     }
 
-    public function makeFittingExpert(): DoorFittingExpert
-    {
+    @Override
+    public DoorFittingExpert makeFittingExpert(){
         return new Carpenter();
     }
 }
 
 // Iron door factory to get iron door and the relevant fitting expert
-class IronDoorFactory implements DoorFactory
-{
-    public function makeDoor(): Door
-    {
+public class IronDoorFactory implements DoorFactory {
+    @Override
+    public Door makeDoor(){
         return new IronDoor();
     }
 
-    public function makeFittingExpert(): DoorFittingExpert
-    {
+    @Override
+    public DoorFittingExpert makeFittingExpert(){
         return new Welder();
     }
 }
 ```
 And then it can be used as
-```php
-$woodenFactory = new WoodenDoorFactory();
+```Java
+public static void main(String[] args) {
+        WoodenDoorFactory woodenFactory = new WoodenDoorFactory();
 
-$door = $woodenFactory->makeDoor();
-$expert = $woodenFactory->makeFittingExpert();
+        Door door = woodenFactory.makeDoor();
+        DoorFittingExpert expert = woodenFactory.makeFittingExpert();
 
-$door->getDescription();  // Output: I am a wooden door
-$expert->getDescription(); // Output: I can only fit wooden doors
+        door.getDescription();  // Output: I am a wooden door
+        expert.getDescription(); // Output: I can only fit wooden doors
 
-// Same for Iron Factory
-$ironFactory = new IronDoorFactory();
+        // Same for Iron Factory
+        IronDoorFactory ironFactory = new IronDoorFactory();
 
-$door = $ironFactory->makeDoor();
-$expert = $ironFactory->makeFittingExpert();
+        door = ironFactory.makeDoor();
+        expert = ironFactory.makeFittingExpert();
 
-$door->getDescription();  // Output: I am an iron door
-$expert->getDescription(); // Output: I can only fit iron doors
+        door.getDescription();  // Output: I am an iron door
+        expert.getDescription(); // Output: I can only fit iron doors
+    }
 ```
 
 As you can see the wooden door factory has encapsulated the `carpenter` and the `wooden door` also iron door factory has encapsulated the `iron door` and `welder`. And thus it had helped us make sure that for each of the created door, we do not get a wrong fitting expert.   
@@ -348,8 +346,8 @@ Wikipedia says
 
 Having said that let me add a bit about what telescoping constructor anti-pattern is. At one point or the other we have all seen a constructor like below:
 
-```php
-public function __construct($size, $cheese = true, $pepperoni = true, $tomato = false, $lettuce = true)
+```java
+public Burger(int size, boolean cheese = true, boolean pepperoni = true, boolean tomato = false, boolean lettuce = true)
 {
 }
 ```
@@ -360,82 +358,82 @@ As you can see; the number of constructor parameters can quickly get out of hand
 
 The sane alternative is to use the builder pattern. First of all we have our burger that we want to make
 
-```php
+```java
 class Burger
 {
-    protected $size;
+    protected int size;
 
-    protected $cheese = false;
-    protected $pepperoni = false;
-    protected $lettuce = false;
-    protected $tomato = false;
+    protected boolean cheese = false;
+    protected boolean pepperoni = false;
+    protected boolean lettuce = false;
+    protected boolean tomato = false;
 
-    public function __construct(BurgerBuilder $builder)
+    public Burger(BurgerBuilder builder)
     {
-        $this->size = $builder->size;
-        $this->cheese = $builder->cheese;
-        $this->pepperoni = $builder->pepperoni;
-        $this->lettuce = $builder->lettuce;
-        $this->tomato = $builder->tomato;
+        this.size = builder.size;
+        this.cheese = builder.cheese;
+        this.pepperoni = builder.pepperoni;
+        this.lettuce = builder.lettuce;
+        this.tomato = builder.tomato;
     }
 }
 ```
 
 And then we have the builder
 
-```php
+```java
 class BurgerBuilder
 {
-    public $size;
+    public int size;
 
-    public $cheese = false;
-    public $pepperoni = false;
-    public $lettuce = false;
-    public $tomato = false;
+    public boolean cheese = false;
+    public boolean pepperoni = false;
+    public boolean lettuce = false;
+    public boolean tomato = false;
 
-    public function __construct(int $size)
+    public BurgerBuilder(int size)
     {
-        $this->size = $size;
+        this.size = size;
     }
 
-    public function addPepperoni()
+    public BurgerBuilder addPepperoni()
     {
-        $this->pepperoni = true;
-        return $this;
+        this.pepperoni = true;
+        return this;
     }
 
-    public function addLettuce()
+    public BurgerBuilder addLettuce()
     {
-        $this->lettuce = true;
-        return $this;
+        this.lettuce = true;
+        return this;
     }
 
-    public function addCheese()
+    public BurgerBuilder addCheese()
     {
-        $this->cheese = true;
-        return $this;
+        this.cheese = true;
+        return this;
     }
 
-    public function addTomato()
+    public BurgerBuilder addTomato()
     {
-        $this->tomato = true;
-        return $this;
+        this.tomato = true;
+        return this;
     }
 
-    public function build(): Burger
+    public Burger build()
     {
-        return new Burger($this);
+        return new Burger(this);
     }
 }
 ```
 And then it can be used as:
 
-```php
-$burger = (new BurgerBuilder(14))
-                    ->addPepperoni()
-                    ->addLettuce()
-                    ->addTomato()
-                    ->build();
+```java
+BurgerBuilder builder = new BurgerBuilder(14);
+        builder.addPepperoni();
+        builder.addLettuce();
+        builder.addTomato();
+        Burger burger = builder.build();
 ```
 
 **When to use?**
@@ -459,50 +457,59 @@ In short, it allows you to create a copy of an existing object and modify it to 
 
 In PHP, it can be easily done using `clone`
 
-```php
-class Sheep
-{
-    protected $name;
-    protected $category;
+```JAVA
+public class Sheep {
 
-    public function __construct(string $name, string $category = 'Mountain Sheep')
-    {
-        $this->name = $name;
-        $this->category = $category;
+        protected String name;
+        protected String category;
+        
+        public Sheep(String name, String category){
+            this.name = name;
+            this.category = category;
+        }
+        
+        public void setName(String name){
+            this.name = name;
+            
+        }
+        
+        public String getName(){
+            return this.name;
+            
+        }
+        
+        public void setCategory(String category){
+            this.category = category;
+            
+        }
+        
+        public String getCategory(){
+            return this.category;
+        }
+        
+   
+    
+    public static void main(String[] args) {
+            // TODO code application logic here
+        
+            // Criação do Original
+        Sheep original = new Sheep("Jolly", "Mountain Sheep");
+        System.out.println(original.getName());
+        System.out.println(original.getCategory());
+        
+            // Clone e modificação que é necessária
+        Sheep clone = original;
+        
+        System.out.println("Clonagem realizada");
+        
+        clone.setName("Dolly");
+        System.out.println(clone.getName());
+        System.out.println(clone.getCategory());
+        
+        
     }
-
-    public function setName(string $name)
-    {
-        $this->name = $name;
-    }
-
-    public function getName()
-    {
-        return $this->name;
-    }
-
-    public function setCategory(string $category)
-    {
-        $this->category = $category;
-    }
-
-    public function getCategory()
-    {
-        return $this->category;
-    }
+    
 }
-```
-Then it can be cloned like below
-```php
-$original = new Sheep('Jolly');
-echo $original->getName(); // Jolly
-echo $original->getCategory(); // Mountain Sheep
-
-// Clone and modify what is required
-$cloned = clone $original;
-$cloned->setName('Dolly');
-echo $cloned->getName(); // Dolly
-echo $cloned->getCategory(); // Mountain sheep
 ```
 
 Also you could use the magic method `__clone` to modify the cloning behavior.
@@ -527,42 +534,42 @@ Singleton pattern is actually considered an anti-pattern and overuse of it shoul
 **Programmatic Example**
 
 To create a singleton, make the constructor private, disable cloning, disable extension and create a static variable to house the instance
-```php
-final class President
-{
-    private static $instance;
+```java
+public class President {
+	private static President president;
+	static String text;
+	
+	private President(){
 
-    private function __construct()
-    {
-        // Hide the constructor
-    }
+	}
 
-    public static function getInstance(): President
-    {
-        if (!self::$instance) {
-            self::$instance = new self();
-        }
-
-        return self::$instance;
-    }
-
-    private function __clone()
-    {
-        // Disable cloning
-    }
-
-    private function __wakeup()
-    {
-        // Disable unserialize
-    }
+	public static President getInstance(){
+		if(president == null){
+			president = new President();		
+		}
+		return president;
+	}	
+	
+	
+	public void open() {
+		text = "This is open!";
+	}
+	
+	public void close() {
+		text = "This is close!";
+	}
 }
 ```
 Then in order to use
-```php
-$president1 = President::getInstance();
-$president2 = President::getInstance();
-
-var_dump($president1 === $president2); // true
+```java
+public static void main(String[] args) {
+		President a = President.getInstance();
+		President b = President.getInstance();
+		
+		System.out.println(b.hashCode());
+		System.out.println(a.hashCode());
+		System.out.println(b.hashCode() == a.hashCode());
+	}
 ```
 
 Structural Design Patterns
@@ -600,31 +607,33 @@ Consider a game where there is a hunter and he hunts lions.
 
 First we have an interface `Lion` that all types of lions have to implement
 
-```php
+```java
 interface Lion
 {
-    public function roar();
+    void roar();
 }
 
 class AfricanLion implements Lion
 {
-    public function roar()
+    @Override
+    public void roar()
     {
     }
 }
 
 class AsianLion implements Lion
 {
-    public function roar()
+    @Override
+    public void roar()
     {
     }
 }
 ```
 And hunter expects any implementation of `Lion` interface to hunt.
-```php
+```java
 class Hunter
 {
-    public function hunt(Lion $lion)
+    public void hunt(Object animal)
     {
     }
 }
@@ -632,11 +641,11 @@ class Hunter
 
 Now let's say we have to add a `WildDog` in our game so that hunter can hunt that also. But we can't do that directly because dog has a different interface. To make it compatible for our hunter, we will have to create an adapter that is compatible
 
-```php
+```java
 // This needs to be added to the game
 class WildDog
 {
-    public function bark()
+    public void bark()
     {
     }
 }
@@ -644,27 +653,28 @@ class WildDog
 // Adapter around wild dog to make it compatible with our game
 class WildDogAdapter implements Lion
 {
-    protected $dog;
+    public WildDog dog;
 
-    public function __construct(WildDog $dog)
+    public WildDogAdapter(WildDog dog)
     {
-        $this->dog = $dog;
+        this.dog = dog;
     }
 
-    public function roar()
+    @Override
+    public void roar()
     {
-        $this->dog->bark();
+        this.dog.bark();
     }
 }
 ```
 And now the `WildDog` can be used in our game using `WildDogAdapter`.
 
-```php
-$wildDog = new WildDog();
-$wildDogAdapter = new WildDogAdapter($wildDog);
+```java
+WildDog wildDog = new WildDog();
+WildDogAdapter wildDogAdapter = new WildDogAdapter(wildDog);
 
-$hunter = new Hunter();
-$hunter->hunt($wildDogAdapter);
+Hunter hunter = new Hunter();
+hunter.hunt(wildDogAdapter);
 ```
 
 🚡 Bridge
@@ -778,121 +788,128 @@ Wikipedia says
 
 Taking our employees example from above. Here we have different employee types
 
-```php
-interface Employee
+```java
+import java.util.List;
+import java.util.ArrayList;
+public interface iEmployee
 {
-    public function __construct(string $name, float $salary);
-    public function getName(): string;
-    public function setSalary(float $salary);
-    public function getSalary(): float;
-    public function getRoles(): array;
+    //(String name, double salary);
+    public String getName();
+    public void setSalary(double salary);
+    public double getSalary();
+    public List<String> getRoles();
 }
 
-class Developer implements Employee
+public class Developer implements iEmployee
 {
-    protected $salary;
-    protected $name;
-    protected $roles;
+    protected double salary;
+    protected String name;
+    protected List<String> roles = new ArrayList<String>();
     
-    public function __construct(string $name, float $salary)
+    public Developer(String name, double salary)
     {
-        $this->name = $name;
-        $this->salary = $salary;
+        this.name = name;
+        this.salary = salary;
     }
-
-    public function getName(): string
+    @Override
+    public String getName()
     {
-        return $this->name;
+        return this.name;
     }
-
-    public function setSalary(float $salary)
+    @Override
+    public void setSalary(double salary)
     {
-        $this->salary = $salary;
+        this.salary = salary;
     }
-
-    public function getSalary(): float
+    @Override
+    public double getSalary()
     {
-        return $this->salary;
+        return this.salary;
     }
-
-    public function getRoles(): array
+    @Override
+    public List<String> getRoles()
     {
-        return $this->roles;
+        return this.roles;
     }
 }
 
-class Designer implements Employee
+public class Designer implements iEmployee
 {
-    protected $salary;
-    protected $name;
-    protected $roles;
-
-    public function __construct(string $name, float $salary)
+    protected double salary;
+    protected String name;
+    protected List<String> roles = new ArrayList<String>();
+    public Designer(String name, double salary)
     {
-        $this->name = $name;
-        $this->salary = $salary;
+        this.name = name;
+        this.salary = salary;
     }
-
-    public function getName(): string
+    @Override
+    public String getName()
     {
-        return $this->name;
+        return this.name;
     }
-
-    public function setSalary(float $salary)
+    @Override
+    public void setSalary(double salary)
     {
-        $this->salary = $salary;
+        this.salary = salary;
     }
-
-    public function getSalary(): float
+    @Override
+    public double getSalary()
     {
-        return $this->salary;
+        return this.salary;
     }
-
-    public function getRoles(): array
+    @Override
+    public List<String> getRoles()
     {
-        return $this->roles;
+        return this.roles;
     }
 }
 ```
 
 Then we have an organization which consists of several different types of employees
 
-```php
-class Organization
+```java
+import java.util.List;
+import java.util.ArrayList;
+public class Organization
 {
-    protected $employees;
-
-    public function addEmployee(Employee $employee)
+    protected List<iEmployee> employees = new ArrayList<iEmployee>();
+    public void addEmployee(iEmployee employee)
     {
-        $this->employees[] = $employee;
+        this.employees.add(employee);
     }
-
-    public function getNetSalaries(): float
+    public double getNetSalaries()
     {
-        $netSalary = 0;
-
-        foreach ($this->employees as $employee) {
-            $netSalary += $employee->getSalary();
+        double netSalary = 0;
+        for (iEmployee employee : this.employees) {
+            netSalary += employee.getSalary();
         }
-
-        return $netSalary;
+        return netSalary;
     }
 }
 ```
 
 And then it can be used as
 
-```php
-// Prepare the employees
-$john = new Developer('John Doe', 12000);
-$jane = new Designer('Jane Doe', 15000);
-
-// Add them to organization
-$organization = new Organization();
-$organization->addEmployee($john);
-$organization->addEmployee($jane);
-
-echo "Net salaries: " . $organization->getNetSalaries(); // Net Salaries: 27000
+```java
+import java.util.List;
+import java.util.ArrayList;
+public class Composite
+{
+	public static void main(String[] args) 
+	{
+	    // Prepare the employees
+		iEmployee jonh = new Developer("John Doe", 12000);
+		iEmployee jane = new Designer("Jane Doe", 15000);
+		
+		// Add them to organization
+		Organization organization = new Organization();
+		organization.addEmployee(jonh);
+		organization.addEmployee(jane);
+		
+		System.out.println("Net salaries: " + organization.getNetSalaries());// Net Salaries: 27000
+	}
+}
 ```
 
 ☕ Decorator
@@ -1031,77 +1048,59 @@ Wikipedia says
 
 Taking our computer example from above. Here we have the computer class
 
-```php
-class Computer
-{
-    public function getElectricShock()
-    {
-        echo "Ouch!";
+```java
+public class Computer{
+    public void getElectricShock(){
+        System.out.println("Ouch!");
     }
-
-    public function makeSound()
-    {
-        echo "Beep beep!";
+    public void makeSound(){
+        System.out.println("Beep beep!");
     }
-
-    public function showLoadingScreen()
-    {
-        echo "Loading..";
+    public void showLoadingScreen(){
+        System.out.println("Loading..");
     }
-
-    public function bam()
-    {
-        echo "Ready to be used!";
+    public void bam(){
+        System.out.println("Ready to be used!");
     }
-
-    public function closeEverything()
-    {
-        echo "Bup bup bup buzzzz!";
+    public void closeEverything(){
+        System.out.println("Bup bup bup buzzzz!");
     }
-
-    public function sooth()
-    {
-        echo "Zzzzz";
+    public void sooth()    {
+        System.out.println("Zzzzz");
     }
-
-    public function pullCurrent()
-    {
-        echo "Haaah!";
+    public void pullCurrent(){
+        System.out.println("Haaah!");
     }
 }
+
 ```
 Here we have the facade
-```php
-class ComputerFacade
-{
-    protected $computer;
-
-    public function __construct(Computer $computer)
-    {
-        $this->computer = $computer;
+```java
+public class ComputerFacade{
+    protected Computer computer;
+    public ComputerFacade(Computer computer){
+        this.computer = computer;
     }
-
-    public function turnOn()
-    {
-        $this->computer->getElectricShock();
-        $this->computer->makeSound();
-        $this->computer->showLoadingScreen();
-        $this->computer->bam();
+    public function turnOn(){
+        this.computer.getElectricShock();
+        this.computer.makeSound();
+        this.computer.showLoadingScreen();
+        this.computer.bam();
     }
 
     public function turnOff()
     {
-        $this->computer->closeEverything();
-        $this->computer->pullCurrent();
-        $this->computer->sooth();
+        this.computer.closeEverything();
+        this.computer.pullCurrent();
+        this.computer.sooth();
     }
 }
 ```
 Now to use the facade
-```php
-$computer = new ComputerFacade(new Computer());
-$computer->turnOn(); // Ouch! Beep beep! Loading.. Ready to be used!
-$computer->turnOff(); // Bup bup buzzz! Haah! Zzzzz
+```java
+computer = new ComputerFacade(new Computer());
+computer.turnOn(); // Ouch! Beep beep! Loading.. Ready to be used!
+computer.turnOff(); // Bup bup buzzz! Haah! Zzzzz 
 ```
 
 🍃 Flyweight
@@ -1130,15 +1129,15 @@ class KarakTea
 // Acts as a factory and saves the tea
 class TeaMaker
 {
-    protected $availableTea = [];
+    protected availableTea = [];
 
-    public function make($preference)
+    public preference[] make(preference)
     {
-        if (empty($this->availableTea[$preference])) {
-            $this->availableTea[$preference] = new KarakTea();
+        if (this.availableTea[preference].isEmpty() {
+            this.availableTea[preference] = new KarakTea();
         }
 
-        return $this->availableTea[$preference];
+        return this.availableTea[preference];
     }
 }
 ```
@@ -1148,23 +1147,23 @@ Then we have the `TeaShop` which takes orders and serves them
 ```php
 class TeaShop
 {
-    protected $orders;
-    protected $teaMaker;
+    protected orders;
+    protected teaMaker;
 
-    public function __construct(TeaMaker $teaMaker)
+    public  TeaShop(TeaMaker teaMaker)
     {
-        $this->teaMaker = $teaMaker;
+        this.teaMaker = teaMaker;
     }
 
-    public function takeOrder(string $teaType, int $table)
+    public void takeOrder(string teaType, int table)
     {
-        $this->orders[$table] = $this->teaMaker->make($teaType);
+        this.orders[table] = this.teaMaker.make(teaType);
     }
 
-    public function serve()
+    public void serve()
     {
-        foreach ($this->orders as $table => $tea) {
-            echo "Serving tea to table# " . $table;
+        foreach (this.orders+"as table"+tea) {
+          system.out.println( "Serving tea to table# "+table) ;
         }
     }
 }
@@ -1172,14 +1171,14 @@ class TeaShop
 And it can be used as below
 
 ```php
-$teaMaker = new TeaMaker();
-$shop = new TeaShop($teaMaker);
+teaMaker = new TeaMaker();
+shop = new TeaShop(teaMaker);
 
-$shop->takeOrder('less sugar', 1);
-$shop->takeOrder('more milk', 2);
-$shop->takeOrder('without sugar', 5);
+shop.takeOrder("less sugar", 1);
+shop.takeOrder("more milk", 2);
+shop.takeOrder("without sugar", 5);
 
-$shop->serve();
+shop.serve();
 // Serving tea to table# 1
 // Serving tea to table# 2
 // Serving tea to table# 5
@@ -1200,64 +1199,55 @@ Wikipedia says
 
 Taking our security door example from above. Firstly we have the door interface and an implementation of door
 
-```php
-interface Door
-{
-    public function open();
-    public function close();
+```JAVA
+public interface Door{
+    public void open();
+    public void close();
 }
 
-class LabDoor implements Door
-{
-    public function open()
-    {
-        echo "Opening lab door";
+public class LabDoor implements Door{
+    public void open(){
+        System.out.println("Opening lab door");
     }
 
-    public function close()
-    {
-        echo "Closing the lab door";
+    public void close(){
+        System.out.println("Closing the lab door");
     }
 }
 ```
 Then we have a proxy to secure any doors that we want
-```php
-class Security
-{
-    protected $door;
+```JAVA
+public class Security{
+    protected Door door;
 
-    public function __construct(Door $door)
-    {
-        $this->door = $door;
+    public Security(Door door){
+        this.door = door;
     }
 
-    public function open($password)
-    {
-        if ($this->authenticate($password)) {
-            $this->door->open();
+    public void open(String password){
+        if (this.authenticate(password)){
+            this.door.open();
         } else {
-            echo "Big no! It ain't possible.";
+            System.out.println("Big no! It ain't possible.");
         }
     }
-
-    public function authenticate($password)
-    {
-        return $password === '$ecr@t';
+    public String authenticate(String password){
+        return password.equals("$ecr@t");
     }
 
-    public function close()
-    {
-        $this->door->close();
+    public void close(){
+        this.door.close();
     }
 }
+
 ```
 And here is how it can be used
-```php
-$door = new Security(new LabDoor());
-$door->open('invalid'); // Big no! It ain't possible.
+```JAVA
+door = new Security(new LabDoor());
+door.open("invalid"); // Big no! It ain't possible.
 
-$door->open('$ecr@t'); // Opening lab door
-$door->close(); // Closing lab door
+door.open("$ecr@t"); // Opening lab door
+door.close(); // Closing lab doorr
 ```
 Yet another example would be some sort of data-mapper implementation. For example, I recently made an ODM (Object Data Mapper) for MongoDB using this pattern where I wrote a proxy around mongo classes while utilizing the magic method `__call()`. All the method calls were proxied to the original mongo class and result retrieved was returned as it is but in case of `find` or `findOne` data was mapped to the required class objects and the object was returned instead of `Cursor`.
 
@@ -1514,96 +1504,133 @@ Wikipedia says
 
 **Programmatic example**
 
-In PHP it is quite easy to implement using SPL (Standard PHP Library). Translating our radio stations example from above. First of all we have `RadioStation`
+Translating our radio stations example from above. First of all we have `RadioStation`
 
-```php
-class RadioStation
-{
-    protected $frequency;
+```java
+public class RadioStation {
+    
+    private double frequency;
 
-    public function __construct(float $frequency)
-    {
-        $this->frequency = $frequency;
+    public RadioStation(double freq) {
+        this.frequency = freq;
     }
 
-    public function getFrequency(): float
-    {
-        return $this->frequency;
+    public double getFrequency() {
+        return frequency;
     }
+
+    @Override
+    public String toString() {
+        return "Frequency=" + this.frequency;
+    }
+    
 }
 ```
-Then we have our iterator
 
-```php
-use Countable;
-use Iterator;
+Then we have our iterator interface and the collection interface
 
-class StationList implements Countable, Iterator
-{
-    /** @var RadioStation[] $stations */
-    protected $stations = [];
+```java
+public interface RadioStationIterator {
 
-    /** @var int $counter */
-    protected $counter;
+	public boolean hasNext();
+	
+	public RadioStation next();
 
-    public function addStation(RadioStation $station)
-    {
-        $this->stations[] = $station;
-    }
-
-    public function removeStation(RadioStation $toRemove)
-    {
-        $toRemoveFrequency = $toRemove->getFrequency();
-        $this->stations = array_filter($this->stations, function (RadioStation $station) use ($toRemoveFrequency) {
-            return $station->getFrequency() !== $toRemoveFrequency;
-        });
-    }
-
-    public function count(): int
-    {
-        return count($this->stations);
-    }
-
-    public function current(): RadioStation
-    {
-        return $this->stations[$this->counter];
-    }
-
-    public function key()
-    {
-        return $this->counter;
-    }
-
-    public function next()
-    {
-        $this->counter++;
-    }
-
-    public function rewind()
-    {
-        $this->counter = 0;
-    }
-
-    public function valid(): bool
-    {
-        return isset($this->stations[$this->counter]);
-    }
 }
 ```
-And then it can be used as
-```php
-$stationList = new StationList();
 
-$stationList->addStation(new RadioStation(89));
-$stationList->addStation(new RadioStation(101));
-$stationList->addStation(new RadioStation(102));
-$stationList->addStation(new RadioStation(103.2));
-
-foreach($stationList as $station) {
-    echo $station->getFrequency() . PHP_EOL;
+```java
+public interface RadioStationCollection {
+    
+    public void addRadioStation(RadioStation s);
+	
+    public void removeRadioStation(RadioStation s);
+	
+    public RadioStationIterator iterator();
+    
 }
+```
 
-$stationList->removeStation(new RadioStation(89)); // Will remove station 89
+And here goes the implementation of both interfaces
+
+```java
+public class RadioStationCollectionImpl implements RadioStationCollection {
+
+	private List<RadioStation> stationsList;
+
+	public RadioStationCollectionImpl() {
+		stationsList = new ArrayList<>();
+	}
+
+	public void addRadioStation(RadioStation s) {
+		this.stationsList.add(s);
+	}
+
+	public void removeRadioStation(RadioStation s) {
+		this.stationsList.remove(s);
+	}
+
+	@Override
+	public RadioStationIterator iterator() {
+		return new RadioStationIteratorImpl(this.stationsList);
+	}
+
+	private class RadioStationIteratorImpl implements RadioStationIterator {
+
+            private List<RadioStation> stations;
+            private int position;
+
+            public RadioStationIteratorImpl(List<RadioStation> stations) {
+                    this.stations = stations;
+            }
+
+            @Override
+            public boolean hasNext() {
+                if (position < stations.size())
+                    return true;
+                return false;
+            }
+
+            @Override
+            public RadioStation next() {
+                    RadioStation s = stations.get(position);
+                    position++;
+                    return s;
+            }
+
+	}
+}
+```
+
+That can be used as
+
+```java
+public class IteratorPatternTest {
+
+	public static void main(String[] args) {
+		RadioStationCollection stations = fillList();
+		RadioStationIterator i = stations.iterator();
+		while (i.hasNext()) {
+			RadioStation s = i.next();
+			System.out.println(s.toString());
+		}
+	}
+
+	private static RadioStationCollection fillList() {
+		RadioStationCollection stations = new RadioStationCollectionImpl();
+		stations.addRadioStation(new RadioStation(98.5));
+		stations.addRadioStation(new RadioStation(99.5));
+		stations.addRadioStation(new RadioStation(100.5));
+		stations.addRadioStation(new RadioStation(101.5));
+		stations.addRadioStation(new RadioStation(102.5));
+		stations.addRadioStation(new RadioStation(103.5));
+		stations.addRadioStation(new RadioStation(104.5));
+		stations.addRadioStation(new RadioStation(105.5));
+		stations.addRadioStation(new RadioStation(106.5));
+		return stations;
+	}
+
+}
 ```
 
 👽 Mediator
@@ -1697,74 +1724,78 @@ Lets take an example of text editor which keeps saving the state from time to ti
 
 First of all we have our memento object that will be able to hold the editor state
 
-```php
-class EditorMemento
-{
-    protected $content;
+```JAVA
+public class EditorMemento {
 
-    public function __construct(string $content)
-    {
-        $this->content = $content;
+    protected String content;
+    
+
+    public EditorMemento(String content){
+        this.content = content;
     }
 
-    public function getContent()
-    {
-        return $this->content;
+    public void getContent(){
+        return this.content;
     }
 }
 ```
 
 Then we have our editor i.e. originator that is going to use memento object
 
-```php
-class Editor
-{
-    protected $content = '';
+```JAVA
 
-    public function type(string $words)
-    {
-        $this->content = $this->content . ' ' . $words;
+public class Editor{
+    protected content = "";
+
+    public Editor(){
     }
 
-    public function getContent()
-    {
-        return $this->content;
+    public type(String words){
+        this.content = this.content+""+words;
     }
 
-    public function save()
-    {
-        return new EditorMemento($this->content);
+    public function getContent(){
+        return this.content;
     }
 
-    public function restore(EditorMemento $memento)
+    public function save(){
+        return new EditorMemento(this.content);
+    }
+
+    public function restore(EditorMemento memento)
     {
-        $this->content = $memento->getContent();
+        this.content = memento.getContent();
     }
 }
+
 ```
 
 And then it can be used as
 
-```php
-$editor = new Editor();
+```JAVA
+public void main(String[] args){
+
+editor = new Editor();
 
 // Type some stuff
-$editor->type('This is the first sentence.');
-$editor->type('This is second.');
+editor.type = "This is the first sentence.";
+editor.type = "This is second.";
 
 // Save the state to restore to : This is the first sentence. This is second.
-$saved = $editor->save();
+saved = editor.save();
 
 // Type some more
-$editor->type('And this is third.');
+editor.type = "And this is third.";
 
 // Output: Content before Saving
-echo $editor->getContent(); // This is the first sentence. This is second. And this is third.
+System.out.println (editor.getContent()); // This is the first sentence. This is second. And this is third.
 
 // Restoring to last saved state
-$editor->restore($saved);
+editor.restore(saved);
 
-$editor->getContent(); // This is the first sentence. This is second.
+editor.getContent(); // This is the first sentence. This is second.
+
+}
 ```
 
 😎 Observer
@@ -2185,95 +2216,96 @@ Wikipedia says
 Imagine we have a build tool that helps us test, lint, build, generate build reports (i.e. code coverage reports, linting report etc) and deploy our app on the test server.
 
 First of all we have our base class that specifies the skeleton for the build algorithm
-```php
-abstract class Builder
-{
-
-    // Template method
-    final public function build()
-    {
-        $this->test();
-        $this->lint();
-        $this->assemble();
-        $this->deploy();
-    }
-
-    abstract public function test();
-    abstract public function lint();
-    abstract public function assemble();
-    abstract public function deploy();
+```java
+public abstract class Builder {
+	// Template-Method
+	final void build() {
+		test();
+		lint();
+		assemble();
+		deploy();
+		ready();
+	}
+	
+	abstract void test();
+	abstract void lint();
+	abstract void assemble();
+	abstract void deploy();
+	
+	final void ready() {
+		System.out.println("System is deploying and up-to-date.\n");
+	}
 }
 ```
 
 Then we can have our implementations
 
-```php
-class AndroidBuilder extends Builder
-{
-    public function test()
-    {
-        echo 'Running android tests';
-    }
+```java
 
-    public function lint()
-    {
-        echo 'Linting the android code';
-    }
+class AndroidBuilder extends Builder{
+	void test() {
+		System.out.println("Running Android tests.");
+	}
+	
+	void lint() {
+		System.out.println("Linting the Android code.");
+	}
+	
+	void assemble() {
+		System.out.println("Assembling the Android build.");
+	}
+	
+	void deploy() {
+		System.out.println("Deploying Android build to server.");
+	}
 
-    public function assemble()
-    {
-        echo 'Assembling the android build';
-    }
-
-    public function deploy()
-    {
-        echo 'Deploying android build to server';
-    }
-}
-
-class IosBuilder extends Builder
-{
-    public function test()
-    {
-        echo 'Running ios tests';
-    }
-
-    public function lint()
-    {
-        echo 'Linting the ios code';
-    }
-
-    public function assemble()
-    {
-        echo 'Assembling the ios build';
-    }
-
-    public function deploy()
-    {
-        echo 'Deploying ios build to server';
-    }
+class IOSBuilder extends Builder{
+	void test() {
+		System.out.println("Running IOS tests.");
+	}
+	
+	void lint() {
+		System.out.println("Linting the IOS code.");
+	}
+	
+	void assemble() {
+		System.out.println("Assembling the IOS build.");
+	}
+	
+	void deploy() {
+		System.out.println("Deploying IOS build to server.");
+	}
 }
 ```
 And then it can be used as
 
-```php
-$androidBuilder = new AndroidBuilder();
-$androidBuilder->build();
+```java
+public class App {
 
-// Output:
-// Running android tests
-// Linting the android code
-// Assembling the android build
-// Deploying android build to server
-
-$iosBuilder = new IosBuilder();
-$iosBuilder->build();
-
-// Output:
-// Running ios tests
-// Linting the ios code
-// Assembling the ios build
-// Deploying ios build to server
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		AndroidBuilder androidBuilder = new AndroidBuilder();
+		androidBuilder.build();
+        
+        // Output:
+        // Running Android tests.
+        // Linting the Android code.
+        // Assembling the android build.
+        // Deploying android build to server.
+        // System is deploying and up-to-date.
+		
+		IOSBuilder iosBuilder = new IOSBuilder();
+		iosBuilder.build();
+        
+        // Output:
+        // Running IOS tests.
+        // Linting the IOS code.
+        // Assembling the IOS build.
+        // Deploying IOS build to server.
+        // System is deploying and up-to-date.
+	}
+}
 ```
 
 ## 🚦 Wrap Up Folks
