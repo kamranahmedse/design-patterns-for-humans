@@ -134,7 +134,11 @@ In plain words
 Wikipedia says
 > In class-based programming, the factory method pattern is a creational pattern that uses factory methods to deal with the problem of creating objects without having to specify the exact class of the object that will be created. This is done by creating objects by calling a factory method—either specified in an interface and implemented by child classes, or implemented in a base class and optionally overridden by derived classes—rather than by calling a constructor.
 
- **Programmatic Example**
+**Informational videos**
+
+* On YouTube: [Factory Method Pattern – Head First Design Patterns](https://youtu.be/EcFVTgRHJLM)
+
+**Programmatic Example**
 
 Taking our hiring manager example above. First of all we have an interviewer interface and some implementations for it
 
@@ -221,6 +225,10 @@ In plain words
 
 Wikipedia says
 > The abstract factory pattern provides a way to encapsulate a group of individual factories that have a common theme without specifying their concrete classes
+
+**Informational videos**
+
+* On YouTube: [Abstract Factory Pattern – Head First Design Patterns](https://youtu.be/v-GiuMmsXj4)
 
 **Programmatic Example**
 
@@ -524,6 +532,10 @@ Wikipedia says
 
 Singleton pattern is actually considered an anti-pattern and overuse of it should be avoided. It is not necessarily bad and could have some valid use-cases but should be used with caution because it introduces a global state in your application and change to it in one place could affect in the other areas and it could become pretty difficult to debug. The other bad thing about them is it makes your code tightly coupled plus mocking the singleton could be difficult.
 
+**Informational videos**
+
+* On YouTube: [Singleton Pattern – Head First Design Patterns](https://youtu.be/hUE_j6q0LTQ)
+
 **Programmatic Example**
 
 To create a singleton, make the constructor private, disable cloning, disable extension and create a static variable to house the instance
@@ -593,6 +605,10 @@ In plain words
 
 Wikipedia says
 > In software engineering, the adapter pattern is a software design pattern that allows the interface of an existing class to be used as another interface. It is often used to make existing classes work with others without modifying their source code.
+
+**Informational videos**
+
+* On YouTube: [Adapter Pattern – Head First Design Patterns](https://youtu.be/2PKQtcJjYvc)
 
 **Programmatic Example**
 
@@ -908,6 +924,10 @@ In plain words
 Wikipedia says
 > In object-oriented programming, the decorator pattern is a design pattern that allows behavior to be added to an individual object, either statically or dynamically, without affecting the behavior of other objects from the same class. The decorator pattern is often useful for adhering to the Single Responsibility Principle, as it allows functionality to be divided between classes with unique areas of concern.
 
+**Informational videos**
+
+* On YouTube: [Decorator Pattern – Head First Design Patterns](https://youtu.be/GCraGHx6gso)
+
 **Programmatic Example**
 
 Lets take coffee for example. First of all we have a simple coffee implementing the coffee interface
@@ -1026,6 +1046,10 @@ In plain words
 
 Wikipedia says
 > A facade is an object that provides a simplified interface to a larger body of code, such as a class library.
+
+**Informational videos**
+
+* On YouTube: [Facade Pattern – Head First Design Patterns](https://youtu.be/K4FkHVO5iac)
 
 **Programmatic Example**
 
@@ -1396,6 +1420,10 @@ In plain words
 
 Wikipedia says
 > In object-oriented programming, the command pattern is a behavioral design pattern in which an object is used to encapsulate all information needed to perform an action or trigger an event at a later time. This information includes the method name, the object that owns the method and values for the method parameters.
+
+**Informational videos**
+
+* On YouTube: [Command Pattern – Head First Design Patterns](https://youtu.be/9qA5kw8dcSU)
 
 **Programmatic Example**
 
@@ -1778,6 +1806,10 @@ In plain words
 Wikipedia says
 > The observer pattern is a software design pattern in which an object, called the subject, maintains a list of its dependents, called observers, and notifies them automatically of any state changes, usually by calling one of their methods.
 
+**Informational videos**
+
+* On YouTube: [Observer Pattern – Head First Design Patterns](https://youtu.be/_BpmfnqjgzQ)
+
 **Programmatic example**
 
 Translating our example from above. First of all we have job seekers that need to be notified for a job posting
@@ -2006,6 +2038,10 @@ In plain words
 
 Wikipedia says
 > In computer programming, the strategy pattern (also known as the policy pattern) is a behavioural software design pattern that enables an algorithm's behavior to be selected at runtime.
+
+**Informational videos**
+
+* On YouTube: [Strategy Pattern – Head First Design Patterns](https://youtu.be/v9ejT8FO-7I)
 
 **Programmatic example**
 
