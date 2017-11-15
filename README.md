@@ -1220,15 +1220,15 @@ class LabDoor implements Door
     }
 }
 ```
-Then we have a proxy to secure any doors that we want
+Then we expose a proxy for creating secure doors
 ```php
-class Security
+class SecureDoor implements Door
 {
     protected $door;
 
-    public function __construct(Door $door)
+    public function __construct()
     {
-        $this->door = $door;
+        $this->door = new LabDoor();
     }
 
     public function open($password)
@@ -1240,20 +1240,20 @@ class Security
         }
     }
 
-    public function authenticate($password)
-    {
-        return $password === '$ecr@t';
-    }
-
     public function close()
     {
         $this->door->close();
+    }
+    
+    private function authenticate($password)
+    {
+        return $password === '$ecr@t';
     }
 }
 ```
 And here is how it can be used
 ```php
-$door = new Security(new LabDoor());
+$door = new SecureDoor();
 $door->open('invalid'); // Big no! It ain't possible.
 
 $door->open('$ecr@t'); // Opening lab door
