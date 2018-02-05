@@ -1222,7 +1222,7 @@ class LabDoor implements Door
 ```
 Then we have a proxy to secure any doors that we want
 ```php
-class Security
+class SecuredDoor
 {
     protected $door;
 
@@ -1253,7 +1253,7 @@ class Security
 ```
 And here is how it can be used
 ```php
-$door = new Security(new LabDoor());
+$door = new SecuredDoor(new LabDoor());
 $door->open('invalid'); // Big no! It ain't possible.
 
 $door->open('$ecr@t'); // Opening lab door
