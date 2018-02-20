@@ -2108,7 +2108,7 @@ class LowerCase implements WritingState
     }
 }
 
-class Default implements WritingState
+class DefaultText implements WritingState
 {
     public function write(string $words)
     {
@@ -2140,7 +2140,7 @@ class TextEditor
 ```
 And then it can be used as
 ```php
-$editor = new TextEditor(new Default());
+$editor = new TextEditor(new DefaultText());
 
 $editor->type('First line');
 
