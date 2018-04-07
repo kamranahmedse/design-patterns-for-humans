@@ -9,12 +9,12 @@
 A topic that can easily make anyone's mind wobble. Here I try to make them stick in to your mind (and maybe mine) by explaining them in the <i>simplest</i> way possible.
 </p>
 
+***
+
+<p align="center"><b>👋 You might be interested in ES Guy – Weekly booklet on Frontend Development </b><br> <a href="http://esguy.com">Read the details and Subscribe here</a></p>
 
 ***
 
-<p align="center"><b> I recently started a weekly booklet on Modern Frontend Development</b><br> <a href="http://esguy.com">ES Guy – Weekly delight to cure your JS fatigue</a></p>
-
-***
 <sub>Check out my [blog](http://kamranahmed.info) and say "hi" on [Twitter](https://twitter.com/kamranahmedse).</sub>
 
 🚀 Introduction
