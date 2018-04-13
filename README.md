@@ -1816,7 +1816,7 @@ class JobSeeker implements Observer
 ```
 Then we have our job postings to which the job seekers will subscribe
 ```php
-class JobPostings implements Observable
+class EmploymentAgency implements Observable
 {
     protected $observers = [];
 
@@ -1845,7 +1845,7 @@ $johnDoe = new JobSeeker('John Doe');
 $janeDoe = new JobSeeker('Jane Doe');
 
 // Create publisher and attach subscribers
-$jobPostings = new JobPostings();
+$jobPostings = new EmploymentAgency();
 $jobPostings->attach($johnDoe);
 $jobPostings->attach($janeDoe);
 
