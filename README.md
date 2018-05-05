@@ -11,7 +11,7 @@ A topic that can easily make anyone's mind wobble. Here I try to make them stick
 
 ***
 
-<p align="center"><b>👋 You might be interested in ES Guy – Weekly booklet on Frontend Development </b><br> <a href="http://esguy.com">Read the details and Subscribe here</a></p>
+<p align="center"><b>👋 You might be interested in ES Guy – Weekly booklet on Full-Stack Development </b><br> <a href="http://esguy.com">Read the details and Subscribe here</a></p>
 
 ***
 
