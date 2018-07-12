@@ -1795,6 +1795,11 @@ class JobPost
     }
 }
 
+interface Observer
+{
+    public function onJobPosted(JobPost $job);
+}
+
 class JobSeeker implements Observer
 {
     protected $name;
@@ -1813,6 +1818,13 @@ class JobSeeker implements Observer
 ```
 Then we have our job postings to which the job seekers will subscribe
 ```php
+
+interface Observable
+{
+    public function attach(Observer $observer);
+    public function addJob(JobPost $jobPosting);
+}
+
 class EmploymentAgency implements Observable
 {
     protected $observers = [];
