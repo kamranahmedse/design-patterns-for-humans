@@ -13,7 +13,9 @@ A topic that can easily make anyone's mind wobble. Here I try to make them stick
 
 <sub>Check out my [blog](http://kamranahmed.info) and say "hi" on [Twitter](https://twitter.com/kamranahmedse).</sub>
 
-🚀 Introduction
+[![](https://img.shields.io/badge/paypal-buy%20me%20a%20coffee-green.svg?style=for-the-badge)](https://paypal.me/kamranahmedse)
+
+Introduction
 =================
 
 Design patterns are solutions to recurring problems; **guidelines on how to tackle certain problems**. They are not classes, packages or libraries that you can plug into your application and wait for the magic to happen. These are, rather, guidelines on how to tackle certain problems in certain situations.
