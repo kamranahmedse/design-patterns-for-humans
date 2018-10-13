@@ -27,10 +27,11 @@ Wikipedia describes them as
 ⚠️ Be Careful
 -----------------
 - Design patterns are not a silver bullet to all your problems.
-- Do not try to force them; bad things are supposed to happen, if done so. Keep in mind that design patterns are solutions **to** problems, not solutions **finding** problems; so don't overthink.
+- Do not try to force them; bad things are supposed to happen, if done so. 
+- Keep in mind that design patterns are solutions **to** problems, not solutions **finding** problems; so don't overthink.
 - If used in a correct place in a correct manner, they can prove to be a savior; or else they can result in a horrible mess of a code.
 
-> Also note that the code samples below are in PHP-7, however this shouldn't stop you because the concepts are same anyways. Plus the **support for other languages is underway**.
+> Also note that the code samples below are in PHP-7, however this shouldn't stop you because the concepts are same anyways.
 
 Types of Design Patterns
 -----------------
@@ -58,7 +59,7 @@ Wikipedia says
 🏠 Simple Factory
 --------------
 Real world example
-> Consider, you are building a house and you need doors. It would be a mess if every time you need a door, you put on your carpenter clothes and start making a door in your house. Instead you get it made from a factory.
+> Consider, you are building a house and you need doors. You can either put on your carpenter clothes, bring some wood, glue, nails and all the tools required to build the door and start building it in your house or you can simply call the factory and get the built door delivered to you so that you don't need to learn anything about the door making or to deal with the mess that comes with making it.
 
 In plain words
 > Simple factory simply generates an instance for client without exposing any instantiation logic to the client
@@ -110,9 +111,14 @@ class DoorFactory
 ```
 And then it can be used as
 ```php
+// Make me a door of 100x200
 $door = DoorFactory::makeDoor(100, 200);
+
 echo 'Width: ' . $door->getWidth();
 echo 'Height: ' . $door->getHeight();
+
+// Make me a door of 50x100
+$door2 = DoorFactory::makeDoor(50, 100);
 ```
 
 **When to Use?**
