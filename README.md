@@ -1,75 +1,71 @@
-![Design Patterns For Humans](https://cloud.githubusercontent.com/assets/11269635/23065273/1b7e5938-f515-11e6-8dd3-d0d58de6bb9a.png)
+![](https://cloud.githubusercontent.com/assets/11269635/23065273/1b7e5938-f515-11e6-8dd3-d0d58de6bb9a.png)
 
-***
+* * *
 
-<p align="center">
-🎉 Ultra-simplified explanation to design patterns! 🎉
-</p>
-<p align="center">
-A topic that can easily make anyone's mind wobble. Here I try to make them stick in to your mind (and maybe mine) by explaining them in the <i>simplest</i> way possible.
-</p>
+设计模式超简单的解释！（本项目从 [design-patterns-for-humans](https://github.com/kamranahmedse/design-patterns-for-humans) fork）
 
-***
+* * *
 
-<sub>Check out my [blog](http://kamranahmed.info) and say "hi" on [Twitter](https://twitter.com/kamranahmedse).</sub>
+# 介绍
 
-Introduction
-=================
+设计模式是反复出现问题的解决方案; **如何解决某些问题的指导方针**。它们不是可以插入应用程序并等待神奇发生的类，包或库。相反，这些是如何在某些情况下解决某些问题的指导原则。
 
-Design patterns are solutions to recurring problems; **guidelines on how to tackle certain problems**. They are not classes, packages or libraries that you can plug into your application and wait for the magic to happen. These are, rather, guidelines on how to tackle certain problems in certain situations.
+> 设计模式是反复出现问题的解决方案; 如何解决某些问题的指导方针
 
-> Design patterns are solutions to recurring problems; guidelines on how to tackle certain problems
+维基百科将它们描述为
 
-Wikipedia describes them as
+> 在软件工程中，软件设计模式是软件设计中给定上下文中常见问题的通用可重用解决方案。它不是可以直接转换为源代码或机器代码的完成设计。它是如何解决可在许多不同情况下使用的问题的描述或模板。
 
-> In software engineering, a software design pattern is a general reusable solution to a commonly occurring problem within a given context in software design. It is not a finished design that can be transformed directly into source or machine code. It is a description or template for how to solve a problem that can be used in many different situations.
+## ⚠️小心
 
-⚠️ Be Careful
------------------
-- Design patterns are not a silver bullet to all your problems.
-- Do not try to force them; bad things are supposed to happen, if done so. 
-- Keep in mind that design patterns are solutions **to** problems, not solutions **finding** problems; so don't overthink.
-- If used in a correct place in a correct manner, they can prove to be a savior; or else they can result in a horrible mess of a code.
+* 设计模式不是解决所有问题的灵丹妙药。
+* 不要试图强迫他们; 如果这样做的话，应该发生坏事。
+* 请记住，设计模式是问题的解决方案，而不是解决问题的解决方案；所以不要过分思考。
+* 如果以正确的方式在正确的地方使用，他们可以证明是救世主; 否则他们可能会导致代码混乱。
 
-> Also note that the code samples below are in PHP-7, however this shouldn't stop you because the concepts are same anyways.
+> 另请注意，下面的代码示例是PHP-7，但是这不应该阻止你因为概念是相同的。
 
-Types of Design Patterns
------------------
+## 设计模式的类型
 
-* [Creational](#creational-design-patterns)
-* [Structural](#structural-design-patterns)
-* [Behavioral](#behavioral-design-patterns)
+* [创建型](#creational-design-patterns)
+* [结构型](#structural-design-patterns)
+* [行为型](#behavioral-design-patterns)
 
-Creational Design Patterns
-==========================
+# 创建型设计模式
 
-In plain words
-> Creational patterns are focused towards how to instantiate an object or group of related objects.
+简单来说
 
-Wikipedia says
-> In software engineering, creational design patterns are design patterns that deal with object creation mechanisms, trying to create objects in a manner suitable to the situation. The basic form of object creation could result in design problems or added complexity to the design. Creational design patterns solve this problem by somehow controlling this object creation.
+> 创建模式专注于如何实例化对象或相关对象组。
 
- * [Simple Factory](#-simple-factory)
- * [Factory Method](#-factory-method)
- * [Abstract Factory](#-abstract-factory)
- * [Builder](#-builder)
- * [Prototype](#-prototype)
- * [Singleton](#-singleton)
+维基百科说
 
-🏠 Simple Factory
---------------
-Real world example
-> Consider, you are building a house and you need doors. You can either put on your carpenter clothes, bring some wood, glue, nails and all the tools required to build the door and start building it in your house or you can simply call the factory and get the built door delivered to you so that you don't need to learn anything about the door making or to deal with the mess that comes with making it.
+> 在软件工程中，创建设计模式是处理对象创建机制的设计模式，试图以适合于该情况的方式创建对象。对象创建的基本形式可能导致设计问题或增加设计的复杂性。创建设计模式通过某种方式控制此对象创建来解决此问题。
 
-In plain words
-> Simple factory simply generates an instance for client without exposing any instantiation logic to the client
+* [简单工厂模式（Simple Factory）](#-simple-factory)
+* [工厂方法模式（Factory Method）](#-factory-method)
+* [抽象工厂模式（Abstract Factory）](#-abstract-factory)
+* [构建器模式](#-builder)
+* [原型模式（Prototype）](#-prototype)
+* [单例模式（Singleton）](#-singleton)
 
-Wikipedia says
-> In object-oriented programming (OOP), a factory is an object for creating other objects – formally a factory is a function or method that returns objects of a varying prototype or class from some method call, which is assumed to be "new".
+## 🏠简单工厂模式（Simple Factory）
 
-**Programmatic Example**
+现实世界的例子
 
-First of all we have a door interface and the implementation
+> 考虑一下，你正在建房子，你需要门。你可以穿上你的木匠衣服，带上一些木头，胶水，钉子和建造门所需的所有工具，然后开始在你的房子里建造它，或者你可以简单地打电话给工厂并把内置的门送到你这里不需要了解关于制门的任何信息或处理制作它所带来的混乱。
+
+简单来说
+
+> 简单工厂只是为客户端生成一个实例，而不会向客户端公开任何实例化逻辑
+
+维基百科说
+
+> 在面向对象编程（OOP）中，工厂是用于创建其他对象的对象 - 正式工厂是一种函数或方法，它从一些方法调用返回变化的原型或类的对象，这被假定为“新”。
+
+**程序化示例**
+
+首先，我们有一个门界面和实现
+
 ```php
 interface Door
 {
@@ -99,7 +95,9 @@ class WoodenDoor implements Door
     }
 }
 ```
-Then we have our door factory that makes the door and returns it
+
+然后，我们有我们的门工厂，门，并返回它
+
 ```php
 class DoorFactory
 {
@@ -109,7 +107,9 @@ class DoorFactory
     }
 }
 ```
-And then it can be used as
+
+然后它可以用作
+
 ```php
 // Make me a door of 100x200
 $door = DoorFactory::makeDoor(100, 200);
@@ -121,25 +121,27 @@ echo 'Height: ' . $door->getHeight();
 $door2 = DoorFactory::makeDoor(50, 100);
 ```
 
-**When to Use?**
+**什么时候用？**
 
-When creating an object is not just a few assignments and involves some logic, it makes sense to put it in a dedicated factory instead of repeating the same code everywhere.
+当创建一个对象不仅仅是一些分配而且涉及一些逻辑时，将它放在专用工厂中而不是在任何地方重复相同的代码是有意义的。
 
-🏭 Factory Method
---------------
+## 🏭工厂方法模式（Factory Method）
 
-Real world example
-> Consider the case of a hiring manager. It is impossible for one person to interview for each of the positions. Based on the job opening, she has to decide and delegate the interview steps to different people.
+现实世界的例子
 
-In plain words
-> It provides a way to delegate the instantiation logic to child classes.
+> 考虑招聘经理的情况。一个人不可能对每个职位进行面试。根据职位空缺，她必须决定并将面试步骤委托给不同的人。
 
-Wikipedia says
-> In class-based programming, the factory method pattern is a creational pattern that uses factory methods to deal with the problem of creating objects without having to specify the exact class of the object that will be created. This is done by creating objects by calling a factory method—either specified in an interface and implemented by child classes, or implemented in a base class and optionally overridden by derived classes—rather than by calling a constructor.
+简单来说
 
- **Programmatic Example**
+> 它提供了一种将实例化逻辑委托给子类的方法。
 
-Taking our hiring manager example above. First of all we have an interviewer interface and some implementations for it
+维基百科说
+
+> 在基于类的编程中，工厂方法模式是一种创建模式，它使用工厂方法来处理创建对象的问题，而无需指定将要创建的对象的确切类。这是通过调用工厂方法来创建对象来完成的 - 在接口中指定并由子类实现，或者在基类中实现并可选地由派生类覆盖 - 而不是通过调用构造函数。
+
+**程序化示例**
+
+以上面的招聘经理为例。首先，我们有一个访谈者界面和一些实现
 
 ```php
 interface Interviewer
@@ -164,7 +166,7 @@ class CommunityExecutive implements Interviewer
 }
 ```
 
-Now let us create our `HiringManager`
+现在让我们创造我们的 `HiringManager`
 
 ```php
 abstract class HiringManager
@@ -181,7 +183,9 @@ abstract class HiringManager
 }
 
 ```
-Now any child can extend it and provide the required interviewer
+
+现在任何孩子都可以延长并提供所需的面试官
+
 ```php
 class DevelopmentManager extends HiringManager
 {
@@ -199,7 +203,8 @@ class MarketingManager extends HiringManager
     }
 }
 ```
-and then it can be used as
+
+然后它可以用作
 
 ```php
 $devManager = new DevelopmentManager();
@@ -209,25 +214,27 @@ $marketingManager = new MarketingManager();
 $marketingManager->takeInterview(); // Output: Asking about community building.
 ```
 
-**When to use?**
+**什么时候用？**
 
-Useful when there is some generic processing in a class but the required sub-class is dynamically decided at runtime. Or putting it in other words, when the client doesn't know what exact sub-class it might need.
+在类中有一些通用处理但在运行时动态决定所需的子类时很有用。换句话说，当客户端不知道它可能需要什么样的子类时。
 
-🔨 Abstract Factory
-----------------
+## 🔨抽象工厂模式（Abstract Factory）
 
-Real world example
-> Extending our door example from Simple Factory. Based on your needs you might get a wooden door from a wooden door shop, iron door from an iron shop or a PVC door from the relevant shop. Plus you might need a guy with different kind of specialities to fit the door, for example a carpenter for wooden door, welder for iron door etc. As you can see there is a dependency between the doors now, wooden door needs carpenter, iron door needs a welder etc.
+现实世界的例子
 
-In plain words
-> A factory of factories; a factory that groups the individual but related/dependent factories together without specifying their concrete classes.
+> 从Simple Factory扩展我们的门例子。根据您的需求，您可以从木门店，铁门的铁门或相关商店的PVC门获得木门。另外，你可能需要一个有不同种类特色的家伙来安装门，例如木门木匠，铁门焊机等。你可以看到门之间存在依赖关系，木门需要木匠，铁门需要焊工等
 
-Wikipedia says
-> The abstract factory pattern provides a way to encapsulate a group of individual factories that have a common theme without specifying their concrete classes
+简单来说
 
-**Programmatic Example**
+> 工厂工厂; 将个人但相关/依赖工厂分组在一起而不指定其具体类别的工厂。
 
-Translating the door example above. First of all we have our `Door` interface and some implementation for it
+维基百科说
+
+> 抽象工厂模式提供了一种封装一组具有共同主题但没有指定其具体类的单个工厂的方法
+
+**程序化示例**
+
+翻译上面的门例子。首先，我们有我们的`Door`界面和一些实现
 
 ```php
 interface Door
@@ -251,7 +258,8 @@ class IronDoor implements Door
     }
 }
 ```
-Then we have some fitting experts for each door type
+
+然后我们为每种门类型都配备了一些装配专家
 
 ```php
 interface DoorFittingExpert
@@ -276,7 +284,8 @@ class Carpenter implements DoorFittingExpert
 }
 ```
 
-Now we have our abstract factory that would let us make family of related objects i.e. wooden door factory would create a wooden door and wooden door fitting expert and iron door factory would create an iron door and iron door fitting expert
+现在我们有抽象工厂，让我们制作相关对象的家庭，即木门工厂将创建一个木门和木门配件专家和铁门工厂将创建一个铁门和铁门配件专家
+
 ```php
 interface DoorFactory
 {
@@ -312,7 +321,9 @@ class IronDoorFactory implements DoorFactory
     }
 }
 ```
-And then it can be used as
+
+然后它可以用作
+
 ```php
 $woodenFactory = new WoodenDoorFactory();
 
@@ -332,24 +343,27 @@ $door->getDescription();  // Output: I am an iron door
 $expert->getDescription(); // Output: I can only fit iron doors
 ```
 
-As you can see the wooden door factory has encapsulated the `carpenter` and the `wooden door` also iron door factory has encapsulated the `iron door` and `welder`. And thus it had helped us make sure that for each of the created door, we do not get a wrong fitting expert.   
+正如你所看到的木门工厂的封装`carpenter`和`wooden door`还铁门厂已封装的`iron door`和`welder`。因此，它帮助我们确保对于每个创建的门，我们没有得到错误的拟合专家。
 
-**When to use?**
+**什么时候用？**
 
-When there are interrelated dependencies with not-that-simple creation logic involved
+当存在相互关联的依赖关系时，涉及非简单的创建逻辑
 
-👷 Builder
---------------------------------------------
-Real world example
-> Imagine you are at Hardee's and you order a specific deal, lets say, "Big Hardee" and they hand it over to you without *any questions*; this is the example of simple factory. But there are cases when the creation logic might involve more steps. For example you want a customized Subway deal, you have several options in how your burger is made e.g what bread do you want? what types of sauces would you like? What cheese would you want? etc. In such cases builder pattern comes to the rescue.
+## 👷构建器模式
 
-In plain words
-> Allows you to create different flavors of an object while avoiding constructor pollution. Useful when there could be several flavors of an object. Or when there are a lot of steps involved in creation of an object.
+现实世界的例子
 
-Wikipedia says
-> The builder pattern is an object creation software design pattern with the intentions of finding a solution to the telescoping constructor anti-pattern.
+> 想象一下，你在Hardee's，你订购了一个特定的交易，让我们说，“Big Hardee”，他们毫无_疑问地_把它交给你了; 这是简单工厂的例子。但有些情况下，创建逻辑可能涉及更多步骤。例如，你想要一个定制的地铁交易，你有多种选择如何制作你的汉堡，例如你想要什么面包？你想要什么类型的酱汁？你想要什么奶酪？在这种情况下，建筑商模式得以拯救。
 
-Having said that let me add a bit about what telescoping constructor anti-pattern is. At one point or the other we have all seen a constructor like below:
+简单来说
+
+> 允许您创建不同风格的对象，同时避免构造函数污染。当有几种风格的物体时很有用。或者在创建对象时涉及很多步骤。
+
+维基百科说
+
+> 构建器模式是对象创建软件设计模式，其目的是找到伸缩构造器反模式的解决方案。
+
+话虽如此，让我补充说一下伸缩构造函数反模式是什么。在某一点或另一点，我们都看到了如下构造函数：
 
 ```php
 public function __construct($size, $cheese = true, $pepperoni = true, $tomato = false, $lettuce = true)
@@ -357,11 +371,11 @@ public function __construct($size, $cheese = true, $pepperoni = true, $tomato = 
 }
 ```
 
-As you can see; the number of constructor parameters can quickly get out of hand and it might become difficult to understand the arrangement of parameters. Plus this parameter list could keep on growing if you would want to add more options in future. This is called telescoping constructor anti-pattern.
+如你看到的; 构造函数参数的数量很快就会失控，并且可能难以理解参数的排列。此外，如果您希望将来添加更多选项，此参数列表可能会继续增长。这被称为伸缩构造器反模式。
 
-**Programmatic Example**
+**程序化示例**
 
-The sane alternative is to use the builder pattern. First of all we have our burger that we want to make
+理智的替代方案是使用构建器模式。首先，我们要制作汉堡
 
 ```php
 class Burger
@@ -384,7 +398,7 @@ class Burger
 }
 ```
 
-And then we have the builder
+然后我们有了建设者
 
 ```php
 class BurgerBuilder
@@ -431,7 +445,8 @@ class BurgerBuilder
     }
 }
 ```
-And then it can be used as:
+
+然后它可以用作：
 
 ```php
 $burger = (new BurgerBuilder(14))
@@ -441,26 +456,29 @@ $burger = (new BurgerBuilder(14))
                     ->build();
 ```
 
-**When to use?**
+**什么时候用？**
 
-When there could be several flavors of an object and to avoid the constructor telescoping. The key difference from the factory pattern is that; factory pattern is to be used when the creation is a one step process while builder pattern is to be used when the creation is a multi step process.
+当可能存在几种类型的对象并避免构造函数伸缩时。与工厂模式的主要区别在于：当创建是一步过程时，将使用工厂模式，而当创建是多步骤过程时，将使用构建器模式。
 
-🐑 Prototype
-------------
-Real world example
-> Remember dolly? The sheep that was cloned! Lets not get into the details but the key point here is that it is all about cloning
+## 🐑原型模式（Prototype）
 
-In plain words
-> Create object based on an existing object through cloning.
+现实世界的例子
 
-Wikipedia says
-> The prototype pattern is a creational design pattern in software development. It is used when the type of objects to create is determined by a prototypical instance, which is cloned to produce new objects.
+> 记得多莉？被克隆的羊！让我们不详细介绍，但关键点在于它完全是关于克隆的
 
-In short, it allows you to create a copy of an existing object and modify it to your needs, instead of going through the trouble of creating an object from scratch and setting it up.
+简单来说
 
-**Programmatic Example**
+> 通过克隆基于现有对象创建对象。
 
-In PHP, it can be easily done using `clone`
+维基百科说
+
+> 原型模式是软件开发中的创新设计模式。当要创建的对象类型由原型实例确定时使用它，该实例被克隆以生成新对象。
+
+简而言之，它允许您创建现有对象的副本并根据需要进行修改，而不是从头开始创建对象并进行设置。
+
+**程序化示例**
+
+在PHP中，它可以很容易地使用 `clone`
 
 ```php
 class Sheep
@@ -495,7 +513,9 @@ class Sheep
     }
 }
 ```
-Then it can be cloned like below
+
+然后它可以像下面一样克隆
+
 ```php
 $original = new Sheep('Jolly');
 echo $original->getName(); // Jolly
@@ -508,28 +528,32 @@ echo $cloned->getName(); // Dolly
 echo $cloned->getCategory(); // Mountain sheep
 ```
 
-Also you could use the magic method `__clone` to modify the cloning behavior.
+您也可以使用魔术方法`__clone`来修改克隆行为。
 
-**When to use?**
+**什么时候用？**
 
-When an object is required that is similar to existing object or when the creation would be expensive as compared to cloning.
+当需要一个与现有对象类似的对象时，或者与克隆相比，创建的成本会很高。
 
-💍 Singleton
-------------
-Real world example
-> There can only be one president of a country at a time. The same president has to be brought to action, whenever duty calls. President here is singleton.
+## 💍单例模式（Singleton）
 
-In plain words
-> Ensures that only one object of a particular class is ever created.
+现实世界的例子
 
-Wikipedia says
-> In software engineering, the singleton pattern is a software design pattern that restricts the instantiation of a class to one object. This is useful when exactly one object is needed to coordinate actions across the system.
+> 一次只能有一个国家的总统。无论何时打电话，都必须将同一位总统付诸行动。这里的总统是单身人士。
 
-Singleton pattern is actually considered an anti-pattern and overuse of it should be avoided. It is not necessarily bad and could have some valid use-cases but should be used with caution because it introduces a global state in your application and change to it in one place could affect in the other areas and it could become pretty difficult to debug. The other bad thing about them is it makes your code tightly coupled plus mocking the singleton could be difficult.
+简单来说
 
-**Programmatic Example**
+> 确保只创建特定类的一个对象。
 
-To create a singleton, make the constructor private, disable cloning, disable extension and create a static variable to house the instance
+维基百科说
+
+> 在软件工程中，单例模式是一种软件设计模式，它将类的实例化限制为一个对象。当需要一个对象来协调整个系统的操作时，这非常有用。
+
+单例模式实际上被认为是反模式，应该避免过度使用它。它不一定是坏的，可能有一些有效的用例，但应谨慎使用，因为它在您的应用程序中引入了一个全局状态，并且在一个地方更改它可能会影响其他区域，并且它可能变得非常难以调试。关于它们的另一个坏处是它使你的代码紧密耦合加上嘲弄单例可能很困难。
+
+**程序化示例**
+
+要创建单例，请将构造函数设为私有，禁用克隆，禁用扩展并创建静态变量以容纳实例
+
 ```php
 final class President
 {
@@ -560,7 +584,9 @@ final class President
     }
 }
 ```
-Then in order to use
+
+然后才能使用
+
 ```php
 $president1 = President::getInstance();
 $president2 = President::getInstance();
@@ -568,40 +594,43 @@ $president2 = President::getInstance();
 var_dump($president1 === $president2); // true
 ```
 
-Structural Design Patterns
-==========================
-In plain words
-> Structural patterns are mostly concerned with object composition or in other words how the entities can use each other. Or yet another explanation would be, they help in answering "How to build a software component?"
+# [](#structural-design-patterns)结构型设计模式
 
-Wikipedia says
-> In software engineering, structural design patterns are design patterns that ease the design by identifying a simple way to realize relationships between entities.
+简单来说
 
- * [Adapter](#-adapter)
- * [Bridge](#-bridge)
- * [Composite](#-composite)
- * [Decorator](#-decorator)
- * [Facade](#-facade)
- * [Flyweight](#-flyweight)
- * [Proxy](#-proxy)
+> 结构模式主要涉及对象组成，或者换句话说，实体如何相互使用。或者另一种解释是，它们有助于回答“如何构建软件组件？”
 
-🔌 Adapter
--------
-Real world example
-> Consider that you have some pictures in your memory card and you need to transfer them to your computer. In order to transfer them you need some kind of adapter that is compatible with your computer ports so that you can attach memory card to your computer. In this case card reader is an adapter.
-> Another example would be the famous power adapter; a three legged plug can't be connected to a two pronged outlet, it needs to use a power adapter that makes it compatible with the two pronged outlet.
-> Yet another example would be a translator translating words spoken by one person to another
+维基百科说
 
-In plain words
-> Adapter pattern lets you wrap an otherwise incompatible object in an adapter to make it compatible with another class.
+> 在软件工程中，结构设计模式是通过识别实现实体之间关系的简单方法来简化设计的设计模式。
 
-Wikipedia says
-> In software engineering, the adapter pattern is a software design pattern that allows the interface of an existing class to be used as another interface. It is often used to make existing classes work with others without modifying their source code.
+* [适配器模式（Adapter）](#-adapter)
+* [桥梁模式（Bridge）](#-bridge)
+* [组合模式（Composite）](#-composite)
+* [装饰模式（Decorator）](#-decorator)
+* [门面模式（Facade）](#-facade)
+* [享元模式（Flyweight）](#-flyweight)
+* [代理模式（Proxy）](#-proxy)
 
-**Programmatic Example**
+## 🔌适配器模式（Adapter）
 
-Consider a game where there is a hunter and he hunts lions.
+现实世界的例子
 
-First we have an interface `Lion` that all types of lions have to implement
+> 请注意，您的存储卡中有一些照片，需要将它们传输到计算机上。为了传输它们，您需要某种与您的计算机端口兼容的适配器，以便您可以将存储卡连接到您的计算机。在这种情况下，读卡器是适配器。另一个例子是着名的电源适配器; 三脚插头不能连接到双管插座，需要使用电源适配器，使其与双叉插座兼容。另一个例子是翻译人员将一个人所说的话翻译成另一个人
+
+简单来说
+
+> 适配器模式允许您在适配器中包装其他不兼容的对象，以使其与另一个类兼容。
+
+维基百科说
+
+> 在软件工程中，适配器模式是一种软件设计模式，它允许将现有类的接口用作另一个接口。它通常用于使现有类与其他类一起工作而无需修改其源代码。
+
+**程序化示例**
+
+考虑一个有猎人的游戏，他猎杀狮子。
+
+首先，我们有一个`Lion`所有类型的狮子必须实现的接口
 
 ```php
 interface Lion
@@ -623,7 +652,9 @@ class AsianLion implements Lion
     }
 }
 ```
-And hunter expects any implementation of `Lion` interface to hunt.
+
+猎人期望任何`Lion`接口的实现都可以进行搜索。
+
 ```php
 class Hunter
 {
@@ -634,7 +665,7 @@ class Hunter
 }
 ```
 
-Now let's say we have to add a `WildDog` in our game so that hunter can hunt that also. But we can't do that directly because dog has a different interface. To make it compatible for our hunter, we will have to create an adapter that is compatible
+现在让我们说我们必须`WildDog`在我们的游戏中添加一个，以便猎人也可以追捕它。但我们不能直接这样做，因为狗有不同的界面。为了使它与我们的猎人兼容，我们将不得不创建一个兼容的适配器
 
 ```php
 // This needs to be added to the game
@@ -661,7 +692,8 @@ class WildDogAdapter implements Lion
     }
 }
 ```
-And now the `WildDog` can be used in our game using `WildDogAdapter`.
+
+而现在`WildDog`可以在我们的游戏中使用`WildDogAdapter`。
 
 ```php
 $wildDog = new WildDog();
@@ -671,22 +703,25 @@ $hunter = new Hunter();
 $hunter->hunt($wildDogAdapter);
 ```
 
-🚡 Bridge
-------
-Real world example
-> Consider you have a website with different pages and you are supposed to allow the user to change the theme. What would you do? Create multiple copies of each of the pages for each of the themes or would you just create separate theme and load them based on the user's preferences? Bridge pattern allows you to do the second i.e.
+## 🚡桥梁模式（Bridge）
 
-![With and without the bridge pattern](https://cloud.githubusercontent.com/assets/11269635/23065293/33b7aea0-f515-11e6-983f-98823c9845ee.png)
+现实世界的例子
 
-In Plain Words
-> Bridge pattern is about preferring composition over inheritance. Implementation details are pushed from a hierarchy to another object with a separate hierarchy.
+> 考虑您有一个包含不同页面的网站，您应该允许用户更改主题。你会怎么做？为每个主题创建每个页面的多个副本，或者您只是创建单独的主题并根据用户的首选项加载它们？桥模式允许你做第二个ie
 
-Wikipedia says
-> The bridge pattern is a design pattern used in software engineering that is meant to "decouple an abstraction from its implementation so that the two can vary independently"
+![](Docs/images/bridge.png)
 
-**Programmatic Example**
+用简单的话说
 
-Translating our WebPage example from above. Here we have the `WebPage` hierarchy
+> 桥模式是关于优先于继承的组合。实现细节从层次结构推送到具有单独层次结构的另一个对象。
+
+维基百科说
+
+> 桥接模式是软件工程中使用的设计模式，旨在“将抽象与其实现分离，以便两者可以独立变化”
+
+**程序化示例**
+
+从上面翻译我们的WebPage示例。这里我们有`WebPage`层次结构
 
 ```php
 interface WebPage
@@ -725,7 +760,9 @@ class Careers implements WebPage
     }
 }
 ```
-And the separate theme hierarchy
+
+和单独的主题层次结构
+
 ```php
 
 interface Theme
@@ -755,7 +792,9 @@ class AquaTheme implements Theme
     }
 }
 ```
-And both the hierarchies
+
+而且这两个层次结构
+
 ```php
 $darkTheme = new DarkTheme();
 
@@ -766,21 +805,23 @@ echo $about->getContent(); // "About page in Dark Black";
 echo $careers->getContent(); // "Careers page in Dark Black";
 ```
 
-🌿 Composite
------------------
+## 🌿组合模式（Composite）
 
-Real world example
-> Every organization is composed of employees. Each of the employees has the same features i.e. has a salary, has some responsibilities, may or may not report to someone, may or may not have some subordinates etc.
+现实世界的例子
 
-In plain words
-> Composite pattern lets clients treat the individual objects in a uniform manner.
+> 每个组织都由员工组成。每个员工都有相同的功能，即有工资，有一些责任，可能会或可能不会向某人报告，可能会或可能不会有一些下属等。
 
-Wikipedia says
-> In software engineering, the composite pattern is a partitioning design pattern. The composite pattern describes that a group of objects is to be treated in the same way as a single instance of an object. The intent of a composite is to "compose" objects into tree structures to represent part-whole hierarchies. Implementing the composite pattern lets clients treat individual objects and compositions uniformly.
+简单来说
 
-**Programmatic Example**
+> 复合模式允许客户以统一的方式处理单个对象。
 
-Taking our employees example from above. Here we have different employee types
+维基百科说
+
+> 在软件工程中，复合模式是分区设计模式。复合模式描述了一组对象的处理方式与对象的单个实例相同。复合的意图是将对象“组合”成树结构以表示部分整体层次结构。通过实现复合模式，客户可以统一处理单个对象和组合。
+
+**程序化示例**
+
+以上面的员工为例。这里我们有不同的员工类型
 
 ```php
 interface Employee
@@ -859,7 +900,7 @@ class Designer implements Employee
 }
 ```
 
-Then we have an organization which consists of several different types of employees
+然后我们有一个由几种不同类型的员工组成的组织
 
 ```php
 class Organization
@@ -884,7 +925,7 @@ class Organization
 }
 ```
 
-And then it can be used as
+然后它可以用作
 
 ```php
 // Prepare the employees
@@ -899,22 +940,24 @@ $organization->addEmployee($jane);
 echo "Net salaries: " . $organization->getNetSalaries(); // Net Salaries: 27000
 ```
 
-☕ Decorator
--------------
+## ☕装饰模式（Decorator）
 
-Real world example
+现实世界的例子
 
-> Imagine you run a car service shop offering multiple services. Now how do you calculate the bill to be charged? You pick one service and dynamically keep adding to it the prices for the provided services till you get the final cost. Here each type of service is a decorator.
+> 想象一下，您经营一家提供多种服务的汽车服务店。现在你如何计算收费账单？您选择一项服务并动态地向其添加所提供服务的价格，直到您获得最终成本。这里的每种服务都是装饰者。
 
-In plain words
-> Decorator pattern lets you dynamically change the behavior of an object at run time by wrapping them in an object of a decorator class.
+简单来说
 
-Wikipedia says
-> In object-oriented programming, the decorator pattern is a design pattern that allows behavior to be added to an individual object, either statically or dynamically, without affecting the behavior of other objects from the same class. The decorator pattern is often useful for adhering to the Single Responsibility Principle, as it allows functionality to be divided between classes with unique areas of concern.
+> Decorator模式允许您通过将对象包装在装饰器类的对象中来动态更改对象在运行时的行为。
 
-**Programmatic Example**
+维基百科说
 
-Lets take coffee for example. First of all we have a simple coffee implementing the coffee interface
+> 在面向对象的编程中，装饰器模式是一种设计模式，它允许将行为静态或动态地添加到单个对象，而不会影响同一类中其他对象的行为。装饰器模式通常用于遵守单一责任原则，因为它允许在具有独特关注区域的类之间划分功能。
+
+**程序化示例**
+
+让我们以咖啡为例。首先，我们有一个简单的咖啡实现咖啡界面
+
 
 ```php
 interface Coffee
@@ -936,7 +979,9 @@ class SimpleCoffee implements Coffee
     }
 }
 ```
-We want to make the code extensible to allow options to modify it if required. Lets make some add-ons (decorators)
+
+我们希望使代码可扩展，以允许选项在需要时修改它。让我们做一些附加组件（装饰器）
+
 ```php
 class MilkCoffee implements Coffee
 {
@@ -999,7 +1044,7 @@ class VanillaCoffee implements Coffee
 }
 ```
 
-Lets make a coffee now
+让我们现在喝杯咖啡
 
 ```php
 $someCoffee = new SimpleCoffee();
@@ -1019,21 +1064,23 @@ echo $someCoffee->getCost(); // 20
 echo $someCoffee->getDescription(); // Simple Coffee, milk, whip, vanilla
 ```
 
-📦 Facade
-----------------
+## 📦门面模式（Facade）
 
-Real world example
-> How do you turn on the computer? "Hit the power button" you say! That is what you believe because you are using a simple interface that computer provides on the outside, internally it has to do a lot of stuff to make it happen. This simple interface to the complex subsystem is a facade.
+现实世界的例子
 
-In plain words
-> Facade pattern provides a simplified interface to a complex subsystem.
+> 你怎么打开电脑？“按下电源按钮”你说！这就是你所相信的，因为你正在使用计算机在外部提供的简单界面，在内部它必须做很多事情来实现它。这个复杂子系统的简单接口是一个外观。
 
-Wikipedia says
-> A facade is an object that provides a simplified interface to a larger body of code, such as a class library.
+简单来说
 
-**Programmatic Example**
+> Facade模式为复杂的子系统提供了简化的界面。
 
-Taking our computer example from above. Here we have the computer class
+维基百科说
+
+> 外观是一个对象，它为更大的代码体提供了简化的接口，例如类库。
+
+**程序化示例**
+
+从上面看我们的计算机示例。这里我们有电脑课
 
 ```php
 class Computer
@@ -1074,7 +1121,9 @@ class Computer
     }
 }
 ```
-Here we have the facade
+
+在这里，我们有门面
+
 ```php
 class ComputerFacade
 {
@@ -1101,28 +1150,32 @@ class ComputerFacade
     }
 }
 ```
-Now to use the facade
+
+现在使用立面
+
 ```php
 $computer = new ComputerFacade(new Computer());
 $computer->turnOn(); // Ouch! Beep beep! Loading.. Ready to be used!
 $computer->turnOff(); // Bup bup buzzz! Haah! Zzzzz
 ```
 
-🍃 Flyweight
----------
+## 🍃享元模式（Flyweight）
 
-Real world example
-> Did you ever have fresh tea from some stall? They often make more than one cup that you demanded and save the rest for any other customer so to save the resources e.g. gas etc. Flyweight pattern is all about that i.e. sharing.
+现实世界的例子
 
-In plain words
-> It is used to minimize memory usage or computational expenses by sharing as much as possible with similar objects.
+> 你有没有从一些摊位买到新鲜的茶？他们经常制作你需要的不止一个杯子，并为其他任何客户保存其余的，以节省资源，例如天然气等.Flyweight模式就是那个即共享。
 
-Wikipedia says
-> In computer programming, flyweight is a software design pattern. A flyweight is an object that minimizes memory use by sharing as much data as possible with other similar objects; it is a way to use objects in large numbers when a simple repeated representation would use an unacceptable amount of memory.
+简单来说
 
-**Programmatic example**
+> 它用于通过尽可能多地与类似对象共享来最小化内存使用或计算开销。
 
-Translating our tea example from above. First of all we have tea types and tea maker
+维基百科说
+
+> 在计算机编程中，flyweight是一种软件设计模式。flyweight是一个通过与其他类似对象共享尽可能多的数据来最小化内存使用的对象; 当简单的重复表示将使用不可接受的内存量时，它是一种大量使用对象的方法。
+
+**程序化的例子**
+
+从上面翻译我们的茶例子。首先，我们有茶类和茶具
 
 ```php
 // Anything that will be cached is flyweight.
@@ -1147,7 +1200,7 @@ class TeaMaker
 }
 ```
 
-Then we have the `TeaShop` which takes orders and serves them
+然后我们有`TeaShop`接受订单并为他们服务
 
 ```php
 class TeaShop
@@ -1173,7 +1226,8 @@ class TeaShop
     }
 }
 ```
-And it can be used as below
+
+它可以如下使用
 
 ```php
 $teaMaker = new TeaMaker();
@@ -1189,20 +1243,22 @@ $shop->serve();
 // Serving tea to table# 5
 ```
 
-🎱 Proxy
--------------------
-Real world example
-> Have you ever used an access card to go through a door? There are multiple options to open that door i.e. it can be opened either using access card or by pressing a button that bypasses the security. The door's main functionality is to open but there is a proxy added on top of it to add some functionality. Let me better explain it using the code example below.
+## 🎱代理模式（Proxy）
+现实世界的例子
 
-In plain words
-> Using the proxy pattern, a class represents the functionality of another class.
+> 你有没有用过门禁卡进门？打开该门有多种选择，即可以使用门禁卡或按下绕过安检的按钮打开。门的主要功能是打开，但在它上面添加了一个代理来添加一些功能。让我用下面的代码示例更好地解释它。
 
-Wikipedia says
-> A proxy, in its most general form, is a class functioning as an interface to something else. A proxy is a wrapper or agent object that is being called by the client to access the real serving object behind the scenes. Use of the proxy can simply be forwarding to the real object, or can provide additional logic. In the proxy extra functionality can be provided, for example caching when operations on the real object are resource intensive, or checking preconditions before operations on the real object are invoked.
+简单来说
 
-**Programmatic Example**
+> 使用代理模式，类表示另一个类的功能。
 
-Taking our security door example from above. Firstly we have the door interface and an implementation of door
+维基百科说
+
+> 代理以其最一般的形式，是一个充当其他东西的接口的类。代理是一个包装器或代理对象，客户端正在调用它来访问幕后的真实服务对象。使用代理可以简单地转发到真实对象，或者可以提供额外的逻辑。在代理中，可以提供额外的功能，例如当对真实对象的操作是资源密集时的高速缓存，或者在调用对象的操作之前检查先决条件。
+
+**程序化示例**
+
+从上面看我们的安全门示例。首先我们有门界面和门的实现
 
 ```php
 interface Door
@@ -1224,7 +1280,9 @@ class LabDoor implements Door
     }
 }
 ```
-Then we have a proxy to secure any doors that we want
+
+然后我们有一个代理来保护我们想要的任何门
+
 ```php
 class SecuredDoor
 {
@@ -1255,7 +1313,9 @@ class SecuredDoor
     }
 }
 ```
-And here is how it can be used
+
+以下是它的使用方法
+
 ```php
 $door = new SecuredDoor(new LabDoor());
 $door->open('invalid'); // Big no! It ain't possible.
@@ -1263,43 +1323,47 @@ $door->open('invalid'); // Big no! It ain't possible.
 $door->open('$ecr@t'); // Opening lab door
 $door->close(); // Closing lab door
 ```
-Yet another example would be some sort of data-mapper implementation. For example, I recently made an ODM (Object Data Mapper) for MongoDB using this pattern where I wrote a proxy around mongo classes while utilizing the magic method `__call()`. All the method calls were proxied to the original mongo class and result retrieved was returned as it is but in case of `find` or `findOne` data was mapped to the required class objects and the object was returned instead of `Cursor`.
 
-Behavioral Design Patterns
-==========================
+另一个例子是某种数据映射器实现。例如，我最近使用这种模式为MongoDB制作了一个ODM（对象数据映射器），我在使用魔术方法的同时围绕mongo类编写了一个代理`__call()`。所有方法调用被代理到原始蒙戈类和结果检索到的返回，因为它是但在的情况下，`find`或`findOne`数据被映射到所需的类对象和对象返回代替`Cursor`。
 
-In plain words
-> It is concerned with assignment of responsibilities between the objects. What makes them different from structural patterns is they don't just specify the structure but also outline the patterns for message passing/communication between them. Or in other words, they assist in answering "How to run a behavior in software component?"
+# [](#behavioral-design-patterns)行为型设计模式
 
-Wikipedia says
-> In software engineering, behavioral design patterns are design patterns that identify common communication patterns between objects and realize these patterns. By doing so, these patterns increase flexibility in carrying out this communication.
+简单来说
 
-* [Chain of Responsibility](#-chain-of-responsibility)
-* [Command](#-command)
-* [Iterator](#-iterator)
-* [Mediator](#-mediator)
-* [Memento](#-memento)
-* [Observer](#-observer)
-* [Visitor](#-visitor)
-* [Strategy](#-strategy)
-* [State](#-state)
-* [Template Method](#-template-method)
+> 它关注对象之间的职责分配。它们与结构模式的不同之处在于它们不仅指定了结构，还概述了它们之间的消息传递/通信模式。或者换句话说，他们协助回答“如何在软件组件中运行行为？”
 
-🔗 Chain of Responsibility
------------------------
+维基百科说
 
-Real world example
-> For example, you have three payment methods (`A`, `B` and `C`) setup in your account; each having a different amount in it. `A` has 100 USD, `B` has 300 USD and `C` having 1000 USD and the preference for payments is chosen as `A` then `B` then `C`. You try to purchase something that is worth 210 USD. Using Chain of Responsibility, first of all account `A` will be checked if it can make the purchase, if yes purchase will be made and the chain will be broken. If not, request will move forward to account `B` checking for amount if yes chain will be broken otherwise the request will keep forwarding till it finds the suitable handler. Here `A`, `B` and `C` are links of the chain and the whole phenomenon is Chain of Responsibility.
+> 在软件工程中，行为设计模式是识别对象之间的共同通信模式并实现这些模式的设计模式。通过这样做，这些模式增加了执行该通信的灵活性。
 
-In plain words
-> It helps building a chain of objects. Request enters from one end and keeps going from object to object till it finds the suitable handler.
+* [责任链模式（Chain Of Responsibilities）](#-chain-of-responsibility)
+* [命令行模式（Command）](#-command)
+* [迭代器模式（Iterator）](#-iterator)
+* [中介者模式（Mediator）](#-mediator)
+* [备忘录模式（Memento）](#-memento)
+* [观察者模式（Observer）](#-observer)
+* [访问者模式（Visitor）](#-visitor)
+* [策略模式（Strategy）](#-strategy)
+* [状态模式（State）](#-state)
+* [模板方法模式（Template Method）](#-template-method)
 
-Wikipedia says
-> In object-oriented design, the chain-of-responsibility pattern is a design pattern consisting of a source of command objects and a series of processing objects. Each processing object contains logic that defines the types of command objects that it can handle; the rest are passed to the next processing object in the chain.
+## 🔗责任链模式（Chain Of Responsibilities）
 
-**Programmatic Example**
+现实世界的例子
 
-Translating our account example above. First of all we have a base account having the logic for chaining the accounts together and some accounts
+> 例如，你有三种付款方式（`A`，`B`和`C`）安装在您的帐户; 每个都有不同的数量。`A`有100美元，`B`具有300美元和`C`具有1000美元，以及支付偏好被选择作为`A`再`B`然后`C`。你试着购买价值210美元的东西。使用责任链，首先`A`会检查帐户是否可以进行购买，如果是，则进行购买并且链条将被破坏。如果没有，请求将继续进行帐户`B`检查金额，如果是链将被破坏，否则请求将继续转发，直到找到合适的处理程序。在这里`A`，`B`和`C` 是链条的链接，整个现象是责任链。
+
+简单来说
+
+> 它有助于构建一系列对象。请求从一端进入并继续从一个对象到另一个对象，直到找到合适的处理程序。
+
+维基百科说
+
+> 在面向对象的设计中，责任链模式是一种由命令对象源和一系列处理对象组成的设计模式。每个处理对象都包含定义它可以处理的命令对象类型的逻辑; 其余的传递给链中的下一个处理对象。
+
+**程序化示例**
+
+翻译上面的帐户示例。首先，我们有一个基本帐户，其中包含将帐户链接在一起的逻辑和一些帐户
 
 ```php
 abstract class Account
@@ -1361,7 +1425,7 @@ class Bitcoin extends Account
 }
 ```
 
-Now let's prepare the chain using the links defined above (i.e. Bank, Paypal, Bitcoin)
+现在让我们使用上面定义的链接准备链（即Bank，Paypal，Bitcoin）
 
 ```php
 // Let's prepare a chain like below
@@ -1388,22 +1452,24 @@ $bank->pay(259);
 // Paid 259 using Bitcoin!
 ```
 
-👮 Command
--------
+## 👮命令行模式（Command）
 
-Real world example
-> A generic example would be you ordering food at a restaurant. You (i.e. `Client`) ask the waiter (i.e. `Invoker`) to bring some food (i.e. `Command`) and waiter simply forwards the request to Chef (i.e. `Receiver`) who has the knowledge of what and how to cook.
-> Another example would be you (i.e. `Client`) switching on (i.e. `Command`) the television (i.e. `Receiver`) using a remote control (`Invoker`).
+现实世界的例子
 
-In plain words
-> Allows you to encapsulate actions in objects. The key idea behind this pattern is to provide the means to decouple client from receiver.
+> 一个通用的例子是你在餐厅点餐。您（即`Client`）要求服务员（即`Invoker`）携带一些食物（即`Command`），服务员只是将请求转发给主厨（即`Receiver`），该主厨知道什么以及如何烹饪。另一个例子是你（即）使用遥控器（）`Client`打开（即`Command`）电视（即）。`Receiver``Invoker`
 
-Wikipedia says
-> In object-oriented programming, the command pattern is a behavioral design pattern in which an object is used to encapsulate all information needed to perform an action or trigger an event at a later time. This information includes the method name, the object that owns the method and values for the method parameters.
+简单来说
 
-**Programmatic Example**
+> 允许您将操作封装在对象中。这种模式背后的关键思想是提供将客户端与接收器分离的方法。
 
-First of all we have the receiver that has the implementation of every action that could be performed
+维基百科说
+
+> 在面向对象的编程中，命令模式是行为设计​​模式，其中对象用于封装执行动作或稍后触发事件所需的所有信息。此信息包括方法名称，拥有该方法的对象以及方法参数的值。
+
+**程序化示例**
+
+首先，我们有接收器，它可以执行每个可以执行的操作
+
 ```php
 // Receiver
 class Bulb
@@ -1419,7 +1485,9 @@ class Bulb
     }
 }
 ```
-then we have an interface that each of the commands are going to implement and then we have a set of commands
+
+然后我们有一个接口，每个命令将实现，然后我们有一组命令
+
 ```php
 interface Command
 {
@@ -1479,7 +1547,9 @@ class TurnOff implements Command
     }
 }
 ```
-Then we have an `Invoker` with whom the client will interact to process any commands
+
+然后我们`Invoker`与客户端进行交互以处理任何命令
+
 ```php
 // Invoker
 class RemoteControl
@@ -1490,7 +1560,9 @@ class RemoteControl
     }
 }
 ```
-Finally let's see how we can use it in our client
+
+最后，让我们看看我们如何在客户端使用它
+
 ```php
 $bulb = new Bulb();
 
@@ -1502,23 +1574,25 @@ $remote->submit($turnOn); // Bulb has been lit!
 $remote->submit($turnOff); // Darkness!
 ```
 
-Command pattern can also be used to implement a transaction based system. Where you keep maintaining the history of commands as soon as you execute them. If the final command is successfully executed, all good otherwise just iterate through the history and keep executing the `undo` on all the executed commands.
+命令模式还可用于实现基于事务的系统。在执行命令时，一直保持命令历史记录的位置。如果成功执行了最后一个命令，那么所有好处都只是遍历历史记录并继续执行`undo`所有已执行的命令。
 
-➿ Iterator
---------
+## ➿迭代器模式（Iterator）
 
-Real world example
-> An old radio set will be a good example of iterator, where user could start at some channel and then use next or previous buttons to go through the respective channels. Or take an example of MP3 player or a TV set where you could press the next and previous buttons to go through the consecutive channels or in other words they all provide an interface to iterate through the respective channels, songs or radio stations.  
+现实世界的例子
 
-In plain words
-> It presents a way to access the elements of an object without exposing the underlying presentation.
+> 旧的无线电设备将是迭代器的一个很好的例子，用户可以从某个频道开始，然后使用下一个或上一个按钮来浏览相应的频道。或者以MP3播放器或电视机为例，您可以按下下一个和上一个按钮来浏览连续的频道，换句话说，它们都提供了一个界面来迭代各自的频道，歌曲或电台。
 
-Wikipedia says
-> In object-oriented programming, the iterator pattern is a design pattern in which an iterator is used to traverse a container and access the container's elements. The iterator pattern decouples algorithms from containers; in some cases, algorithms are necessarily container-specific and thus cannot be decoupled.
+简单来说
 
-**Programmatic example**
+> 它提供了一种访问对象元素而不暴露底层表示的方法。
 
-In PHP it is quite easy to implement using SPL (Standard PHP Library). Translating our radio stations example from above. First of all we have `RadioStation`
+维基百科说
+
+> 在面向对象的编程中，迭代器模式是一种设计模式，其中迭代器用于遍历容器并访问容器的元素。迭代器模式将算法与容器分离; 在某些情况下，算法必然是特定于容器的，因此不能解耦。
+
+**程序化的例子**
+
+在PHP中，使用SPL（标准PHP库）很容易实现。从上面翻译我们的广播电台示例。首先，我们有`RadioStation`
 
 ```php
 class RadioStation
@@ -1536,7 +1610,8 @@ class RadioStation
     }
 }
 ```
-Then we have our iterator
+
+然后我们有了迭代器
 
 ```php
 use Countable;
@@ -1594,7 +1669,9 @@ class StationList implements Countable, Iterator
     }
 }
 ```
-And then it can be used as
+
+然后它可以用作
+
 ```php
 $stationList = new StationList();
 
@@ -1610,23 +1687,26 @@ foreach($stationList as $station) {
 $stationList->removeStation(new RadioStation(89)); // Will remove station 89
 ```
 
-👽 Mediator
-========
+## 👽中介者模式（Mediator）
 
-Real world example
-> A general example would be when you talk to someone on your mobile phone, there is a network provider sitting between you and them and your conversation goes through it instead of being directly sent. In this case network provider is mediator.
+现实世界的例子
 
-In plain words
-> Mediator pattern adds a third party object (called mediator) to control the interaction between two objects (called colleagues). It helps reduce the coupling between the classes communicating with each other. Because now they don't need to have the knowledge of each other's implementation.
+> 一个典型的例子就是当你在手机上与某人交谈时，有一个网络提供商坐在你和他们之间，你的对话通过它而不是直接发送。在这种情况下，网络提供商是中介。
 
-Wikipedia says
-> In software engineering, the mediator pattern defines an object that encapsulates how a set of objects interact. This pattern is considered to be a behavioral pattern due to the way it can alter the program's running behavior.
+简单来说
 
-**Programmatic Example**
+> Mediator模式添加第三方对象（称为mediator）来控制两个对象（称为同事）之间的交互。它有助于减少彼此通信的类之间的耦合。因为现在他们不需要了解彼此的实施。
 
-Here is the simplest example of a chat room (i.e. mediator) with users (i.e. colleagues) sending messages to each other.
+维基百科说
 
-First of all, we have the mediator i.e. the chat room
+> 在软件工程中，中介模式定义了一个对象，该对象封装了一组对象的交互方式。由于它可以改变程序的运行行为，因此这种模式被认为是一种行为模式。
+
+**程序化示例**
+
+这是聊天室（即中介）与用户（即同事）相互发送消息的最简单示例。
+
+首先，我们有调解员即聊天室
+
 
 ```php
 interface ChatRoomMediator 
@@ -1647,7 +1727,8 @@ class ChatRoom implements ChatRoomMediator
 }
 ```
 
-Then we have our users i.e. colleagues
+然后我们有我们的用户，即同事
+
 ```php
 class User {
     protected $name;
@@ -1667,7 +1748,9 @@ class User {
     }
 }
 ```
-And the usage
+
+和用法
+
 ```php
 $mediator = new ChatRoom();
 
@@ -1682,24 +1765,27 @@ $jane->send('Hey!');
 // Feb 14, 10:58 [Jane]: Hey!
 ```
 
-💾 Memento
--------
-Real world example
-> Take the example of calculator (i.e. originator), where whenever you perform some calculation the last calculation is saved in memory (i.e. memento) so that you can get back to it and maybe get it restored using some action buttons (i.e. caretaker).
+## 💾备忘录模式（Memento）
 
-In plain words
-> Memento pattern is about capturing and storing the current state of an object in a manner that it can be restored later on in a smooth manner.
+现实世界的例子
 
-Wikipedia says
-> The memento pattern is a software design pattern that provides the ability to restore an object to its previous state (undo via rollback).
+> 以计算器（即发起者）为例，无论何时执行某些计算，最后的计算都会保存在内存中（即纪念品），以便您可以回到它并使用某些操作按钮（即看管人）恢复它。
 
-Usually useful when you need to provide some sort of undo functionality.
+简单来说
 
-**Programmatic Example**
+> Memento模式是关于以稍后可以以平滑方式恢复的方式捕获和存储对象的当前状态。
 
-Lets take an example of text editor which keeps saving the state from time to time and that you can restore if you want.
+维基百科说
 
-First of all we have our memento object that will be able to hold the editor state
+> memento模式是一种软件设计模式，它提供将对象恢复到其先前状态的能力（通过回滚撤消）。
+
+当您需要提供某种撤消功能时通常很有用。
+
+**程序化示例**
+
+让我们举一个文本编辑器的例子，它不时地保存状态，你可以根据需要恢复。
+
+首先，我们有memento对象，可以保存编辑器状态
 
 ```php
 class EditorMemento
@@ -1718,7 +1804,7 @@ class EditorMemento
 }
 ```
 
-Then we have our editor i.e. originator that is going to use memento object
+然后我们有我们的编辑器即即将使用memento对象的创作者
 
 ```php
 class Editor
@@ -1747,7 +1833,7 @@ class Editor
 }
 ```
 
-And then it can be used as
+然后它可以用作
 
 ```php
 $editor = new Editor();
@@ -1771,20 +1857,24 @@ $editor->restore($saved);
 $editor->getContent(); // This is the first sentence. This is second.
 ```
 
-😎 Observer
---------
-Real world example
-> A good example would be the job seekers where they subscribe to some job posting site and they are notified whenever there is a matching job opportunity.   
+## 😎观察者模式（Observer）
 
-In plain words
-> Defines a dependency between objects so that whenever an object changes its state, all its dependents are notified.
+现实世界的例子
 
-Wikipedia says
-> The observer pattern is a software design pattern in which an object, called the subject, maintains a list of its dependents, called observers, and notifies them automatically of any state changes, usually by calling one of their methods.
+> 一个很好的例子是求职者，他们订阅了一些职位发布网站，只要有匹配的工作机会，他们就会得到通知。
 
-**Programmatic example**
+简单来说
 
-Translating our example from above. First of all we have job seekers that need to be notified for a job posting
+> 定义对象之间的依赖关系，以便每当对象更改其状态时，都会通知其所有依赖项。
+
+维基百科说
+
+> 观察者模式是一种软件设计模式，其中一个称为主体的对象维护其依赖者列表，称为观察者，并通常通过调用其中一种方法自动通知它们任何状态变化。
+
+**程序化的例子**
+
+从上面翻译我们的例子。首先，我们有求职者需要通知职位发布
+
 ```php
 class JobPost
 {
@@ -1817,7 +1907,9 @@ class JobSeeker implements Observer
     }
 }
 ```
-Then we have our job postings to which the job seekers will subscribe
+
+然后我们会找到求职者会订阅的招聘信息
+
 ```php
 class EmploymentAgency implements Observable
 {
@@ -1841,7 +1933,9 @@ class EmploymentAgency implements Observable
     }
 }
 ```
-Then it can be used as
+
+然后它可以用作
+
 ```php
 // Create subscribers
 $johnDoe = new JobSeeker('John Doe');
@@ -1860,20 +1954,23 @@ $jobPostings->addJob(new JobPost('Software Engineer'));
 // Hi Jane Doe! New job posted: Software Engineer
 ```
 
-🏃 Visitor
--------
-Real world example
-> Consider someone visiting Dubai. They just need a way (i.e. visa) to enter Dubai. After arrival, they can come and visit any place in Dubai on their own without having to ask for permission or to do some leg work in order to visit any place here; just let them know of a place and they can visit it. Visitor pattern lets you do just that, it helps you add places to visit so that they can visit as much as they can without having to do any legwork.
+## 🏃访问者模式（Visitor）
 
-In plain words
-> Visitor pattern lets you add further operations to objects without having to modify them.
+现实世界的例子
 
-Wikipedia says
-> In object-oriented programming and software engineering, the visitor design pattern is a way of separating an algorithm from an object structure on which it operates. A practical result of this separation is the ability to add new operations to existing object structures without modifying those structures. It is one way to follow the open/closed principle.
+> 考虑去迪拜的人。他们只需要一种方式（即签证）进入迪拜。抵达后，他们可以自己来迪拜的任何地方，而无需征求许可或做一些腿部工作，以便访问这里的任何地方; 让他们知道一个地方，他们可以访问它。访客模式可以让您做到这一点，它可以帮助您添加访问的地方，以便他们可以尽可能多地访问，而无需做任何腿部工作。
 
-**Programmatic example**
+简单来说
 
-Let's take an example of a zoo simulation where we have several different kinds of animals and we have to make them Sound. Let's translate this using visitor pattern
+> 访客模式允许您向对象添加更多操作，而无需修改它们。
+
+维基百科说
+
+> 在面向对象的编程和软件工程中，访问者设计模式是一种将算法与其运行的对象结构分离的方法。这种分离的实际结果是能够在不修改这些结构的情况下向现有对象结构添加新操作。这是遵循开放/封闭原则的一种方式。
+
+**程序化的例子**
+
+让我们举一个动物园模拟的例子，我们有几种不同的动物，我们必须让它们成为声音。让我们用访客模式翻译这个
 
 ```php
 // Visitee
@@ -1890,7 +1987,9 @@ interface AnimalOperation
     public function visitDolphin(Dolphin $dolphin);
 }
 ```
-Then we have our implementations for the animals
+
+然后我们有动物实施
+
 ```php
 class Monkey implements Animal
 {
@@ -1931,7 +2030,9 @@ class Dolphin implements Animal
     }
 }
 ```
-Let's implement our visitor
+
+让我们实现我们的访客
+
 ```php
 class Speak implements AnimalOperation
 {
@@ -1952,7 +2053,8 @@ class Speak implements AnimalOperation
 }
 ```
 
-And then it can be used as
+然后它可以用作
+
 ```php
 $monkey = new Monkey();
 $lion = new Lion();
@@ -1964,7 +2066,8 @@ $monkey->accept($speak);    // Ooh oo aa aa!
 $lion->accept($speak);      // Roaaar!
 $dolphin->accept($speak);   // Tuut tutt tuutt!
 ```
-We could have done this simply by having an inheritance hierarchy for the animals but then we would have to modify the animals whenever we would have to add new actions to animals. But now we will not have to change them. For example, let's say we are asked to add the jump behavior to the animals, we can simply add that by creating a new visitor i.e.
+
+我们可以通过为动物建立一个继承层次结构来做到这一点，但是每当我们不得不为动物添加新动作时我们就必须修改动物。但现在我们不必改变它们。例如，假设我们被要求向动物添加跳跃行为，我们可以通过创建新的访问者来添加它，即
 
 ```php
 class Jump implements AnimalOperation
@@ -1985,7 +2088,9 @@ class Jump implements AnimalOperation
     }
 }
 ```
-And for the usage
+
+并用于使用
+
 ```php
 $jump = new Jump();
 
@@ -1999,21 +2104,23 @@ $dolphin->accept($speak);  // Tuut tutt tuutt!
 $dolphin->accept($jump);   // Walked on water a little and disappeared
 ```
 
-💡 Strategy
---------
+## 💡策略模式（Strategy）
 
-Real world example
-> Consider the example of sorting, we implemented bubble sort but the data started to grow and bubble sort started getting very slow. In order to tackle this we implemented Quick sort. But now although the quick sort algorithm was doing better for large datasets, it was very slow for smaller datasets. In order to handle this we implemented a strategy where for small datasets, bubble sort will be used and for larger, quick sort.
+现实世界的例子
 
-In plain words
-> Strategy pattern allows you to switch the algorithm or strategy based upon the situation.
+> 考虑排序的例子，我们实现了冒泡排序，但数据开始增长，冒泡排序开始变得非常缓慢。为了解决这个问题，我们实现了快速排序。但是现在虽然快速排序算法对大型数据集的效果更好，但对于较小的数据集来说速度非常慢。为了解决这个问题，我们实施了一个策略，对于小型数据集，将使用冒泡排序并进行更大规模的快速排序。
 
-Wikipedia says
-> In computer programming, the strategy pattern (also known as the policy pattern) is a behavioural software design pattern that enables an algorithm's behavior to be selected at runtime.
+简单来说
 
-**Programmatic example**
+> 策略模式允许您根据情况切换算法或策略。
 
-Translating our example from above. First of all we have our strategy interface and different strategy implementations
+维基百科说
+
+> 在计算机编程中，策略模式（也称为策略模式）是一种行为软件设计模式，可以在运行时选择算法的行为。
+
+**程序化的例子**
+
+从上面翻译我们的例子。首先，我们有战略界面和不同的战略实施
 
 ```php
 interface SortStrategy
@@ -2044,7 +2151,8 @@ class QuickSortStrategy implements SortStrategy
 }
 ```
 
-And then we have our client that is going to use any strategy
+然后我们的客户将使用任何策略
+
 ```php
 class Sorter
 {
@@ -2061,6 +2169,9 @@ class Sorter
     }
 }
 ```
+
+它可以用作
+
 And it can be used as
 ```php
 $dataset = [1, 5, 4, 3, 2, 8];
@@ -2072,23 +2183,25 @@ $sorter = new Sorter(new QuickSortStrategy());
 $sorter->sort($dataset); // Output : Sorting using quick sort
 ```
 
-💢 State
------
-Real world example
-> Imagine you are using some drawing application, you choose the paint brush to draw. Now the brush changes its behavior based on the selected color i.e. if you have chosen red color it will draw in red, if blue then it will be in blue etc.  
+## 💢状态模式（State）
 
-In plain words
-> It lets you change the behavior of a class when the state changes.
+现实世界的例子
 
-Wikipedia says
-> The state pattern is a behavioral software design pattern that implements a state machine in an object-oriented way. With the state pattern, a state machine is implemented by implementing each individual state as a derived class of the state pattern interface, and implementing state transitions by invoking methods defined by the pattern's superclass.
-> The state pattern can be interpreted as a strategy pattern which is able to switch the current strategy through invocations of methods defined in the pattern's interface.
+> 想象一下，你正在使用一些绘图应用程序，你选择绘制画笔。现在画笔根据所选颜色改变其行为，即如果你选择了红色，它会画成红色，如果是蓝色则会是蓝色等。
 
-**Programmatic example**
+简单来说
 
-Let's take an example of text editor, it lets you change the state of text that is typed i.e. if you have selected bold, it starts writing in bold, if italic then in italics etc.
+> 它允许您在状态更改时更改类的行为。
 
-First of all we have our state interface and some state implementations
+维基百科说
+
+> 状态模式是一种行为软件设计模式，它以面向对象的方式实现状态机。使用状态模式，通过将每个单独的状态实现为状态模式接口的派生类来实现状态机，并通过调用由模式的超类定义的方法来实现状态转换。状态模式可以解释为一种策略模式，它能够通过调用模式接口中定义的方法来切换当前策略。
+
+**程序化的例子**
+
+让我们以文本编辑器为例，它允许您更改键入的文本的状态，即如果您选择了粗体，则开始以粗体显示，如果是斜体，则以斜体显示等。
+
+首先，我们有状态接口和一些状态实现
 
 ```php
 interface WritingState
@@ -2120,7 +2233,9 @@ class DefaultText implements WritingState
     }
 }
 ```
-Then we have our editor
+
+然后我们有编辑
+
 ```php
 class TextEditor
 {
@@ -2142,7 +2257,9 @@ class TextEditor
     }
 }
 ```
-And then it can be used as
+
+然后它可以用作
+
 ```php
 $editor = new TextEditor(new DefaultText());
 
@@ -2166,29 +2283,33 @@ $editor->type('Fifth line');
 // fifth line
 ```
 
-📒 Template Method
----------------
+## 📒<模板方法模式（Template Method）
 
-Real world example
-> Suppose we are getting some house built. The steps for building might look like
-> - Prepare the base of house
-> - Build the walls
-> - Add roof
-> - Add other floors
+现实世界的例子
 
-> The order of these steps could never be changed i.e. you can't build the roof before building the walls etc but each of the steps could be modified for example walls can be made of wood or polyester or stone.
+> 假设我们正在建造一些房屋。构建的步骤可能看起来像
+> 
+> *   准备房子的基地
+> *   建造墙壁
+> *   添加屋顶
+> *   添加其他楼层
 
-In plain words
-> Template method defines the skeleton of how a certain algorithm could be performed, but defers the implementation of those steps to the children classes.
+> 这些步骤的顺序永远不会改变，即在建造墙壁等之前不能建造屋顶，但是每个步骤都可以修改，例如墙壁可以由木头或聚酯或石头制成。
 
-Wikipedia says
-> In software engineering, the template method pattern is a behavioral design pattern that defines the program skeleton of an algorithm in an operation, deferring some steps to subclasses. It lets one redefine certain steps of an algorithm without changing the algorithm's structure.
+简单来说
 
-**Programmatic Example**
+> 模板方法定义了如何执行某个算法的框架，但是将这些步骤的实现推迟到子类。
 
-Imagine we have a build tool that helps us test, lint, build, generate build reports (i.e. code coverage reports, linting report etc) and deploy our app on the test server.
+维基百科说
 
-First of all we have our base class that specifies the skeleton for the build algorithm
+> 在软件工程中，模板方法模式是一种行为设计模式，它定义了操作中算法的程序框架，将一些步骤推迟到子类。它允许重新定义算法的某些步骤而不改变算法的结构。
+
+**程序化示例**
+
+想象一下，我们有一个构建工具，可以帮助我们测试，lint，构建，生成构建报告（即代码覆盖率报告，linting报告等），并在测试服务器上部署我们的应用程序。
+
+首先，我们有基类，它指定构建算法的骨架
+
 ```php
 abstract class Builder
 {
@@ -2209,7 +2330,7 @@ abstract class Builder
 }
 ```
 
-Then we can have our implementations
+然后我们可以实现我们的实现
 
 ```php
 class AndroidBuilder extends Builder
@@ -2258,7 +2379,8 @@ class IosBuilder extends Builder
     }
 }
 ```
-And then it can be used as
+
+然后它可以用作
 
 ```php
 $androidBuilder = new AndroidBuilder();
@@ -2280,17 +2402,10 @@ $iosBuilder->build();
 // Deploying ios build to server
 ```
 
-## 🚦 Wrap Up Folks
+## 🚦总结一下
 
-And that about wraps it up. I will continue to improve this, so you might want to watch/star this repository to revisit. Also, I have plans on writing the same about the architectural patterns, stay tuned for it.
-
-## 👬 Contribution
-
-- Report issues
-- Open pull request with improvements
-- Spread the word
-- Reach out with any feedback [![Twitter URL](https://img.shields.io/twitter/url/https/twitter.com/kamranahmedse.svg?style=social&label=Follow%20%40kamranahmedse)](https://twitter.com/kamranahmedse)
+那就是把它包起来。我将继续改进这一点，因此您可能希望观看/加注此存储库以重新访问。此外，我计划对架构模式进行相同的编写，请继续关注它。
 
 ## License
 
-[![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
+[![](https://camo.githubusercontent.com/45b46deab81a0adb3164212be341f1dd65111cf3/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4c6963656e73652d43432532304259253230342e302d6c69676874677265792e737667)](https://creativecommons.org/licenses/by/4.0/)
