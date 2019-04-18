@@ -1,0 +1,3 @@
+[submodule "design-patterns-for-humans"]
+	path = design-patterns-for-humans
+	url = git@github.com:kamranahmedse/design-patterns-for-humans.git
