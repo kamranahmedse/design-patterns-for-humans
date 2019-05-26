@@ -2283,7 +2283,7 @@ $editor->type('Fifth line');
 // fifth line
 ```
 
-## 📒<模板方法模式（Template Method）
+## 📒模板方法模式（Template Method）
 
 现实世界的例子
 
