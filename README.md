@@ -6,6 +6,8 @@
 
 * * *
 
+[![Build Status](https://travis-ci.org/guanguans/design-patterns-for-humans-cn.svg?branch=master)](https://travis-ci.org/guanguans/design-patterns-for-humans-cn)
+
 <!-- TOC updateOnSave:false -->
 
 - [⚠️注意](#⚠️注意)
