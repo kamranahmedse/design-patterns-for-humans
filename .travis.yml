@@ -2,6 +2,7 @@ language: node_js
 node_js:
   - "10"
 before_install:
+  - git submodule update --init --recursive
   - git config user.name "琯琯"
   - git config user.email "798314049@qq.com"
   - npm i -g lint-md
