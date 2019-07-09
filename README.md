@@ -8,6 +8,15 @@
 
 [![Build Status](https://travis-ci.org/guanguans/design-patterns-for-humans-cn.svg?branch=master)](https://travis-ci.org/guanguans/design-patterns-for-humans-cn)
 
+## 自荐项目
+
+* [soar-php](https://github.com/guanguans/soar-php) - 一个方便 sql 语句调优的 PHP 扩展包
+* [think-soar](https://github.com/guanguans/think-soar)- 适用于 thinkphp 中 sql 语句调优的扩展包、监控页面内所有 sql 语句，并报告 sql 语句 评分和对 explain 信息解读
+* [music-php](https://github.com/guanguans/music-php) - 一个命令行音乐下载器
+* [dnmp-plus](https://github.com/guanguans/dnmp-plus) - 一个 Docker 的 LNMP 一键安装开发环境，支持 xhgui、xhprof、tideways
+
+---
+
 <!-- TOC updateOnSave:false -->
 
 - [注意](#注意)
