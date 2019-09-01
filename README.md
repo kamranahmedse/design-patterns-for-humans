@@ -1,9 +1,9 @@
-![Design Patterns For Humans](https://cloud.githubusercontent.com/assets/11269635/23065273/1b7e5938-f515-11e6-8dd3-d0d58de6bb9a.png)
+![Design Patterns para Humanos](https://cloud.githubusercontent.com/assets/11269635/23065273/1b7e5938-f515-11e6-8dd3-d0d58de6bb9a.png)
 
 ***
 
 <p align="center">
-🎉 Ultra-simplified explanation to design patterns! 🎉
+🎉 Explicação Ultra-simplificada sobre design patterns! 🎉
 </p>
 <p align="center">
 A topic that can easily make anyone's mind wobble. Here I try to make them stick in to your mind (and maybe mine) by explaining them in the <i>simplest</i> way possible.
@@ -13,32 +13,32 @@ A topic that can easily make anyone's mind wobble. Here I try to make them stick
 
 <sub>Check out my [blog](http://kamranahmed.info) and say "hi" on [Twitter](https://twitter.com/kamranahmedse).</sub>
 
-Introduction
+Introdução
 =================
 
-Design patterns are solutions to recurring problems; **guidelines on how to tackle certain problems**. They are not classes, packages or libraries that you can plug into your application and wait for the magic to happen. These are, rather, guidelines on how to tackle certain problems in certain situations.
+Design patterns são soluções para problemas recorrentes; **orientações sobre como enfrentar um certo problema**. Eles não são classes, packages ou libraries que você pode instalar na sua aplicação e esperar a mágica acontecer. Estas são, antes de tudo, orientações sobre como lidar com certos problemas em determinadas situações.
 
-> Design patterns are solutions to recurring problems; guidelines on how to tackle certain problems
+> Design patterns são soluções para problemas recorrentes; orientações sobre como enfrentar um certo problema
 
-Wikipedia describes them as
+Wikipedia descreve elas como
 
 > In software engineering, a software design pattern is a general reusable solution to a commonly occurring problem within a given context in software design. It is not a finished design that can be transformed directly into source or machine code. It is a description or template for how to solve a problem that can be used in many different situations.
 
-⚠️ Be Careful
+⚠️ Tome cuidado
 -----------------
-- Design patterns are not a silver bullet to all your problems.
-- Do not try to force them; bad things are supposed to happen, if done so. 
-- Keep in mind that design patterns are solutions **to** problems, not solutions **finding** problems; so don't overthink.
-- If used in a correct place in a correct manner, they can prove to be a savior; or else they can result in a horrible mess of a code.
+- Design patterns não são a bala de prata para todos os problemas.
+- Não tente forçar elas no seu projeto; coisas ruins podem acontecer se você o fizer. 
+- Mantenha em mente que design patterns são soluções **para** problemas, não soluções **para encontrar** problemas; então, não pense demais sobre isso.
+- Se usadas no lugar certo e do jeito certo, elas podem se provar por serem uma salvação; se não, elas podem resultar em uma grande dor de cabeça.
 
-> Also note that the code samples below are in PHP-7, however this shouldn't stop you because the concepts are same anyways.
+> Note também que os exemplos de código abaixo estão em PHP-7, de qualquer forma, isso não precisa ser um impedimento para você, já que os conceitos se mantém para todas as linguagens.
 
-Types of Design Patterns
+Tipos de Design Patterns
 -----------------
 
-* [Creational](#creational-design-patterns)
-* [Structural](#structural-design-patterns)
-* [Behavioral](#behavioral-design-patterns)
+* [Criacional](#creational-design-patterns)
+* [Estrutural](#structural-design-patterns)
+* [Comportamental](#behavioral-design-patterns)
 
 Creational Design Patterns
 ==========================
