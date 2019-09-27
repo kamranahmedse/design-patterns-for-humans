@@ -40,14 +40,14 @@ Tipos de Design Patterns
 * [Estrutural](#structural-design-patterns)
 * [Comportamental](#behavioral-design-patterns)
 
-Creational Design Patterns
+Design Patterns Criacional
 ==========================
 
-In plain words
-> Creational patterns are focused towards how to instantiate an object or group of related objects.
+Em poucas palavras
+> Patterns Criacionais são focados em como instanciar um objeto ou grupo de objetos relacionados.
 
-Wikipedia says
-> In software engineering, creational design patterns are design patterns that deal with object creation mechanisms, trying to create objects in a manner suitable to the situation. The basic form of object creation could result in design problems or added complexity to the design. Creational design patterns solve this problem by somehow controlling this object creation.
+De acordo com a Wikipedia 
+> Em engenharia de software, design patterns criacionais são design patterns que lidam com mecânismos de criação de objetos, tentando criar objetos de uma maneira adequada a situação. A forma básica de criação de objeto pode resultar em problemas de design ou adicionar complexidade ao design. Design patterns criacionais resolvem este problema de alguma forma controlando esta criação de objetos.
 
  * [Simple Factory](#-simple-factory)
  * [Factory Method](#-factory-method)
@@ -58,26 +58,26 @@ Wikipedia says
 
 🏠 Simple Factory
 --------------
-Real world example
-> Consider, you are building a house and you need doors. You can either put on your carpenter clothes, bring some wood, glue, nails and all the tools required to build the door and start building it in your house or you can simply call the factory and get the built door delivered to you so that you don't need to learn anything about the door making or to deal with the mess that comes with making it.
+Exemplo do mundo real
+> Considere que, você está construindo uma casa e precisa de portas. Você pode ou colocar sua roupa de carpinteiro, trazer algumas madeiras, cola, pregos e todas as ferramentas necessárias para construir a porta e começar a construi-la em sua casa ou você pode apenas chamar o fabricante e receber a porta já pronta, então você não precisa aprender nada sobre fazer portas ou lidar com a bagunça de faze-la.
 
-In plain words
-> Simple factory simply generates an instance for client without exposing any instantiation logic to the client
+Em poucas palavras
+> Simple factory apenas gera uma instancia para o cliente sem expor nenhuma lógica de instância para o cliente.
 
-Wikipedia says
-> In object-oriented programming (OOP), a factory is an object for creating other objects – formally a factory is a function or method that returns objects of a varying prototype or class from some method call, which is assumed to be "new".
+De acordo com a Wikipedia
+> Em programação orientada a objeto (POO), um factory é um objeto para criação de outros objetos – formalmente um factory é uma função ou método que retorna objetos do tipo de prototype ou classes de algum método chamado, qual é assumido ser "new".
 
-**Programmatic Example**
+**Exemplo de Programação**
 
-First of all we have a door interface and the implementation
+Primeiro de tudo  nós temos uma interface porta e a implementação
 ```php
-interface Door
+interface Porta
 {
     public function getWidth(): float;
     public function getHeight(): float;
 }
 
-class WoodenDoor implements Door
+class PortaDeMadeira implements Porta
 {
     protected $width;
     protected $height;
@@ -99,29 +99,29 @@ class WoodenDoor implements Door
     }
 }
 ```
-Then we have our door factory that makes the door and returns it
+Então nós temos nosso factory de porta que faz a porta e retorna ela
 ```php
-class DoorFactory
+class PortaFactory
 {
-    public static function makeDoor($width, $height): Door
+    public static function fazerPorta($width, $height): Porta
     {
-        return new WoodenDoor($width, $height);
+        return new PortaDeMadeira($width, $height);
     }
 }
 ```
-And then it can be used as
+E finalmente isso pode ser usado como
 ```php
 // Make me a door of 100x200
-$door = DoorFactory::makeDoor(100, 200);
+$door = PortaFactory::fazerPorta(100, 200);
 
 echo 'Width: ' . $door->getWidth();
 echo 'Height: ' . $door->getHeight();
 
 // Make me a door of 50x100
-$door2 = DoorFactory::makeDoor(50, 100);
+$door2 = PortaFactory::fazerPorta(50, 100);
 ```
 
-**When to Use?**
+**Quando Usar?**
 
 When creating an object is not just a few assignments and involves some logic, it makes sense to put it in a dedicated factory instead of repeating the same code everywhere.
 
