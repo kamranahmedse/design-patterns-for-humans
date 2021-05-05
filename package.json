@@ -1,0 +1,18 @@
+{
+  "name": "design-patterns-for-humans",
+  "version": "1.0.0",
+  "description": "Ultra-simplified explanation to design patterns!",
+  "main": "index.js",
+  "repository": "git@github.com:LeafyCode/design-patterns-for-humans.git",
+  "author": "Pubudu Kodikara <pubudu@leafycode.com>",
+  "license": "CC-BY-4.0",
+  "private": false,
+  "scripts": {
+    "dev": "vuepress dev",
+    "build": "vuepress build"
+  },
+  "devDependencies": {
+    "vuepress": "^1.8.2",
+    "vuepress-plugin-typescript": "^0.3.1"
+  }
+}
