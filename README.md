@@ -13,7 +13,13 @@ A topic that can easily make anyone's mind wobble. Here I try to make them stick
 
 ***
 
-<sub>Check out my [blog](http://kamranahmed.info) and say "hi" on [Twitter](https://twitter.com/kamranahmedse).</sub>
+#### Current Maintainers:
+The good team at [Leafy Code](https://leafycode.com)
+
+#### Original Author: 
+
+[@kamranahmedse](https://github.com/kamranahmedse)
+Check out his [blog](http://kamranahmed.info) and say "hi" on [Twitter](https://twitter.com/kamranahmedse).
 
 Introduction
 =================
@@ -35,97 +41,14 @@ Wikipedia describes them as
 
 > Also note that the code samples below are in PHP-7, however this shouldn't stop you because the concepts are same anyways.
 
-Types of Design Patterns
+📚 Types of Design Patterns
 -----------------
 
 * [Creational](#creational-design-patterns)
 * [Structural](#structural-design-patterns)
 * [Behavioral](#behavioral-design-patterns)
 
-Creational Design Patterns
-==========================
 
-In plain words
-> Creational patterns are focused towards how to instantiate an object or group of related objects.
-
-Wikipedia says
-> In software engineering, creational design patterns are design patterns that deal with object creation mechanisms, trying to create objects in a manner suitable to the situation. The basic form of object creation could result in design problems or added complexity to the design. Creational design patterns solve this problem by somehow controlling this object creation.
-
- * [Simple Factory](#-simple-factory)
- * [Factory Method](#-factory-method)
- * [Abstract Factory](#-abstract-factory)
- * [Builder](#-builder)
- * [Prototype](#-prototype)
- * [Singleton](#-singleton)
-
-🏠 Simple Factory
---------------
-Real world example
-> Consider, you are building a house and you need doors. You can either put on your carpenter clothes, bring some wood, glue, nails and all the tools required to build the door and start building it in your house or you can simply call the factory and get the built door delivered to you so that you don't need to learn anything about the door making or to deal with the mess that comes with making it.
-
-In plain words
-> Simple factory simply generates an instance for client without exposing any instantiation logic to the client
-
-Wikipedia says
-> In object-oriented programming (OOP), a factory is an object for creating other objects – formally a factory is a function or method that returns objects of a varying prototype or class from some method call, which is assumed to be "new".
-
-**Programmatic Example**
-
-First of all we have a door interface and the implementation
-```php
-interface Door
-{
-    public function getWidth(): float;
-    public function getHeight(): float;
-}
-
-class WoodenDoor implements Door
-{
-    protected $width;
-    protected $height;
-
-    public function __construct(float $width, float $height)
-    {
-        $this->width = $width;
-        $this->height = $height;
-    }
-
-    public function getWidth(): float
-    {
-        return $this->width;
-    }
-
-    public function getHeight(): float
-    {
-        return $this->height;
-    }
-}
-```
-Then we have our door factory that makes the door and returns it
-```php
-class DoorFactory
-{
-    public static function makeDoor($width, $height): Door
-    {
-        return new WoodenDoor($width, $height);
-    }
-}
-```
-And then it can be used as
-```php
-// Make me a door of 100x200
-$door = DoorFactory::makeDoor(100, 200);
-
-echo 'Width: ' . $door->getWidth();
-echo 'Height: ' . $door->getHeight();
-
-// Make me a door of 50x100
-$door2 = DoorFactory::makeDoor(50, 100);
-```
-
-**When to Use?**
-
-When creating an object is not just a few assignments and involves some logic, it makes sense to put it in a dedicated factory instead of repeating the same code everywhere.
 
 🏭 Factory Method
 --------------
