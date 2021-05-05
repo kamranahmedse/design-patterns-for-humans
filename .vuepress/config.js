@@ -6,8 +6,16 @@ module.exports = {
     sidebar: [
       '/',
       {
-        title: 'Simple Factory',
-        path: '/simple-factory/',
+        title: 'Creational Design Patterns',
+        path: '/creational-design-patterns/',
+        children: [
+         '/creational-design-patterns/simple-factory/',
+         '/creational-design-patterns/factory-method/', 
+         '/creational-design-patterns/abstract-factory/', 
+         '/creational-design-patterns/builder/', 
+         '/creational-design-patterns/prototype/', 
+         '/creational-design-patterns/singleton/'
+        ]
       },
     ],
     logo: '/assets/img/logo.png'
