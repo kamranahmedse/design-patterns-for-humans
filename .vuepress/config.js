@@ -30,6 +30,26 @@ module.exports = {
          '/structural-design-patterns/proxy/',
         ]
       },
+      {
+        title: 'Behavioral Design Patterns',
+        path: '/behavioral-design-patterns/',
+        children: [
+         '/behavioral-design-patterns/chain-of-responsibility/',
+         '/behavioral-design-patterns/command/', 
+         '/behavioral-design-patterns/iterator/', 
+         '/behavioral-design-patterns/mediator/', 
+         '/behavioral-design-patterns/memento/', 
+         '/behavioral-design-patterns/observer/', 
+         '/behavioral-design-patterns/visitor/',
+         '/behavioral-design-patterns/strategy/',
+         '/behavioral-design-patterns/state/',
+         '/behavioral-design-patterns/template-method/',
+        ]
+      },
+      {
+        title: 'Wrap Up Folks',
+        path: '/wrap-up-folks/',
+      },
     ],
     logo: '/assets/img/logo.png'
   },
