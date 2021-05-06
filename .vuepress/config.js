@@ -17,6 +17,19 @@ module.exports = {
          '/creational-design-patterns/singleton/'
         ]
       },
+      {
+        title: 'Structural Design Patterns',
+        path: '/structural-design-patterns/',
+        children: [
+         '/structural-design-patterns/adapter/',
+         '/structural-design-patterns/bridge/', 
+         '/structural-design-patterns/composite/', 
+         '/structural-design-patterns/decorator/', 
+         '/structural-design-patterns/facade/', 
+         '/structural-design-patterns/flyweight/', 
+         '/structural-design-patterns/proxy/',
+        ]
+      },
     ],
     logo: '/assets/img/logo.png'
   },
