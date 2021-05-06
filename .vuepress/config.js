@@ -3,6 +3,10 @@ module.exports = {
   title: 'Design patterns for humans',
   description: 'Ultra-simplified explanation to design patterns!',
   themeConfig: {
+    nav: [
+      { text: 'Leafy Code', link: 'https://leafycode.com' },
+      { text: 'GitHub', link: 'https://github.com/LeafyCode/design-patterns-for-humans' },
+    ],
     sidebar: [
       '/',
       {

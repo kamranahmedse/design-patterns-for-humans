@@ -13,20 +13,19 @@ A topic that can easily make anyone's mind wobble. Here I try to make them stick
 
 ***
 
+#### Original Author: 
+[@kamranahmedse](https://github.com/kamranahmedse)
+Check out his [blog](http://kamranahmed.info) and say "hi" on [Twitter](https://twitter.com/kamranahmedse).
 #### Current Maintainers:
 The good team at [Leafy Code](https://leafycode.com)
 
-#### Original Author: 
-
-[@kamranahmedse](https://github.com/kamranahmedse)
-Check out his [blog](http://kamranahmed.info) and say "hi" on [Twitter](https://twitter.com/kamranahmedse).
-
-Introduction
-=================
+***
 
 Design patterns are solutions to recurring problems; **guidelines on how to tackle certain problems**. They are not classes, packages or libraries that you can plug into your application and wait for the magic to happen. These are, rather, guidelines on how to tackle certain problems in certain situations.
 
-> Design patterns are solutions to recurring problems; guidelines on how to tackle certain problems
+::: tip
+Design patterns are solutions to recurring problems; guidelines on how to tackle certain problems
+:::
 
 Wikipedia describes them as
 
@@ -39,7 +38,7 @@ Wikipedia describes them as
 - Keep in mind that design patterns are solutions **to** problems, not solutions **finding** problems; so don't overthink.
 - If used in a correct place in a correct manner, they can prove to be a savior; or else they can result in a horrible mess of a code.
 
-> Also note that the code samples below are in PHP-7, however this shouldn't stop you because the concepts are same anyways.
+
 
 📚 Types of Design Patterns
 -----------------
