@@ -1,7 +1,7 @@
 module.exports = {
   lang: 'en-US',
-  title: 'Hello, VuePress!',
-  description: 'This is my first VuePress site',
+  title: 'Design patterns for humans',
+  description: 'Ultra-simplified explanation to design patterns!',
   themeConfig: {
     sidebar: [
       '/',
