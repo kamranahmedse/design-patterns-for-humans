@@ -3,8 +3,7 @@
   "version": "1.0.0",
   "description": "Ultra-simplified explanation to design patterns!",
   "main": "index.js",
-  "repository": "git@github.com:LeafyCode/design-patterns-for-humans.git",
-  "author": "Pubudu Kodikara <pubudu@leafycode.com>",
+  "repository": "git@github.com:kamranahmedse/design-patterns-for-humans.git",
   "license": "CC-BY-4.0",
   "private": false,
   "scripts": {

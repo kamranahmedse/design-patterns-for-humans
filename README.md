@@ -13,11 +13,7 @@ A topic that can easily make anyone's mind wobble. Here I try to make them stick
 
 ***
 
-#### Original Author: 
-[@kamranahmedse](https://github.com/kamranahmedse)
-Check out his [blog](http://kamranahmed.info) and say "hi" on [Twitter](https://twitter.com/kamranahmedse).
-#### Current Maintainers:
-The good team at [Leafy Code](https://leafycode.com)
+<sub>Check out my [blog](http://kamranahmed.info) and say "hi" on [Twitter](https://twitter.com/kamranahmedse).</sub>
 
 ***
 
