@@ -79,9 +79,10 @@ $shop->serve();
 ```
 
 # Other Structural Design Patterns
- * [Adapter](#-adapter)
- * [Bridge](#-bridge)
- * [Composite](#-composite)
- * [Decorator](#-decorator)
- * [Facade](#-facade)
- * [Proxy](#-proxy)
+
+ * [Adapter](../Adapter#-adapter)
+ * [Bridge](../Bridge#-bridge)
+ * [Composite](../Composite#-composite)
+ * [Decorator](../Decorator#-decorator)
+ * [Facade](../Facade#-facade)
+ * [Proxy](../Proxy#-proxy)

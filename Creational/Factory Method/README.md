@@ -87,8 +87,9 @@ Useful when there is some generic processing in a class but the required sub-cla
 
 
 # Other Creational Design Patterns
- * [Simple Factory](#-simple-factory)
- * [Abstract Factory](#-abstract-factory)
- * [Builder](#-builder)
- * [Prototype](#-prototype)
- * [Singleton](#-singleton)
+
+ * [Simple Factory](../Simple%20Factory#-simple-factory)
+ * [Builder](../Builder#-builder)
+ * [Abstract Factory](../Abstract%20Factory#-abstract-factory)
+ * [Prototype](../Prototype#-prototype)
+ * [Singleton](../Singleton#-singleton)

@@ -33,14 +33,14 @@ Wikipedia describes them as
 
 > Also note that the code samples below are in PHP-7, however this shouldn't stop you because the concepts are same anyways.
 
-Types of Design Patterns
+# Types of Design Patterns
 -----------------
 
 * [Creational](#creational-design-patterns)
 * [Structural](#structural-design-patterns)
 * [Behavioral](#behavioral-design-patterns)
 
-Creational Design Patterns
+## Creational Design Patterns
 ==========================
 
 In plain words
@@ -56,7 +56,7 @@ Wikipedia says
  * [Prototype](Creational/Prototype#-prototype)
  * [Singleton](Creational/Singleton#-singleton)
 
-Structural Design Patterns
+## Structural Design Patterns
 ==========================
 In plain words
 > Structural patterns are mostly concerned with object composition or in other words how the entities can use each other. Or yet another explanation would be, they help in answering "How to build a software component?"
@@ -72,7 +72,7 @@ Wikipedia says
  * [Flyweight](Structural/Flyweight#-flyweight)
  * [Proxy](Structural/Proxy#-proxy)
 
-Behavioral Design Patterns
+## Behavioral Design Patterns
 ==========================
 
 In plain words
@@ -91,6 +91,7 @@ Wikipedia says
 * [Strategy](Behavioral/Strategy#-strategy)
 * [State](Behavioral/State#-state)
 * [Template Method](Behavioral/Template%20Method#-template-method)
+
 
 
 ## 🚦 Wrap Up Folks

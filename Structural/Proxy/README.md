@@ -76,9 +76,10 @@ Yet another example would be some sort of data-mapper implementation. For exampl
 
 
 # Other Structural Design Patterns
- * [Adapter](#-adapter)
- * [Bridge](#-bridge)
- * [Composite](#-composite)
- * [Decorator](#-decorator)
- * [Facade](#-facade)
- * [Flyweight](#-flyweight)
+
+ * [Adapter](../Adapter#-adapter)
+ * [Bridge](../Bridge#-bridge)
+ * [Composite](../Composite#-composite)
+ * [Decorator](../Decorator#-decorator)
+ * [Facade](../Facade#-facade)
+ * [Flyweight](../Flyweight#-flyweight)

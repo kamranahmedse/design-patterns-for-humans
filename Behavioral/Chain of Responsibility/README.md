@@ -101,12 +101,12 @@ $bank->pay(259);
 ```
 
 # Other Behavioral Patterns
-* [Command](#-command)
-* [Iterator](#-iterator)
-* [Mediator](#-mediator)
-* [Memento](#-memento)
-* [Observer](#-observer)
-* [Visitor](#-visitor)
-* [Strategy](#-strategy)
-* [State](#-state)
-* [Template Method](#-template-method)
+* [Command](../Command#-command)
+* [Iterator](../Iterator#-iterator)
+* [Mediator](../Mediator#-mediator)
+* [Memento](../Memento#-memento)
+* [Observer](../Observer#-observer)
+* [Visitor](../Visitor#-visitor)
+* [Strategy](../Strategy#-strategy)
+* [State](../State#-state)
+* [Template Method](../Template%20Method#-template-method)

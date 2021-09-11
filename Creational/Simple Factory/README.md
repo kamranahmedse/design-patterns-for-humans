@@ -69,8 +69,9 @@ When creating an object is not just a few assignments and involves some logic, i
 
 
 # Other Creational Design Patterns
- * [Factory Method](#-factory-method)
- * [Abstract Factory](#-abstract-factory)
- * [Builder](#-builder)
- * [Prototype](#-prototype)
- * [Singleton](#-singleton)
+
+ * [Builder](../Builder#-builder)
+ * [Abstract Factory](../Abstract%20Factory#-abstract-factory)
+ * [Builder](../Builder#-builder)
+ * [Prototype](../Prototype#-prototype)
+ * [Singleton](../Singleton#-singleton) 

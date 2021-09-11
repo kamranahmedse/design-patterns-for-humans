@@ -124,8 +124,9 @@ When there are interrelated dependencies with not-that-simple creation logic inv
 
 
 # Other Creational Design Patterns
- * [Simple Factory](#-simple-factory)
- * [Factory Method](#-factory-method)
- * [Builder](#-builder)
- * [Prototype](#-prototype)
- * [Singleton](#-singleton)
+
+ * [Simple Factory](../Simple%20Factory#-simple-factory)
+ * [Factory Method](../Factory%20Method#-factory-method)
+ * [Builder](../Builder#-builder)
+ * [Prototype](../Prototype#-prototype)
+ * [Singleton](../Singleton#-singleton)

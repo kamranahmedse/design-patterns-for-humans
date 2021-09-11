@@ -106,8 +106,9 @@ $burger = (new BurgerBuilder(14))
 When there could be several flavors of an object and to avoid the constructor telescoping. The key difference from the factory pattern is that; factory pattern is to be used when the creation is a one step process while builder pattern is to be used when the creation is a multi step process.
 
 # Other Creational Design Patterns
- * [Simple Factory](#-simple-factory)
- * [Factory Method](#-factory-method)
- * [Abstract Factory](#-abstract-factory)
- * [Prototype](#-prototype)
- * [Singleton](#-singleton)
+
+ * [Simple Factory](../Simple%20Factory#-simple-factory)
+ * [Factory Method](../Factory%20Method#-factory-method)
+ * [Abstract Factory](../Abstract%20Factory#-abstract-factory)
+ * [Prototype](../Prototype#-prototype)
+ * [Singleton](../Singleton#-singleton)

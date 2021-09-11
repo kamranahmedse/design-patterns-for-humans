@@ -94,9 +94,10 @@ echo $careers->getContent(); // "Careers page in Dark Black";
 ```
 
 # Other Structural Design Patterns
- * [Adapter](#-adapter)
- * [Composite](#-composite)
- * [Decorator](#-decorator)
- * [Facade](#-facade)
- * [Flyweight](#-flyweight)
- * [Proxy](#-proxy)
+
+ * [Adapter](../Adapter#-adapter)
+ * [Composite](../Composite#-composite)
+ * [Decorator](../Decorator#-decorator)
+ * [Facade](../Facade#-facade)
+ * [Flyweight](../Flyweight#-flyweight)
+ * [Proxy](../Proxy#-proxy)

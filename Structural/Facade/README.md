@@ -87,9 +87,10 @@ $computer->turnOff(); // Bup bup buzzz! Haah! Zzzzz
 ```
 
 # Other Structural Design Patterns
- * [Adapter](#-adapter)
- * [Bridge](#-bridge)
- * [Composite](#-composite)
- * [Decorator](#-decorator)
- * [Flyweight](#-flyweight)
- * [Proxy](#-proxy)
+
+ * [Adapter](../Adapter#-adapter)
+ * [Bridge](../Bridge#-bridge)
+ * [Composite](../Composite#-composite)
+ * [Decorator](../Decorator#-decorator)
+ * [Flyweight](../Flyweight#-flyweight)
+ * [Proxy](../Proxy#-proxy)

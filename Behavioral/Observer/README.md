@@ -89,13 +89,13 @@ $jobPostings->addJob(new JobPost('Software Engineer'));
 
 
 # Other Behavioral Patterns
-* [Chain of Responsibility](#-Chain-of-Responsibility)
-* [Command](#-command)
-* [Iterator](#-iterator)
-* [Mediator](#-mediator)
-* [Memento](#-memento)
-* [Observer](#-observer)
-* [Visitor](#-visitor)
-* [Strategy](#-strategy)
-* [State](#-state)
-* [Template Method](#-template-method)
+
+* [Chain of Responsibility](../Chain%20of%20Responsibility#-Chain-of-Responsibility)
+* [Command](../Command#-command)
+* [Iterator](../Iterator#-iterator)
+* [Mediator](../Mediator#-mediator)
+* [Memento](../Memento#-memento)
+* [Visitor](../Visitor#-visitor)
+* [Strategy](../Strategy#-strategy)
+* [State](../State#-state)
+* [Template Method](../Template%20Method#-template-method)

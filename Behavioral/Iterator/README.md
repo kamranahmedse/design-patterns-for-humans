@@ -105,12 +105,12 @@ $stationList->removeStation(new RadioStation(89)); // Will remove station 89
 
 
 # Other Behavioral Patterns
-* [Chain of Responsibility](#-Chain-of-Responsibility)
-* [Command](#-command)
-* [Mediator](#-mediator)
-* [Memento](#-memento)
-* [Observer](#-observer)
-* [Visitor](#-visitor)
-* [Strategy](#-strategy)
-* [State](#-state)
-* [Template Method](#-template-method)
+* [Chain of Responsibility](../Chain%20of%20Responsibility#-Chain-of-Responsibility)
+* [Command](../Command#-command)
+* [Mediator](../Mediator#-mediator)
+* [Memento](../Memento#-memento)
+* [Observer](../Observer#-observer)
+* [Visitor](../Visitor#-visitor)
+* [Strategy](../Strategy#-strategy)
+* [State](../State#-state)
+* [Template Method](../Template%20Method#-template-method)

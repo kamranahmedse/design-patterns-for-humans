@@ -68,8 +68,9 @@ Also you could use the magic method `__clone` to modify the cloning behavior.
 When an object is required that is similar to existing object or when the creation would be expensive as compared to cloning.
 
 # Other Creational Design Patterns
- * [Simple Factory](#-simple-factory)
- * [Factory Method](#-factory-method)
- * [Abstract Factory](#-abstract-factory)
- * [Builder](#-builder)
- * [Singleton](#-singleton)
+
+ * [Simple Factory](../Simple%20Factory#-simple-factory)
+ * [Builder](../Builder#-builder)
+ * [Abstract Factory](../Abstract%20Factory#-abstract-factory)
+ * [Builder](../Builder#-builder)
+ * [Singleton](../Singleton#-singleton) 

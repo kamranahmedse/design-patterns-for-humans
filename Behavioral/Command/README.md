@@ -116,12 +116,12 @@ Command pattern can also be used to implement a transaction based system. Where 
 
 # Other Behavioral Patterns
 
-* [Chain of Responsibility](#-Chain-of-Responsibility)
-* [Iterator](#-iterator)
-* [Mediator](#-mediator)
-* [Memento](#-memento)
-* [Observer](#-observer)
-* [Visitor](#-visitor)
-* [Strategy](#-strategy)
-* [State](#-state)
-* [Template Method](#-template-method)
+* [Chain of Responsibility](../Chain%20of%20Responsibility#-Chain-of-Responsibility)
+* [Iterator](../Iterator#-iterator)
+* [Mediator](../Mediator#-mediator)
+* [Memento](../Memento#-memento)
+* [Observer](../Observer#-observer)
+* [Visitor](../Visitor#-visitor)
+* [Strategy](../Strategy#-strategy)
+* [State](../State#-state)
+* [Template Method](../Template%20Method#-template-method)

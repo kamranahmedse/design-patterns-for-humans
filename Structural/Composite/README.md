@@ -131,9 +131,10 @@ echo "Net salaries: " . $organization->getNetSalaries(); // Net Salaries: 27000
 ```
 
 # Other Structural Design Patterns
- * [Adapter](#-adapter)
- * [Bridge](#-bridge)
- * [Decorator](#-decorator)
- * [Facade](#-facade)
- * [Flyweight](#-flyweight)
- * [Proxy](#-proxy)
+
+ * [Adapter](../Adapter#-adapter)
+ * [Bridge](../Bridge#-bridge)
+ * [Decorator](../Decorator#-decorator)
+ * [Facade](../Facade#-facade)
+ * [Flyweight](../Flyweight#-flyweight)
+ * [Proxy](../Proxy#-proxy)

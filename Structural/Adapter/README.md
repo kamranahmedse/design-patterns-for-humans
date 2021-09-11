@@ -86,9 +86,10 @@ $hunter->hunt($wildDogAdapter);
 ```
 
 # Other Structural Design Patterns
- * [Bridge](#-bridge)
- * [Composite](#-composite)
- * [Decorator](#-decorator)
- * [Facade](#-facade)
- * [Flyweight](#-flyweight)
- * [Proxy](#-proxy)
+
+ * [Bridge](../Bridge#-bridge)
+ * [Composite](../Composite#-composite)
+ * [Decorator](../Decorator#-decorator)
+ * [Facade](../Facade#-facade)
+ * [Flyweight](../Flyweight#-flyweight)
+ * [Proxy](../Proxy#-proxy)

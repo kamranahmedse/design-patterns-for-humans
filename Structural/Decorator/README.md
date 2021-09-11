@@ -118,9 +118,10 @@ echo $someCoffee->getDescription(); // Simple Coffee, milk, whip, vanilla
 ```
 
 # Other Structural Design Patterns
- * [Adapter](#-adapter)
- * [Bridge](#-bridge)
- * [Composite](#-composite)
- * [Facade](#-facade)
- * [Flyweight](#-flyweight)
- * [Proxy](#-proxy)
+
+ * [Adapter](../Adapter#-adapter)
+ * [Bridge](../Bridge#-bridge)
+ * [Composite](../Composite#-composite)
+ * [Facade](../Facade#-facade)
+ * [Flyweight](../Flyweight#-flyweight)
+ * [Proxy](../Proxy#-proxy)

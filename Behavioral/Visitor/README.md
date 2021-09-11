@@ -138,12 +138,13 @@ $dolphin->accept($jump);   // Walked on water a little and disappeared
 ```
 
 # Other Behavioral Patterns
-* [Chain of Responsibility](#-Chain-of-Responsibility)
-* [Command](#-command)
-* [Iterator](#-iterator)
-* [Mediator](#-mediator)
-* [Memento](#-memento)
-* [Observer](#-observer)
-* [Strategy](#-strategy)
-* [State](#-state)
-* [Template Method](#-template-method)
+
+* [Chain of Responsibility](../Chain%20of%20Responsibility#-Chain-of-Responsibility)
+* [Command](../Command#-command)
+* [Iterator](../Iterator#-iterator)
+* [Mediator](../Mediator#-mediator)
+* [Memento](../Memento#-memento)
+* [Observer](../Observer#-observer)
+* [State](../State#-state)
+* [Strategy](../Strategy#-strategy)
+* [Template Method](../Template%20Method#-template-method)

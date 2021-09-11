@@ -53,8 +53,9 @@ var_dump($president1 === $president2); // true
 ```
 
 # Other Creational Design Patterns
- * [Simple Factory](#-simple-factory)
- * [Factory Method](#-factory-method)
- * [Abstract Factory](#-abstract-factory)
- * [Builder](#-builder)
- * [Prototype](#-prototype)
+
+ * [Simple Factory](../Simple%20Factory#-simple-factory)
+ * [Builder](../Builder#-builder)
+ * [Abstract Factory](../Abstract%20Factory#-abstract-factory)
+ * [Builder](../Builder#-builder)
+ * [Prototype](../Prototype#-prototype)
