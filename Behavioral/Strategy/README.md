@@ -1,9 +1,4 @@
-![Design Patterns For Humans](https://cloud.githubusercontent.com/assets/11269635/23065273/1b7e5938-f515-11e6-8dd3-d0d58de6bb9a.png)
-
-***
-
 # 💡 Strategy
-==========================
 
 Real world example
 > Consider the example of sorting, we implemented bubble sort but the data started to grow and bubble sort started getting very slow. In order to tackle this we implemented Quick sort. But now although the quick sort algorithm was doing better for large datasets, it was very slow for smaller datasets. In order to handle this we implemented a strategy where for small datasets, bubble sort will be used and for larger, quick sort.
@@ -77,7 +72,6 @@ $sorter->sort($dataset); // Output : Sorting using quick sort
 
 
 # Other Behavioral Patterns
-==========================
 * [Chain of Responsibility](#-Chain-of-Responsibility)
 * [Command](#-command)
 * [Iterator](#-iterator)

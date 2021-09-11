@@ -1,9 +1,4 @@
-![Design Patterns For Humans](https://cloud.githubusercontent.com/assets/11269635/23065273/1b7e5938-f515-11e6-8dd3-d0d58de6bb9a.png)
-
-***
-
 # 🔨 Abstract Factory
-==========================
 
 Real world example
 > Extending our door example from Simple Factory. Based on your needs you might get a wooden door from a wooden door shop, iron door from an iron shop or a PVC door from the relevant shop. Plus you might need a guy with different kind of specialities to fit the door, for example a carpenter for wooden door, welder for iron door etc. As you can see there is a dependency between the doors now, wooden door needs carpenter, iron door needs a welder etc.
@@ -129,7 +124,6 @@ When there are interrelated dependencies with not-that-simple creation logic inv
 
 
 # Other Creational Design Patterns
-==========================
  * [Simple Factory](#-simple-factory)
  * [Factory Method](#-factory-method)
  * [Builder](#-builder)

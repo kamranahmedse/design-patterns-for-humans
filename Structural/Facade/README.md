@@ -1,9 +1,5 @@
-![Design Patterns For Humans](https://cloud.githubusercontent.com/assets/11269635/23065273/1b7e5938-f515-11e6-8dd3-d0d58de6bb9a.png)
-
-***
-
 # 📦 Facade
-==========================
+
 Real world example
 > How do you turn on the computer? "Hit the power button" you say! That is what you believe because you are using a simple interface that computer provides on the outside, internally it has to do a lot of stuff to make it happen. This simple interface to the complex subsystem is a facade.
 
@@ -91,7 +87,6 @@ $computer->turnOff(); // Bup bup buzzz! Haah! Zzzzz
 ```
 
 # Other Structural Design Patterns
-==========================
  * [Adapter](#-adapter)
  * [Bridge](#-bridge)
  * [Composite](#-composite)

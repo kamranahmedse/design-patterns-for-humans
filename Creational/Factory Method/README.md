@@ -1,9 +1,4 @@
-![Design Patterns For Humans](https://cloud.githubusercontent.com/assets/11269635/23065273/1b7e5938-f515-11e6-8dd3-d0d58de6bb9a.png)
-
-***
-
 # 🏭 Factory Method
-==========================
 
 Real world example
 > Consider the case of a hiring manager. It is impossible for one person to interview for each of the positions. Based on the job opening, she has to decide and delegate the interview steps to different people.
@@ -92,7 +87,6 @@ Useful when there is some generic processing in a class but the required sub-cla
 
 
 # Other Creational Design Patterns
-==========================
  * [Simple Factory](#-simple-factory)
  * [Abstract Factory](#-abstract-factory)
  * [Builder](#-builder)

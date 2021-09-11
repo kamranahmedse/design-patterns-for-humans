@@ -1,9 +1,4 @@
-![Design Patterns For Humans](https://cloud.githubusercontent.com/assets/11269635/23065273/1b7e5938-f515-11e6-8dd3-d0d58de6bb9a.png)
-
-***
-
 # 💾 Memento
-==========================
 
 Real world example
 > Take the example of calculator (i.e. originator), where whenever you perform some calculation the last calculation is saved in memory (i.e. memento) so that you can get back to it and maybe get it restored using some action buttons (i.e. caretaker).
@@ -94,7 +89,6 @@ $editor->getContent(); // This is the first sentence. This is second.
 
 
 # Other Behavioral Patterns
-==========================
 * [Chain of Responsibility](#-Chain-of-Responsibility)
 * [Command](#-command)
 * [Iterator](#-iterator)

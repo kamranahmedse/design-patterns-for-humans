@@ -1,9 +1,5 @@
-![Design Patterns For Humans](https://cloud.githubusercontent.com/assets/11269635/23065273/1b7e5938-f515-11e6-8dd3-d0d58de6bb9a.png)
-
-***
-
 # ☕ Decorator
-==========================
+
 Real world example
 
 > Imagine you run a car service shop offering multiple services. Now how do you calculate the bill to be charged? You pick one service and dynamically keep adding to it the prices for the provided services till you get the final cost. Here each type of service is a decorator.
@@ -122,7 +118,6 @@ echo $someCoffee->getDescription(); // Simple Coffee, milk, whip, vanilla
 ```
 
 # Other Structural Design Patterns
-==========================
  * [Adapter](#-adapter)
  * [Bridge](#-bridge)
  * [Composite](#-composite)

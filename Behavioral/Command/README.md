@@ -1,9 +1,4 @@
-![Design Patterns For Humans](https://cloud.githubusercontent.com/assets/11269635/23065273/1b7e5938-f515-11e6-8dd3-d0d58de6bb9a.png)
-
-***
-
 # 👮 Command
-==========================
 
 Real world example
 > A generic example would be you ordering food at a restaurant. You (i.e. `Client`) ask the waiter (i.e. `Invoker`) to bring some food (i.e. `Command`) and waiter simply forwards the request to Chef (i.e. `Receiver`) who has the knowledge of what and how to cook.
@@ -119,9 +114,8 @@ $remote->submit($turnOff); // Darkness!
 Command pattern can also be used to implement a transaction based system. Where you keep maintaining the history of commands as soon as you execute them. If the final command is successfully executed, all good otherwise just iterate through the history and keep executing the `undo` on all the executed commands.
 
 
-
 # Other Behavioral Patterns
-==========================
+
 * [Chain of Responsibility](#-Chain-of-Responsibility)
 * [Iterator](#-iterator)
 * [Mediator](#-mediator)

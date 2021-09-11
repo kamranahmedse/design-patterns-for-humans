@@ -1,9 +1,5 @@
-![Design Patterns For Humans](https://cloud.githubusercontent.com/assets/11269635/23065273/1b7e5938-f515-11e6-8dd3-d0d58de6bb9a.png)
-
-***
-
 # 🍃 Flyweight
-==========================
+
 Real world example
 > Did you ever have fresh tea from some stall? They often make more than one cup that you demanded and save the rest for any other customer so to save the resources e.g. gas etc. Flyweight pattern is all about that i.e. sharing.
 
@@ -83,7 +79,6 @@ $shop->serve();
 ```
 
 # Other Structural Design Patterns
-==========================
  * [Adapter](#-adapter)
  * [Bridge](#-bridge)
  * [Composite](#-composite)

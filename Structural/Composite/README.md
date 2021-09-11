@@ -1,9 +1,4 @@
-![Design Patterns For Humans](https://cloud.githubusercontent.com/assets/11269635/23065273/1b7e5938-f515-11e6-8dd3-d0d58de6bb9a.png)
-
-***
-
 # 🌿 Composite
-==========================
 
 Real world example
 > Every organization is composed of employees. Each of the employees has the same features i.e. has a salary, has some responsibilities, may or may not report to someone, may or may not have some subordinates etc.
@@ -136,7 +131,6 @@ echo "Net salaries: " . $organization->getNetSalaries(); // Net Salaries: 27000
 ```
 
 # Other Structural Design Patterns
-==========================
  * [Adapter](#-adapter)
  * [Bridge](#-bridge)
  * [Decorator](#-decorator)

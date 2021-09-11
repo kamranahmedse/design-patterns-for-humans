@@ -1,9 +1,4 @@
-![Design Patterns For Humans](https://cloud.githubusercontent.com/assets/11269635/23065273/1b7e5938-f515-11e6-8dd3-d0d58de6bb9a.png)
-
-***
-
 # 👽 Mediator
-==========================
 
 Real world example
 > A general example would be when you talk to someone on your mobile phone, there is a network provider sitting between you and them and your conversation goes through it instead of being directly sent. In this case network provider is mediator.
@@ -76,7 +71,6 @@ $jane->send('Hey!');
 
 
 # Other Behavioral Patterns
-==========================
 * [Chain of Responsibility](#-Chain-of-Responsibility)
 * [Command](#-command)
 * [Iterator](#-iterator)

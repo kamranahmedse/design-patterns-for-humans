@@ -49,12 +49,12 @@ In plain words
 Wikipedia says
 > In software engineering, creational design patterns are design patterns that deal with object creation mechanisms, trying to create objects in a manner suitable to the situation. The basic form of object creation could result in design problems or added complexity to the design. Creational design patterns solve this problem by somehow controlling this object creation.
 
- * [Simple Factory](#-simple-factory)
- * [Factory Method](#-factory-method)
- * [Abstract Factory](#-abstract-factory)
- * [Builder](#-builder)
- * [Prototype](#-prototype)
- * [Singleton](#-singleton)
+ * [Simple Factory](Creational/Simple%20Factory#-simple-factory)
+ * [Factory Method](Creational/Factory%20Method#-factory-method)
+ * [Abstract Factory](Creational/Abstract%20Factory#-abstract-factory)
+ * [Builder](Creational/Builder#-builder)
+ * [Prototype](Creational/Prototype#-prototype)
+ * [Singleton](Creational/Singleton#-singleton)
 
 Structural Design Patterns
 ==========================
@@ -64,13 +64,13 @@ In plain words
 Wikipedia says
 > In software engineering, structural design patterns are design patterns that ease the design by identifying a simple way to realize relationships between entities.
 
- * [Adapter](#-adapter)
- * [Bridge](#-bridge)
- * [Composite](#-composite)
- * [Decorator](#-decorator)
- * [Facade](#-facade)
- * [Flyweight](#-flyweight)
- * [Proxy](#-proxy)
+ * [Adapter](Structural/Adapter#-adapter)
+ * [Bridge](Structural/Bridge#-bridge)
+ * [Composite](Structural/Composite#-composite)
+ * [Decorator](Structural/Decorator#-decorator)
+ * [Facade](Structural/Facade#-facade)
+ * [Flyweight](Structural/Flyweight#-flyweight)
+ * [Proxy](Structural/Proxy#-proxy)
 
 Behavioral Design Patterns
 ==========================
@@ -81,16 +81,16 @@ In plain words
 Wikipedia says
 > In software engineering, behavioral design patterns are design patterns that identify common communication patterns between objects and realize these patterns. By doing so, these patterns increase flexibility in carrying out this communication.
 
-* [Chain of Responsibility](#-chain-of-responsibility)
-* [Command](#-command)
-* [Iterator](#-iterator)
-* [Mediator](#-mediator)
-* [Memento](#-memento)
-* [Observer](#-observer)
-* [Visitor](#-visitor)
-* [Strategy](#-strategy)
-* [State](#-state)
-* [Template Method](#-template-method)
+* [Chain of Responsibility](Behavioral/Chain%20of%20Responsibility#-chain-of-responsibility)
+* [Command](Behavioral/Command#-command)
+* [Iterator](Behavioral/Iterator#-iterator)
+* [Mediator](Behavioral/Mediator#-mediator)
+* [Memento](Behavioral/Memento#-memento)
+* [Observer](Behavioral/Observer#-observer)
+* [Visitor](Behavioral/Visitor#-visitor)
+* [Strategy](Behavioral/Strategy#-strategy)
+* [State](Behavioral/State#-state)
+* [Template Method](Behavioral/Template%20Method#-template-method)
 
 
 ## 🚦 Wrap Up Folks

@@ -1,9 +1,4 @@
-![Design Patterns For Humans](https://cloud.githubusercontent.com/assets/11269635/23065273/1b7e5938-f515-11e6-8dd3-d0d58de6bb9a.png)
-
-***
-
 # 🏃 Visitor
-==========================
 
 Real world example
 > Consider someone visiting Dubai. They just need a way (i.e. visa) to enter Dubai. After arrival, they can come and visit any place in Dubai on their own without having to ask for permission or to do some leg work in order to visit any place here; just let them know of a place and they can visit it. Visitor pattern lets you do just that, it helps you add places to visit so that they can visit as much as they can without having to do any legwork.
@@ -143,7 +138,6 @@ $dolphin->accept($jump);   // Walked on water a little and disappeared
 ```
 
 # Other Behavioral Patterns
-==========================
 * [Chain of Responsibility](#-Chain-of-Responsibility)
 * [Command](#-command)
 * [Iterator](#-iterator)

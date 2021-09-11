@@ -1,9 +1,5 @@
-![Design Patterns For Humans](https://cloud.githubusercontent.com/assets/11269635/23065273/1b7e5938-f515-11e6-8dd3-d0d58de6bb9a.png)
-
-***
-
 # 🔌 Adapter
-==========================
+
 Real world example
 > Consider that you have some pictures in your memory card and you need to transfer them to your computer. In order to transfer them you need some kind of adapter that is compatible with your computer ports so that you can attach memory card to your computer. In this case card reader is an adapter.
 > Another example would be the famous power adapter; a three legged plug can't be connected to a two pronged outlet, it needs to use a power adapter that makes it compatible with the two pronged outlet.
@@ -90,7 +86,6 @@ $hunter->hunt($wildDogAdapter);
 ```
 
 # Other Structural Design Patterns
-==========================
  * [Bridge](#-bridge)
  * [Composite](#-composite)
  * [Decorator](#-decorator)

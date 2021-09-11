@@ -1,9 +1,5 @@
-![Design Patterns For Humans](https://cloud.githubusercontent.com/assets/11269635/23065273/1b7e5938-f515-11e6-8dd3-d0d58de6bb9a.png)
-
-***
-
 # 😎 Observer
-==========================
+
 Real world example
 > A good example would be the job seekers where they subscribe to some job posting site and they are notified whenever there is a matching job opportunity.   
 
@@ -93,7 +89,6 @@ $jobPostings->addJob(new JobPost('Software Engineer'));
 
 
 # Other Behavioral Patterns
-==========================
 * [Chain of Responsibility](#-Chain-of-Responsibility)
 * [Command](#-command)
 * [Iterator](#-iterator)

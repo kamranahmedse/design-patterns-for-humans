@@ -1,9 +1,5 @@
-![Design Patterns For Humans](https://cloud.githubusercontent.com/assets/11269635/23065273/1b7e5938-f515-11e6-8dd3-d0d58de6bb9a.png)
-
-***
-
 # 💍 Singleton
-==========================
+
 Real world example
 > There can only be one president of a country at a time. The same president has to be brought to action, whenever duty calls. President here is singleton.
 
@@ -57,7 +53,6 @@ var_dump($president1 === $president2); // true
 ```
 
 # Other Creational Design Patterns
-==========================
  * [Simple Factory](#-simple-factory)
  * [Factory Method](#-factory-method)
  * [Abstract Factory](#-abstract-factory)

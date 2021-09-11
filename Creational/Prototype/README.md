@@ -1,9 +1,4 @@
-![Design Patterns For Humans](https://cloud.githubusercontent.com/assets/11269635/23065273/1b7e5938-f515-11e6-8dd3-d0d58de6bb9a.png)
-
-***
-
 # 🐑 Prototype
-==========================
 
 Real world example
 > Remember dolly? The sheep that was cloned! Lets not get into the details but the key point here is that it is all about cloning
@@ -73,7 +68,6 @@ Also you could use the magic method `__clone` to modify the cloning behavior.
 When an object is required that is similar to existing object or when the creation would be expensive as compared to cloning.
 
 # Other Creational Design Patterns
-==========================
  * [Simple Factory](#-simple-factory)
  * [Factory Method](#-factory-method)
  * [Abstract Factory](#-abstract-factory)
