@@ -1,108 +1,72 @@
-![Design Patterns For Humans](https://cloud.githubusercontent.com/assets/11269635/23065273/1b7e5938-f515-11e6-8dd3-d0d58de6bb9a.png)
+<h1 align="center">
+Software Engineering Concepts
+</h1>
+
+# Intro
+In this repository, we talk about the `Software Engineering Concepts` and try to create amazing applications to make the world a better place!
+
+> so, in this journey, we can help each other ;) let's go...
 
 <br>
 
-<p align="center">
-🎉 Ultra-simplified explanation to design patterns! 🎉
-</p>
-<p align="center">
-Here we try to make the design patterns stick in to your mind (and maybe mine) by explaining them in the <i>simplest</i> way possible. 
-and then we try to define a real problem and solve it in different languages.
-</p>
+# SOLID Principles
+
+* Wikipedia
+> In software engineering, SOLID is a mnemonic acronym for five design principles intended to make software designs more understandable, flexible, and maintainable. The principles are a subset of many principles promoted by American software engineer and instructor Robert C. Martin, first introduced in his 2000 paper Design Principles and Design Patterns.
+
+
+### List of the principles
+* [S – SRP – Single-responsiblity principle]() 
+* [O – OCP (Open-closed principle)]()
+* [L – LSP (Liskov substitution principle)]()
+* [I – ISP (Interface segregation principle)]()
+* [D – DIP (Dependency Inversion Principle)]()
 
 <br><br>
 
-# Introduction
+# Design Patterns
 
-Design patterns are solutions to recurring problems; **guidelines on how to tackle certain problems**. They are not classes, packages or libraries that you can plug into your application and wait for the magic to happen. These are, rather, guidelines on how to tackle certain problems in certain situations.
+Design patterns are solutions to recurring problems; **guidelines on how to tackle certain problems**. They are not classes, packages or libraries that you can plug into your application and wait for the magic to happen. These are, rather, guidelines on how to tackle certain problems in certain situations. [Read more...](Design-Patterns/README.md#-Introduction) 
 
 > Design patterns are solutions to recurring problems; guidelines on how to tackle certain problems
 
-Wikipedia describes them as
+<br>
 
+**Wikipedia** 
 > In software engineering, a software design pattern is a general reusable solution to a commonly occurring problem within a given context in software design. It is not a finished design that can be transformed directly into source or machine code. It is a description or template for how to solve a problem that can be used in many different situations.
 
-<br>
+### Design Patterns Topics
+* [Introduction in detail](Design-Patterns/README.md#-Introduction) 
+* [Design Patterns Types](Design-Patterns/README.md#-Design%20Patterns%20Types) 
+* [Creational Design Patterns](Design-Patterns/README.md#-creational-design-patterns)
+* [Structural Design Patterns](Design-Patterns/README.md#-structural-design-patterns)
+* [Behavioral Design Patterns](Design-Patterns/README.md#-behavioral-design-patterns)
 
-# ⚠️ Be Careful
+<br><br>
 
-- Design patterns are not a silver bullet to all your problems.
-- Do not try to force them; bad things are supposed to happen, if done so. 
-- Keep in mind that design patterns are solutions **to** problems, not solutions **finding** problems; so don't overthink.
-- If used in a correct place in a correct manner, they can prove to be a savior; or else they can result in a horrible mess of a code.
+# Software Engineering References
+Here we try to introduce great and useful references.
+[Read more]() about all of the references.
 
-> Also note that the code samples below are in PHP, however this shouldn't stop you because the concepts are same anyways.
+### References Topics
+* Data Structures and Algorithms
+* Clean Code
+* Design Patterns
+* Testing
+* Refactoring
+* Messaging (Message Brokers)
+* Software Architecture
+* System Design 
 
-<br>
+<br><br>
 
-# Design Patterns Types
-
-1. [Creational](#creational-design-patterns)
-2. [Structural](#structural-design-patterns)
-3. [Behavioral](#behavioral-design-patterns)
-
-<br>
-
-## 1. Creational Design Patterns
-
-* In plain words
-> Creational patterns are focused on how to instantiate an object or group of related objects.
-
-
-* Wikipedia says
-> In software engineering, creational design patterns are design patterns that deal with object creation mechanisms, trying to create objects in a manner suitable to the situation. The basic form of object creation could result in design problems or added complexity to the design. Creational design patterns solve this problem by somehow controlling this object creation.
-
- * [Simple Factory](Creational/Simple%20Factory#-simple-factory)
- * [Factory Method](Creational/Factory%20Method#-factory-method)
- * [Abstract Factory](Creational/Abstract%20Factory#-abstract-factory)
- * [Builder](Creational/Builder#-builder)
- * [Prototype](Creational/Prototype#-prototype)
- * [Singleton](Creational/Singleton#-singleton)
-
-<br>
-
-## 2. Structural Design Patterns
-
-* In plain words
-> Structural patterns are mostly concerned with object composition or in other words how the entities can use each other. Or yet another explanation would be, they help in answering "How to build a software component?"
-
-* Wikipedia says
-> In software engineering, structural design patterns are design patterns that ease the design by identifying a simple way to realize relationships between entities.
-
- * [Adapter](Structural/Adapter#-adapter)
- * [Bridge](Structural/Bridge#-bridge)
- * [Composite](Structural/Composite#-composite)
- * [Decorator](Structural/Decorator#-decorator)
- * [Facade](Structural/Facade#-facade)
- * [Flyweight](Structural/Flyweight#-flyweight)
- * [Proxy](Structural/Proxy#-proxy)
-
-<br>
-
-## 3. Behavioral Design Patterns
-
-* In plain words
-> It is concerned with the assignment of responsibilities between the objects. When we talk about behavior, we are talking about the communication between different parts of the software in different situations. What makes them different from structural patterns is they don't just specify the structure but also outline the patterns for message passing/communication between them. Basically, they are helpful in answering "How is a behavior run in software component?"
-
-* Wikipedia says
-> In software engineering, behavioral design patterns are design patterns that identify common communication patterns between objects and realize these patterns. By doing so, these patterns increase flexibility in carrying out this communication.
-
-* [Chain of Responsibility](Behavioral/Chain%20of%20Responsibility#-chain-of-responsibility)
-* [Command](Behavioral/Command#-command)
-* [Iterator](Behavioral/Iterator#-iterator)
-* [Mediator](Behavioral/Mediator#-mediator)
-* [Memento](Behavioral/Memento#-memento)
-* [Observer](Behavioral/Observer#-observer)
-* [Visitor](Behavioral/Visitor#-visitor)
-* [Strategy](Behavioral/Strategy#-strategy)
-* [State](Behavioral/State#-state)
-* [Template Method](Behavioral/Template%20Method#-template-method)
-
-## 👬 Contribution
+# Contribution
 
 - Report issues
 - Open pull request with improvements
 
-## License
+<br>
+
+# License
 
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
