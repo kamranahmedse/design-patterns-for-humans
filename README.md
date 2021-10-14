@@ -26,7 +26,7 @@ In this repository, we talk about the `Software Engineering Concepts` and try to
 
 # Design Patterns
 
-Design patterns are solutions to recurring problems; **guidelines on how to tackle certain problems**. They are not classes, packages or libraries that you can plug into your application and wait for the magic to happen. These are, rather, guidelines on how to tackle certain problems in certain situations. [Read more...](Design-Patterns/README.md#-Introduction) 
+Design patterns are solutions to recurring problems; **guidelines on how to tackle certain problems**. They are not classes, packages or libraries that you can plug into your application and wait for the magic to happen. These are, rather, guidelines on how to tackle certain problems in certain situations. [Read more...](Design-Patterns/README.md#introduction) 
 
 > Design patterns are solutions to recurring problems; guidelines on how to tackle certain problems
 
@@ -36,27 +36,28 @@ Design patterns are solutions to recurring problems; **guidelines on how to tack
 > In software engineering, a software design pattern is a general reusable solution to a commonly occurring problem within a given context in software design. It is not a finished design that can be transformed directly into source or machine code. It is a description or template for how to solve a problem that can be used in many different situations.
 
 ### Design Patterns Topics
-* [Introduction in detail](Design-Patterns/README.md#-Introduction) 
-* [Design Patterns Types](Design-Patterns/README.md#-Design%20Patterns%20Types) 
-* [Creational Design Patterns](Design-Patterns/README.md#-creational-design-patterns)
-* [Structural Design Patterns](Design-Patterns/README.md#-structural-design-patterns)
-* [Behavioral Design Patterns](Design-Patterns/README.md#-behavioral-design-patterns)
+* [Introduction in detail](Design-Patterns/README.md#introduction) 
+* [Design Patterns Types](Design-Patterns/README.md#design-patterns-types) 
+* [Creational Design Patterns](Design-Patterns/README.md#creational-design-patterns)
+* [Structural Design Patterns](Design-Patterns/README.md#structural-design-patterns)
+* [Behavioral Design Patterns](Design-Patterns/README.md#behavioral-design-patterns)
 
 <br><br>
 
 # Software Engineering References
 Here we try to introduce great and useful references.
-[Read more]() about all of the references.
+[Read more](References/README.md) about all of the references.
 
 ### References Topics
-* Data Structures and Algorithms
-* Clean Code
-* Design Patterns
-* Testing
-* Refactoring
-* Messaging (Message Brokers)
-* Software Architecture
-* System Design 
+* [Data Structures and Algorithms](References#data-structures-and-algorithms)
+* [Clean Code](References#clean-code)
+* [Design Patterns](References#design-patterns)
+* [Testing](References#testing)
+* [Refactoring](References#refactoring)
+* [Messaging (Message Brokers)](References#messaging-message-brokers)
+* [Software Architecture](References#software-architecture)
+* [System Design](References#system-design)
+* [Data Base](References#data-base)
 
 <br><br>
 
