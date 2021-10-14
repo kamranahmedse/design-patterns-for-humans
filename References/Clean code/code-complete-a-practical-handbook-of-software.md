@@ -1,6 +1,7 @@
 # Code Complete: A Practical Handbook of Software Construction, Second Edition 2nd Edition
 
 * Author: Steve McConnell
+* Rate: 4.6 / 5
 * ISBN-13: 978-0735619678
 * ISBN-10: 0735619670
 * [Amazon url](https://www.amazon.com/dp/0735619670/?coliid=IQJ7OUBU7CNUT&colid=1CNL2S9M9DD6L&psc=0&ref_=lv_ov_lig_dp_it)

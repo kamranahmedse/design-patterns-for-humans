@@ -22,46 +22,52 @@ In this section we introduce useful references, if you think you can add other u
 <br>
 
 ## Design Patterns
-* Head first Design patterns - Building extensible & Maintainable Object-oriented software (Eric freemen, Elisabeth Robson) O’Reilly
-* Design Patterns  - Elements of reusable Object-oriented software (Eric Gamma, Richard Helm, Ralph Johnson, John Vlissides)
+* [Head First Design Patterns: Building Extensible and Maintainable Object-Oriented Software 2nd Edition 2nd Edition (Eric Freeman, Elisabeth Robson)](Design%20Pattterns/head-first-design-patterns-eric-freeman.md)
+* [Design Patterns: Elements of Reusable Object-Oriented Software 1st Edition (Erich Gamma , Richard Helm , Ralph Johnson , John Vlissides , Grady Booch)](Design%20Pattterns/design-patterns-elements-of-reusable-object-oriented-software.md)
+
 
 <br>
 
 ## Testing
-* Test-Driven development by example (Kent Beck)
-* Growing object oriented software, guided by Tests (Steve freeman, Nat Pryce)
-* xUnit Test Patterns - Refactoring test code (Gerard Meszbos)
-* Unit Testing - principles, practices and patterns (Vladimir Khorikov) Manning
+* [Test Driven Development: By Example 1st Edition (Kent Beck)](Testing/test-driven-development-by-example-kent-back.md)
+* [Growing Object-Oriented Software, Guided by Tests 1st Edition (Steve Freeman , Nat Pryce)](Testing/growing-object-oriented-software-guided-by-tests.md)
+* [xUnit Test Patterns: Refactoring Test Code (Gerard Meszaros)](Testing/x-unit-test-patterns-refactoring-test-code.md)
+* [Unit Testing Principles, Practices, and Patterns: Effective testing styles, patterns, and reliable automation for unit testing, mocking, and integration testing with examples in C# (Vladimir Khorikov)](Testing/unit-testing-principles-practices-and-patterns-vladmir.md)
+
 
 <br>
 
 ## Refactoring
 
-* Refactoring - Improving the design of existing code (Martin Fowler)
-* Working Effectively with legacy code (Michael C. Feathers)
-* Pro PHP Refactoring (Francesco Trucchia and Jacopo Romei)
+* [Refactoring: Improving the Design of Existing Code (Fowler Martin)](Refactoring/refactoring-improving-the-design-of-existing-code.md)
+* [Working Effectively with Legacy Code (Michael Feathers)](Refactoring/working-effectively-with-legacy-code.md)
+
 <br>
 
 ## Messaging (Message Brokers)
-* RabbitMQ in action - distributed messaging for everyone (Alvaro Videla,  Json J.W. Williams)
-* Kafka The definitive guid - Real-time data and stream processing at scale (Gwen Shapira , Todd Palino, Rajini Sivaram, Neha Narkheda) O’Reilly
-* The design of web APIs (Arnaud Lauret) Manning 
+* [RabbitMQ in Action: Distributed Messaging for Everyone (Alvaro Videla, Jason J.W. Williams)](Messaging/rabbit-mq-in-action-distributed-messaging.md)
+
+* [Kafka: The Definitive Guide: Real-Time Data and Stream Processing at Scale (Gwen Shapira , Todd Palino , Rajini Sivaram , Krit Petty)](Messaging/kafka-the-definitive-guid-Real-time-data.md)
 
 <br>
 
 ## Software Architecture
-* Fundamentals of Software Architecture  - An engineer approach ( Mark Richards, Neal Ford)
-* Design It!  From programmer to software architect (Michael Keeling)
-* Patterns of enterprise application architecture (Martin Fowler)
-* Practical Microservices - build event-driven architectures with Event Sourcing and CQRS (Ethan Garofolo)
-* SOA Patterns ( Arnon Rotem-gal-oz) Manning
-* Microservices Patterns (Chris Richardson) Manning 
+* [Fundamentals of Software Architecture: An Engineering Approach (Mark Richards , Neal Ford)](Software%20Architecture/fundamentals-of-software-architecture-an-engineer-approach.md)
+* [Design It!: From Programmer to Software Architect (The Pragmatic Programmers) (Michael Keeling) ](Software%20Architecture/design-it-from-programmer-to-architecture.md)
+* [Patterns of Enterprise Application Architecture (Martin Fowler)](Software%20Architecture/patterns-of-enterprise-application-architecture.md)
+* [Practical Microservices: Build Event-Driven Architectures with Event Sourcing and CQRS (Ethan Garofolo)](Software%20Architecture/practical-microservices-build-event-driven-architectures.md)
+* [SOA Patterns ( Arnon Rotem-Gal-Oz )](Software%20Architecture/soa-patterns.md)
+* [Microservices Patterns: With examples in Java (Chris Richardson)](Software%20Architecture/microservice-patterns-with-examples-in-java.md)
+* [The Design of Web APIs (Arnaud Lauret)](Software%20Architecture/the-design-of-web-APIs.md)
 
 <br>
 
 ## System Design 
 
+<br>
 
+## Data Base
+* [High Performance MySQL: Optimization, Backups, and Replication (Baron Schwartz , Peter Zaitsev , Vadim Tkachenko)](Data%20Base/high-performance-mysql-optimization.md)
 
 <br><br>
 
@@ -103,3 +109,5 @@ In this section we introduce useful references, if you think you can add other u
 ## System Design 
 
 1. [Microservice Architecture and its 10 Most Important Design Patterns](https://towardsdatascience.com/microservice-architecture-and-its-10-most-important-design-patterns-824952d7fa41)
+
+## Data Base

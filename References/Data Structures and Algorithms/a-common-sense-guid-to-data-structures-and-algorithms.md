@@ -1,6 +1,7 @@
 # A Common-Sense Guide to Data Structures and Algorithms, Second Edition: Level Up Your Core Programming Skills 2nd Edition
 
 * Author: Jay Wengrow
+* Rate: 4.7 / 5
 * ISBN-13: 978-1680507225
 * ISBN-10: 1680507222
 * [Amazon url](https://www.amazon.com/dp/1680507222/?coliid=IVMUYKD86R4U&colid=1CNL2S9M9DD6L&psc=1&ref_=lv_ov_lig_dp_it)

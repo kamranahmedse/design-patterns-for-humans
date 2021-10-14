@@ -13,7 +13,5 @@ Data Structures and Algorithms
 
 # Web Articles 
 
-## Data Structures and Algorithms
-
 
 <br>

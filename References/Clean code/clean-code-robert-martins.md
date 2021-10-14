@@ -1,6 +1,7 @@
 # Clean Code: A Handbook of Agile Software Craftsmanship
 
 * Author: Robert C. Martin
+* Rate: 4.7 / 5
 * ISBN-13: 978-0132350884
 * ISBN-10: 9780132350884
 * [Amazon url](https://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882/ref=sr_1_1?crid=1SOH34FDUDZHG&dchild=1&keywords=clean+code+by+robert+c.+martin&qid=1634157501&sprefix=clean+code%2Caps%2C284&sr=8-1)

@@ -11,8 +11,3 @@ Data Structures and Algorithms
 <br><br>
 
 # Web Articles 
-
-## Data Structures and Algorithms
-
-
-<br>
