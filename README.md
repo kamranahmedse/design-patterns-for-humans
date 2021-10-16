@@ -9,6 +9,14 @@ In this repository, we talk about the `Software Engineering Concepts` and try to
 
 <br>
 
+# Concepts
+In this section we will talk about some important concepts.
+### Concepts Topics
+* [Tell Don't Ask](Concepts/Tell-Dont-Ask.md)
+
+
+<br>
+
 # SOLID Principles
 
 * Wikipedia
