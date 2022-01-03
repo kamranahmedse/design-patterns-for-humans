@@ -13,7 +13,7 @@
 
 ***
 
-<sub>Загляните на [мой блог](http://kamranahmed.info) и скажите "Привет!" на [Twitter](https://twitter.com/kamranahmedse).</sub>
+<sub>Загляните на [блог автора](http://kamranahmed.info) и скажите "Привет!" на [Twitter](https://twitter.com/kamranahmedse).</sub>
 
 Введение
 =================
@@ -24,7 +24,6 @@
 > Шаблоны проектирования - это решения повторяющихся проблем; рекомендации о том, как решать определенные проблемы.
 
 Википедия описывает их так:
-
 > В разработке программного обеспечения шаблон проектирования программного обеспечения - это общее многоразовое решение часто встречающейся проблемы в данном контексте при разработке программного обеспечения. Это не законченный дизайн, который может быть преобразован непосредственно в исходный или машинный код. Это описание или шаблон решения проблемы, который можно использовать в самых разных ситуациях.
 
 ⚠️ С осторожностью!
@@ -39,17 +38,18 @@
 Типы шаблонов проектирования
 -----------------
 
-* [Порождающие](#creational-design-patterns)
-* [Структурные](#structural-design-patterns)
-* [Поведенческие](#behavioral-design-patterns)
+* [Порождающие](#Порождающие-паттерны-проектирования)
+* [Структурные](#Структурные-паттерны-проектирования)
+* [Поведенческие](#Поведенческие-паттерны-проектирования)
 
 Порождающие паттерны проектирования
 ==========================
 
-In plain words
-> Creational patterns are focused towards how to instantiate an object or group of related objects.
+Простыми словами
+> Шаблоны создания, сосредоточенные на том, как создать экземпляр объекта или группы связанных объектов.
 
-Wikipedia says
+
+Википедия говорит:
 > In software engineering, creational design patterns are design patterns that deal with object creation mechanisms, trying to create objects in a manner suitable to the situation. The basic form of object creation could result in design problems or added complexity to the design. Creational design patterns solve this problem by somehow controlling this object creation.
 
  * [Simple Factory](#-simple-factory)
@@ -571,7 +571,7 @@ $president2 = President::getInstance();
 var_dump($president1 === $president2); // true
 ```
 
-Structural Design Patterns
+Структурные паттерны проектирования
 ==========================
 In plain words
 > Structural patterns are mostly concerned with object composition or in other words how the entities can use each other. Or yet another explanation would be, they help in answering "How to build a software component?"
@@ -1268,7 +1268,7 @@ $door->close(); // Closing lab door
 ```
 Yet another example would be some sort of data-mapper implementation. For example, I recently made an ODM (Object Data Mapper) for MongoDB using this pattern where I wrote a proxy around mongo classes while utilizing the magic method `__call()`. All the method calls were proxied to the original mongo class and result retrieved was returned as it is but in case of `find` or `findOne` data was mapped to the required class objects and the object was returned instead of `Cursor`.
 
-Behavioral Design Patterns
+Поведенческие шаблоны проектирования
 ==========================
 
 In plain words
