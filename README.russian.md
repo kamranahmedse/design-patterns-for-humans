@@ -51,12 +51,12 @@
 Википедия говорит:
 > В разработке программного обеспечения шаблоны творческого проектирования - это шаблоны проектирования, которые связаны с механизмами создания объектов, пытаясь создавать объекты способом, соответствующим ситуации. Базовая форма создания объекта может привести к проблемам с проектированием или усложнить дизайн. Шаблоны порождающего проектирования решают эту проблему, управляя созданием этого объекта.
 
- * [Простая фабрика](#Простая-фабрика)
- * [Фабричный метод](#Фабричный-метод)
- * [Абстрактная фабрика](#Абстрактная-фабрика)
- * [Строитель](#Строитель)
- * [Прототип](#Прототип)
- * [Одиночка](#Одиночка)
+ * [Простая фабрика](#-Простая-фабрика)
+ * [Фабричный метод](#-Фабричный-метод)
+ * [Абстрактная фабрика](#-Абстрактная-фабрика)
+ * [Строитель](#-Строитель)
+ * [Прототип](#-Прототип)
+ * [Одиночка](#-Одиночка)
 
 🏠 Простая фабрика
 --------------
@@ -68,11 +68,10 @@
 
 Словами Википедии:
 > В объектно-ориентированном программировании (ООП), фабрика это объект для создания других объектов – формально фабрика - это функция или метод, который возвращает объекты какого-то прототипа или класса из некоторого вызванного метода, которые считается "новыми".
-> 
+
 **Программный пример**
 
 Прежде всего, у нас есть дверной интерфейс и его реализация:
-
 ```php
 interface Door
 {
@@ -104,7 +103,6 @@ class WoodenDoor implements Door
 ```
 
 Теперь у нас есть наша фабрика дверей, которая изготавливает дверь и возвращает ее:
-
 ```php
 class DoorFactory
 {
@@ -133,20 +131,18 @@ $door2 = DoorFactory::makeDoor(50, 100);
 
 🏭 Фабричный метод
 --------------
+Пример из реальной жизни:
+> Рассмотрим случай с менеджером по найму. Невозможно, чтобы один человек проходил собеседование на каждую из должностей. В зависимости от открывшейся вакансии он должен принять решение и делегировать этапы собеседования разным людям.
 
-Real world example
-> Consider the case of a hiring manager. It is impossible for one person to interview for each of the positions. Based on the job opening, she has to decide and delegate the interview steps to different people.
+Простыми словами:
+> Это способ делегирования(если еще проще – передачи) логики создания экземпляров дочерним классам.
 
-In plain words
-> It provides a way to delegate the instantiation logic to child classes.
+Википедия говорит:
+> В программировании на основе классов шаблон фабричного метода представляет собой шаблон создания, использующий фабричные методы для решения проблемы создания объектов без необходимости указывать точный класс объекта, который будет создан. Это делается путем создания объектов путем вызова фабричного метода — либо указанного в интерфейсе и реализованного дочерними классами, либо реализованного в базовом классе и, возможно, переопределенного наследуемыми классами — вместо вызова конструктора.
 
-Wikipedia says
-> In class-based programming, the factory method pattern is a creational pattern that uses factory methods to deal with the problem of creating objects without having to specify the exact class of the object that will be created. This is done by creating objects by calling a factory method—either specified in an interface and implemented by child classes, or implemented in a base class and optionally overridden by derived classes—rather than by calling a constructor.
+**Программный пример**
 
- **Programmatic Example**
-
-Taking our hiring manager example above. First of all we have an interviewer interface and some implementations for it
-
+Возьмем пример нашего менеджера по найму выше. Прежде всего, у нас есть интерфейс интервьюера и некоторые реализации для него:
 ```php
 interface Interviewer
 {
@@ -170,13 +166,11 @@ class CommunityExecutive implements Interviewer
 }
 ```
 
-Now let us create our `HiringManager`
-
+Теперь давайте создадим наш `HiringManager`:
 ```php
 abstract class HiringManager
 {
-
-    // Factory method
+    // Фабричный метод
     abstract protected function makeInterviewer(): Interviewer;
 
     public function takeInterview()
@@ -185,9 +179,9 @@ abstract class HiringManager
         $interviewer->askQuestions();
     }
 }
-
 ```
-Now any child can extend it and provide the required interviewer
+
+Теперь любой ребенок может расширить его и предоставить необходимого интервьюера:
 ```php
 class DevelopmentManager extends HiringManager
 {
@@ -205,36 +199,34 @@ class MarketingManager extends HiringManager
     }
 }
 ```
-and then it can be used as
+и тогда он может быть использован так:
 
 ```php
 $devManager = new DevelopmentManager();
-$devManager->takeInterview(); // Output: Asking about design patterns
+$devManager->takeInterview(); // Результат: Вопрос о шаблонах проектирования
 
 $marketingManager = new MarketingManager();
-$marketingManager->takeInterview(); // Output: Asking about community building.
+$marketingManager->takeInterview(); // Результат: Вопрос о создании сообщества
 ```
 
-**When to use?**
+**Где применяется?**
 
-Useful when there is some generic processing in a class but the required sub-class is dynamically decided at runtime. Or putting it in other words, when the client doesn't know what exact sub-class it might need.
+Полезно, когда в классе есть некоторая общая обработка, но требуемый подкласс динамически определяется во время выполнения. Или когда клиент не знает, какой именно подкласс ему может понадобиться.
 
-🔨 Abstract Factory
+🔨 Абстрактная фабрика
 ----------------
+Пример из реального мира:
+> Расширение нашего примера дверей с простой фабрики. В зависимости от ваших потребностей вы можете приобрести деревянную дверь в магазине деревянных дверей, железную дверь в магазине железных дверей или дверь из ПВХ в соответствующем магазине. Кроме того, вам может быть нужен парень с разными специальностями, чтобы установить дверь, например, плотник для деревянной двери, сварщик для железной двери и т.д. Как вы можете видеть, есть зависимость между дверями: деревянная дверь нуждается в плотнике, железная дверь нуждается в сварщике и т.д.
 
-Real world example
-> Extending our door example from Simple Factory. Based on your needs you might get a wooden door from a wooden door shop, iron door from an iron shop or a PVC door from the relevant shop. Plus you might need a guy with different kind of specialities to fit the door, for example a carpenter for wooden door, welder for iron door etc. As you can see there is a dependency between the doors now, wooden door needs carpenter, iron door needs a welder etc.
+Простыми словами:
+> Фабрика фабрик; фабрика, которая группирует отдельные, но связанные/зависимые фабрики вместе без указания их конкретных классов.
 
-In plain words
-> A factory of factories; a factory that groups the individual but related/dependent factories together without specifying their concrete classes.
+Википедия говорит:
+> Шаблон абстрактной фабрики предоставляет способ инкапсуляции(объединения в одно целое) группы отдельных фабрик, имеющих общую тему, без указания их конкретных классов.
 
-Wikipedia says
-> The abstract factory pattern provides a way to encapsulate a group of individual factories that have a common theme without specifying their concrete classes
+**Программный пример**
 
-**Programmatic Example**
-
-Translating the door example above. First of all we have our `Door` interface and some implementation for it
-
+Перевод приведенного выше примера двери. Для начала, у нас есть наш интерфейс `Door`("Дверь") и некоторая реализация для него:
 ```php
 interface Door
 {
@@ -245,7 +237,7 @@ class WoodenDoor implements Door
 {
     public function getDescription()
     {
-        echo 'I am a wooden door';
+        echo 'Я современная дверь';
     }
 }
 
@@ -253,12 +245,12 @@ class IronDoor implements Door
 {
     public function getDescription()
     {
-        echo 'I am an iron door';
+        echo 'Я есть железная дверь';
     }
 }
 ```
-Then we have some fitting experts for each door type
 
+Теперь у нас есть несколько экспертов по установке для каждого типа дверей:
 ```php
 interface DoorFittingExpert
 {
@@ -269,7 +261,7 @@ class Welder implements DoorFittingExpert
 {
     public function getDescription()
     {
-        echo 'I can only fit iron doors';
+        echo 'Я могу установить только железные двери';
     }
 }
 
@@ -277,12 +269,12 @@ class Carpenter implements DoorFittingExpert
 {
     public function getDescription()
     {
-        echo 'I can only fit wooden doors';
+        echo 'Я могу поставить только деревянную дверь';
     }
 }
 ```
 
-Now we have our abstract factory that would let us make family of related objects i.e. wooden door factory would create a wooden door and wooden door fitting expert and iron door factory would create an iron door and iron door fitting expert
+Теперь у нас есть наша абстрактная фабрика, которая дась нам создать семейство связанных объектов, т.е. фабрика деревянных дверей создаст деревянную дверь и специалиста по их установке, точно так же как фабрика железных дверей создаст по аналогии железные двери иэксперта по установке железных дверей:
 ```php
 interface DoorFactory
 {
@@ -290,7 +282,7 @@ interface DoorFactory
     public function makeFittingExpert(): DoorFittingExpert;
 }
 
-// Wooden factory to return carpenter and wooden door
+// Деревянная фабрика возвращает плотника и деревянную дверь
 class WoodenDoorFactory implements DoorFactory
 {
     public function makeDoor(): Door
@@ -304,7 +296,7 @@ class WoodenDoorFactory implements DoorFactory
     }
 }
 
-// Iron door factory to get iron door and the relevant fitting expert
+// Железная дверная фабрика получит железную дверь и релевантного специалиста
 class IronDoorFactory implements DoorFactory
 {
     public function makeDoor(): Door
@@ -318,31 +310,32 @@ class IronDoorFactory implements DoorFactory
     }
 }
 ```
-And then it can be used as
+
+И затем его можно использовать как:
 ```php
 $woodenFactory = new WoodenDoorFactory();
 
 $door = $woodenFactory->makeDoor();
 $expert = $woodenFactory->makeFittingExpert();
 
-$door->getDescription();  // Output: I am a wooden door
-$expert->getDescription(); // Output: I can only fit wooden doors
+$door->getDescription();  // Результат: Я - деревянная дверь
+$expert->getDescription(); // Результат: Я могу установить только деревянные двери
 
-// Same for Iron Factory
+// Аналогично для железной фабрики
 $ironFactory = new IronDoorFactory();
 
 $door = $ironFactory->makeDoor();
 $expert = $ironFactory->makeFittingExpert();
 
-$door->getDescription();  // Output: I am an iron door
-$expert->getDescription(); // Output: I can only fit iron doors
+$door->getDescription();  // Результат: Я - железная дверь
+$expert->getDescription(); // Результат: Я могу установить только железные двери
 ```
 
-As you can see the wooden door factory has encapsulated the `carpenter` and the `wooden door` also iron door factory has encapsulated the `iron door` and `welder`. And thus it had helped us make sure that for each of the created door, we do not get a wrong fitting expert.   
+Как вы видите, деревянная фабрика инкапсулировала `carpenter`(плотника) и `wooden door`(деревянная дверь) так же, как железная фабрика инкапсулировала `welder`(сварщика) и `iron door`(железная дверь). Таким образом, это помогает нам быть уверенными, что для каждой созданной двери мы не получим неправильного специалиста по установке.
 
-**When to use?**
+**Где использовать?**
 
-When there are interrelated dependencies with not-that-simple creation logic involved
+Когда существуют взаимосвязанные зависимости с задействованной сложной логикой создания.
 
 👷 Builder
 --------------------------------------------
