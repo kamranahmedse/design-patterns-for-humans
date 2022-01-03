@@ -337,31 +337,29 @@ $expert->getDescription(); // Результат: Я могу установит
 
 Когда существуют взаимосвязанные зависимости с задействованной сложной логикой создания.
 
-👷 Builder
+👷 Строитель
 --------------------------------------------
-Real world example
-> Imagine you are at Hardee's and you order a specific deal, lets say, "Big Hardee" and they hand it over to you without *any questions*; this is the example of simple factory. But there are cases when the creation logic might involve more steps. For example you want a customized Subway deal, you have several options in how your burger is made e.g what bread do you want? what types of sauces would you like? What cheese would you want? etc. In such cases builder pattern comes to the rescue.
+Пример из реального мира:
+> Представьте, что вы находитесь в кафе "Hardee" и заказываете конкретную сделку, скажем, "Big Hardee" (большой-пребольшой бургер), и они передают ее вам без *каких либо вопросов*; это пример простой фабрики. Но бывают случаи, когда логика создания может включать в себя больше шагов. Например, вы хотите индивидуально собранный бургер, у вас есть несколько вариантов приготовления вашего бургера, например: Какой хлеб вы хотите? Какие виды соусов вы бы хотели? Какой сыр вы хотите добавить? и т.д. В таких случаях на помощь приходит шаблон строителя.
 
-In plain words
-> Allows you to create different flavors of an object while avoiding constructor pollution. Useful when there could be several flavors of an object. Or when there are a lot of steps involved in creation of an object.
+Простыми словами:
+> Позволяет создавать различные варианты объекта, избегая загрязнения конструктора. Полезно, когда у объекта может быть несколько разновидностей, возможность кастомизации. Или когда в создании объекта задействовано много шагов.
 
-Wikipedia says
-> The builder pattern is an object creation software design pattern with the intentions of finding a solution to the telescoping constructor anti-pattern.
+Википедия говорит
+> Шаблон "Строитель" - это шаблон проектирования программного обеспечения для создания объектов, предназначенный для поиска решения проблемы анти-шаблона телескопического конструктора.
 
-Having said that let me add a bit about what telescoping constructor anti-pattern is. At one point or the other we have all seen a constructor like below:
-
+Сказав это, позвольте мне добавить немного ясности в то, что есть анти-шаблон телескопического конструктора. В тот или иной момент мы все видели конструктор, подобный приведенному ниже:
 ```php
 public function __construct($size, $cheese = true, $pepperoni = true, $tomato = false, $lettuce = true)
 {
 }
 ```
 
-As you can see; the number of constructor parameters can quickly get out of hand and it might become difficult to understand the arrangement of parameters. Plus this parameter list could keep on growing if you would want to add more options in future. This is called telescoping constructor anti-pattern.
+Как вы видите; количество параметров конструктора может быстро выйти из-под контроля, и может быть сложно понять расположение параметров/их смысл. Кроме того, этот список параметров может еще вырасти, если вы захотите добавить больше опций в будущем. Это называется анти-шаблоном телескопического конструктора.
 
-**Programmatic Example**
+**Пример из программирования**
 
-The sane alternative is to use the builder pattern. First of all we have our burger that we want to make
-
+Разумной альтернативой является использование шаблона "Строитель". Итак, у нас есть наш бургер, который мы хотим приготовить:
 ```php
 class Burger
 {
@@ -383,8 +381,7 @@ class Burger
 }
 ```
 
-And then we have the builder
-
+И теперь у нас есть строитель с необходимыми параметрами:
 ```php
 class BurgerBuilder
 {
@@ -430,8 +427,8 @@ class BurgerBuilder
     }
 }
 ```
-And then it can be used as:
 
+И теперь мы используем так:
 ```php
 $burger = (new BurgerBuilder(14))
                     ->addPepperoni()
@@ -440,34 +437,33 @@ $burger = (new BurgerBuilder(14))
                     ->build();
 ```
 
-**When to use?**
+**Где он может быть использован?**
 
-When there could be several flavors of an object and to avoid the constructor telescoping. The key difference from the factory pattern is that; factory pattern is to be used when the creation is a one step process while builder pattern is to be used when the creation is a multi step process.
+Когда может быть несколько разновидностей объекта, чтобы избежать телескопирования конструктора. Ключевое отличие от **фабричного шаблона** заключается в том, что фабричный шаблон следует использовать, когда создание представляет собой **одноэтапный процесс**, в то время как шаблон строителя следует использовать, когда создание представляет собой **многоступенчатый процесс**.
 
-🐑 Prototype
+🐑 Прототип
 ------------
-Real world example
-> Remember dolly? The sheep that was cloned! Lets not get into the details but the key point here is that it is all about cloning
+Пример из реального мира:
+> Вы же все помните Долли? Овца, которую клонировали! Давайте обойдемся без подробностей, но ключевый принцип здесь – клонирование
 
-In plain words
-> Create object based on an existing object through cloning.
+Простыми словами:
+> Создание объекта на основе существующего путем клонирования.
 
-Wikipedia says
-> The prototype pattern is a creational design pattern in software development. It is used when the type of objects to create is determined by a prototypical instance, which is cloned to produce new objects.
+Википедия говорит:
+> Шаблон прототипа - это шаблон дизайн-проектирования при разработке программного обеспечения, который используется, когда тип создаваемых объектов определяется прототипом экземпляра, клонируемого для создания новых объектов.
 
-In short, it allows you to create a copy of an existing object and modify it to your needs, instead of going through the trouble of creating an object from scratch and setting it up.
+Короче говоря, это позволяет вам создать копию существующего объекта и изменить его в соответствии с вашими потребностями, не тратя время на создание объекта с нуля и его настройку.
 
-**Programmatic Example**
+**Пример из программирования**
 
-In PHP, it can be easily done using `clone`
-
+В PHP, это легко делается через `clone`(клонирования):
 ```php
 class Sheep
 {
     protected $name;
     protected $category;
 
-    public function __construct(string $name, string $category = 'Mountain Sheep')
+    public function __construct(string $name, string $category = 'Овечья гора')
     {
         $this->name = $name;
         $this->category = $category;
@@ -494,24 +490,25 @@ class Sheep
     }
 }
 ```
-Then it can be cloned like below
+Затем его можно клонировать, как показано ниже:
 ```php
-$original = new Sheep('Jolly');
-echo $original->getName(); // Jolly
-echo $original->getCategory(); // Mountain Sheep
+$original = new Sheep('Долли');
+echo $original->getName(); // Долли
+echo $original->getCategory(); // Овечья гора
 
-// Clone and modify what is required
+// Клонируем и изменяем то, что требуется
 $cloned = clone $original;
-$cloned->setName('Dolly');
-echo $cloned->getName(); // Dolly
-echo $cloned->getCategory(); // Mountain sheep
+$cloned->setName('Долли');
+echo $cloned->getName(); // Долли
+echo $cloned->getCategory(); // Овечья гора
 ```
 
-Also you could use the magic method `__clone` to modify the cloning behavior.
+Также можно заюзать волшебный метод `__clone` для модификации поведения при клонировании.
 
-**When to use?**
+**Где используем?**
 
-When an object is required that is similar to existing object or when the creation would be expensive as compared to cloning.
+Когда требуется объект, похожий на существующий объект, или когда создание будет дорогостоящим/долговременным по сравнению с клонированием.
+
 
 💍 Singleton
 ------------
