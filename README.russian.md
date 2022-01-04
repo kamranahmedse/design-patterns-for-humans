@@ -510,22 +510,22 @@ echo $cloned->getCategory(); // Овечья гора
 Когда требуется объект, похожий на существующий объект, или когда создание будет дорогостоящим/долговременным по сравнению с клонированием.
 
 
-💍 Singleton
+💍 Одиночка
 ------------
-Real world example
-> There can only be one president of a country at a time. The same president has to be brought to action, whenever duty calls. President here is singleton.
+Пример из реальной жизни:
+> Одновременно в стране может быть только один президент. Один и тот же президент должен быть в работе, когда того требует долг. Президентом здесь является единственным и неповторимым.
 
-In plain words
-> Ensures that only one object of a particular class is ever created.
+Простыми словами:
+> Гарантируется, что когда-либо будет создан только один объект определенного класса.
 
-Wikipedia says
-> In software engineering, the singleton pattern is a software design pattern that restricts the instantiation of a class to one object. This is useful when exactly one object is needed to coordinate actions across the system.
+Википедия говорит:
+> В разработке программного обеспечения шаблон "Одиночка" - это шаблон проектирования программного обеспечения, который ограничивает создание экземпляра класса одним объектом. Это полезно, когда для координации действий в системе требуется только один объект.
 
-Singleton pattern is actually considered an anti-pattern and overuse of it should be avoided. It is not necessarily bad and could have some valid use-cases but should be used with caution because it introduces a global state in your application and change to it in one place could affect in the other areas and it could become pretty difficult to debug. The other bad thing about them is it makes your code tightly coupled plus mocking the singleton could be difficult.
+Шаблон одиночки на самом деле считается анти-шаблоном, и следует избегать его чрезмерного использования. Это не обязательно плохо и может иметь некоторые допустимые варианты использования, но их следует использовать с осторожностью, потому что он вводит глобальное состояние в ваше приложение, и изменение его в одном месте может повлиять на другие области, что может усложнить отладку в дальнейшем. Другая плохая вещь в этом шаблоне заключается в том, что они делают ваш код тесно связанным, плюс издевательство над шаблоном может вызвать сложности.
 
-**Programmatic Example**
+**Пример из программирования**
 
-To create a singleton, make the constructor private, disable cloning, disable extension and create a static variable to house the instance
+Создаем шаблон одиночки, делаем конструктор приватным, убираем возможность клонирования, расширения и создаем статическую переменную для размещения экземпляра:
 ```php
 final class President
 {
@@ -533,7 +533,7 @@ final class President
 
     private function __construct()
     {
-        // Hide the constructor
+        // Скрываем конструктор
     }
 
     public static function getInstance(): President
@@ -547,16 +547,16 @@ final class President
 
     private function __clone()
     {
-        // Disable cloning
+        // Отключаем клонирование
     }
 
     private function __wakeup()
     {
-        // Disable unserialize
+        // Отключаем несериализацию
     }
 }
 ```
-Then in order to use
+Затем используем:
 ```php
 $president1 = President::getInstance();
 $president2 = President::getInstance();
@@ -566,39 +566,36 @@ var_dump($president1 === $president2); // true
 
 Структурные паттерны проектирования
 ==========================
-In plain words
-> Structural patterns are mostly concerned with object composition or in other words how the entities can use each other. Or yet another explanation would be, they help in answering "How to build a software component?"
+Простыми словами:
+> Структурные шаблоны в основном связаны с составом объектов или с тем, как сущности могут использовать друг друга. Или еще одним объяснением было бы то, что они помогают ответить на вопрос "Как создать программный компонент?".
 
-Wikipedia says
-> In software engineering, structural design patterns are design patterns that ease the design by identifying a simple way to realize relationships between entities.
+Википедия говорит:
+> В разработке программного обеспечения структурные шаблоны проектирования - это шаблоны проектирования, которые упрощают проектирование, определяя простой способ реализации взаимосвязей между сущностями.
 
- * [Adapter](#-adapter)
- * [Bridge](#-bridge)
- * [Composite](#-composite)
- * [Decorator](#-decorator)
- * [Facade](#-facade)
- * [Flyweight](#-flyweight)
- * [Proxy](#-proxy)
+ * [Адаптер](#-Адаптер)
+ * [Мост](#-Мост)
+ * [Компоновщик](#-Компоновщик)
+ * [Декоратор](#-Декоратор)
+ * [Фасад](#-Фасад)
+ * [Легковес](#-Легковес)
+ * [Заместитель](#-Заместитель)
 
-🔌 Adapter
+🔌 Адаптер
 -------
-Real world example
-> Consider that you have some pictures in your memory card and you need to transfer them to your computer. In order to transfer them you need some kind of adapter that is compatible with your computer ports so that you can attach memory card to your computer. In this case card reader is an adapter.
-> Another example would be the famous power adapter; a three legged plug can't be connected to a two pronged outlet, it needs to use a power adapter that makes it compatible with the two pronged outlet.
-> Yet another example would be a translator translating words spoken by one person to another
+Пример из реального мира:
+> Допустим, что у вас есть несколько фотографий на карте памяти, и вам нужно перенести их на свой компьютер. Для их передачи вам понадобится какой-нибудь адаптер, совместимый с портами вашего компьютера, чтобы вы могли подключить карту памяти к компьютеру. В данном случае кардридер является адаптером.
+> Другим примером может служить знаменитый адаптер питания; трехногий штекер не может быть подключен к двухконтурной розетке, для этого надо использовать адаптер питания, который делает его совместимым с двухконтурной розеткой.
+> Еще одним примером может быть переводчик, переводящий слова, произносимые одним человеком другому.
 
-In plain words
-> Adapter pattern lets you wrap an otherwise incompatible object in an adapter to make it compatible with another class.
+Простыми словами:
+> Шаблон адаптера позволяет обернуть несовместимый объект в адаптер, чтобы сделать его совместимым с другим классом.
 
-Wikipedia says
-> In software engineering, the adapter pattern is a software design pattern that allows the interface of an existing class to be used as another interface. It is often used to make existing classes work with others without modifying their source code.
+Википедия говорит:
+> В разработке программного обеспечения шаблон адаптера - это шаблон проектирования программного обеспечения, который позволяет использовать интерфейс существующего класса в качестве другого интерфейса. Он часто используется для того, чтобы заставить существующие классы работать с другими без изменения их исходного кода.
 
-**Programmatic Example**
+**Пример из программирования**
 
-Consider a game where there is a hunter and he hunts lions.
-
-First we have an interface `Lion` that all types of lions have to implement
-
+Представим игру, в которой есть охотник, и он охотится на львов. Во-первых, у нас есть интерфейс `Lion` ("Лев"), который должны реализовать все типы львов:
 ```php
 interface Lion
 {
@@ -619,7 +616,8 @@ class AsianLion implements Lion
     }
 }
 ```
-And hunter expects any implementation of `Lion` interface to hunt.
+
+И охотник ожидает, что любая реализация интерфейса `Lion` ("Лев") будет охотиться:
 ```php
 class Hunter
 {
@@ -630,10 +628,9 @@ class Hunter
 }
 ```
 
-Now let's say we have to add a `WildDog` in our game so that hunter can hunt that also. But we can't do that directly because dog has a different interface. To make it compatible for our hunter, we will have to create an adapter that is compatible
-
+Теперь давайте предположим, что мы должны добавить `WildDog` ("Дикая собака") в нашей игре, чтобы охотник мог охотиться и на это. Но мы не можем сделать это напрямую, потому что у собаки другой интерфейс. Чтобы сделать его совместимым для нашего охотника, нам придется создать совместимый адаптер:
 ```php
-// This needs to be added to the game
+// Его нужно добавить в игру
 class WildDog
 {
     public function bark()
@@ -641,7 +638,7 @@ class WildDog
     }
 }
 
-// Adapter around wild dog to make it compatible with our game
+// Адаптер для дикой собаки, чтобы сделать его совместимым с нашей игрой
 class WildDogAdapter implements Lion
 {
     protected $dog;
@@ -657,8 +654,8 @@ class WildDogAdapter implements Lion
     }
 }
 ```
-And now the `WildDog` can be used in our game using `WildDogAdapter`.
 
+И сейчас `WildDog`("Дикая собака") может быть использован в игре с адаптером `WildDogAdapter`:
 ```php
 $wildDog = new WildDog();
 $wildDogAdapter = new WildDogAdapter($wildDog);
@@ -667,7 +664,7 @@ $hunter = new Hunter();
 $hunter->hunt($wildDogAdapter);
 ```
 
-🚡 Bridge
+🚡 Мост
 ------
 Real world example
 > Consider you have a website with different pages and you are supposed to allow the user to change the theme. What would you do? Create multiple copies of each of the pages for each of the themes or would you just create separate theme and load them based on the user's preferences? Bridge pattern allows you to do the second i.e.
@@ -2276,7 +2273,7 @@ $iosBuilder->build();
 // Deploying ios build to server
 ```
 
-## 🚦 Wrap Up Folks
+## 🚦 В заключение
 
 И на этом статья заканчивается. Я буду продолжать улучшать ее, так что вы, возможно, захотите посмотреть/отметить звездой этот репозиторий, чтобы вернуться. Кроме того, у меня есть планы написать подобное об архитектурных шаблонах, следите за обновлениями.
 
