@@ -666,21 +666,20 @@ $hunter->hunt($wildDogAdapter);
 
 🚡 Мост
 ------
-Real world example
-> Consider you have a website with different pages and you are supposed to allow the user to change the theme. What would you do? Create multiple copies of each of the pages for each of the themes or would you just create separate theme and load them based on the user's preferences? Bridge pattern allows you to do the second i.e.
+Пример из реального мира
+> Представьте, что у вас есть веб-сайт с разными страницами, и вы должны разрешить пользователю менять тему. Что бы вы сделали? Создайте несколько копий каждой страницы для каждой из тем или просто создайте отдельную тему и загрузите их в соответствии с предпочтениями пользователя? Шаблон моста позволяет вам выполнить второе, т.е.
 
-![With and without the bridge pattern](https://cloud.githubusercontent.com/assets/11269635/23065293/33b7aea0-f515-11e6-983f-98823c9845ee.png)
+![С И без паттерна моста](https://cloud.githubusercontent.com/assets/11269635/23065293/33b7aea0-f515-11e6-983f-98823c9845ee.png)
 
-In Plain Words
-> Bridge pattern is about preferring composition over inheritance. Implementation details are pushed from a hierarchy to another object with a separate hierarchy.
+Простыми словами:
+> Шаблон моста - это выбор/предпочтение композиции перед наследованием. Детали реализации переносятся из иерархии в другой объект с отдельной иерархией.
 
-Wikipedia says
-> The bridge pattern is a design pattern used in software engineering that is meant to "decouple an abstraction from its implementation so that the two can vary independently"
+Википедия говорит:
+> Шаблон моста - это шаблон проектирования, используемый в разработке программного обеспечения, который предназначен для "отделения абстракции от ее реализации, чтобы они могли изменяться независимо".
 
-**Programmatic Example**
+**Программный пример**
 
-Translating our WebPage example from above. Here we have the `WebPage` hierarchy
-
+Перевод нашего примера веб-страницы сверху. Здесь у нас есть иерархия `WebPage`("Веб-страницы"):
 ```php
 interface WebPage
 {
@@ -718,7 +717,8 @@ class Careers implements WebPage
     }
 }
 ```
-And the separate theme hierarchy
+
+И отдельная иерархия тем:
 ```php
 
 interface Theme
@@ -748,7 +748,8 @@ class AquaTheme implements Theme
     }
 }
 ```
-And both the hierarchies
+
+И обе иерархии:
 ```php
 $darkTheme = new DarkTheme();
 
@@ -759,22 +760,19 @@ echo $about->getContent(); // "About page in Dark Black";
 echo $careers->getContent(); // "Careers page in Dark Black";
 ```
 
-🌿 Composite
+🌿 Компоновщик
 -----------------
+Пример из реального мира:
+> Каждая организация состоит из сотрудников. Каждый из сотрудников обладает одинаковыми характеристиками, т.е. имеет зарплату, имеет некоторые обязанности, может отчитываться перед кем-то или не отчитываться, может иметь или не иметь некоторых подчиненных и т.д.
 
-Real world example
-> Every organization is composed of employees. Each of the employees has the same features i.e. has a salary, has some responsibilities, may or may not report to someone, may or may not have some subordinates etc.
+Простыми словами:
+> Составной шаблон позволяет клиентам единообразно обрабатывать отдельные объекты.
 
-In plain words
-> Composite pattern lets clients treat the individual objects in a uniform manner.
+Википедия говорит:
+> В программной инженерии шаблон компоновщика - это сегментирующий шаблон проектирования. Компонирующий шаблон описывает, что с группой объектов следует обращаться так же, как с одним экземпляром объекта. Цель компоновщика состоит в том, чтобы "компоновать" объекты в древовидные структуры для представления иерархий частей и целых. Реализация шаблона компоновщика позволяет клиентам единообразно обрабатывать отдельные объекты и композиции.
 
-Wikipedia says
-> In software engineering, the composite pattern is a partitioning design pattern. The composite pattern describes that a group of objects is to be treated in the same way as a single instance of an object. The intent of a composite is to "compose" objects into tree structures to represent part-whole hierarchies. Implementing the composite pattern lets clients treat individual objects and compositions uniformly.
-
-**Programmatic Example**
-
-Taking our employees example from above. Here we have different employee types
-
+**Программный пример**
+Берем пример с наших сотрудников сверху. Здесь у нас есть разные типы сотрудников
 ```php
 interface Employee
 {
@@ -852,8 +850,7 @@ class Designer implements Employee
 }
 ```
 
-Then we have an organization which consists of several different types of employees
-
+Теперь у нас есть организация, состоящая из нескольких различных типов сотрудников:
 ```php
 class Organization
 {
@@ -877,38 +874,35 @@ class Organization
 }
 ```
 
-And then it can be used as
-
+Итак, используем:
 ```php
-// Prepare the employees
+// Подготовим сотрудников
 $john = new Developer('John Doe', 12000);
 $jane = new Designer('Jane Doe', 15000);
 
-// Add them to organization
+// Добавим их в организацию
 $organization = new Organization();
 $organization->addEmployee($john);
 $organization->addEmployee($jane);
 
-echo "Net salaries: " . $organization->getNetSalaries(); // Net Salaries: 27000
+echo "Чистая заработная плата: " . $organization->getNetSalaries(); // Чистая заработная плата: 15000
 ```
 
-☕ Decorator
+☕ Декоратор
 -------------
 
-Real world example
+Пример из реального мира:
+> Представьте, что вы управляете автомастерской, предлагающей множество услуг. Теперь, как вы рассчитываете счет на оплату? Вы выбираете одну услугу и динамически продолжаете добавлять к ней цены на предоставляемые услуги, пока не получите окончательную стоимость. Здесь каждый вид услуг - это декоратор.
 
-> Imagine you run a car service shop offering multiple services. Now how do you calculate the bill to be charged? You pick one service and dynamically keep adding to it the prices for the provided services till you get the final cost. Here each type of service is a decorator.
+Простыми словами:
+> Шаблон декоратора позволяет динамически изменять поведение объекта во время выполнения, заключая его в объект класса декоратора.
 
-In plain words
-> Decorator pattern lets you dynamically change the behavior of an object at run time by wrapping them in an object of a decorator class.
+Википедия говорит
+> В ООП шаблон декоратора - это шаблон проектирования, который позволяет добавлять поведение к отдельному объекту статически или динамически, не влияя на поведение других объектов из того же класса. Шаблон декоратора часто полезен для соблюдения принципа единой ответственности, поскольку он позволяет разделить функциональность между классами с уникальными проблемными областями.
 
-Wikipedia says
-> In object-oriented programming, the decorator pattern is a design pattern that allows behavior to be added to an individual object, either statically or dynamically, without affecting the behavior of other objects from the same class. The decorator pattern is often useful for adhering to the Single Responsibility Principle, as it allows functionality to be divided between classes with unique areas of concern.
+**Пример из программирования**
 
-**Programmatic Example**
-
-Lets take coffee for example. First of all we have a simple coffee implementing the coffee interface
-
+Давайте возьмем кофе, как пример. Прежде всего, нам нужен простой кофе, имплементирующий интерфейс кофе:
 ```php
 interface Coffee
 {
@@ -929,7 +923,8 @@ class SimpleCoffee implements Coffee
     }
 }
 ```
-We want to make the code extensible to allow options to modify it if required. Lets make some add-ons (decorators)
+
+Мы хотим сделать код масштабируемым, чтобы при необходимости его можно было изменять. Давайте сделаем несколько дополнений (декораторов):
 ```php
 class MilkCoffee implements Coffee
 {
@@ -992,8 +987,7 @@ class VanillaCoffee implements Coffee
 }
 ```
 
-Lets make a coffee now
-
+Давайте теперь сделаем кофе:
 ```php
 $someCoffee = new SimpleCoffee();
 echo $someCoffee->getCost(); // 10
@@ -1012,22 +1006,21 @@ echo $someCoffee->getCost(); // 20
 echo $someCoffee->getDescription(); // Simple Coffee, milk, whip, vanilla
 ```
 
-📦 Facade
+📦 Фасад
 ----------------
 
-Real world example
-> How do you turn on the computer? "Hit the power button" you say! That is what you believe because you are using a simple interface that computer provides on the outside, internally it has to do a lot of stuff to make it happen. This simple interface to the complex subsystem is a facade.
+Пример из реального мира:
+> Как вы включаете компьютер? "Нажми кнопку включения", - говоришь ты! Это то, во что вы верите, потому что вы используете простой интерфейс, который компьютер предоставляет снаружи, а внутри должно быть сделано много вещей, чтобы это произошло. Этот простой интерфейс в сложной подсистеме является фасадом.
 
-In plain words
-> Facade pattern provides a simplified interface to a complex subsystem.
+Простыми словами:
+> Шаблон фасада обеспечивает упрощенный интерфейс для сложной подсистемы.
 
-Wikipedia says
-> A facade is an object that provides a simplified interface to a larger body of code, such as a class library.
+Википедия говорит:
+> Фасад - это объект, который предоставляет упрощенный интерфейс для большего объема кода, такого как библиотека классов.
 
-**Programmatic Example**
+**Пример из программирования**
 
-Taking our computer example from above. Here we have the computer class
-
+Возьмем наш компьютерный пример сверху. Здесь у нас есть компьютерный класс:
 ```php
 class Computer
 {
@@ -1067,7 +1060,8 @@ class Computer
     }
 }
 ```
-Here we have the facade
+
+Теперь у нас есть фасад:
 ```php
 class ComputerFacade
 {
@@ -1094,29 +1088,29 @@ class ComputerFacade
     }
 }
 ```
-Now to use the facade
+
+Сейчас применим шаблон фасада:
 ```php
 $computer = new ComputerFacade(new Computer());
 $computer->turnOn(); // Ouch! Beep beep! Loading.. Ready to be used!
 $computer->turnOff(); // Bup bup buzzz! Haah! Zzzzz
 ```
 
-🍃 Flyweight
+🍃 Легковес
 ---------
+Пример из реального мира:
+> Вы когда-нибудь пили свежий чай из какого-нибудь ларька? Они часто делают больше одной чашки, которую вы потребовали, и оставляют остальное для любого другого клиента, чтобы сэкономить ресурсы, например, газ и т.д. Шаблон Flyweight - это все об этом, то есть о совместном использовании.
 
-Real world example
-> Did you ever have fresh tea from some stall? They often make more than one cup that you demanded and save the rest for any other customer so to save the resources e.g. gas etc. Flyweight pattern is all about that i.e. sharing.
+Простыми словами:
+> Он используется для минимизации использования памяти или вычислительных затрат за счет максимально возможного совместного использования с аналогичными объектами.
 
-In plain words
-> It is used to minimize memory usage or computational expenses by sharing as much as possible with similar objects.
+Википедия говорит:
+> В компьютерном программировании легковес - это шаблон проектирования программного обеспечения. Легковес - это объект, который минимизирует использование памяти за счет обмена как можно большим количеством данных с другими подобными объектами; это способ использования объектов в больших количествах, когда простое повторное представление потребовало бы неприемлемого объема памяти.
 
-Wikipedia says
-> In computer programming, flyweight is a software design pattern. A flyweight is an object that minimizes memory use by sharing as much data as possible with other similar objects; it is a way to use objects in large numbers when a simple repeated representation would use an unacceptable amount of memory.
 
-**Programmatic example**
+**Программный пример**
 
-Translating our tea example from above. First of all we have tea types and tea maker
-
+Переводим наш пример с чаем сверху. Прежде всего, у нас есть виды чая и кофеварка:
 ```php
 // Anything that will be cached is flyweight.
 // Types of tea here will be flyweights.
@@ -1140,8 +1134,7 @@ class TeaMaker
 }
 ```
 
-Then we have the `TeaShop` which takes orders and serves them
-
+Теперь есть `TeaShop`("Магазин чая"), который принимает заказы и обслуживает их:
 ```php
 class TeaShop
 {
@@ -1166,8 +1159,8 @@ class TeaShop
     }
 }
 ```
-And it can be used as below
 
+И он может применяться как показано ниже:
 ```php
 $teaMaker = new TeaMaker();
 $shop = new TeaShop($teaMaker);
@@ -1182,21 +1175,21 @@ $shop->serve();
 // Serving tea to table# 5
 ```
 
-🎱 Proxy
+🎱 Заместитель
 -------------------
-Real world example
-> Have you ever used an access card to go through a door? There are multiple options to open that door i.e. it can be opened either using access card or by pressing a button that bypasses the security. The door's main functionality is to open but there is a proxy added on top of it to add some functionality. Let me better explain it using the code example below.
 
-In plain words
-> Using the proxy pattern, a class represents the functionality of another class.
+Пример из реального мира:
+> Вы когда-нибудь использовали карту доступа, чтобы пройти через дверь? Существует несколько вариантов открытия этой двери, т.е. ее можно открыть либо с помощью карты доступа, либо нажатием кнопки, которая обходит систему безопасности. Основная функция двери - открываться, но поверх нее добавлен прокси-сервер для добавления некоторых функций. Позвольте мне лучше объяснить это, используя приведенный ниже пример кода.
 
-Wikipedia says
-> A proxy, in its most general form, is a class functioning as an interface to something else. A proxy is a wrapper or agent object that is being called by the client to access the real serving object behind the scenes. Use of the proxy can simply be forwarding to the real object, or can provide additional logic. In the proxy extra functionality can be provided, for example caching when operations on the real object are resource intensive, or checking preconditions before operations on the real object are invoked.
+Простыми словами:
+> Используя шаблон прокси, класс представляет функциональность другого класса.
 
-**Programmatic Example**
+Википедия говорит:
+> Прокси-сервер в его наиболее общей форме - это класс, функционирующий как интерфейс по отношению к чему-то другому. Прокси - это объект-оболочка или агент, который вызывается клиентом для доступа к реальному обслуживающему объекту за кулисами. Использование прокси-сервера может быть просто перенаправлением на реальный объект или может обеспечить дополнительную логику. В прокси могут быть предоставлены дополнительные функции, например кэширование, когда операции с реальным объектом требуют больших ресурсов, или проверка предварительных условий перед вызовом операций с реальным объектом.
 
-Taking our security door example from above. Firstly we have the door interface and an implementation of door
+**Программный пример**
 
+Возьмем наш пример с защитной дверью сверху. Во-первых, у нас есть интерфейс `Door` и реализация `Door`:
 ```php
 interface Door
 {
@@ -1217,7 +1210,8 @@ class LabDoor implements Door
     }
 }
 ```
-Then we have a proxy to secure any doors that we want
+
+Теперь у нас есть прокси для защиты двери, какой пожелаем:
 ```php
 class SecuredDoor
 {
@@ -1248,7 +1242,8 @@ class SecuredDoor
     }
 }
 ```
-And here is how it can be used
+
+И он может применяться как показано ниже:
 ```php
 $door = new SecuredDoor(new LabDoor());
 $door->open('invalid'); // Big no! It ain't possible.
@@ -1257,6 +1252,9 @@ $door->open('$ecr@t'); // Opening lab door
 $door->close(); // Closing lab door
 ```
 Yet another example would be some sort of data-mapper implementation. For example, I recently made an ODM (Object Data Mapper) for MongoDB using this pattern where I wrote a proxy around mongo classes while utilizing the magic method `__call()`. All the method calls were proxied to the original mongo class and result retrieved was returned as it is but in case of `find` or `findOne` data was mapped to the required class objects and the object was returned instead of `Cursor`.
+
+Еще одним примером может быть своего рода реализация картографа данных. Например, недавно я создал ODM (средство сопоставления объектных данных) для MongoDB, используя этот шаблон, в котором я написал прокси для классов Mongo, используя волшебный метод `__call()`. Все вызовы методов были перенаправлены в исходный класс Mongo, и полученный результат был возвращен как есть, но в случае `find` или `findOne` данные были сопоставлены с требуемыми объектами класса, и объект был возвращен вместо `Cursor`.
+
 
 Поведенческие паттерны проектирования
 ==========================
