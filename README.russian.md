@@ -1259,39 +1259,38 @@ Yet another example would be some sort of data-mapper implementation. For exampl
 Поведенческие паттерны проектирования
 ==========================
 
-In plain words
-> It is concerned with assignment of responsibilities between the objects. What makes them different from structural patterns is they don't just specify the structure but also outline the patterns for message passing/communication between them. Or in other words, they assist in answering "How to run a behavior in software component?"
+Простыми словами:
+> Они связаны с распределением обязанностей между объектами. Что отличает их от структурных шаблонов, так это то, что они не просто определяют структуру, но и описывают шаблоны передачи сообщений/связи между ними. Другими словами, они помогают ответить на вопрос "Как запустить поведение в программном компоненте?"
 
-Wikipedia says
-> In software engineering, behavioral design patterns are design patterns that identify common communication patterns between objects and realize these patterns. By doing so, these patterns increase flexibility in carrying out this communication.
+Википедия говорит:
+> В разработке ПО поведенческие шаблоны проектирования - это шаблоны проектирования, которые определяют общие шаблоны взаимодействия между объектами и реализуют эти шаблоны. Поступая таким образом, эти шаблоны повышают гибкость в осуществлении этой коммуникации.
 
-* [Chain of Responsibility](#-chain-of-responsibility)
-* [Command](#-command)
-* [Iterator](#-iterator)
-* [Mediator](#-mediator)
-* [Memento](#-memento)
-* [Observer](#-observer)
-* [Visitor](#-visitor)
-* [Strategy](#-strategy)
-* [State](#-state)
-* [Template Method](#-template-method)
+* [Цепочка обязанностей](#-Цепочка-обязанностей)
+* [Команда](#-Команда)
+* [Итератор](#-Итератор)
+* [Посредник](#-Посредник)
+* [Снимок](#-Снимок)
+* [Наблюдатель](#-Наблюдатель)
+* [Посетитель](#-Посетитель)
+* [Стратегия](#-Стратегия)
+* [Состояние](#-Состояние)
+* [Шаблонный метод](#-Шаблонный-метод)
 
-🔗 Chain of Responsibility
+🔗 Цепочка обязанностей
 -----------------------
 
-Real world example
-> For example, you have three payment methods (`A`, `B` and `C`) setup in your account; each having a different amount in it. `A` has 100 USD, `B` has 300 USD and `C` having 1000 USD and the preference for payments is chosen as `A` then `B` then `C`. You try to purchase something that is worth 210 USD. Using Chain of Responsibility, first of all account `A` will be checked if it can make the purchase, if yes purchase will be made and the chain will be broken. If not, request will move forward to account `B` checking for amount if yes chain will be broken otherwise the request will keep forwarding till it finds the suitable handler. Here `A`, `B` and `C` are links of the chain and the whole phenomenon is Chain of Responsibility.
+Пример из реального мира:
+> Например, у вас есть три способа оплаты (`A`, `B` и `C`), настроенные в вашей учетной записи; каждый из них имеет разную сумму. `A` имеет 100 долларов США, `B` имеет 300 долларов США, а `C` имеет 1000 долларов США, и предпочтение для платежей выбирается как `A`, затем `B`, затем `C`. Вы пытаетесь купить что-то, что стоит 210 долларов. Используя цепочку ответственности, в первую очередь будет проверена учетная запись "А", может ли она совершить покупку, если да, то покупка будет совершена, и цепочка будет разорвана. Если нет, запрос будет перенаправлен на счет `B`, проверяющий сумму, если да, цепочка будет разорвана, в противном случае запрос будет перенаправляться до тех пор, пока не найдет подходящего обработчика. Здесь `А`, `В` и `С` являются звеньями цепи, и все явление представляет собой цепочку обязанностей.
 
-In plain words
-> It helps building a chain of objects. Request enters from one end and keeps going from object to object till it finds the suitable handler.
+Простыми словами:
+> Помогает выстраивать цепочку объектов. Запрос поступает с одного конца и продолжает переходить от объекта к объекту, пока не найдет подходящий обработчик.
 
-Wikipedia says
-> In object-oriented design, the chain-of-responsibility pattern is a design pattern consisting of a source of command objects and a series of processing objects. Each processing object contains logic that defines the types of command objects that it can handle; the rest are passed to the next processing object in the chain.
+Википедия говорит:
+> В ООП шаблон цепочки обязанностей представляет собой шаблон проектирования, состоящий из источника объектов команд и ряда объектов обработки. Каждый объект обработки содержит логику, определяющую типы объектов команд, которые он может обрабатывать; остальные передаются следующему объекту обработки в цепочке.
 
-**Programmatic Example**
+**Программный пример**
 
-Translating our account example above. First of all we have a base account having the logic for chaining the accounts together and some accounts
-
+Перевод нашего примера учетной записи выше. Прежде всего, у нас есть базовая учетная запись, имеющая логику для объединения учетных записей и некоторые учетные записи:
 ```php
 abstract class Account
 {
@@ -1352,31 +1351,30 @@ class Bitcoin extends Account
 }
 ```
 
-Now let's prepare the chain using the links defined above (i.e. Bank, Paypal, Bitcoin)
-
+Теперь давайте подготовим цепочку, используя ссылки, определенные выше (т.е. банк, paypal, биткоин):
 ```php
-// Let's prepare a chain like below
+// Подготовим цепочку, как показано ниже
 //      $bank->$paypal->$bitcoin
 //
-// First priority bank
-//      If bank can't pay then paypal
-//      If paypal can't pay then bit coin
+// Банк - первый приоритет
+//      Если банк не может оплатить, то paypal
+//      Если paypal не может заплатить, то биткойн
 
-$bank = new Bank(100);          // Bank with balance 100
-$paypal = new Paypal(200);      // Paypal with balance 200
-$bitcoin = new Bitcoin(300);    // Bitcoin with balance 300
+$bank = new Bank(100);          // Банк с балансом 100
+$paypal = new Paypal(200);      // Paypal с балансом 200
+$bitcoin = new Bitcoin(300);    // Биткоин с балансом 300
 
 $bank->setNext($paypal);
 $paypal->setNext($bitcoin);
 
-// Let's try to pay using the first priority i.e. bank
+// Давайте попробуем оплатить с помощью первого приоритета, то есть банка
 $bank->pay(259);
 
-// Output will be
+// Будет на выходе
 // ==============
-// Cannot pay using bank. Proceeding ..
-// Cannot pay using paypal. Proceeding ..:
-// Paid 259 using Bitcoin!
+// Невозможно оплатить с помощью банка. Разбираемся..
+// Невозможно оплатить с помощью paypal. Разбираемся ..:
+// Заплатил 259 долларов с помощью биткоина!
 ```
 
 👮 Command
@@ -1673,25 +1671,23 @@ $jane->send('Hey!');
 // Feb 14, 10:58 [Jane]: Hey!
 ```
 
-💾 Memento
+💾 Снимок
 -------
-Real world example
-> Take the example of calculator (i.e. originator), where whenever you perform some calculation the last calculation is saved in memory (i.e. memento) so that you can get back to it and maybe get it restored using some action buttons (i.e. caretaker).
+Пример из реального мира
+> Возьмем пример калькулятора (т.е. составителя), где всякий раз, когда вы выполняете какое-либо вычисление, последнее вычисление сохраняется в памяти (т.е. на память), чтобы вы могли вернуться к нему и, возможно, восстановить его с помощью некоторых кнопок действий (т.е. смотритель).
 
-In plain words
-> Memento pattern is about capturing and storing the current state of an object in a manner that it can be restored later on in a smooth manner.
+Простыми словами
+> Шаблон снимка предназначен для захвата и сохранения текущего состояния объекта таким образом, чтобы его можно было восстановить позже плавным способом.
 
-Wikipedia says
-> The memento pattern is a software design pattern that provides the ability to restore an object to its previous state (undo via rollback).
+Википедия говорит
+> Шаблон снимка - это шаблон разработки программного обеспечения, который обеспечивает возможность восстановления объекта в его предыдущее состояние (отмена с помощью отката).
 
-Usually useful when you need to provide some sort of undo functionality.
+Обычно полезно, когда вам нужно предоставить какую-то функцию отмены.
 
-**Programmatic Example**
+**Программный пример**
 
-Lets take an example of text editor which keeps saving the state from time to time and that you can restore if you want.
-
-First of all we have our memento object that will be able to hold the editor state
-
+Давайте возьмем пример текстового редактора, который время от времени сохраняет состояние и который вы можете восстановить, если хотите.
+Прежде всего, у нас есть наш объект memento, который сможет удерживать состояние редактора:
 ```php
 class EditorMemento
 {
@@ -1709,8 +1705,7 @@ class EditorMemento
 }
 ```
 
-Then we have our editor i.e. originator that is going to use memento object
-
+Затем у нас есть наш редактор, то есть создатель, который будет использовать объект снимка:
 ```php
 class Editor
 {
@@ -1738,8 +1733,7 @@ class Editor
 }
 ```
 
-And then it can be used as
-
+Теперь мы можем применить его:
 ```php
 $editor = new Editor();
 
@@ -1762,20 +1756,20 @@ $editor->restore($saved);
 $editor->getContent(); // This is the first sentence. This is second.
 ```
 
-😎 Observer
+😎 Наблюдатель
 --------
-Real world example
-> A good example would be the job seekers where they subscribe to some job posting site and they are notified whenever there is a matching job opportunity.   
+Пример из реального мира:
+> Хорошим примером могут служить соискатели, которые подписываются на какой-либо сайт по размещению вакансий и получают уведомления всякий раз, когда появляется подходящая вакансия.   
 
-In plain words
-> Defines a dependency between objects so that whenever an object changes its state, all its dependents are notified.
+Простыми словами:
+> Определяет зависимость между объектами таким образом, чтобы всякий раз, когда объект изменяет свое состояние, уведомлялись все от него зависимые объекты.
 
-Wikipedia says
-> The observer pattern is a software design pattern in which an object, called the subject, maintains a list of its dependents, called observers, and notifies them automatically of any state changes, usually by calling one of their methods.
+Википедия говорит:
+> Шаблон наблюдателя - это шаблон проектирования программного обеспечения, в котором объект, называемый субъектом, ведет список своих иждивенцев, называемых наблюдателями, и автоматически уведомляет их о любых изменениях состояния, обычно вызывая один из их методов.
 
-**Programmatic example**
+**Программный пример**
 
-Translating our example from above. First of all we have job seekers that need to be notified for a job posting
+Приводим наш пример сверху. Прежде всего, у нас есть соискатели, которых нужно уведомить о приеме на работу:
 ```php
 class JobPost
 {
@@ -1808,7 +1802,8 @@ class JobSeeker implements Observer
     }
 }
 ```
-Then we have our job postings to which the job seekers will subscribe
+
+Теперь у нас есть объявления о вакансиях, на которые будут подписываться соискатели:
 ```php
 class EmploymentAgency implements Observable
 {
@@ -1832,7 +1827,8 @@ class EmploymentAgency implements Observable
     }
 }
 ```
-Then it can be used as
+
+Теперь мы можем применить его:
 ```php
 // Create subscribers
 $johnDoe = new JobSeeker('John Doe');
@@ -1851,21 +1847,20 @@ $jobPostings->addJob(new JobPost('Software Engineer'));
 // Hi Jane Doe! New job posted: Software Engineer
 ```
 
-🏃 Visitor
+🏃 Посетитель
 -------
-Real world example
-> Consider someone visiting Dubai. They just need a way (i.e. visa) to enter Dubai. After arrival, they can come and visit any place in Dubai on their own without having to ask for permission or to do some leg work in order to visit any place here; just let them know of a place and they can visit it. Visitor pattern lets you do just that, it helps you add places to visit so that they can visit as much as they can without having to do any legwork.
+Пример из реального мира:
+> Подумайте о том, что кто-то посетил Дубай. Им просто нужен способ (т.е. виза) въехать в Дубай. После прибытия они могут приехать и посетить любое место в Дубае самостоятельно, без необходимости спрашивать разрешения или выполнять какую-либо работу, чтобы посетить любое место здесь; просто сообщите им о месте, и они смогут его посетить. Шаблон посетителя позволяет вам делать именно это, он помогает вам добавлять места для посещения, чтобы они могли посещать как можно больше без необходимости выполнять какую-либо работу.
 
-In plain words
-> Visitor pattern lets you add further operations to objects without having to modify them.
+Простыми словами:
+> Шаблон посетителя позволяет добавлять дополнительные операции к объектам без необходимости их изменения.
 
-Wikipedia says
-> In object-oriented programming and software engineering, the visitor design pattern is a way of separating an algorithm from an object structure on which it operates. A practical result of this separation is the ability to add new operations to existing object structures without modifying those structures. It is one way to follow the open/closed principle.
+Википедия говорит:
+> В объектно-ориентированном программировании и разработке программного обеспечения шаблон проектирования посетителя - это способ отделения алгоритма от структуры объекта, на которой он работает. Практическим результатом такого разделения является возможность добавлять новые операции к существующим структурам объектов без изменения этих структур. Это один из способов следовать принцип "открыто/закрыто".
 
-**Programmatic example**
+**Пример из программирования**
 
-Let's take an example of a zoo simulation where we have several different kinds of animals and we have to make them Sound. Let's translate this using visitor pattern
-
+Давайте возьмем пример симуляции зоопарка, где у нас есть несколько разных видов животных, и мы должны заставить их звучать. Давайте переведем это с помощью шаблона посетителя:
 ```php
 // Visitee
 interface Animal
@@ -1881,7 +1876,8 @@ interface AnimalOperation
     public function visitDolphin(Dolphin $dolphin);
 }
 ```
-Then we have our implementations for the animals
+
+Теперь у нас есть наши реализации для животных:
 ```php
 class Monkey implements Animal
 {
@@ -1922,7 +1918,8 @@ class Dolphin implements Animal
     }
 }
 ```
-Let's implement our visitor
+
+Давайте реализуем нашего посетителя:
 ```php
 class Speak implements AnimalOperation
 {
@@ -1943,7 +1940,7 @@ class Speak implements AnimalOperation
 }
 ```
 
-And then it can be used as
+И мы можем использовать его так:
 ```php
 $monkey = new Monkey();
 $lion = new Lion();
@@ -1955,7 +1952,8 @@ $monkey->accept($speak);    // Ooh oo aa aa!
 $lion->accept($speak);      // Roaaar!
 $dolphin->accept($speak);   // Tuut tutt tuutt!
 ```
-We could have done this simply by having an inheritance hierarchy for the animals but then we would have to modify the animals whenever we would have to add new actions to animals. But now we will not have to change them. For example, let's say we are asked to add the jump behavior to the animals, we can simply add that by creating a new visitor i.e.
+
+Мы могли бы сделать это, просто создав иерархию наследования для животных, но тогда нам пришлось бы изменять животных всякий раз, когда нам нужно было бы добавлять новые действия к животным. Но теперь нам не придется их менять. Допустим, нас просят добавить поведение прыжка к животным, мы можем просто добавить это, создав нового посетителя.
 
 ```php
 class Jump implements AnimalOperation
@@ -1976,7 +1974,8 @@ class Jump implements AnimalOperation
     }
 }
 ```
-And for the usage
+
+И для использования:
 ```php
 $jump = new Jump();
 
@@ -1990,22 +1989,21 @@ $dolphin->accept($speak);  // Tuut tutt tuutt!
 $dolphin->accept($jump);   // Walked on water a little and disappeared
 ```
 
-💡 Strategy
+💡 Стратегия
 --------
 
-Real world example
-> Consider the example of sorting, we implemented bubble sort but the data started to grow and bubble sort started getting very slow. In order to tackle this we implemented Quick sort. But now although the quick sort algorithm was doing better for large datasets, it was very slow for smaller datasets. In order to handle this we implemented a strategy where for small datasets, bubble sort will be used and for larger, quick sort.
+Пример из реального мира:
+> Рассмотрим пример сортировки: мы внедрили пузырьковую сортировку, но данные начали расти, и пузырьковая сортировка стала очень медленной. Чтобы решить эту проблему, мы внедрили быструю сортировку. Но теперь, хотя алгоритм быстрой сортировки работал лучше для больших наборов данных, он был очень медленным для небольших наборов данных. Чтобы справиться с этим, мы внедрили стратегию, в которой для небольших наборов данных будет использоваться пузырьковая сортировка, а для больших - быстрая сортировка.
 
-In plain words
-> Strategy pattern allows you to switch the algorithm or strategy based upon the situation.
+Простыми словами:
+> Шаблон стратегии позволяет вам переключать алгоритм или стратегию в зависимости от ситуации.
 
-Wikipedia says
-> In computer programming, the strategy pattern (also known as the policy pattern) is a behavioural software design pattern that enables an algorithm's behavior to be selected at runtime.
+Википедия говорит:
+> В компьютерном программировании шаблон стратегии (также известный как шаблон политики) представляет собой поведенческий шаблон проектирования программного обеспечения, который позволяет выбирать поведение алгоритма во время выполнения.
 
-**Programmatic example**
+**Программный пример**
 
-Translating our example from above. First of all we have our strategy interface and different strategy implementations
-
+Переводим наш пример сверху. Прежде всего, у нас есть наш интерфейс стратегии и различные реализации стратегии:
 ```php
 interface SortStrategy
 {
@@ -2035,7 +2033,7 @@ class QuickSortStrategy implements SortStrategy
 }
 ```
 
-And then we have our client that is going to use any strategy
+И тогда у нас есть наш клиент, который собирается использовать любую стратегию:
 ```php
 class Sorter
 {
@@ -2052,7 +2050,8 @@ class Sorter
     }
 }
 ```
-And it can be used as
+
+И мы можем использовать его так:
 ```php
 $dataset = [1, 5, 4, 3, 2, 8];
 
@@ -2063,24 +2062,24 @@ $sorter = new Sorter(new QuickSortStrategy());
 $sorter->sort($dataset); // Output : Sorting using quick sort
 ```
 
-💢 State
+💢 Состояние
 -----
-Real world example
-> Imagine you are using some drawing application, you choose the paint brush to draw. Now the brush changes its behavior based on the selected color i.e. if you have chosen red color it will draw in red, if blue then it will be in blue etc.  
 
-In plain words
-> It lets you change the behavior of a class when the state changes.
+Пример из реального мира:
+> Представьте, что вы используете какое-то приложение для рисования, вы выбираете кисть для рисования. Теперь кисть меняет свое поведение в зависимости от выбранного цвета, т.е. если вы выбрали красный цвет, она будет рисовать красным, если синий, то синим и т.д.  
 
-Wikipedia says
-> The state pattern is a behavioral software design pattern that implements a state machine in an object-oriented way. With the state pattern, a state machine is implemented by implementing each individual state as a derived class of the state pattern interface, and implementing state transitions by invoking methods defined by the pattern's superclass.
-> The state pattern can be interpreted as a strategy pattern which is able to switch the current strategy through invocations of methods defined in the pattern's interface.
+Простыми словами:
+> Можно изменять поведение класса при изменении состояния.
 
-**Programmatic example**
+Википедия говорит:
+> Шаблон состояния - это поведенческий шаблон проектирования программного обеспечения, который реализует конечный автомат объектно-ориентированным способом. С шаблоном состояния конечный автомат реализуется путем реализации каждого отдельного состояния в качестве производного класса интерфейса шаблона состояния и реализации переходов состояний путем вызова методов, определенных суперклассом шаблона.
+> Шаблон состояния может быть интерпретирован как шаблон стратегии, который способен переключать текущую стратегию с помощью вызовов методов, определенных в интерфейсе шаблона.
 
-Let's take an example of text editor, it lets you change the state of text that is typed i.e. if you have selected bold, it starts writing in bold, if italic then in italics etc.
+**Программный пример**
 
-First of all we have our state interface and some state implementations
+Давайте возьмем пример текстового редактора, он позволяет изменять состояние набранного текста, т.е. если вы выбрали жирный шрифт, он начинает писать жирным шрифтом, если курсив, то курсивом и т.д.
 
+Прежде всего, у нас есть наш интерфейс состояния и некоторые реализации состояния:
 ```php
 interface WritingState
 {
@@ -2111,7 +2110,8 @@ class DefaultText implements WritingState
     }
 }
 ```
-Then we have our editor
+
+Теперь у нас есть наш редактор:
 ```php
 class TextEditor
 {
@@ -2133,7 +2133,8 @@ class TextEditor
     }
 }
 ```
-And then it can be used as
+
+И мы можем использовать его так:
 ```php
 $editor = new TextEditor(new DefaultText());
 
@@ -2151,35 +2152,35 @@ $editor->type('Fifth line');
 
 // Output:
 // First line
-// SECOND LINE
-// THIRD LINE
-// fourth line
-// fifth line
+// Second LINE
+// Third LINE
+// Fourth line
+// Fifth line
 ```
 
-📒 Template Method
+📒 Шаблонный метод
 ---------------
 
-Real world example
-> Suppose we are getting some house built. The steps for building might look like
-> - Prepare the base of house
-> - Build the walls
-> - Add roof
-> - Add other floors
+Пример из реального мира:
+> Предположим, мы строим какой-нибудь дом. Этапы построения могут выглядеть следующим образом:
+> - Подготовить основание дома
+> - Построить стены
+> - Добавить крышу
+> - Добавить другие этажи
 
-> The order of these steps could never be changed i.e. you can't build the roof before building the walls etc but each of the steps could be modified for example walls can be made of wood or polyester or stone.
+> Порядок этих шагов никогда не может быть изменен, т.е. вы не можете построить крышу перед строительством стен и т.д., но каждый из шагов может быть изменен, например, стены могут быть сделаны из дерева, полиэстера или камня.
 
-In plain words
-> Template method defines the skeleton of how a certain algorithm could be performed, but defers the implementation of those steps to the children classes.
+Простыми словами:
+> Шаблонный метод определяет базу того, как может быть выполнен определенный алгоритм, но делегирует выполнение этих шагов на дочерние классы.
 
-Wikipedia says
-> In software engineering, the template method pattern is a behavioral design pattern that defines the program skeleton of an algorithm in an operation, deferring some steps to subclasses. It lets one redefine certain steps of an algorithm without changing the algorithm's structure.
+Википедия говорит:
+> В программной инженерии шаблонный метода - это шаблон поведенческого проектирования, который определяет программный скелет алгоритма в операции, откладывая некоторые шаги на подклассы. Это позволяет переопределить определенные этапы алгоритма без изменения структуры алгоритма.
 
-**Programmatic Example**
+**Программный пример**
 
-Imagine we have a build tool that helps us test, lint, build, generate build reports (i.e. code coverage reports, linting report etc) and deploy our app on the test server.
+Представим, что у нас есть инструмент сборки, который помогает нам тестировать, компоновать, создавать отчеты о сборке (т. е. отчеты о покрытии кода, отчеты о компоновке и т.д.) И развертывать наше приложение на тестовом сервере.
 
-First of all we have our base class that specifies the skeleton for the build algorithm
+Прежде всего, у нас есть наш базовый класс, который определяет каркас для алгоритма сборки:
 ```php
 abstract class Builder
 {
@@ -2200,8 +2201,7 @@ abstract class Builder
 }
 ```
 
-Then we can have our implementations
-
+Теперь у нас есть наши имплементации:
 ```php
 class AndroidBuilder extends Builder
 {
@@ -2249,8 +2249,7 @@ class IosBuilder extends Builder
     }
 }
 ```
-And then it can be used as
-
+И затем его можно использовать как:
 ```php
 $androidBuilder = new AndroidBuilder();
 $androidBuilder->build();
