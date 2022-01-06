@@ -1251,7 +1251,6 @@ $door->open('invalid'); // Big no! It ain't possible.
 $door->open('$ecr@t'); // Opening lab door
 $door->close(); // Closing lab door
 ```
-Yet another example would be some sort of data-mapper implementation. For example, I recently made an ODM (Object Data Mapper) for MongoDB using this pattern where I wrote a proxy around mongo classes while utilizing the magic method `__call()`. All the method calls were proxied to the original mongo class and result retrieved was returned as it is but in case of `find` or `findOne` data was mapped to the required class objects and the object was returned instead of `Cursor`.
 
 Еще одним примером может быть своего рода реализация картографа данных. Например, недавно я создал ODM (средство сопоставления объектных данных) для MongoDB, используя этот шаблон, в котором я написал прокси для классов Mongo, используя волшебный метод `__call()`. Все вызовы методов были перенаправлены в исходный класс Mongo, и полученный результат был возвращен как есть, но в случае `find` или `findOne` данные были сопоставлены с требуемыми объектами класса, и объект был возвращен вместо `Cursor`.
 
@@ -1377,22 +1376,22 @@ $bank->pay(259);
 // Заплатил 259 долларов с помощью биткоина!
 ```
 
-👮 Command
+👮 Команда
 -------
 
-Real world example
-> A generic example would be you ordering food at a restaurant. You (i.e. `Client`) ask the waiter (i.e. `Invoker`) to bring some food (i.e. `Command`) and waiter simply forwards the request to Chef (i.e. `Receiver`) who has the knowledge of what and how to cook.
-> Another example would be you (i.e. `Client`) switching on (i.e. `Command`) the television (i.e. `Receiver`) using a remote control (`Invoker`).
+Пример из реального мира:
+> Типичным примером может служить то, что вы заказываете еду в ресторане. Вы (т. е. Клиент (`Client`)) просите официанта (т. е. Вызывающий (`Invoker`)) принести немного еды (т. е. Команда (`Command`)) и официант просто направляет запрос шеф-повару (т. е. Получатель (`Receiver`)), который знает, что и как готовить.
+> Другим примером может быть то, что вы (i.e. `Client`) переключаете (i.e. `Command`) телевизор (i.e. `Receiver`) с помощью пульта управления (`Invoker`).
 
-In plain words
-> Allows you to encapsulate actions in objects. The key idea behind this pattern is to provide the means to decouple client from receiver.
+Простыми словами:
+> Позволяет инкапсулировать действия в объекты. Ключевая идея этого шаблона состоит в том, чтобы предоставить средства для отделения клиента от получателя.
 
-Wikipedia says
-> In object-oriented programming, the command pattern is a behavioral design pattern in which an object is used to encapsulate all information needed to perform an action or trigger an event at a later time. This information includes the method name, the object that owns the method and values for the method parameters.
+Википедия говорит:
+> В ООП шаблон команды - это шаблон поведенческого проектирования, в котором объект используется для инкапсуляции всей информации, необходимой для выполнения действия или запуска события в более позднее время. Эта информация включает имя метода, объект, которому принадлежит метод, и значения параметров метода.
 
-**Programmatic Example**
+**Программный пример**
 
-First of all we have the receiver that has the implementation of every action that could be performed
+Прежде всего, у нас есть получатель, у которого есть реализация каждого действия, которое может быть выполнено:
 ```php
 // Receiver
 class Bulb
@@ -1408,7 +1407,8 @@ class Bulb
     }
 }
 ```
-then we have an interface that each of the commands are going to implement and then we have a set of commands
+
+У нас есть интерфейс, который будет реализован каждой из команд, а затем у нас есть набор команд:
 ```php
 interface Command
 {
@@ -1417,7 +1417,7 @@ interface Command
     public function redo();
 }
 
-// Command
+// Команда
 class TurnOn implements Command
 {
     protected $bulb;
@@ -1468,7 +1468,8 @@ class TurnOff implements Command
     }
 }
 ```
-Then we have an `Invoker` with whom the client will interact to process any commands
+
+Теперь у нас есть "Вызывающий" (`Invoker`), с которым клиент будет взаимодействовать для обработки любых команд:
 ```php
 // Invoker
 class RemoteControl
@@ -1479,7 +1480,8 @@ class RemoteControl
     }
 }
 ```
-Finally let's see how we can use it in our client
+
+Наконец, давайте посмотрим, как мы можем использовать это в нашем клиенте:
 ```php
 $bulb = new Bulb();
 
@@ -1491,9 +1493,9 @@ $remote->submit($turnOn); // Bulb has been lit!
 $remote->submit($turnOff); // Darkness!
 ```
 
-Command pattern can also be used to implement a transaction based system. Where you keep maintaining the history of commands as soon as you execute them. If the final command is successfully executed, all good otherwise just iterate through the history and keep executing the `undo` on all the executed commands.
+Шаблон команды также может быть использован для реализации системы, основанной на транзакциях, где вы продолжаете вести историю команд, как только вы их выполняете. Если последняя команда успешно выполнена, все хорошо, в противном случае просто повторите историю и продолжайте выполнять `Undo/Отменить` для всех выполненных команд.
 
-➿ Iterator
+➿ Итератор
 --------
 
 Real world example
