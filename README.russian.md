@@ -1498,19 +1498,18 @@ $remote->submit($turnOff); // Darkness!
 ➿ Итератор
 --------
 
-Real world example
-> An old radio set will be a good example of iterator, where user could start at some channel and then use next or previous buttons to go through the respective channels. Or take an example of MP3 player or a TV set where you could press the next and previous buttons to go through the consecutive channels or in other words they all provide an interface to iterate through the respective channels, songs or radio stations.  
+Пример из реального мира:
+> Старый радиоприемник будет хорошим примером итератора, где пользователь может начать с какого-то канала, а затем использовать кнопки "Далее" или "предыдущий" для перехода по соответствующим каналам. Или возьмем пример MP3-плеера или телевизора, где вы можете нажимать кнопки "Следующий" и "предыдущий" для перехода по последовательным каналам, или, другими словами, все они предоставляют интерфейс для перебора соответствующих каналов, песен или радиостанций.  
 
-In plain words
-> It presents a way to access the elements of an object without exposing the underlying presentation.
+Простыми словами:
+> Он представляет собой способ доступа к элементам объекта, не раскрывая базовую опцию.
 
-Wikipedia says
-> In object-oriented programming, the iterator pattern is a design pattern in which an iterator is used to traverse a container and access the container's elements. The iterator pattern decouples algorithms from containers; in some cases, algorithms are necessarily container-specific and thus cannot be decoupled.
+Википедия говорит:
+> В ООП шаблон итератора - это шаблон проектирования, в котором итератор используется для обхода контейнера и доступа к элементам контейнера. Шаблон итератора отделяет алгоритмы от контейнеров; в некоторых случаях алгоритмы обязательно зависят от контейнера и, следовательно, не могут быть отделены.
 
-**Programmatic example**
+**Пример из программирования**
 
-In PHP it is quite easy to implement using SPL (Standard PHP Library). Translating our radio stations example from above. First of all we have `RadioStation`
-
+В PHP это вполне просто реализовать с помощью SPL (Стандартная библиотека PHP). Берем пример наших радиостанций выше. Итак, у нас есть `RadioStation`("Радиостанция"):
 ```php
 class RadioStation
 {
@@ -1527,8 +1526,8 @@ class RadioStation
     }
 }
 ```
-Then we have our iterator
 
+Теперь у нас есть итератор:
 ```php
 use Countable;
 use Iterator;
@@ -1585,7 +1584,8 @@ class StationList implements Countable, Iterator
     }
 }
 ```
-And then it can be used as
+
+И теперь мы можем его использовать:
 ```php
 $stationList = new StationList();
 
@@ -1601,24 +1601,22 @@ foreach($stationList as $station) {
 $stationList->removeStation(new RadioStation(89)); // Will remove station 89
 ```
 
-👽 Mediator
+👽 Посредник
 ========
 
-Real world example
-> A general example would be when you talk to someone on your mobile phone, there is a network provider sitting between you and them and your conversation goes through it instead of being directly sent. In this case network provider is mediator.
+Пример из реального мира:
+> Общим примером может быть, когда вы разговариваете с кем-то по мобильному телефону, между вами и собеседником находится сетевой провайдер, и ваш разговор проходит через него, а не отправляется напрямую. В этом случае сетевой провайдер является посредником.
 
-In plain words
-> Mediator pattern adds a third party object (called mediator) to control the interaction between two objects (called colleagues). It helps reduce the coupling between the classes communicating with each other. Because now they don't need to have the knowledge of each other's implementation.
+Простыми словами:
+> Шаблон посредника добавляет сторонний объект (называемый посредником) для управления взаимодействием между двумя объектами (называемыми коллегами). Это помогает уменьшить связь между классами, общающимися друг с другом. Потому что теперь им не нужно знать о реализации друг друга.
 
-Wikipedia says
-> In software engineering, the mediator pattern defines an object that encapsulates how a set of objects interact. This pattern is considered to be a behavioral pattern due to the way it can alter the program's running behavior.
+Википедия говорит:
+> В разработке программного обеспечения шаблон посредника определяет объект, который инкапсулирует то, как взаимодействует набор объектов. Этот шаблон считается поведенческим шаблоном из-за того, как он может изменить поведение программы при запуске.
 
-**Programmatic Example**
+**Программный пример**
 
-Here is the simplest example of a chat room (i.e. mediator) with users (i.e. colleagues) sending messages to each other.
-
-First of all, we have the mediator i.e. the chat room
-
+Возьмем простейший пример комнаты чата (т.е. посредника), в которой пользователи (т.е. коллеги) отправляют сообщения друг другу.
+Прежде всего, у нас есть посредник, то есть комната чата:
 ```php
 interface ChatRoomMediator 
 {
@@ -1638,7 +1636,7 @@ class ChatRoom implements ChatRoomMediator
 }
 ```
 
-Then we have our users i.e. colleagues
+Теперь у нас есть пользователи, то есть коллеги:
 ```php
 class User {
     protected $name;
@@ -1658,7 +1656,8 @@ class User {
     }
 }
 ```
-And the usage
+
+И используем:
 ```php
 $mediator = new ChatRoom();
 
