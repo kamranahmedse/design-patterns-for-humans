@@ -1,6 +1,8 @@
 ![Design Patterns For Humans](https://cloud.githubusercontent.com/assets/11269635/23065273/1b7e5938-f515-11e6-8dd3-d0d58de6bb9a.png)
 
 ***
+<h3 align="center"> Free <a href="./README.russian.md">russian translation</a> by Vilena Vorobyeva </h3>
+
 
 <p align="center">
 🎉 Ultra-simplified explanation to design patterns! 🎉
