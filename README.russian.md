@@ -1,6 +1,7 @@
 ![Шаблоны проектирования для людей](https://cloud.githubusercontent.com/assets/11269635/23065273/1b7e5938-f515-11e6-8dd3-d0d58de6bb9a.png)
 
-<sub>Перевод выполнен [Виленой Воробьевой](https://github.com/vylenne) на безвозмездной основе. Ссылка на [оригинальный репозиторий и автора](https://github.com/kamranahmedse/design-patterns-for-humans)</sub>
+<h4>Перевод выполнен <a href="https://github.com/vylenne">Виленой Воробьевой</a> на безвозмездной основе. Ссылка на <a href="https://github.com/kamranahmedse/design-patterns-for-humans">оригинальный репозиторий и автора</a></h4>
+
 ***
 
 <p align="center">
