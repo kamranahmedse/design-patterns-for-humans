@@ -85,6 +85,12 @@ $hunter = new Hunter();
 $hunter->hunt($wildDogAdapter);
 ```
 
+# Examples
+
+1. Making functionality compatible between two classes (By [refactoring.guru](https://refactoring.guru/design-patterns/adapter/php/example))
+
+
+
 # Other Structural Design Patterns
 
  * [Bridge](../Bridge#-bridge)
