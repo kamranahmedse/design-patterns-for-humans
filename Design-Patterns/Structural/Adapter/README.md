@@ -87,7 +87,7 @@ $hunter->hunt($wildDogAdapter);
 
 # Examples
 
-1. Making functionality compatible between two classes (By [refactoring.guru](https://refactoring.guru/design-patterns/adapter/php/example))
+1. [Making functionality compatible between two classes](./Examples/example-1.md) (By [refactoring.guru](https://refactoring.guru/design-patterns/adapter/php/example))
 
 
 
