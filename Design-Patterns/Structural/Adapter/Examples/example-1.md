@@ -1,8 +1,8 @@
 
+## Target Class
 The Target defines the domain-specific interface used by the client code.
 
-```
-<?php
+```php
 
 namespace RefactoringGuru\Adapter\Conceptual;
 
@@ -16,8 +16,10 @@ class Target
 
 ```
 
+## Adaptee Class
  The Adaptee contains some useful behavior, but its interface is incompatible with the existing client code. The Adaptee needs some adaptation before the client code can use it.
-```
+
+```php
 class Adaptee
 {
     public function specificRequest(): string
@@ -28,8 +30,10 @@ class Adaptee
 
 ```
 
+## Adapter Class
 The Adapter makes the Adaptee's interface compatible with the Target's interface.
-```
+
+```php
 class Adapter extends Target
 {
     private $adaptee;
@@ -46,8 +50,11 @@ class Adapter extends Target
 }
 
 ```
+
+## Client Code
 The client code supports all classes that follow the Target interface.
-```
+
+```php
 function clientCode(Target $target)
 {
     echo $target->request();
