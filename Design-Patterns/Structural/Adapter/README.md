@@ -88,6 +88,7 @@ $hunter->hunt($wildDogAdapter);
 # Examples
 
 1. [Making functionality compatible between two classes](./Examples/example-1.md) (By [refactoring.guru](https://refactoring.guru/design-patterns/adapter/php/example))
+2. [Using Third-Party Packages in Payments](./Examples/example-2.md)
 
 
 

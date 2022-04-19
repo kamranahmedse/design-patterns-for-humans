@@ -1,3 +1,10 @@
+# Making functionality compatible between two classes
+This example illustrates the structure of the Adapter design pattern and focuses on the following questions:
+
+* What classes does it consist of?
+* What roles do these classes play?
+* In what way the elements of the pattern are related?
+
 
 ## Target Class
 The Target defines the domain-specific interface used by the client code.
