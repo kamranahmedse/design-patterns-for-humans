@@ -69,20 +69,20 @@ Wikipedia says
 
 **Programmatic Example**
 
-First of all we have a door interface and the implementation
+First of all we have a Measurable interface, the Door as abstraction and WoodenDoor as concret implementation
 ```php
-interface Door
-{
+
+interface Measurable {
     public function getWidth(): float;
     public function getHeight(): float;
 }
 
-class WoodenDoor implements Door
-{
+abstract class Door implements Measurable {
     protected $width;
     protected $height;
+    protected $material;
 
-    public function __construct(float $width, float $height)
+    public function __construct(float $width, float $height, string $material)
     {
         $this->width = $width;
         $this->height = $height;
@@ -97,13 +97,34 @@ class WoodenDoor implements Door
     {
         return $this->height;
     }
+
+    public function getMeterial(): string
+    {
+        return $this->material;
+    }
+    
+    public function __toString(): string
+    {
+        return "{$this->material} ({$this->width} x {$this->height})"
+    }
+
+}
+
+class WoodenDoor extends Door
+{
+    public function __construct(float $width, float $height)
+    {
+        $this->width = $width;
+        $this->height = $height;
+        $this->material = "WOOD";
+    }
 }
 ```
-Then we have our door factory that makes the door and returns it
+Then we have the door factory that instanciates the door and returns it
 ```php
 class DoorFactory
 {
-    public static function makeDoor($width, $height): Door
+    public static function makeWoodenDoor($width, $height): Door
     {
         return new WoodenDoor($width, $height);
     }
@@ -111,14 +132,13 @@ class DoorFactory
 ```
 And then it can be used as
 ```php
-// Make me a door of 100x200
-$door = DoorFactory::makeDoor(100, 200);
+// It instanciates a Wooden door of 100x200
+$woodenDoor = DoorFactory::makeWoodenDoor(100, 200);
 
-echo 'Width: ' . $door->getWidth();
-echo 'Height: ' . $door->getHeight();
+echo "The Door is {$woodenDoor}";
 
-// Make me a door of 50x100
-$door2 = DoorFactory::makeDoor(50, 100);
+// It instanciates a new Wooden door of 100x20050x100
+$woodenDoor2 = DoorFactory::makeWoodenDoor(50, 100);
 ```
 
 **When to Use?**
