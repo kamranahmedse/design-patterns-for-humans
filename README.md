@@ -22,7 +22,7 @@ Design patterns are solutions to recurring problems; **guidelines on how to tack
 
 Wikipedia describes them as
 
-> In software engineering, a software design pattern is a general reusable solution to a commonly occurring problem within a given context in software design. It is not a finished design that can be transformed directly into source or machine code. It is a description or template for how to solve a problem that can be used in many different situations.
+> In software engineering, a software design pattern is a general reusable solution to a commonly occurring problem within a given context in software design. It is not a finished design that can be transformed directly into source or machine code. It is a description or template for how to solve a problem that can be used in many situations.
 
 ⚠️ Be Careful
 -----------------
@@ -31,7 +31,7 @@ Wikipedia describes them as
 - Keep in mind that design patterns are solutions **to** problems, not solutions **finding** problems; so don't overthink.
 - If used in a correct place in a correct manner, they can prove to be a savior; or else they can result in a horrible mess of a code.
 
-> Also note that the code samples below are in PHP-7, however this shouldn't stop you because the concepts are same anyways.
+> Also note that the code samples below are in PHP-7, however this shouldn't stop you because the concepts are same anyway.
 
 Types of Design Patterns
 -----------------
@@ -59,7 +59,7 @@ Wikipedia says
 🏠 Simple Factory
 --------------
 Real world example
-> Consider, you are building a house and you need doors. You can either put on your carpenter clothes, bring some wood, glue, nails and all the tools required to build the door and start building it in your house or you can simply call the factory and get the built door delivered to you so that you don't need to learn anything about the door making or to deal with the mess that comes with making it.
+> Consider, you are building a house, and you need doors. You can either put on your carpenter clothes, bring some wood, glue, nails and all the tools required to build the door and start building it in your house, or you can simply call the factory and get the built door delivered to you so that you don't need to learn anything about the door making or to deal with the mess that comes with making it.
 
 In plain words
 > Simple factory simply generates an instance for client without exposing any instantiation logic to the client
@@ -341,7 +341,7 @@ When there are interrelated dependencies with not-that-simple creation logic inv
 👷 Builder
 --------------------------------------------
 Real world example
-> Imagine you are at Hardee's and you order a specific deal, lets say, "Big Hardee" and they hand it over to you without *any questions*; this is the example of simple factory. But there are cases when the creation logic might involve more steps. For example you want a customized Subway deal, you have several options in how your burger is made e.g what bread do you want? what types of sauces would you like? What cheese would you want? etc. In such cases builder pattern comes to the rescue.
+> Imagine you are at Hardee's, and you order a specific deal, lets say, "Big Hardee" and they hand it over to you without *any questions*; this is the example of simple factory. But there are cases when the creation logic might involve more steps. For example, you want a customized Subway deal, you have several options in how your burger is made e.g. what bread do you want? what types of sauces would you like? What cheese would you want? etc. In such cases builder pattern comes to the rescue.
 
 In plain words
 > Allows you to create different flavors of an object while avoiding constructor pollution. Useful when there could be several flavors of an object. Or when there are a lot of steps involved in creation of an object.
@@ -357,7 +357,7 @@ public function __construct($size, $cheese = true, $pepperoni = true, $tomato = 
 }
 ```
 
-As you can see; the number of constructor parameters can quickly get out of hand and it might become difficult to understand the arrangement of parameters. Plus this parameter list could keep on growing if you would want to add more options in future. This is called telescoping constructor anti-pattern.
+As you can see; the number of constructor parameters can quickly get out of hand, and it might become difficult to understand the arrangement of parameters. Plus this parameter list could keep on growing if you would want to add more options in the future. This is called telescoping constructor anti-pattern.
 
 **Programmatic Example**
 
@@ -443,12 +443,12 @@ $burger = (new BurgerBuilder(14))
 
 **When to use?**
 
-When there could be several flavors of an object and to avoid the constructor telescoping. The key difference from the factory pattern is that; factory pattern is to be used when the creation is a one step process while builder pattern is to be used when the creation is a multi step process.
+When there could be several flavors of an object and to avoid the constructor telescoping. The key difference from the factory pattern is that; factory pattern is to be used when the creation is a one-step process while builder pattern is to be used when the creation is a multistep process.
 
 🐑 Prototype
 ------------
 Real world example
-> Remember dolly? The sheep that was cloned! Lets not get into the details but the key point here is that it is all about cloning
+> Remember dolly? The sheep that was cloned! Let's not get into the details but the key point here is that it is all about cloning
 
 In plain words
 > Create object based on an existing object through cloning.
@@ -508,7 +508,7 @@ echo $cloned->getName(); // Dolly
 echo $cloned->getCategory(); // Mountain sheep
 ```
 
-Also you could use the magic method `__clone` to modify the cloning behavior.
+Also, you could use the magic method `__clone` to modify the cloning behavior.
 
 **When to use?**
 
@@ -525,7 +525,7 @@ In plain words
 Wikipedia says
 > In software engineering, the singleton pattern is a software design pattern that restricts the instantiation of a class to one object. This is useful when exactly one object is needed to coordinate actions across the system.
 
-Singleton pattern is actually considered an anti-pattern and overuse of it should be avoided. It is not necessarily bad and could have some valid use-cases but should be used with caution because it introduces a global state in your application and change to it in one place could affect in the other areas and it could become pretty difficult to debug. The other bad thing about them is it makes your code tightly coupled plus mocking the singleton could be difficult.
+Singleton pattern is actually considered an anti-pattern and overuse of it should be avoided. It is not necessarily bad and could have some valid use-cases but should be used with caution because it introduces a global state in your application and change to it in one place could affect in the other areas, and it could become pretty difficult to debug. The other bad thing about them is it makes your code tightly coupled plus mocking the singleton could be difficult.
 
 **Programmatic Example**
 
@@ -587,8 +587,8 @@ Wikipedia says
 🔌 Adapter
 -------
 Real world example
-> Consider that you have some pictures in your memory card and you need to transfer them to your computer. In order to transfer them you need some kind of adapter that is compatible with your computer ports so that you can attach memory card to your computer. In this case card reader is an adapter.
-> Another example would be the famous power adapter; a three legged plug can't be connected to a two pronged outlet, it needs to use a power adapter that makes it compatible with the two pronged outlet.
+> Consider that you have some pictures in your memory card, and you need to transfer them to your computer. In order to transfer them you need some kind of adapter that is compatible with your computer ports so that you can attach memory card to your computer. In this case card reader is an adapter.
+> Another example would be the famous power adapter; a three-legged plug can't be connected to a two pronged outlet, it needs to use a power adapter that makes it compatible with the two pronged outlet.
 > Yet another example would be a translator translating words spoken by one person to another
 
 In plain words
@@ -599,7 +599,7 @@ Wikipedia says
 
 **Programmatic Example**
 
-Consider a game where there is a hunter and he hunts lions.
+Consider a game where there is a hunter, and he hunts lions.
 
 First we have an interface `Lion` that all types of lions have to implement
 
@@ -674,12 +674,12 @@ $hunter->hunt($wildDogAdapter);
 🚡 Bridge
 ------
 Real world example
-> Consider you have a website with different pages and you are supposed to allow the user to change the theme. What would you do? Create multiple copies of each of the pages for each of the themes or would you just create separate theme and load them based on the user's preferences? Bridge pattern allows you to do the second i.e.
+> Consider you have a website with different pages, and you are supposed to allow the user to change the theme. What would you do? Create multiple copies of each of the pages for each of the themes or would you just create separate theme and load them based on the user's preferences? Bridge pattern allows you to do the second i.e.
 
 ![With and without the bridge pattern](https://cloud.githubusercontent.com/assets/11269635/23065293/33b7aea0-f515-11e6-983f-98823c9845ee.png)
 
 In Plain Words
-> Bridge pattern is about preferring composition over inheritance. Implementation details are pushed from a hierarchy to another object with a separate hierarchy.
+> Bridge pattern is about preferring composition to inheritance. Implementation details are pushed from a hierarchy to another object with a separate hierarchy.
 
 Wikipedia says
 > The bridge pattern is a design pattern used in software engineering that is meant to "decouple an abstraction from its implementation so that the two can vary independently"
@@ -859,7 +859,7 @@ class Designer implements Employee
 }
 ```
 
-Then we have an organization which consists of several different types of employees
+Then we have an organization which consists of several types of employees
 
 ```php
 class Organization
@@ -914,7 +914,7 @@ Wikipedia says
 
 **Programmatic Example**
 
-Lets take coffee for example. First of all we have a simple coffee implementing the coffee interface
+Let's take coffee for example. First we have a simple coffee implementing the coffee interface
 
 ```php
 interface Coffee
@@ -936,7 +936,7 @@ class SimpleCoffee implements Coffee
     }
 }
 ```
-We want to make the code extensible to allow options to modify it if required. Lets make some add-ons (decorators)
+We want to make the code extensible to allow options to modify it if required. Let's make some add-ons (decorators)
 ```php
 class MilkCoffee implements Coffee
 {
@@ -999,7 +999,7 @@ class VanillaCoffee implements Coffee
 }
 ```
 
-Lets make a coffee now
+Let's make a coffee now
 
 ```php
 $someCoffee = new SimpleCoffee();
@@ -1292,7 +1292,7 @@ Real world example
 > For example, you have three payment methods (`A`, `B` and `C`) setup in your account; each having a different amount in it. `A` has 100 USD, `B` has 300 USD and `C` having 1000 USD and the preference for payments is chosen as `A` then `B` then `C`. You try to purchase something that is worth 210 USD. Using Chain of Responsibility, first of all account `A` will be checked if it can make the purchase, if yes purchase will be made and the chain will be broken. If not, request will move forward to account `B` checking for amount if yes chain will be broken otherwise the request will keep forwarding till it finds the suitable handler. Here `A`, `B` and `C` are links of the chain and the whole phenomenon is Chain of Responsibility.
 
 In plain words
-> It helps building a chain of objects. Request enters from one end and keeps going from object to object till it finds the suitable handler.
+> It helps to build a chain of objects. Request enters from one end and keeps going from object to object till it finds the suitable handler.
 
 Wikipedia says
 > In object-oriented design, the chain-of-responsibility pattern is a design pattern consisting of a source of command objects and a series of processing objects. Each processing object contains logic that defines the types of command objects that it can handle; the rest are passed to the next processing object in the chain.
@@ -1361,18 +1361,18 @@ class Bitcoin extends Account
 }
 ```
 
-Now let's prepare the chain using the links defined above (i.e. Bank, Paypal, Bitcoin)
+Now let's prepare the chain using the links defined above (i.e. Bank, PayPal, Bitcoin)
 
 ```php
 // Let's prepare a chain like below
 //      $bank->$paypal->$bitcoin
 //
 // First priority bank
-//      If bank can't pay then paypal
-//      If paypal can't pay then bit coin
+//      If bank can't pay then PayPal
+//      If PayPal can't pay then bitcoin
 
 $bank = new Bank(100);          // Bank with balance 100
-$paypal = new Paypal(200);      // Paypal with balance 200
+$paypal = new Paypal(200);      // PayPal with balance 200
 $bitcoin = new Bitcoin(300);    // Bitcoin with balance 300
 
 $bank->setNext($paypal);
@@ -1419,7 +1419,7 @@ class Bulb
     }
 }
 ```
-then we have an interface that each of the commands are going to implement and then we have a set of commands
+then we have an interface that each of the commands are going to implement, and then we have a set of commands
 ```php
 interface Command
 {
@@ -1490,7 +1490,7 @@ class RemoteControl
     }
 }
 ```
-Finally let's see how we can use it in our client
+Finally, let's see how we can use it in our client
 ```php
 $bulb = new Bulb();
 
@@ -1518,7 +1518,7 @@ Wikipedia says
 
 **Programmatic example**
 
-In PHP it is quite easy to implement using SPL (Standard PHP Library). Translating our radio stations example from above. First of all we have `RadioStation`
+In PHP, it is quite easy to implement using SPL (Standard PHP Library). Translating our radio stations example from above. First of all we have `RadioStation`
 
 ```php
 class RadioStation
@@ -1697,7 +1697,7 @@ Usually useful when you need to provide some sort of undo functionality.
 
 **Programmatic Example**
 
-Lets take an example of text editor which keeps saving the state from time to time and that you can restore if you want.
+Let's take an example of text editor which keeps saving the state from time to time and that you can restore if you want.
 
 First of all we have our memento object that will be able to hold the editor state
 
@@ -1774,7 +1774,7 @@ $editor->getContent(); // This is the first sentence. This is second.
 😎 Observer
 --------
 Real world example
-> A good example would be the job seekers where they subscribe to some job posting site and they are notified whenever there is a matching job opportunity.   
+> A good example would be the job seekers where they subscribe to some job posting site, and they are notified whenever there is a matching job opportunity.   
 
 In plain words
 > Defines a dependency between objects so that whenever an object changes its state, all its dependents are notified.
@@ -1863,7 +1863,7 @@ $jobPostings->addJob(new JobPost('Software Engineer'));
 🏃 Visitor
 -------
 Real world example
-> Consider someone visiting Dubai. They just need a way (i.e. visa) to enter Dubai. After arrival, they can come and visit any place in Dubai on their own without having to ask for permission or to do some leg work in order to visit any place here; just let them know of a place and they can visit it. Visitor pattern lets you do just that, it helps you add places to visit so that they can visit as much as they can without having to do any legwork.
+> Consider someone visiting Dubai. They just need a way (i.e. visa) to enter Dubai. After arrival, they can come and visit any place in Dubai on their own without having to ask for permission or to do some leg work in order to visit any place here; just let them know of a place, and they can visit it. Visitor pattern lets you do just that, it helps you add places to visit so that they can visit as much as they can without having to do any legwork.
 
 In plain words
 > Visitor pattern lets you add further operations to objects without having to modify them.
@@ -1873,7 +1873,7 @@ Wikipedia says
 
 **Programmatic example**
 
-Let's take an example of a zoo simulation where we have several different kinds of animals and we have to make them Sound. Let's translate this using visitor pattern
+Let's take an example of a zoo simulation where we have several kinds of animals, and we have to make them Sound. Let's translate this using visitor pattern
 
 ```php
 // Visitee
@@ -1964,7 +1964,7 @@ $monkey->accept($speak);    // Ooh oo aa aa!
 $lion->accept($speak);      // Roaaar!
 $dolphin->accept($speak);   // Tuut tutt tuutt!
 ```
-We could have done this simply by having an inheritance hierarchy for the animals but then we would have to modify the animals whenever we would have to add new actions to animals. But now we will not have to change them. For example, let's say we are asked to add the jump behavior to the animals, we can simply add that by creating a new visitor i.e.
+We could have done this simply by having an inheritance hierarchy for the animals, but then we would have to modify the animals whenever we would have to add new actions to animals. But now we will not have to change them. For example, let's say we are asked to add the jump behavior to the animals, we can simply add that by creating a new visitor i.e.
 
 ```php
 class Jump implements AnimalOperation
@@ -2176,7 +2176,7 @@ Real world example
 > - Add roof
 > - Add other floors
 
-> The order of these steps could never be changed i.e. you can't build the roof before building the walls etc but each of the steps could be modified for example walls can be made of wood or polyester or stone.
+> The order of these steps could never be changed i.e. you can't build the roof before building the walls etc. but each of the steps could be modified for example walls can be made of wood or polyester or stone.
 
 In plain words
 > Template method defines the skeleton of how a certain algorithm could be performed, but defers the implementation of those steps to the children classes.
@@ -2186,7 +2186,7 @@ Wikipedia says
 
 **Programmatic Example**
 
-Imagine we have a build tool that helps us test, lint, build, generate build reports (i.e. code coverage reports, linting report etc) and deploy our app on the test server.
+Imagine we have a build tool that helps us test, lint, build, generate build reports (i.e. code coverage reports, linting report etc.) and deploy our app on the test server.
 
 First of all we have our base class that specifies the skeleton for the build algorithm
 ```php
