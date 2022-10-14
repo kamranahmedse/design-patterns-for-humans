@@ -1226,7 +1226,7 @@ class LabDoor implements Door
 ```
 Then we have a proxy to secure any doors that we want
 ```php
-class SecuredDoor
+class SecuredDoor implements Door
 {
     protected $door;
 
