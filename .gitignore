@@ -1,4 +1,4 @@
 .idea/
-examples/php/vendor
+vendor
 composer.lock
 .phpunit.result.cache
