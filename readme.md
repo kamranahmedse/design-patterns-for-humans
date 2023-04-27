@@ -1,8 +1,7 @@
 <br>
 <p align="center">
-<img src="./.github/banner.svg" height="150px" />
+  <img src="./.github/banner.svg" height="150px" />
 </p>
-<br>
 
 ***
 
@@ -10,12 +9,12 @@
 🎉 Ultra-simplified explanation to design patterns! 🎉
 </p>
 <p align="center">
-A topic that can easily make anyone's mind wobble. Here I try to make them stick in to your mind (and maybe mine) by explaining them in the <i>simplest</i> way possible.
+A topic that can easily make anyone's mind wobble. Here I try to make them stick in to your<br> mind (and maybe mine) by explaining them in the <i>simplest</i> way possible.
 </p>
 
 ***
 
-<sub>Check out my [blog](http://kamranahmed.info) and say "hi" on [Twitter](https://twitter.com/kamranahmedse).</sub>
+<sub>Check out my [other project](http://roadmap.sh) and say "hi" on [Twitter](https://twitter.com/kamranahmedse).</sub>
 
 Introduction
 =================
