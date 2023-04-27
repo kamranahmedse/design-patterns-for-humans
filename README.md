@@ -2052,28 +2052,35 @@ And then we have our client that is going to use any strategy
 ```php
 class Sorter
 {
-    protected $sorter;
+    protected $sorterSmall;
+    protected $sorterBig;
 
-    public function __construct(SortStrategy $sorter)
+    public function __construct(SortStrategy $sorterSmall, SortStrategy $sorterBig)
     {
-        $this->sorter = $sorter;
+        $this->sorterSmall = $sorterSmall;
+        $this->sorterBig = $sorterBig;
     }
 
     public function sort(array $dataset): array
     {
-        return $this->sorter->sort($dataset);
+        if (count($dataset) > 5) {
+            return $this->sorterBig->sort($dataset);
+        } else {
+            return $this->sorterSmall->sort($dataset);
+        }
     }
 }
 ```
 And it can be used as
 ```php
-$dataset = [1, 5, 4, 3, 2, 8];
+$smalldataset = [1, 3, 4, 2];
+$bigdataset = [1, 4, 3, 2, 8, 10, 5, 6, 9, 7];
 
-$sorter = new Sorter(new BubbleSortStrategy());
+$sorter = new Sorter(new BubbleSortStrategy(), new QuickSortStrategy());
+
 $sorter->sort($dataset); // Output : Sorting using bubble sort
 
-$sorter = new Sorter(new QuickSortStrategy());
-$sorter->sort($dataset); // Output : Sorting using quick sort
+$sorter->sort($bigdataset); // Output : Sorting using quick sort
 ```
 
 💢 State
