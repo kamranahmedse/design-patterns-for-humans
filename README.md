@@ -13,6 +13,7 @@ In this repository, we talk about the `Software Engineering Concepts` and try to
 In this section we will talk about some important concepts.
 ### Concepts Topics
 * [Tell Don't Ask](Concepts/Tell-Dont-Ask.md)
+* [YAGNI - You Ain't Gonna Need It!](Concepts/YAGNI.md)
 
 
 <br>
