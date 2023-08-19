@@ -44,3 +44,9 @@ While the **YAGNI** principle advises against adding unnecessary features upfron
 
 The goal is not to avoid flexibility and future development but to prioritize and approach it in a way that aligns with actual needs and avoids unnecessary complexity. 
 It's about finding the right balance between planning for the future and focusing on the present requirements.
+
+## Some Articles
+- [TAGNI - Martin Fowler](https://martinfowler.com/bliki/Yagni.html)
+- [YAGNI - Medium - betterprogramming](https://betterprogramming.pub/yagni-you-aint-gonna-need-it-f9a178cd8e1)
+- O’Reilly’s [Learning Agile](http://shop.oreilly.com/product/0636920025849.do), Chapter 7 “XP, Simplicity, and Incremental Design”
+- Kent Beck’s [Extreme Programming Explained](https://www.amazon.com/dp/0321278658/ref=cm_sw_r_cp_ep_dp_TI0SAb1S65NJN), Chapter 7 “Primary Practices”
