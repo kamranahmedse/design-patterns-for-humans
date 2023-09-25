@@ -1847,7 +1847,7 @@ class EmploymentAgency implements Observable
     {   
         $observersCopy = $observers->getArrayCopy();
 
-        foreach ($this->observers as $observersCopy) {
+        foreach ($observersCopy as $observer) {
             $observer->onJobPosted($jobPosting);
         }
     }
