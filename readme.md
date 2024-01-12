@@ -1202,11 +1202,13 @@ $shop = new TeaShop($teaMaker);
 $shop->takeOrder('less sugar', 1);
 $shop->takeOrder('more milk', 2);
 $shop->takeOrder('without sugar', 5);
+$shop->takeOrder('more milk', 6);           // same as above, just for different table, we save some memory
 
 $shop->serve();
 // Serving tea to table# 1
 // Serving tea to table# 2
 // Serving tea to table# 5
+// Serving tea to table# 6
 ```
 
 🎱 Proxy
