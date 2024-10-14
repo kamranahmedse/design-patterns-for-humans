@@ -2094,7 +2094,7 @@ $bigdataset = [1, 4, 3, 2, 8, 10, 5, 6, 9, 7];
 
 $sorter = new Sorter(new BubbleSortStrategy(), new QuickSortStrategy());
 
-$sorter->sort($dataset); // Output : Sorting using bubble sort
+$sorter->sort($smalldataset); // Output : Sorting using bubble sort
 
 $sorter->sort($bigdataset); // Output : Sorting using quick sort
 ```
