@@ -1578,9 +1578,12 @@ class StationList implements Countable, Iterator
     public function removeStation(RadioStation $toRemove)
     {
         $toRemoveFrequency = $toRemove->getFrequency();
-        $this->stations = array_filter($this->stations, function (RadioStation $station) use ($toRemoveFrequency) {
+        $this->stations = array_values(array_filter(
+          $this->stations,
+          function (RadioStation $station) use ($toRemoveFrequency) {
             return $station->getFrequency() !== $toRemoveFrequency;
-        });
+          }
+        ));
     }
 
     public function count(): int
