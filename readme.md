@@ -1794,7 +1794,7 @@ $editor->getContent(); // This is the first sentence. This is second.
 😎 Observer
 --------
 Real world example
-> A good example would be the job seekers where they subscribe to some job posting site and they are notified whenever there is a matching job opportunity.   
+> Let’s assume we have a NewsAgency (the subject) that publishes news. Multiple NewsChannels (the observers) are subscribed to this agency, and whenever there is new news, the agency notifies all its channels.   
 
 In plain words
 > Defines a dependency between objects so that whenever an object changes its state, all its dependents are notified.
@@ -1804,80 +1804,95 @@ Wikipedia says
 
 **Programmatic example**
 
-Translating our example from above. First of all we have job seekers that need to be notified for a job posting
+Translating our example from above. First of all we have news channels that need to be notified for a news
+
+- Subject Interface: The subject (NewsAgency) will allow observers (NewsChannels) to subscribe, unsubscribe, and notify them when there’s an update.
+- Observer Interface: The observers (NewsChannels) will have a method to get updates from the subject.
 ```php
-class JobPost
+interface Subject
 {
-    protected $title;
-
-    public function __construct(string $title)
-    {
-        $this->title = $title;
-    }
-
-    public function getTitle()
-    {
-        return $this->title;
-    }
+    public function subscripeChannel(Observer $observer): void;
+    public function removeChannel(Observer $observer): void;
+    public function notify(): void;
 }
 
-class JobSeeker implements Observer
+interface Observer
 {
-    protected $name;
-
-    public function __construct(string $name)
-    {
-        $this->name = $name;
-    }
-
-    public function onJobPosted(JobPost $job)
-    {
-        // Do something with the job posting
-        echo 'Hi ' . $this->name . '! New job posted: '. $job->getTitle();
-    }
+    public function update(string $news): void;
 }
 ```
-Then we have our job postings to which the job seekers will subscribe
+Concrete Subject: Implements the subject interface and maintains a list of observers.
 ```php
-class EmploymentAgency implements Observable
+class NewsAgency implements Subject
 {
-    protected $observers = [];
+    private array $observers = [];
+    private string $news;
 
-    protected function notify(JobPost $jobPosting)
-    {
-        foreach ($this->observers as $observer) {
-            $observer->onJobPosted($jobPosting);
-        }
-    }
-
-    public function attach(Observer $observer)
+    public function subscripeChannel(Observer $observer): void
     {
         $this->observers[] = $observer;
     }
 
-    public function addJob(JobPost $jobPosting)
+    public function removeChannel(Observer $observer): void
     {
-        $this->notify($jobPosting);
+        $this->observers = array_filter($this->observers, function ($obs) use ($observer) {
+            return $obs !== $observer;
+        });
+    }
+
+    public function notify(): void
+    {
+        foreach ($this->observers as $obs) {
+            $obs->update($this->news);
+        }
+    }
+
+    public function setNews(string $news): void
+    {
+        $this->news = $news;
+        $this->notify();
     }
 }
 ```
-Then it can be used as
+Concrete Observer: Implements the observer interface and reacts to updates from the subject.
 ```php
-// Create subscribers
-$johnDoe = new JobSeeker('John Doe');
-$janeDoe = new JobSeeker('Jane Doe');
+class Channel implements Observer
+{
+    private string $agencyName;
 
-// Create publisher and attach subscribers
-$jobPostings = new EmploymentAgency();
-$jobPostings->attach($johnDoe);
-$jobPostings->attach($janeDoe);
+    public function __construct(string $agencyName)
+    {
+        $this->agencyName = $agencyName;
+    }
 
-// Add a new job and see if subscribers get notified
-$jobPostings->addJob(new JobPost('Software Engineer'));
+    public function update(string $news): void
+    {
+        echo "hi {$this->agencyName}, you have a news: {$news} <br />";
+    }
+}
+```
 
-// Output
-// Hi John Doe! New job posted: Software Engineer
-// Hi Jane Doe! New job posted: Software Engineer
+```php
+// create the channels,
+$cbc = new Channel("cbc");
+$mbc = new Channel("mbc");
+
+// subscripe them into my subject
+$newsAgency = new NewsAgency();
+$newsAgency->subscripeChannel($cbc);
+$newsAgency->subscripeChannel($mbc);
+
+// set news
+$newsAgency->setNews("this new!!");
+
+$newsAgency->removeChannel($cbc);
+
+$newsAgency->setNews("this the second new!!");
+
+// expected results:
+// hi cbc, you have a news: this new!!
+// hi mbc, you have a news: this new!!
+// hi mbc, you have a news: this the second new!! 
 ```
 
 🏃 Visitor
