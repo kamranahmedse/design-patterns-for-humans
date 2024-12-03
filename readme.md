@@ -1804,7 +1804,7 @@ Wikipedia says
 
 **Programmatic example**
 
-Translating our example from above. First of all we have job seekers that need to be notified for a job posting
+Translating our example from above. First of all we have job seekers that need to be notified for a job posting.
 ```php
 class JobPost
 {
@@ -1837,15 +1837,17 @@ class JobSeeker implements Observer
     }
 }
 ```
-Then we have our job postings to which the job seekers will subscribe
+Then we have our job postings to which the job seekers will subscribe. When notifying observers there are chances that Job Seeker might add another observer to observers list. To avoid exponential growth of observers list & to avoid cyclic dependency, it is always good to have copy of observers before notifying.
 ```php
 class EmploymentAgency implements Observable
 {
     protected $observers = [];
 
     protected function notify(JobPost $jobPosting)
-    {
-        foreach ($this->observers as $observer) {
+    {   
+        $observersCopy = $observers->getArrayCopy();
+
+        foreach ($observersCopy as $observer) {
             $observer->onJobPosted($jobPosting);
         }
     }
