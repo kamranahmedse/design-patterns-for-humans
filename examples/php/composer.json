@@ -1,0 +1,16 @@
+{
+    "name": "kamranahmedse/design-patterns-for-humans",
+    "description": "design-patterns-for-humans",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "design_patterns\\": "."
+        }
+    },
+    "require": {
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~9.0",
+        "roave/security-advisories": "dev-latest"
+    }
+}
